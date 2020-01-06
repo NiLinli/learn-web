@@ -1,0 +1,32 @@
+{
+  "name": "javascript-basic-note",
+  "version": "1.0.0",
+  "description": "My Personal Javascript Note",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NiLinli/Javascript-Basic-Note.git"
+  },
+  "author": "Nilinli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NiLinli/Javascript-Basic-Note/issues"
+  },
+  "homepage": "https://github.com/NiLinli/Javascript-Basic-Note#readme",
+  "dependencies": {
+    "@types/node": "^10.7.1",
+    "date-fns": "^1.30.1",
+    "lodash": "^4.17.11",
+    "normalizr": "^3.3.0",
+    "rxjs": "^6.1.0",
+    "urljs": "^2.3.1",
+    "world-countries": "^2.1.0",
+    "yup": "^0.27.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.8.3"
+  }
+}

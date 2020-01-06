@@ -1,0 +1,46 @@
+{
+  "name": "guide",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "0": "webpack --config ./0-hello-webpack/webpack.config.js",
+    "1": "webpack --config ./1-asset-management/webpack.config.js",
+    "2": "webpack --config ./2-output-management/webpack.config.js",
+    "3": "webpack --config ./3-development/webpack.config.js",
+    "4": "webpack-dev-server --open  --config ./4-hot-module-replacement/webpack.config.js",
+    "5": "webpack --config ./5-tree-shaking/webpack.config.js",
+    "7": "webpack --config ./7-code-splitting/webpack.config.js",
+    "8": "webpack --config ./8-caching/webpack.config.js",
+    "10": "webpack --config ./10-shimming/webpack.config.js",
+    "3-start": "webpack-dev-server --open --config ./3-development/webpack.config.js",
+    "3-server": "node ./3-development/server.js",
+    "6-start": "webpack-dev-server --open --config ./6-production/webpack.dev.js",
+    "6-build": "webpack --config ./6-production/webpack.prod.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "exports-loader": "^0.7.0",
+    "express": "^4.17.1",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "imports-loader": "^0.8.0",
+    "style-loader": "^1.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "~4.41.2",
+    "webpack-cli": "~3.3.9",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-manifest-plugin": "^2.2.0",
+    "webpack-merge": "^4.2.2",
+    "xml-loader": "^1.2.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "lodash": "^4.17.15"
+  }
+}

@@ -1,0 +1,4 @@
+::1 - - [02/Aug/2019:02:28:06 +0000] "GET /search_airport/beijing HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36"
+::1 - - [02/Aug/2019:02:28:21 +0000] "GET /search_airport/213 HTTP/1.1" 200 4 "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36"
+::1 - - [02/Aug/2019:02:31:02 +0000] "GET /search_airport/213 HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.87 Safari/537.36"
+GET /search_airport/213 304 - - 232.225 ms

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>fromEvent</title>
+    <style>
+        #test {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test"></div>
+
+</body>
+<script src="../../../../node_modules/rxjs/bundles/rxjs.umd.js"></script>
+
+<script>
+    const { fromEvent, fromEventPattern } = rxjs;
+    const { } = rxjs.operators;
+
+
+    const sub1 = fromEvent(document.getElementById('test'), 'click').subscribe(
+        e => console.log(e),
+        error => error,                      // 无消息
+        () => console.log('complete!!!')     // 无消息
+    );
+
+    setTimeout(() => {
+        sub1.unsubscribe();
+    }, 5000);
+
+
+
+    function addClickHandler(handler) {
+        document.addEventListener('click', handler)
+    }
+
+    function removeClickHandler(handler) {
+        document.removeEventListener('click', handler);
+    }
+
+    const sub2 = fromEventPattern(addClickHandler, removeClickHandler).subscribe(
+        e => console.log(e),
+        error => error,                      // 无消息
+        () => console.log('complete!!!')     // 无消息
+    );
+
+</script>
+
+</html>

@@ -1,0 +1,3 @@
+exports.baz = 'baz';
+
+exports = {};

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>My Sample Project</title>
+		<meta charset='utf-8'>
+		<!--data-main attribute tells require.js to load scripts/main.js after requre.js loads.-->
+		<script data-main="scripts/main" src="scripts/require.js"></script>
+
+		<!-- 隐式设置 baseUrl 为 scripts/ -->
+	</head>
+
+	<body>
+		<h1>My Sample Project</h1>
+	</body>
+
+	<script>
+		window.onload = function(){
+			console.log('load');
+		};
+
+		document.addEventListener('DOMContentLoaded',function(){
+			console.log('DOMContentLoaded');
+		});
+	</script>
+
+</html>

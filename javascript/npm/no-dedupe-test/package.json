@@ -1,0 +1,16 @@
+{
+  "name": "dedupe-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nll-test-a": "^1.0.0",
+    "nll-test-b": "^1.2.0"
+  }
+}
