@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>help block</title>
+    <style>
+        .help-block {
+            display: block;
+            /* hide the help by default,
+without hiding it from screen readers */
+            position: absolute;
+            overflow: hidden;
+            width: 1px;
+            height: 1px;
+            clip: rect(0 0 0 0);
+        }
+
+        input:focus+.help-block {
+            padding: .5em;
+            margin-top: .5em;
+            border: 1px solid #2a80fa;
+            border-radius: .25em;
+            font-style: italic;
+            color: #737373;
+            background-color: #fff;
+            /* override the "hiding" properties: */
+            position: static;
+            width: auto;
+            height: auto;
+            crop: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p class="form-group input-group">
+        <label for="comment-url">Web Address:</label>
+        <input placeholder="http://example.com" name="comment-url" id="comment-url" type="url" />
+        <span id="comment-url-help" role="tooltip" class="help-block">Fill in your URL if you have one. Make sure to include the "http://"-part.</span>
+    </p>
+
+    <div style="background-color: yellow; height: 100px;"></div>
+    <a href="http://snook.ca/archives/html_and_css/
+    hiding-content-for-accessibility">方案来源</a>
+</body>
+
+</html>

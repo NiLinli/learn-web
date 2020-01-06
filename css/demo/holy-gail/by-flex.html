@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .holy-grail {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .holy-grail-body {
+            flex: 1;
+            display: flex;
+        }
+
+        .holy-grail-content {
+            flex: 1;
+            background-color: skyblue;
+        }
+
+        .holy-grail-nav,
+        .holy-grail-ads {
+            /* 12em is the width of the columns */
+            flex: 0 0 200px;
+            background-color: pink;
+        }
+
+        .holy-grail-nav {
+            /* put the nav on the left */
+            background-color: darksalmon;
+        }
+    </style>
+</head>
+
+<body class="holy-grail">
+    <header>网站头部Header</header>
+    <div class="holy-grail-body">
+        <nav class="holy-grail-nav">左边的导航Nav</nav>
+        <main class="holy-grail-content">内容Content</main>
+        <aside class="holy-grail-ads">右边的广告Ad</aside>
+    </div>
+    <footer>网站底部Footer</footer>
+</body>
+
+</html>

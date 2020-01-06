@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box-container {
+      overflow: hidden;
+    }
+
+    .box {
+      width: 200px;
+      height: 100px;
+      margin: 5px;
+      float: left;
+    }
+
+    .box-muti-color {
+      background-image: linear-gradient(to left,
+        rgba(255, 0, 0, 0) 0%,
+        rgba(255, 0, 0, 0.8) 7%,
+        rgba(255, 0, 0, 1) 11%,
+        rgba(255, 0, 0, 1) 12%,
+        rgba(255, 252, 0, 1) 28%,
+        rgba(1, 180, 7, 1) 45%,
+        rgba(0, 234, 255, 1) 60%,
+        rgba(0, 3, 144, 1) 75%,
+        rgba(255, 0, 198, 1) 88%,
+        rgba(255, 0, 198, 0.8) 93%,
+        rgba(255, 0, 198, 0) 100%);
+    }
+  </style>
+</head>
+
+<body>
+  <h3>渐变分析</h3>
+  <ol>
+    <li>确定角度 -- 默认角度垂直向下(to top), 顺时针表示角度</li>
+    <li>确定起始点和终点</li>
+    <li>确定每个阶段的颜色点</li>
+  </ol>
+  <img src="./linear-gradient.png" alt="">
+
+  <h2>left -> right</h2>
+  <div class="box-container">
+    <div class="box" style="background-image: linear-gradient(to right, orange, red);"></div>
+    <div class="box" style="background-image: linear-gradient(90deg, orange, red);"></div>
+    <div class="box" style="background-image: linear-gradient(-270deg, orange, red);"></div>
+  </div>
+
+  <h2>right -> left</h2>
+  <div class="box-container">
+    <div class="box" style="background-image: linear-gradient(to left, orange, red);"></div>
+    <div class="box" style="background-image: linear-gradient(270deg, orange, red);"></div>
+    <div class="box" style="background-image: linear-gradient(-90deg, orange, red);"></div>
+  </div>
+
+  <h2>top -> bottom</h2>
+  <div class="box-container">
+    <div class="box" style="background-image: linear-gradient(to bottom, orange, red);"></div>
+    <div class="box" style="background-image: linear-gradient(180deg, orange, red);"></div>
+    <div class="box" style="background-image: linear-gradient(-180deg, orange, red);"></div>
+  </div>
+
+  <h2>bottom -> top</h2>
+  <div class="box-container">
+    <div class="box" style="background-image: linear-gradient(to top, orange, red);"></div>
+    <div class="box" style="background-image: linear-gradient(0deg, orange, red);"></div>
+  </div>
+
+  <h2>多于两个颜色的渐变</h2>
+  <div class="box-container">
+    <div class="box box-muti-color"></div>
+  </div>
+
+  <h2>测试</h2>
+  <div class="box-container">
+    <div class="box" style="width: 375px;height: 195px; background-image: linear-gradient(135deg , rgb(249,78,49),rgb(254,116,87))"></div>
+  </div>
+</body>
+
+</html>

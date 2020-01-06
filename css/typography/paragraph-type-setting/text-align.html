@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>text-align</title>
+  <style>
+    p {
+      width: 200px;
+      border: 1px solid #000;
+      margin-top: 10px;
+    }
+    .left {
+      text-align: left;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    .justify {
+      text-align: justify;
+    }
+
+    /* 基本不可用 */
+    .hyphens {
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <p class="left">Babel、TypeScript、ESLint、PostCSS、PWA、 End-to-end</p>
+  <p class="right">Babel、TypeScript、ESLint、PostCSS、PWA、 End-to-end</p>
+  <p class="justify">Babel、TypeScript、ESLint、PostCSS、PWA、 End-to-end 英文用 justify 会显得很糟糕</p>
+
+  <p class="hyphens" lang="en">Babel、TypeScript、ESLint、PostCSS、PWA、 End-to-end</p>
+
+
+  
+</body>
+</html>

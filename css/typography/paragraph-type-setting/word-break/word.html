@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>总结换行</title>
+    <style>
+        .nowrap {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .wrap {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        p {
+            width: 300px;
+            background-color: darksalmon;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>不换行</h3>
+    <p class="nowrap">aaaaa bbbbbbb cccccc dddddddddddddddddddddddddddddddddddddddddddddddddd dddddddddddddddd dddddddddddddddd</p>
+    <h3>换行处理</h3>
+    <p class="wrap">aaaaa bbbbbbb cccccc dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd dddddddddddddddd dddddddddddddddd</p>
+</body>
+
+</html>

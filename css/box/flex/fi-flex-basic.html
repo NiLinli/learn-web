@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex-basic</title>
+    <style>
+        .flex-container{
+            display: flex;
+            border: 1px solid darksalmon;
+        }
+
+        .flex-item1{
+            flex: 1 0 0;
+            border: 1px dashed #000;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>flex-basic 不为 auto , 为 0 到达平分 flex item 的效果</h3>
+
+
+    <div class="flex-container">
+
+        <div class="flex-item1">
+            short
+        </div>
+        <div class="flex-item1">
+            longlonglonglong
+        </div>
+
+    </div>
+</body>
+
+</html>

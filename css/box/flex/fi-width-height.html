@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>height/width</title>
+
+    <style>
+        .flex-container {
+            display: flex;
+            border: 1px solid #000;
+            height: 200px;
+            flex-direction: 
+        }
+
+        .flex-container div {
+            height: 100%;
+        }
+
+        .flex-container-vertical {
+            display: flex;
+            flex-direction: column;
+            height: 200px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="flex-container">
+        <div style="flex: 0 0 30px;"></div>
+        <div style="flex: 1 0 auto;background-color: yellow;">
+            <p style="width: 50%;height: 50%; background-color:darksalmon;"></p>
+        </div>
+    </div>
+
+    <div class="flex-container-vertical">
+        <div style="flex: 0 0 30px;"></div>
+        <div style="flex: 1 0 auto;background-color: yellow;">
+            <p style="height: 50%;width: 50%;min-height:10px;background-color:darksalmon;"></p>
+        </div>
+    </div>
+
+</body>
+
+</html>

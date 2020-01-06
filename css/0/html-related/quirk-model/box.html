@@ -1,0 +1,34 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>quirk box</title>
+    <style>
+        #div1 {
+            height: 200px;
+            width: 200px;
+            padding: 50px;
+            border: 10px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="div1">
+
+    </div>
+
+</body>
+
+<script>
+    console.log(document.compatMode);
+
+    // 在 ie quirk 模式下,  box-sizing:content-box; 表现为和标准模式下 border-box; 效果一样
+
+</script>
+
+</html>

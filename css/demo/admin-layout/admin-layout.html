@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin-Layout</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main-header {
+            position: relative;
+            height: 50px;
+            max-height: 100px;
+            z-index: 1030;
+            background-color: pink;
+        }
+
+        .main-sidebar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-top: 50px;
+            min-height: 100%;
+            width: 230px;
+            z-index: 810;
+            background-color: darkcyan;
+
+            transition: transform .3s ease-in-out, width .3s ease-in-out;
+        }
+
+        .content-wrapper {
+            margin-left: 230px;
+            background-color: darksalmon;
+
+            transition: transform .3s ease-in-out, margin .3s ease-in-out;
+        }
+
+        /* .main-footer{
+            margin-left: 230px;
+        } */
+
+        .sidebar-collapse .main-sidebar {
+            width: 50px;
+        }
+
+        .sidebar-collapse .content-wrapper {
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">头部</header>
+
+    <aside class="main-sidebar">主导航</aside>
+
+    <section class="content-wrapper">
+        <p>内容区</p>
+        <p>收缩导航区：内容区margin-left 减小， 导航区宽度为减小</p>
+
+        <button id="btn">收缩/展开导航</button>
+    </section>
+
+    <!-- <footer class="main-footer"></footer> -->
+
+</body>
+<script>
+    var btn = document.getElementById('btn');
+    btn.addEventListener('click', function () {
+        document.body.className = (document.body.className) ? '' : 'sidebar-collapse';
+    });
+</script>
+
+</html>

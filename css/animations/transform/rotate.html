@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: darksalmon;
+        }
+
+        #one{
+            transform: rotateX(45deg);
+        }
+
+        #two{
+            transform: rotateY(45deg);
+        }
+
+        #three{
+            transform: rotateZ(45deg);
+        }
+
+        #four{
+            transform: rotate(45deg);
+        }
+
+        #five{
+            transform: rotate3d(0,0,1,45deg);
+        }
+
+        #six{
+            transform: rotate3d(1,1,0,45deg);
+        }
+
+        #seven{
+            transform: rotateX(45deg) rotateY(45deg);
+        }
+    
+    </style>
+</head>
+<body>
+    <p> 1. rotate(45deg) === rotateZ(45deg)</p>
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+
+    <p>2.  rotate3d(0,0,1,45deg) === rotateZ(45deg)</p>
+    <div id="five"></div>
+
+
+    <p>3. but  rotate3d(1,1,0,45deg) !==  rotateX(45deg) rotateY(45deg) </p>
+    <div id="six"></div>
+    <div id="seven"></div>
+</body>
+</html>

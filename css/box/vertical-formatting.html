@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vertical formatting</title>
+
+    <style>
+        #demo1 {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+        }
+
+        #demo1>p {
+            margin-top: auto;
+            margin-bottom: auto;
+            height: 30px;
+            background-color: yellow;
+        }
+
+        #demo2 {
+            width: 500px;
+            height: auto;
+            border: 1px solid #000;
+        }
+
+        #demo2>p {
+            height: 50%;
+            background-color: yellow;
+        }
+
+
+        #demo3 {
+            /* border: 1px solid #000; */
+            background-color: darksalmon;
+            margin-bottom: 15px;
+        }
+
+        #demo3 li {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            background-color: yellow;
+        }
+
+        .demo3-h1{
+            margin-top: 28px;
+            background-color: pink;
+        }
+
+
+        #demo4{
+            border: 1px solid #000;
+        }
+
+        #demo4 li{
+            list-style: none;
+            margin: 10px 0;
+            background-color: yellow;
+
+            /* float: left;
+            width: 100%; */
+           
+
+        }
+    </style>
+</head>
+
+<body>
+    <h3>margin-top auto -> 0</h3>
+    <div id="demo1">
+        <p></p>
+    </div>
+
+    <h3>包含块 height 为 auto , height 设置为 percentage -> auto</h3>
+    <div id="demo2">
+        <p>111</p>
+    </div>
+
+
+    <h3>包含块 auto height 不包括 border 或者 padding</h3>
+    <div style="height: auto; background: silver;">
+        <p style="margin-top: 2em; margin-bottom: 2em;">A paragraph!</p>
+    </div>
+
+    <h3> 包含块 auto height 包括 border 或者 padding</h3>
+    <div style="height: auto;  padding-top:1px; border-bottom: 1px solid;background: silver;">
+        <p style="margin-top: 2em; margin-bottom: 2em;">Another paragraph!</p>
+    </div>
+
+    <h3>margin collapse</h3>
+    <ul id="demo3">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <h1 class="demo3-h1">测试 ul li 与现在这个 h1 的margin collapse
+    </h1>
+
+
+    <h3>margin collapse 应用(每个li 元素上下 margin 都相同)</h3>
+    <ul id="demo4">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+
+</body>
+
+</html>

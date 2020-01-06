@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h3{
+            color: darksalmon;
+        }
+
+        #smallCap {
+            font-variant: small-caps;
+        }
+
+        #smallCap span{
+            color: red;
+            font-variant: normal;
+        }
+
+        .lowercase{
+            text-transform: lowercase;
+        }
+
+        .uppercase{
+            text-transform: uppercase;
+        }
+
+        .capitalize{
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>font-variant</h3>
+    <p id="normal">The  THE END  end <span>end</span></p>
+    <p id="smallCap">The THE END end <span>end<span></p>
+    <p>small-cap: 1. 把小写字母都转为大写 2. 转为的大小为小型大写</p>
+
+    <h3>text-transform</h3>
+    <p class="lowercase">HELLO WORLD!!! 每个 letter 都小写</p>
+    <p class="uppercase">hello world!!! 每个 letter 都大写</p>
+    <p class="capitalize">hello world!!! 每个 word 首 letter 都大写</p>
+
+</body>
+
+</html>

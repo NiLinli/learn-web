@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>outline</title>
+
+    <style>
+        p {
+            outline: 10px dashed darkgoldenrod;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 .5em rgba(93, 162, 248, 0.5);
+            border-color: #5da2f8;
+            outline: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>这是一段有 outline 的文字</p>
+
+    <h3>foucs 会显示 user agent 设置的 outline</h3>
+    <input type="text">
+    
+    <h3>去掉 focus 样式的 outline</h3>
+    <input type="text" style="outline: 0;">
+    <input type="text" style="outline: none;">
+    
+    <h3>使用 border + box-shadow 模拟得到浏览器的一致性</h3>
+    <input class="form-control" type="text" style="">
+
+</body>
+
+</html>

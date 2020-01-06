@@ -1,0 +1,16 @@
+@import './mixins/mixins.scss';
+// bootstrap 思路从小写到大，媒体查询取小值，层层覆盖 宽的 层叠 窄的
+.container {
+    font-size: 10px;
+    @include gt-sm {
+        font-size: 11px;
+    }
+    @include gt-md {
+        font-size: 12px;
+    }
+    @include gt-lg {
+        font-size: 13px;
+    }
+}
+
+// user

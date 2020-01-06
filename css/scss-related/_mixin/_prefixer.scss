@@ -1,0 +1,23 @@
+// -moz-	火狐等使用Mozilla浏览器引擎的浏览器
+// -webkit-	Safari, 谷歌浏览器等使用Webkit引擎的浏览器
+// -o-	Opera浏览器
+// -ms-	Internet Explorer
+@mixin prefixer($property, $value, $prefixes: webkit moz o ms) {
+    @each $prefix in $prefixes {
+        @if $prefix==webkit {
+            -webkit-#{$property}: $value;
+        }
+        @else if $prefix==moz {
+            -moz-#{$property}: $value;
+        }
+        @else if $prefix==o {
+            -o-#{$property}: $value;
+        }
+        @else if $prefix==ms {
+            -ms-#{$property}: $value;
+        }
+    }
+    #{$property}: $value;
+}
+
+

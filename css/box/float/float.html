@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>float</title>
+    <style>
+        #parent{
+
+        }
+
+        .el1{
+            float: left;
+            width: 100%;
+            margin-bottom: 50px;
+            background-color: yellow;
+        }
+
+        .el2{
+            float: left;
+            margin-top: 20px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <h3>float element margin 不会合并</h3>
+    <div id="parent1">
+        <p class="el1">ele11111</p>
+        <p class="el2">ele11111</p>
+        <p>这个是没有浮动的段落，这个是没有浮动的段落这个是没有浮动的段落，<span style="float: left;background-color: blu;">这个是浮动的段落</span> 这个是没有浮动的段落，这个是没有浮动的段落</p>
+    </div>   
+</body>
+</html>

@@ -1,0 +1,44 @@
+#main {
+    width: 97%;
+    p,
+    div {
+        font-size: 2em;
+        a {
+            font-weight: bold;
+        }
+    }
+    pre {
+        font-size: 3em;
+    }
+}
+
+a {
+    font-weight: bold;
+    text-decoration: none; // 1 & 在最前面
+    &:hover {
+        text-decoration: underline;
+    } // 2 & 前面有东西
+    body.firefox & {
+        font-weight: normal;
+    }
+}
+
+#compose {
+    font-size: 90px; // 3. 符合选择器生成新的选择器 必须以 & 开头
+    &-Item1 {
+        color: blue;
+    } // error
+    // Item2-&{
+    //     color: red;
+    // }
+}
+
+
+// 嵌套属性
+.funky {
+    font: {
+        family: fantasy;
+        size: 30em;
+        weight: bold;
+    }
+}

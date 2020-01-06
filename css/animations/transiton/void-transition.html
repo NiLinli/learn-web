@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: darksalmon;
+            display: none;
+            transition: all 5s linear 0s;
+            margin-bottom: 50px;
+            opacity: 1;
+        }
+
+
+        .block {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="one">
+
+    </div>
+    <button onclick="oneTrans()">one</button>
+
+
+    <button onclick="twoTrans()">two</button>
+</body>
+
+<script>
+    function oneTrans() {
+        document.getElementById('one').className = 'block';
+    }
+
+    function twoTrans() {
+        var div = document.createElement('div');
+        div.innerHTML = 'two';
+        div.className = 'block';
+        document.body.appendChild(div);
+    }
+
+    // 新建元素插入 和 display 变化 都没有变化效果
+    // 所以新建的效果 如 modal transition效果实现 不仅仅靠控制display 或者dom插入 
+</script>
+
+
+
+</html>

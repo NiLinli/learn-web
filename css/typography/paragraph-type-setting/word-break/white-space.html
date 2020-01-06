@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>white space</title>
+    <style>
+        .test p {
+            width: 500px;
+            border: 1px solid #000;
+        }
+
+        .normal p {
+            word-wrap: normal;
+        }
+
+        .pre p {
+            white-space: pre;
+        }
+
+        .pre-wrap p {
+            white-space: pre-wrap;
+        }
+
+        .pre-line p {
+            white-space: pre-line;
+        }
+
+        .nowrap p {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="test">
+        <li class="normal">
+            <strong>normal：忽略换行符, 忽略多余的空格, 自动换行</strong>
+            <p>轻轻地我走了 正如我轻轻地来 开发的深刻理解阿福；肌肤；撒酒疯；阿肌肤；撒发反馈大家；饭 line2
+            </p>
+        </li>
+        <li class="normal">
+            <strong>normal (英文)</strong>
+            <p>abcdefabcdefabcdefabcdefabcdefabcdef abcdefabcdefabcdefabcdef abcdefabcdefabcdefabcdef abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdef
+            </p>
+        </li>
+        <li class="nowrap">
+            <strong>nowrap：和 normal 其他一致, 不自动换行</strong>
+            <p>轻轻地我走了 正如我轻轻地来 开发的深刻理解阿福；肌肤；撒酒疯；阿肌肤；撒发反馈大家；饭 line2
+            </p>
+        </li>
+        <li class="pre">
+            <strong>pre：保持格式, 不自动换行</strong>
+            <p>轻轻地我走了 （这里接很多测试文字） 正如我轻轻地来 开发建设垃圾飞机撒垃圾焚烧垃圾分类将阿里放假啊老地方见啊 line2
+            </p>
+        </li>
+        <li class="pre-wrap">
+            <strong>pre-wrap：和 pre 其他一致, 自动换行 </strong>
+            <p>轻轻地 我走了（这里接很多测试文字） 正如我轻轻地来 开发建设垃圾飞机撒垃圾焚烧垃圾分类将阿里放假啊老地方见啊 line2
+            </p>
+        </li>
+        <li class="pre-line">
+            <strong>pre-line: 和 normal 其他一致, 保留 换行符</strong>
+            <p>轻轻地 我走了 （这里接很多测试文字） 正如我轻轻地来 line2
+            </p>
+        </li>
+    </ul>
+
+</body>
+
+</html>

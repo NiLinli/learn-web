@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 1000px;
+        }
+
+        a {}
+
+        a:link {
+            color: green;
+        }
+
+        a:visited {
+            color: red;
+        }
+
+        a:hover {
+            font-size: 28px;
+        }
+
+        a:active {
+            font-size: 50px;
+        }
+
+        /* 动态伪类用到其他元素 */
+
+        #id3:hover {
+            color: pink;
+        }
+
+        #id3:active {
+            color: blue;
+        }
+
+        .comment:target {
+            background-color: #fffec4;
+        }
+
+        .comment:target:not(.comment-downvoted) {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#id4">id4</a>
+    <a>没有href属性</a>
+    <a href="#comment-3">:target</a>
+
+    <div id="id1">id1</div>
+    <div id="id2">id2</div>
+    <div id="id3">id3</div>
+    <div id="id4">id4</div>
+
+
+
+    <article class="comment comment-downvoted111" id="comment-3">...</article>
+</body>
+
+<script>
+    // a 所有a(包括有href和没有href的)
+    // a:link 没有访问的a
+    // a:visited 访问过了的a
+
+
+    // 动态(可以应用到所有元素,会导致重新绘制页面)
+    // focus 键盘选中状态，可输入状态，有个光标在闪
+    // a:hover 鼠标悬浮
+    // a:active 点击不放
+
+</script>
+
+</html>

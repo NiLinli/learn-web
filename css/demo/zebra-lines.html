@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>zebra lines</title>
+  <style>
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(0,0,0,.2);
+    }
+
+    .muti-text {
+      width: 300px;
+      padding: .5em;
+      /* 本来就是相对于字体 */
+      line-height: 1.5;
+      background: beige;
+      background-origin: content-box;
+      background-image: linear-gradient(
+     rgba(0,0,0,.2) 50%, transparent 0);
+      /* 设置于相对于字体 */
+      background-size: auto 3em;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <h3>表格</h3>
+  <table>
+    <tr>
+      <td>name</td>
+      <td>age</td>
+      <td>favor</td>
+    </tr>
+    <tr>
+      <td>倪西西</td>
+      <td>18</td>
+      <td>basketball reading</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>20</td>
+      <td>omg</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>omg</td>
+      <td>six</td>
+    </tr>
+  </table>
+
+  <h3>普通的文本行</h3>
+  <div class="muti-text">
+      a 和 b 都必须为整数，并且元素的第一个子元素的下标为 1。换言之就是，该伪类匹配所有下标在集合 { an + b; n = 0, 1, 2, ...} 中的子元素。另外需要特别注意的是，an 必须写在 b 的前面，不能写成 b+an 的形式。
+  </div>
+  
+</body>
+</html>

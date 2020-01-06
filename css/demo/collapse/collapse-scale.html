@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>collapse</title>
+
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        .collapse-header {}
+
+        .collapse-content {
+            opacity: 0;
+            height: 0;
+            background-color: darksalmon;
+            transform: scaleY(0);
+            transform-origin: center top;
+            transition: all 150ms ease-in-out 0s;
+            overflow: hidden;
+        }
+
+        .collapse-content-active {
+            opacity: 1;
+            height: auto;
+            transform: scaleY(1);
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <div class="collapse-header">tab1</div>
+            <ul class="collapse-content">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </li>
+        <li>tab2</li>
+        <li>tab3</li>
+        <li>tab4</li>
+    </ul>
+
+
+    <div>
+        <p>使用css transition: 不定高的元素展开，height 0 ->auto ，不会触发transition</p>
+        <p>可以使用 scale 来 hack</p>
+        <p>但是效果是 展开时 高度突然撑起来 然后动画效果 (事件短 ，不会有很大的割裂感)</p>
+        <p>关闭时候高度突然变为0 就没有动画效果了</p>
+        <p></p>
+
+        综上所述： css3动画处理不定高的 collapse 不完美 ，考虑使用js方法
+    </div>
+</body>
+
+<script>
+    var ch = document.getElementsByClassName('collapse-header');
+    ch[0].addEventListener('click', function (event) {
+        var cc = this.nextElementSibling;
+        if (cc.className === 'collapse-content') {
+            cc.className = 'collapse-content collapse-content-active';
+        } else {
+            cc.className = 'collapse-content'
+        }
+    });
+</script>
+
+</html>

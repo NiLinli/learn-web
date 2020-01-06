@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transform</title>
+    <style>
+        .overlay-container {
+            background-color: grey;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+
+        }
+
+        .overlay-item {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay-container">
+        <div class="overlay-item">
+            <h2>Not so lost in space</h2>
+            <p>This item sits right in the middle of its container...
+                <p>
+        </div>
+    </div>
+
+</body>
+
+</html>

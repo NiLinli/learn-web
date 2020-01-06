@@ -1,0 +1,63 @@
+// / 除法
+p {
+    font: 10px/8px; // Plain CSS, no division
+    $width: 1000px;
+    width: $width/2; // Uses a variable, does division
+    width: round(1.5)/2; // Uses a function, does division
+    height: (500px/2); // Uses parentheses, does division
+    margin-left: 5px + 8px/2px; // Uses +, does division
+    font: (italic bold 10px/8px); // In a list, parentheses don't count
+}
+
+// use variables along with a plain CSS /
+p {
+    $font-size: 20px;
+    $line-height: 30px;
+    font: $font-size/ $line-height;
+    font:#{$font-size}/#{$line-height};
+}
+
+// Color Operations
+p {
+    color: #010203 + #040506;
+    color: #010203 * 2;
+    color: rgba(255, 0, 0, 0.75) + rgba(0, 255, 0, 0.75); // alpha 必须一样
+}
+
+$translucent-red: rgba(255, 0, 0, 0.5);
+p {
+    color: opacify($translucent-red, 0.3); // function opacify() 增加不透明度
+    background-color: transparentize($translucent-red, 0.25); // function transparentize() 减少不透明度
+}
+
+// String Add
+// 1. 
+p {
+    cursor: e + -resize;
+}
+
+// 2. 在前面的决定 result 是否含有引号
+p:before {
+    content: "Foo " + Bar;
+    font-family: sans- + "serif";
+}
+
+// 3. value 相加
+p {
+    margin: 3px + 4px auto;
+}
+
+// 4. #{} style interpolation can be used to place dynamic values within the string:
+p:before {
+    content: "I ate #{5 + 10} pies!";
+}
+
+$value: null;
+p:before {
+    content: "I ate #{$value} pies!";
+}
+
+// parentheses 提高优先级
+p {
+    width: 1em + (2em * 3);
+}

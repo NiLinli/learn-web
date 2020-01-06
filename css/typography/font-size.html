@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>font-size</title>
+    <style>
+        p#p1 {
+            font-size: 1.314em;
+            border: 1px solid black;
+            border-width: 1em;
+        }
+
+        #p2,
+        #p3 {
+            font-family:  serif;
+            border: 1px dashed darksalmon;
+            line-height: 1;
+            font-size: 36px;
+        }
+
+        #p3 {
+            font-family: Georgia, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>em</h3>
+    <p id="p1">font-size: 1.314em; -->
+        <span></span>
+    </p>
+
+    <h3>x-height</h3>
+    <p id="p2"> x AAAAAAbdfjgjhklsfjsafjs</p>
+    <p id="p3"> x AAAAAAbdfjgjhklsfjsafjs</p>
+
+
+
+
+</body>
+
+<script>
+    var p1 = document.getElementById('p1'),
+        p1Span = p1.getElementsByTagName('span')[0];
+
+    p1Span.textContent = getComputedStyle(p1, null).fontSize;
+
+
+</script>
+
+</html>

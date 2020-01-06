@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class change</title>
+
+    <style>
+        #one {
+            width: 200px;
+            height: 200px;
+            background-color: darksalmon;
+            transition: background-color 200ms ease-in-out 0s;
+        }
+
+        #one:hover {
+            background-color: greenyellow;
+        }
+
+        #one.pink {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <p>触发 transition 的条件 </p>
+    <ul>
+        <li>改变class</li>
+        <li>hover</li>
+        <li>其他改变该元素的样式...</li>
+    </ul>
+
+    <div id="one">
+
+    </div>
+
+    <button onclick="oneClassChange()">one class change</button>
+    <button onclick="oneStyleChange()">one style change</button>
+</body>
+
+<script>
+    var one = document.getElementById('one');
+
+    function oneClassChange() {
+        one.className = 'pink';
+    }
+
+    function oneStyleChange() {
+        one.style.backgroundColor = 'blue';
+    }
+</script>
+
+</html>

@@ -1,0 +1,55 @@
+@import 'mixin.scss';
+.page-title {
+    @include large-text;
+    padding: 4px;
+    margin-top: 10px;
+}
+
+p {
+    @include sexy-border(blue, 1in);
+}
+
+h1 {
+    @include sexy-border( $width: 2in, $color: red);
+}
+
+.shadows {
+    @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+}
+
+@mixin colors($text, $background, $border) {
+    color: $text;
+    background-color: $background;
+    border-color: $border;
+}
+
+$values: #ff0000,
+#00ff00,
+#0000ff;
+.primary {
+    @include colors($values...);
+}
+
+$value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
+.secondary {
+    @include colors($value-map...);
+}
+
+@include apply-to-ie6-only {
+    #logo {
+        background-image: url(/logo.gif);
+    }
+}
+
+$color: white;
+@mixin colors($color: blue) {
+    background-color: $color;
+    @content;
+    border-color: $color;
+}
+
+.colors {
+    @include colors {
+        color: $color;
+    }
+}

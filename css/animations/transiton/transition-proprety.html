@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transition-property</title>
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: darksalmon;
+            margin-bottom: 10px;
+        }
+
+        #one {
+            transition: background-color 500ms ease-in-out 0s;
+        }
+
+        #one:hover {
+            background-color: greenyellow;
+        }
+
+
+        #two {}
+
+        #two:hover {
+            background-color: greenyellow;
+            transition: background-color 1500ms ease-in-out 0s;
+        }
+
+        #three {
+            transition: background-color 500ms ease-in-out 0s;
+        }
+
+        #three:hover {
+            background-color: greenyellow;
+            transition: background-color 1500ms ease-in-out 0s;
+        }
+    </style>
+</head>
+
+<body>
+    <p>确定 transition 的 变化方式</p>
+    <ul>
+        <li>确定当前状态(变化后的状态)的transition 属性</li>
+        <li>状态的变化</li>
+    </ul>
+
+    <p>普通(有transition) -> hover(无，覆盖不了，等于普通)
+        <br>普通 -> hover : 500ms
+        <br>hover -> 普通 : 500ms
+    </p>
+    <div id="one">
+
+    </div>
+
+    <p>普通(无) -> hover(有)
+        <br>普通 -> hover : 1500ms
+        <br>hover -> 普通 : 无 </p>
+    <div id="two">
+
+    </div>
+
+
+    <p>普通(有) -> hover(有，覆盖普通)
+        <br>普通 -> hover : 1500ms
+        <br>hover -> 普通 : 500ms </p>
+    <div id="three">
+
+    </div>
+
+
+</body>
+
+
+
+</html>

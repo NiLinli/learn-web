@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>parallelograms</title>
+  <style>
+    .button-1 {
+      transform: skewX(-45deg);
+      background-color: aqua;
+      display: inline-block;
+      padding: 0 20px;
+    }
+
+    .button-1 > div {
+      transform: skewX(45deg);
+    }
+
+    .button-2 {
+      display: inline-block;
+      /* background-color: darksalmon; */
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .button-2::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: orange;
+      z-index: -1;
+      transform: skew(45deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="button-1">
+    <div>click me 1</div>
+  </div>
+
+  <h2></h2>
+  <div class="button-2">
+    click me 2
+  </div>
+
+  <p>当我们想变形一个元素而不想变形它的内容时就可以用到伪元素</p>
+  
+</body>
+</html>

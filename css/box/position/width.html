@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>postion width</title>
+</head>
+
+<body>
+
+    <h3>设置了四个值, 推导出 width</h3>
+    <div style="position: relative;;width: 500px;height: 100px;background-color: yellow;">
+        <div style="background-color: blue;position: absolute;top: 0;bottom: 50%;left: 0;right: 50%;"></div>
+    </div>
+
+    <h3>设置了四个值, 同时设置了 width</h3>
+    <div style="position: relative;;width: 500px;height: 100px;background-color: yellow;">
+        <div style="background-color: blue;position: absolute;top: 0;bottom: 50%;left: 0;right: 50%; width: 80%;"></div>
+    </div>
+
+    <h3>设置了四个值, 加上 padding (效果同 box-sizing: border-box 一样)</h3>
+    <div style="position: relative;;width: 500px;height: 100px;background-color: yellow;">
+        <div style="background-color: blue;position: absolute;top: 0;bottom: 50%;left: 0;right: 50%; padding:10px;"></div>
+    </div>
+
+    <h3>设置了四个值, 加上 padding , 改变 width 的含义(box-sizing)</h3>
+    <div style="position: relative;;width: 500px;height: 100px;background-color: yellow;">
+        <div style="background-color: blue;position: absolute;top: 0;bottom: 50%;left: 0;right: 50%; padding: 10px;box-sizing: border-box;"></div>
+    </div>
+
+    <h3>限定最小值与最大值</h3>
+    <div style="position: relative;height: 100px;background-color: yellow;">
+        <div style="background-color: blue;position: absolute;top: 0;bottom: 50%;left: 0;right: 50%;min-width: 400px;"></div>
+    </div>
+
+</body>
+
+</html>

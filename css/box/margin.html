@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>margin</title>
+    <style>
+        div {
+            width: 500px;
+            border: 3px solid black;
+        }
+
+        p.wide {
+            margin-left: 10px;
+            /* width: auto; */
+            /* width 默认值为 auto , 无继承性 */
+            margin-right: -50px;
+            border: 3px solid gray;
+        }
+
+
+
+        p.wide1 {
+            margin-left: 10px;
+            width: 600px;
+            margin-right: auto;
+            border: 3px solid gray;
+        }
+
+
+        p.wide2 {
+            margin-left: -50px;
+            width: auto;
+            margin-right: 10px;
+            border: 3px solid gray;
+        }
+
+
+        strong {
+            margin-top: 10000px;
+            margin-left: -20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>negative margin</h3>
+    <div>
+        <p class="wide"></p>
+        <p class="wide1"></p>
+        <p class="wide2"></p>
+    </div>
+
+    <h3>percentage margin</h3>
+
+    <div style="width: 600px;">
+        <p style="margin: 10%;background-color: yellow;"> margin = 60 px;</p>
+    </div>
+
+    <h3>inline element 的 margin</h3>
+
+    <div style="width: 300px;">
+        <p>
+            abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc
+            <strong>def def def def</strong> abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc
+            <strong>def</strong>abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc
+        </p>
+    </div>
+
+
+</body>
+
+</html>

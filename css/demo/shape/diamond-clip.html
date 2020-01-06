@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>diamond-clip</title>
+  <style>
+    .picture {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #000;
+      transform: rotate(45deg);
+      overflow: hidden;
+    }
+
+    .picture > img {
+      width: 100%;
+      max-width: 100%;
+      transform: rotate(-45deg) scale(1.42);
+    }
+
+    .clip-path-image {
+      width: 40px;
+      height: 40px;
+      clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+      transition: 1s clip-path;
+    }
+
+    .clip-path-image:hover {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="picture">
+    <img src="../images/author.jpg" alt="">
+  </div>
+
+  <p>放大时候, 应该先考虑 scale 而不是 width, width 最好不变, 因为如果兼容性不好, width 不变可以保证合理的 fallback 布局</p>
+
+  <img src="../images/author.jpg" alt="" class="clip-path-image">
+
+  
+</body>
+</html>

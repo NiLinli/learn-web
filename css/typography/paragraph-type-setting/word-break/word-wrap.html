@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>word wrap (overflow wrap)</title>
+
+    <style>
+        p {
+            width: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>一个单词剩余 whitespace 放不下的处理办法: 如果不处理, 单词溢出去了</h1>
+    <p>Thisssssssssssssssssssssssss isssss a long and Supercal1111 sentence. 次の単語グレートブリテンおよび北アイルランド連合王国で本当に大きな言葉
+    </p>
+
+
+    <h3>overflow-wrap(word-break):break-word; 剩余地方放不下, 看下一行一整行放不放的下, 放不下就拆分, 放的下就放到下一行去</h3>
+    <p style="overflow-wrap: break-word;">Thisssssssssssssssssssssssss isssss a long and Supercal1111 sentence. 次の単語グレートブリテンおよび北アイルランド連合王国で本当に大きな言葉
+    </p>
+
+</body>
+
+</html>

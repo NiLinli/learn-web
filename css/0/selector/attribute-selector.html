@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        input[disabled] {
+            color: grey;
+        }
+
+        input[type="text"] {}
+
+        a[href] {
+            color: skyblue;
+        }
+
+
+        a[href ^="https://"] {
+            color: green;
+        }
+
+        a[href $="com"] {
+            color: red;
+        }
+
+        a[href *="nixix"] {
+            font-size: 30px;
+        }
+
+        div[class~="a"] {
+            border: 2px solid #000;
+        }
+
+        div[class|="a"] {
+            margin-top: 10px;
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" name="" id="">
+    <input type="text" disabled name="" id="" value="gray">
+
+    <a href>......</a>
+    <a href="https://www.nixixi.xyz">nixixi.xyz</a>
+    <a href="http://www.nixixi.com">nixixi.com</a>
+
+    <div>
+        <div class="a">1 ok</div>
+        <div class="ab">2</div>
+        <div class="a b">3 ok</div>
+    </div>
+
+    <div>
+        <div class="a">0 ok</div>
+        <div class="a-test">1 ok</div>
+        <div class="b a-test">2</div>
+        <div class="c-test">3</div>
+    </div>
+
+</body>
+
+</html>

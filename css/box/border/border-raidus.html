@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>border-radius</title>
+    <style>
+        div {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+            background-color: darksalmon;
+        }
+
+        /* 简写四个角 + x y */
+
+        #exp01 {
+            border-radius: 20px;
+        }
+
+        /* 简写四个角 */
+
+        #exp02 {
+            border-radius: 20px/40px;
+        }
+
+        /* 简写对角 */
+
+        #exp03 {
+            border-radius: 20px 30px/40px 60px;
+        }
+
+        #circle01,
+        #circle02 {
+            border-radius: 50%;
+        }
+
+        #circle02 {
+            width: 500px;
+        }
+
+        .pill {
+            border-radius: 999px;
+        }
+
+        #mixin{
+            width: 400px;
+            height: 200px;
+            border-radius: 20px;
+            border: 20px dashed black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>border-radius 各种简写</h3>
+    <div id="exp01"></div>
+    <div id="exp02"></div>
+    <div id="exp03"></div>
+
+    <h3>创建圆形/椭圆形</h3>
+    <div id="circle01"></div>
+    <div id="circle02"></div>
+
+    <h3>pill 形状</h3>
+
+    <div class="pill" style="width: 500px;" onclick="console.log('click reactange')"></div>
+    <div class="pill" style="height: 500px;"></div>
+
+    <a href="#hehe" class="pill" style="display: block;width: 300px;height: 100px;border: 1px solid darksalmon;"></a>
+
+    <h3>border-radius & border</h3>
+    <div id="mixin"></div>
+
+</body>
+
+</html>

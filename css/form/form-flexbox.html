@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>form flexbox</title>
+    <style>
+        .flexbox .field-text {
+            display: flex;
+            max-width: 28em;
+        }
+
+        .flexbox .field-text label {
+            flex: 0 0 8em;
+            display: flex;
+            align-items: center;
+        }
+
+        .field-prefixed input {
+            max-width: 100%;
+            border-radius: 0 .25em .25em 0;
+        }
+
+        .flexbox .field-prefixed {
+            display: flex;
+        }
+
+        .flexbox .field-prefix {
+            border-right: 0;
+            border-radius: .25em 0 0 .25em;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body class="flexbox">
+    <div style="width: 800px;">
+        <p class="field-text">
+            <label for="name-input">Name: </label>
+            <input type="text" id="name-input">
+        </p>
+        <p class="field-text">
+            <label for="age-input">Age: </label>
+            <input type="text" id="age-input">
+        </p>
+
+        <p class="field field-text">
+            <label for="applicant-twitter">Twitter handle:</label>
+            <span class="field-prefixed">
+                <span class="field-prefix" id="applicant-twitter-prefix" aria-label="You can omit the
+                @">@</span>
+                <input aria-describedby="applicant-twitter-prefix" name="applicant-twitter" id="applicant-twitter" type="text" />
+            </span>
+        </p>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>inline block tool</title>
+    <link rel="stylesheet" href="../iconfont/iconfont.css">
+
+    <style>
+        p,
+        div {
+            padding: 0;
+            margin: 0;
+        }
+
+        .author-meta {
+            background-color: yellow;
+        }
+
+        .author-image {
+            width: 80px;
+            height: 80px;
+            background-color: darksalmon;
+        }
+
+
+        .author-image,
+        .author-info {
+            display: inline-block;
+            border: 1px dashed red;
+            vertical-align: middle;
+        }
+
+        /* .author-info{
+            vertical-align: middle;
+        } */
+
+        .author-name,
+        .author-email {
+            display: block;
+        }
+
+        /* icon */
+        .icon-group {
+            line-height: 1;
+            font-size: 40px;
+            border: 1px dashed red;
+            font-family: sans-serif;
+        }
+
+
+        .icon-group i {
+            font-size: inherit;
+            line-height: 48px;
+            background-color: yellow;
+        }
+
+        .icon-group i,
+        .icon-group span {
+            vertical-align: middle;
+        }
+
+
+        .icon-group span {
+            background-color: pink;
+        }
+
+
+        /* 垂直居中 */
+        .content {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+        }
+
+        .content::before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+            margin-right: -.25em;
+        }
+
+        #box{
+            display: inline-block;
+            width: 50px;
+            height: 30px;
+            vertical-align: middle;
+            background-color: darksalmon;
+           
+        }
+    </style>
+</head>
+
+<body>
+    <h3>origin</h3>
+
+    <p class="author-meta">
+        <img class="author-image">
+        <span class="author-info">
+            <span class="author-name">Written by Arthur C. Lark</span>
+            <a class="author-email" href="mailto:arthur.c.lark@example.com">arthur.c.lark@example. com
+            </a>
+        </span>
+    </p>
+
+    <!-- align the vertical center of this inline block with the middle of the x-height of the line of text. -->
+
+    <h3>icon font</h3>
+    <div class="icon-group">
+        x
+        <i class="icon iconfont icon-baofengyu-"></i>
+        <span>暴风雨</span>
+    </div>
+
+
+    <h3>垂直居中</h3>
+    <div class="content">
+        <div id="box"></div>
+    </div>
+
+</body>
+
+</html>

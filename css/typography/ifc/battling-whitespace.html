@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Battling Whitespace</title>
+
+    <style>
+        .navbar ul {
+            font-family: Avenir Next, Avenir, Century Gothic, sans-serif;
+            list-style: none;
+            padding: 0;
+            background-color: #486a8e;
+            font-size: 0;  /* 让空格字体为0 */
+        }
+
+        .navbar li {
+            display: inline-block;
+            text-align: center;
+            box-sizing: border-box;
+            width: 25%;
+            background-color: #12459e;
+            outline: 1px solid #fff;
+            font-size: 16px;
+        }
+
+        .navbar li a {
+            display: block;
+            text-decoration: none;
+            line-height: 1.75em;
+            padding: 1em;
+            color: #fff;
+        }
+
+        .logo{
+            display: inline-block;
+            background-color: darksalmon;
+            font-size: 0;
+        }
+
+        .logo span{
+            font-size: 50px;
+        }
+
+        .span-block {
+            margin-top: 50px;
+            font-size: 100px;
+        }
+
+        .span-block  span {
+            font-size: 18px;
+            line-height: 25px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul>
+            <li>
+                <a href="/home">Home</a>
+            </li>
+            <li>
+                <a href="/spaceships">Spaceships</a>
+            </li>
+            <li>
+                <a href="/planets">Planets</a>
+            </li>
+            <li>
+                <a href="/stars">Stars</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div class="logo">
+        <span>Ni</span>
+        <span>Xi</span>
+        <span>Xi</span>
+    </div>
+
+    <div class="span-block">
+        <span style="background-color: yellow; display: block;">123</span>
+        <span style="background-color: darksalmon;">456</span>
+    </div>
+</body>
+
+<script>
+    // html 代码空格 会影响很多地方, 因为其有 font-size , 所有会占用空间
+    // font-size: 0;
+</script>
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex wrap</title>
+    <style>
+        .tags {
+            border: 1px solid #C9E1F4;
+            margin: 0;
+            padding: 1em;
+            list-style: none;
+            /* white-space: nowrap;
+            overflow-x: scroll; */
+        }
+
+        .tags li {
+            display: inline-block;
+            margin: .5em;
+        }
+
+        .tags-flexbox {
+            display: flex;
+            flex-direction: row;
+            border: 1px solid darksalmon;
+            margin: 0;
+            padding: 1em;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .tags-flexbox li {
+            margin: .5em;
+        }
+
+        .tags-flexbox a,
+        .tags a {
+            position: relative;
+            display: block;
+            padding: .25em .5em .25em .25em;
+            background-color: #C9E1F4;
+            color: #28448F;
+            border-radius: 0 .25em .25em 0;
+            line-height: 1.5;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .tags-flexbox a::before,
+        .tags a:before {
+            position: absolute;
+            content: '';
+            width: 0;
+            height: 0;
+            border: 1em solid transparent;
+            border-right-width: .5em;
+            border-right-color: #C9E1F4;
+            left: -1.5em;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="tags">
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+    </ul>
+
+    <ul class="tags-flexbox">
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+        <li>
+            <a href="/Binary_planet">Binary planet</a>
+        </li>
+        <li>
+            <a href="/Carbon_planet">Carbon planet</a>
+        </li>
+    </ul>
+
+</body>
+
+</html>

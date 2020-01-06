@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transition</title>
+
+    <style>
+        nav>ul>li {
+            position: relative;
+            min-width: 120px;
+            display: inline-block;
+            position: relative;
+            border-width: 0 1px 0 0;
+            border: 1px solid #000;
+        }
+
+        ul>li>ul {
+            position: absolute;
+            top: 100%;
+            background-color: darksalmon;
+            transform: scale(1, 0);
+            transform-origin: 50% 0%;
+            transition: transform 200ms ease-in 0s;
+        }
+
+        nav>ul>li:hover ul {
+            transform: scale(1, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <p>作用：控制一个css属性从一个值转变为另外一个值。</p>
+
+    <p>导航栏</p>
+    <nav>
+        <ul>
+            <li>Bad
+                <ul>
+                    <li>Me</li>
+                    <li>You</li>
+                    <li>Them</li>
+                    <li>Nobody</li>
+                </ul>
+            </li>
+            <li>User
+                <ul>
+                    <li>Door Post</li>
+                    <li>Wall hanging</li>
+                    <li>Stair Banister</li>
+                    <li>Washington</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>

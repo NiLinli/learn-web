@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>inline box</title>
+    <style>
+        p {
+            padding: 0;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>普通元素</h3>
+    <p style="line-height: 200px;">x <span style="background-color: yellow;">abcdfeg</span></p>
+
+    <h3>可替换元素</h3>
+    <p>xxxxx<img style="width: 30px;height: 30px;padding: 20px 0; margin: 20px 0 ; border: 5px dashed darksalmon;">xxxxxx</p>
+
+    <h3>inline-block box</h3>
+    <p style="line-height: 50px;">xxxxx <span style="display: inline-block;height:20px;line-height:20px;background-color: yellow;">abcdefg</span> xxxxx</p>
+
+</body>
+
+</html>

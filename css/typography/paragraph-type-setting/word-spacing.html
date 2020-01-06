@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>word or letter spacing</title>
+    <style>
+        h3 {
+            color: darksalmon;
+        }
+
+        .spread {
+            word-spacing: 0.5em;
+        }
+
+        .tight {
+            word-spacing: -0.5em;
+        }
+
+
+        .char-spread {
+            letter-spacing: 0.25em;
+        }
+
+        .char-tight {
+            letter-spacing: -0.25em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>这两个很少使用, 也不推荐使用</h1>
+
+    <h3>word-spacing: 控制每个 word 之间的间距, 不处理 whitespace</h3>
+    <p class="spread">
+        increased by 0.5em
+    </p>
+    <p class="tight">
+        decreased by o.5em
+    </p>
+    <p>
+        normal = 0
+    </p>
+
+    <h3>letter-spacing: 控制每个 word 里面 letter(character) 的间距</h3>
+    <p>the end of the world</p>
+    <p class="char-spread">the end of the world</p>
+    <p class="char-tight">the end of the world</p>
+
+</body>
+
+</html>

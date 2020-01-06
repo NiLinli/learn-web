@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>auto</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            border: 10px solid #000;
+            min-height: 200px;
+            margin-bottom: 20px;
+        }
+
+        #demo1 p {
+            background-color: yellow;
+            margin-bottom: 40px;
+            height: 50px;
+        }
+
+        #demo1 #p1 {
+            margin-left: 20px;
+            margin-right: 20px;
+            width: 50px;
+        }
+
+        #demo1 #p2 {
+            margin-left: 20px;
+            margin-right: 1000000px;
+            width: 50px;
+        }
+
+        #demo1 #p3 {
+            margin-left: auto;
+            width: auto;
+            margin-right: 300px;
+        }
+
+        #demo1 #p4 {
+            margin-left: 300px;
+            width: auto;
+            margin-right: auto;
+        }
+
+        #demo1 #p5 {
+            margin: 40px auto;
+            width: 300px;
+        }
+
+        #demo1 #p6 {
+            margin: 40px auto;
+            width: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3></h3>
+    <div id="demo1">
+        <p id="p1">小于容器的宽度</p>
+
+        <p id="p2">大于容器的宽度</p>
+
+        <p id="p3">margin-left width = auto , marigin-right = 300px </p>
+
+        <p id="p4">margin-left width = auto , marigin-left = 300px </p>
+
+        <p id="p5">width = 300px , margin-left = margin-right = auto</p>
+
+        <p id="p6">width = margin-left = margin-right = auto</p>
+
+    </div>
+
+</body>
+
+
+<script>
+    console.log(getComputedStyle(document.getElementById('p1')).marginRight);
+</script>
+
+</html>

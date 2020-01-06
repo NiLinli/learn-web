@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>line breaks</title>
+  <style>
+    .line-breaks-dl dd {
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .line-breaks-dl dd,
+    .line-breaks-dl dt {
+      display: inline;
+    }
+
+    .line-breaks-dl dd+dt::before {
+      content: '\A';
+      white-space: pre;
+    }
+
+    .line-breaks-dl dd+dd::before {
+      content: ', ';
+      font-weight: normal;
+      margin-left: -0.25rem; /* 修复 dd 换行引起的空格 */
+    }
+  </style>
+</head>
+
+<body>
+  <dl>
+    <dt>dl </dt>
+    <dd>术语 与描述</dd>
+  </dl>
+
+  <dt>Firefox</dt>
+  <dd>A free, open source, cross-platform, graphical web browser
+    developed by the Mozilla Corporation and hundreds of volunteers.
+  </dd>
+
+  <dl class="line-breaks-dl">
+    <dt>Name:</dt>
+    <dd>Lea Verou</dd>
+    <dt>Email:</dt>
+    <dd>lea@verou.me</dd>
+    <dd>leaverou@mit.edu</dd>
+    <dt>Location:</dt>
+    <dd>Earth</dd>
+  </dl>
+
+</body>
+
+</html>

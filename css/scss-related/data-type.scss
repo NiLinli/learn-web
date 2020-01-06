@@ -1,0 +1,66 @@
+@import './vaiable.scss';
+#main {
+    width: $width;
+}
+
+// string with quotes
+#main {
+    font-family: $string;
+    font-family: $withquote;
+}
+
+// string without quotes
+// 大多数情况下都是没有 引号的 在 css 中
+//  #{} (interpolation) 时候, 都会被转换成无引号的字符
+@mixin firefox-message($selector) {
+    body.firefox #{$selector}:before {
+        content: "Hi, Firefox users!";
+    }
+}
+
+@include firefox-message(".header");
+// lists 空格 分开
+// () () 多维数组 
+// nth 访问某一项
+// join 连接
+// append 添加值
+#main {
+    @each $margin-value in $list2 {
+        margin: $margin-value;
+    }
+    #mainHeader {
+        margin: nth($list: $list2, $n:3);
+    }
+}
+
+// 遍历多维lists 结构
+#main {
+    @each $type,
+    $top,
+    $right,
+    $bottom,
+    $left in $list3 {
+        .main-#{$type} {
+            margin-top: $top;
+            margin-bottom: $bottom;
+            margin-left: $left;
+            margin-right: $right;
+        }
+    }
+}
+
+// map -> (key1: value1, key2: value2)
+// map-get 取
+// key value in $map-value
+#main {
+    color: map-get($map: $map-value, $key: primary);
+}
+
+#main {
+    @each $type,
+    $color-item in $map-value {
+        .header-#{$type} {
+            color: $color-item;
+        }
+    }
+}

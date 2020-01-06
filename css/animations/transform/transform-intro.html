@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        div.exp01{
+            width: 50px;
+            height: 50px;
+            background-color: darksalmon;
+        }
+        div#one {
+            transform: translate(300px) rotate(45deg);
+        }
+        div#two {
+            transform: rotate(45deg) translate(300px);
+        }
+
+
+        div.exp02{
+            width: 50px;
+            height: 50px;
+            background-color: darksalmon;
+            transform: translateX(1000px) scale(1.2) rotate(22);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <p>
+        定位， margin的tricks 在某种意义上也是变换 transform <br>
+        transfrom 只是提供了新的方式去变换
+    </p>
+
+    <p>1.  transform 的值 要么是none 要么是 transform-list</p>
+
+    <p>2. 效果依次从左到右， 顺序不同 ，显示效果肯定不同</p>
+    <div class="exp01" id="one">one</div>
+    <div class="exp01" id="two">two</div>
+
+    <p>3. 如果其中的某一个function失效了， 整个 transform 都完了</p>
+    <div class="exp02">invalid</div>
+
+</body>
+
+</html>

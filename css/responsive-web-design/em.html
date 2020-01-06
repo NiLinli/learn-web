@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>em</title>
+    <style>
+        p {
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+
+        h3 {
+            font-size: 26px;
+        }
+
+        /* ...etc */
+
+        @media only screen and (min-width: 32.5em) {
+            p {
+                font-size: 18px;
+            }
+            h1 {
+                font-size: 40px;
+            }
+            /* ...and on and on... */
+        }
+
+        @media only screen and (min-width: 52em) {
+            p {
+                font-size: 20px;
+            }
+            h1 {
+                font-size: 44px;
+            }
+            /* oh no, there’s more... */
+        }
+
+
+        p {
+            font-size: 1em;
+        }
+
+        h1 {
+            font-size: 2.25em;
+        }
+
+        h2 {
+            font-size: 1.875em;
+        }
+
+        h3 {
+            font-size: 1.625em;
+        }
+
+        /* ...etc */
+
+        @media only screen and (min-width: 32.5em) {
+            body {
+                font-size: 1.125em;
+                /* done! */
+            }
+        }
+
+        @media only screen and (min-width: 52em) {
+            body {
+                font-size: 1.25em;
+            }
+            /* done! */
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

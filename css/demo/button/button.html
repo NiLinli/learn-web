@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./button-base.css">
+
+    <style>
+        .button-raised {
+            border-color: #e1e1e1;
+            border-style: solid;
+            border-width: 1px;
+            line-height: 38px;
+            background: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#e1e1e1));
+            background: linear-gradient(#f6f6f6, #e1e1e1);
+            -webkit-box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);
+            box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.15);
+        }
+
+        .button-raised:hover,
+        .button-raised:focus {
+            background: -webkit-gradient(linear, left top, left bottom, from(white), to(gainsboro));
+            background: linear-gradient(top, white, gainsboro);
+        }
+
+        .button-raised:active,
+        .button-raised.active,
+        .button-raised.is-active {
+            background: #eeeeee;
+            -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;
+            box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2), 0px 1px 0px white;
+        }
+
+        .button-raised.button-primary {
+            border-color: #088ef0;
+            background: -webkit-gradient(linear, left top, left bottom, from(#34a5f8), to(#088ef0));
+            background: linear-gradient(#34a5f8, #088ef0);
+        }
+
+        .button-raised.button-primary:hover,
+        .button-raised.button-primary:focus {
+            background: -webkit-gradient(linear, left top, left bottom, from(#42abf8), to(#0888e6));
+            background: linear-gradient(top, #42abf8, #0888e6);
+        }
+
+        .button-raised.button-primary:active,
+        .button-raised.button-primary.active,
+        .button-raised.button-primary.is-active {
+            border-color: #0880d7;
+            background: #2798eb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="button-raised button-primary">
+        raise button
+    </div>
+
+</body>
+
+</html>

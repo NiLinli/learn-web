@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 600px;
+        }
+
+        .flex-item {
+            width: 160px;
+            height: 160px;
+            border: 1px dashed darksalmon;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>the flex-grow property</h3>
+    <ul>
+        <li>define whether a flex item is allowed to grow when there id available space.</li>
+        <li>how much will it grow pproportionallu relative to the growth of other flex item siblings.</li>
+        <li>Recommond, decalre the growth factor as part of the flex shorthand </li>
+    </ul>
+    换行先考虑换行，换行完了每行的空白再去计算
+
+
+    <div class="flex-container">
+        <div class="flex-item">
+            1
+        </div>
+        <div class="flex-item">
+            1
+        </div>
+        <div class="flex-item">
+            1
+        </div>
+        <div class="flex-item">
+            1
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div#ex01 {
+            width: 100px;
+            height: 100px;
+            background-color: darksalmon;
+
+            transform: rotate(300deg) skewX(-25deg);
+        }
+
+        div#ex01 {
+            transform: scaleY(2);
+            /* 覆盖了上面的 */
+        }
+
+        div#one {
+            width: 100px;
+            height: 100px;
+            background-color: darksalmon;
+            transform: translateX(100px) scale(2);
+        }
+
+        div#one:hover {
+            transform: rotate(-45deg);
+        }
+
+
+        span#two{
+            color: darksalmon;
+            transform: translateX(300px); /* 没有效果的 */
+        }
+    </style>
+
+</head>
+
+<body>
+    <p>1 增加transform-function 效果可以选择重新声明一整条，覆盖前者</p>
+
+    <div id="ex01">ex01</div>
+
+    <p>2 增加还可以通过 伪类 :hover 实现, 一种变换到另外一种</p>
+    <div id="one"></div>
+
+    <p>3 对inline 元素不要使用 transform ，没有任何效果</p>
+    <p> this is s paragraph with <span id="two"> 1321</span></p>
+
+</body>
+
+</html>

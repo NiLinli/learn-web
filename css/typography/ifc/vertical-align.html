@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vertical-align</title>
+    <style>
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .middle {
+            background-color: darksalmon;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .middle .big {
+            font-size: 50px;
+            line-height: 1.2;
+        }
+
+        .middle .small {
+            background-color: pink;
+            vertical-align: middle;
+        }
+
+
+        .icon-group {
+            background-color: pink;
+            margin-top: 40px;
+            font-size: 50px;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 90px;
+            height: 90px;
+        }
+
+        .middle-icon {
+            background-color: black;
+        }
+
+        .middle-text {
+            background-color: red;
+        }
+
+        .middle-icon,
+        .middle-text {
+            vertical-align: middle;
+        }
+
+        /* tall element */
+
+        .tall-box,
+        .short-box {
+            display: inline-block;
+           
+        }
+
+        .tall-box {
+            font-size: 100px;
+            background-color: yellow;
+            line-height: 1.5;
+        }
+
+        .short-box {
+            font-size: 12px;
+            vertical-align: baseline;
+            background-color: darksalmon;
+        }
+
+        .text-bottom {
+            vertical-align: text-bottom;
+        }
+
+        .text-top {
+            vertical-align: text-top;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>middle</h3>
+    <p class="middle">
+        x
+        <span class="big">big</span>
+        <span class="small">small</span>
+        x
+    </p>
+
+
+    <div class="icon-group">
+        <span class="icon middle-icon"></span>
+        Centered?
+    </div>
+
+    <div class="icon-group">
+        <span class="icon middle-icon"></span>
+        <span class="middle-text">Centered!</span>
+    </div>
+
+
+    <h3>tall element</h3>
+    <!-- left mark-up -->
+    <p style="border: 1px dashed red;">
+        <span class="tall-box text-bottom">tall</span>
+        <span class="short-box">short</span>
+    </p>
+
+
+    <!-- right mark-up -->
+    <p style="border: 1px dashed red;">
+        <span class="tall-box text-top">tall</span>
+        <span class="short-box">short</span>
+    </p>
+
+
+
+
+
+
+
+</body>
+
+</html>

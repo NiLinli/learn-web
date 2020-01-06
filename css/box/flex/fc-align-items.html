@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>align-items</title>
+    <style>
+    
+        span{
+            color: yellow;
+        }
+    </style>
+    <style>
+        div.flex-container {
+            display: flex;
+            border: 1px solid #000;
+            min-height: 100px;
+        }
+
+        .stretch {}
+
+        .flex-start {
+            align-items: flex-start;
+        }
+
+        .flex-end {
+            align-items: flex-end;
+        }
+
+        .center {
+            align-items: center;
+        }
+
+        .baseline {
+            align-items: baseline;
+        }
+
+        .flex-item {
+            width: 100px;
+            background-color: darksalmon;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>align-items: stretch; (默认)</h3>
+    <div class="flex-container stretch">
+        <div class="flex-item">
+            1
+        </div>
+        <div class="flex-item">
+            2
+            <br> 2
+        </div>
+        <div class="flex-item">
+            3
+            <br> 3
+            <br> 3
+        </div>
+        <div class="flex-item">
+            4
+            <br> 4
+            <br> 4
+            <br> 4
+            <br>
+        </div>
+        <div class="flex-item" style="margin-top:20px;">
+            5 <span>带有 marign-top 的 flex item</span> 
+            <br> 5
+            <br> 5
+            <br> 5
+            <br> 5
+        </div>
+    </div>
+    <h3>align-items: flex-start;</h3>
+    <div class="flex-container flex-start">
+        <div class="flex-item">
+            1
+        </div>
+        <div class="flex-item" style="align-self:stretch;">
+            2   <span>使用  align-self 改变单个为 stretch</span>
+            <br> 2
+        </div>
+        <div class="flex-item">
+            3
+            <br> 3
+            <br> 3
+        </div>
+        <div class="flex-item">
+            4
+            <br> 4
+            <br> 4
+            <br> 4
+            <br>
+        </div>
+        <div class="flex-item">
+            5
+            <br> 5
+            <br> 5
+            <br> 5
+            <br> 5
+        </div>
+    </div>
+    <h3>align-items: flex-end;</h3>
+    <div class="flex-container flex-end">
+        <div class="flex-item">
+            1
+        </div>
+        <div class="flex-item">
+            2
+            <br> 2
+        </div>
+        <div class="flex-item">
+            3
+            <br> 3
+            <br> 3
+        </div>
+        <div class="flex-item">
+            4
+            <br> 4
+            <br> 4
+            <br> 4
+            <br>
+        </div>
+        <div class="flex-item">
+            5
+            <br> 5
+            <br> 5
+            <br> 5
+            <br> 5
+        </div>
+    </div>
+    <h3>align-items:center;</h3>
+    <div class="flex-container center">
+        <div class="flex-item">
+            1
+        </div>
+        <div class="flex-item">
+            2
+            <br> 2
+        </div>
+        <div class="flex-item">
+            3
+            <br> 3
+            <br> 3
+        </div>
+        <div class="flex-item">
+            4
+            <br> 4
+            <br> 4
+            <br> 4
+            <br>
+        </div>
+        <div class="flex-item">
+            5
+            <br> 5
+            <br> 5
+            <br> 5
+            <br> 5
+        </div>
+    </div>
+    <h3>align-items:baseline;</h3>
+    <div class="flex-container baseline">
+        <div class="flex-item">
+            1
+        </div>
+        <div class="flex-item">
+            2
+            <br> 2
+        </div>
+        <div class="flex-item">
+            3
+            <br> 3
+            <br> 3
+        </div>
+        <div class="flex-item">
+            4
+            <br> 4
+            <br> 4
+            <br> 4
+            <br>
+        </div>
+        <div class="flex-item">
+            5
+            <br> 5
+            <br> 5
+            <br> 5
+            <br> 5
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>auto height</title>
+    <style>
+        .expando {
+            min-width: 9em;
+            max-width: 25em;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .expando-title {
+            margin: 0;
+            margin-bottom: .5em;
+            vertical-align: middle;
+        }
+
+        .expando-trigger {
+            margin-left: 0.5em;
+        }
+
+        .expando ol {
+            margin: 0;
+        }
+
+        .expando li {
+            border-bottom: 1px solid #ccc;
+            line-height: 1.5;
+            /* 24 px */
+        }
+
+
+        .js .expando-list {
+            overflow: hidden;
+            transition: all .25s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .js .is-expanded .expando-list {
+            max-height: 24em;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="js">
+    <button id="trigger">Trigger collapse</button>
+    <div class="expando">
+        <h2 class="expando-title">Top menu choices</h2>
+        <ol>
+            <li>Capricciosa</li>
+            <li>Margherita</li>
+            <li>Vesuvio</li>
+        </ol>
+        <ol class="expando-list" start="4" aria-label="Top menu choices, continued.">
+            <li>Calzone</li>
+            <li>Quattro Stagioni</li>
+            <li>Pescatore</li>
+            <li>Bolognese</li>
+            <li>Shawarma</li>
+            <li>Mexicana</li>
+            <li>Fungi</li>
+        </ol>
+    </div>
+</body>
+
+<script>
+    var trigger = document.getElementById('trigger'),
+        expando = document.querySelector('.expando'),
+        // grab the title element:
+        expandoTitle = expando.querySelector('.expando-title'),
+        // grab the list itself:
+        expandoList = expando.querySelector('.expando-list'),
+        expandedClass = 'is-expanded';
+
+    // 初始化为 hidden
+    expandoList.setAttribute('aria-hidden', true);
+
+
+    trigger.addEventListener('click', function () {
+        if (/(^|\s)is-expanded(\s|$)/.test(expando.className)) {
+            expando.className = expando.className.replace(' is-expanded', '');
+            expandoList.setAttribute('aria-hidden', 'true');
+        } else {
+            expando.className += ' is-expanded';
+            expandoList.setAttribute('aria-hidden', 'false');
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>inline box</title>
+    <style>
+        .overlay-container {
+            background-color: grey;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            text-align: center;
+        }
+
+        .overlay-container::before{
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+           
+        }
+
+        .overlay-item {
+            display: inline-block;
+            vertical-align: middle;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay-container">
+        <div class="overlay-item">
+            <h2>Not so lost in space</h2>
+            <p>This item sits right in the middle of its container...
+                <p>
+        </div>
+    </div>
+
+</body>
+
+</html>

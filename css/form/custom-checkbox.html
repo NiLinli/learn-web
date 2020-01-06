@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>custom checkbox</title>
+    <style>
+        .checkboxes input[type="checkbox"]+label {
+            display: inline-block;
+        }
+
+        :root input[type="checkbox"] {
+            position: absolute;
+            overflow: hidden;
+            width: 1px;
+            height: 1px;
+            clip: rect(0 0 0 0);
+        }
+
+        :root input[type="checkbox"]+label {
+            line-height: 1.5;
+            color: #333;
+            padding-left: 1.5em;
+            background-position: .125em 36%;
+            background-repeat: no-repeat;
+            background-size: 18px 18px;
+        }
+
+        :root input[type="checkbox"]+label {
+            background-image: url(images/checkbox-unchecked.png);
+        }
+
+        :root input[type="checkbox"]:checked+label {
+            background-image: url(images/checkbox-checked.png);
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox" name="lang-as" id="lang-as">
+    <label for="lang-as">ActionScript</label>
+
+</body>
+
+</html>

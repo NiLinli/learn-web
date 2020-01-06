@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>translate</title>
+
+    <style>
+        div#one {
+            width: 50px;
+            height: 50px;
+            background-color: darksalmon;
+            transform: rotate(45deg) translateX(-50%);
+        }
+
+        div#two {
+            width: 100px;
+            height: 100px;
+            background-color: darksalmon;
+            transform: translateZ(-100px);
+        }
+
+        div#three {
+            border: 1px dashed #000;
+        }
+
+        #three-1 {
+            height: 20px;
+            width: 20px;
+            background-color: darksalmon;
+            transform: translateX(-10000px);
+        }
+    </style>
+</head>
+
+<body>
+    <p> 1. 数值 x, y, z</p>
+
+
+
+    <p> 2. 百分数 x, y</p>
+    <p> 相对于自身的大小(x 于 width , y 于 height)</p>
+
+    <div id="one">
+        one
+    </div>
+
+
+    <div id="two">two</div>
+
+
+    <div id="three">
+        <div id="three-1"></div>
+        <p>transform走了， 但是预留的位置还是占了</p>
+    </div>
+
+    <p> translate 为 translateX translateY 简写</p>
+    <p> 3D 变换使用 translate3d </p>
+
+
+</body>
+
+</html>

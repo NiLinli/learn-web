@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>line-height</title>
+    <style>
+        body {
+            font-size: 16px;
+            line-height: 18px;
+        }
+
+        h3 {
+            color: darksalmon;
+        }
+
+        p.cl1 {
+            line-height: 2em;
+        }
+
+        div.cl2 {
+            line-height: 150%;
+            font-size: 20px;
+        }
+
+        div.cl2 .cl3-child {
+            font-size: 30px;
+        }
+
+        div.cl3 {
+            line-height: 1.5;
+            font-size: 20px;
+        }
+
+        div.cl3 .cl3-child {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>inherit</h3>
+    <p>继承自body --> font-size:16px; line-height:18px;</p>
+    <h3>em</h3>
+    <p class="cl1">em 相对于 inherited 计算, 2 * 18 = 36px</p>
+    <h3>percentage</h3>
+    <div class="cl2">
+        父元素 150% * 20 = 30 px;
+        <p class="cl2-child">
+            子元素 , 继承30px
+        </p>
+    </div>
+    <h3>scale number</h3>
+    <div class="cl3">
+        父元素 1.5 * 20 = 30px
+        <p class="cl3-child">
+            子元素 , 继承line-height 1.5 , font-size 设置为 30px, 1.5 * 30 = 45 px
+        </p>
+    </div>
+
+
+
+</body>
+
+</html>

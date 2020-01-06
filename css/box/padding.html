@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>padding</title>
+    <style>
+        p {
+            padding: 10% 20%;
+            background-color: silver;
+        }
+
+        strong {
+            padding-top: 0.5em;
+            background-color: yellow;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="width: 600px;">
+        <p>
+            This paragraph is contained within a DIV that has a width of 600 pixels, so its padding will be 10% of the width of the paragraph's
+            parent element. Given the declared width of 600 pixels, the padding will be 60 pixels on all sides.
+        </p>
+    </div>
+    <div style="width: 300px;">
+        <p>
+            This paragraph is contained within a DIV with a width of 300 pixels, so its padding will still be 10% of the width of the
+            paragraph's parent. There will, therefore, be half as much padding on this paragraph as that on the first paragraph.
+        </p>
+    </div>
+
+    <h3> inline element 的 padding</h3>
+    <div style="width: 300px;">
+        <p>
+            abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc
+            <strong>def def def def</strong> abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc
+            <strong>def</strong>abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc
+        </p>
+    </div>
+
+    <h3>Padding and Replaced Elements</h3>
+</body>
+
+</html>

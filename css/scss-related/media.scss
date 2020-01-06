@@ -1,0 +1,32 @@
+// 普通嵌套 冒泡
+.sidebar {
+    width: 300px;
+    @media screen and (orientation: landscape) {
+        width: 500px;
+    }
+}
+
+// @media 嵌入 @media 
+@media screen {
+    .sidebar {
+        @media (orientation: landscape) {
+            width: 500px;
+        }
+
+        @media (print) {
+            width: 500px;
+        }
+
+
+    }
+}
+
+// 和 插入 组合
+$media: screen;
+$feature: -webkit-min-device-pixel-ratio;
+$value: 1.5;
+@media #{$media} and ($feature: $value) {
+    .sidebar {
+        width: 500px;
+    }
+}
