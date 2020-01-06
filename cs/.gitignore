@@ -1,0 +1,10 @@
+.DS_Store
+
+# C
+
+*.o
+*.out
+
+# Java
+
+*.class

@@ -1,0 +1,23 @@
+{
+  "name": "block-chain-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bip32": "^1.0.2",
+    "bip39": "^2.5.0",
+    "bitcoinjs-lib": "^4.0.2",
+    "bitcore-lib": "^0.16.0",
+    "bitcore-wallet-client": "^6.7.5",
+    "eosjs-ecc": "^4.0.4",
+    "ethereumjs-wallet": "^0.6.2",
+    "ethers": "^4.0.18",
+    "web3": "^1.0.0-beta.37"
+  }
+}

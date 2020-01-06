@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">添加账户</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/transaction">账户转账</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/mnemonic">助记词</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 导入账户 -->
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    导入账户
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="style-select">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="wayRadios" id="privateKeyRadio" value="1"
+                            checked>
+                        <label class="form-check-label" for="privateKeyRadio">
+                            Private Key
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="wayRadios" id="keystoreRadio" value="2">
+                        <label class="form-check-label" for="keystoreRadio">
+                            Keystore / JSON File
+                        </label>
+                    </div>
+                </div>
+
+                <div id="privateKeyDiv">
+                    <div class="form-group">
+                        <label for="privateKey">输入私钥</label>
+                        <textarea class="form-control" id="privateKey" rows="3"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="unlockByPrivatekey">解锁</button>
+                </div>
+
+                <div id="keystoreDiv" style="display: none">
+                    <p>上传 keystore 文件</p>
+                    <div style="padding: 50px 100px">
+                        <input type="file" id="file" />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">密码</label>
+                        <input type="password" class="form-control" id="pwd" placeholder="输入密码">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="unlockByKeystore">解锁</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 导入成功账户信息 -->
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    导入账户信息
+                </h3>
+            </div>
+            <div class="panel-body">
+                <p>账户地址：</p>
+                <div id="addressDiv"></div>
+                <p>账户余额：</p>
+                <div id="balanceDiv"></div>
+            </div>
+        </div>
+
+        <!-- 输入交易详情 -->
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    收款方信息
+                </h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label for="reciptAccount">收款地址</label>
+                        <input type="text" class="form-control" id="reciptAccount" placeholder="0x100CD4b78A67e689581AbC7c43CD7C650cE2CfFb">
+                    </div>
+                    <div class="form-group">
+                        <label for="txValue">转账金额</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="txValue" placeholder="">
+                            <div class="input-group-append">
+                                <select id="tokenType">
+                                    <option value="eth">ETH</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <input type="hidden" name="currAccount" id="currAccount" value="" />
+                    <input type="hidden" name="currAccountKey" id="currAccountKey" value="" />
+                    <button type="button" class="btn btn-primary" id="sendSignedTransaction">发送交易</button>
+                    <div id="txHashDiv" style="margin-top: 20px;display: none">
+                        <span style="font-weight:bold">交易Hash： </span>
+                        <div id="txHash"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 测试 sendTransaction  -->
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    测试 sendTransaction (转 6 ETH)
+                </h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label>from：</label>
+                        <input type="text" class="form-control" id="from" placeholder="address">
+                    </div>
+                    <div class="form-group">
+                        <label>phrase(from)</label>
+                        <input type="text" class="form-control" id="phrase" placeholder="address">
+                    </div>
+                    <div class="form-group">
+                        <label>to：</label>
+                        <input type="text" class="form-control" id="to" placeholder="address">
+                    </div>
+
+                    <button class="btn btn-primary" id="sendTransaction">申请交易</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script>
+
+    // 切换
+    $('input[name=wayRadios]').change(function () {
+
+        switch (this.value) {
+            case '1':
+                $('#privateKeyDiv').show();
+                $('#keystoreDiv').hide();
+                break;
+            case '2':
+                $("#privateKeyDiv").hide();
+                $("#keystoreDiv").show();
+                break;
+            default:
+                break;
+        }
+    });
+
+    // 获取 from 地址
+    $('#unlockByPrivatekey').on('click', function () {
+        var privateKey = $('#privateKey').val();
+        if (privateKey === '') {
+            alert('please input privatekey');
+            return;
+        }
+
+        $.ajax({
+            url: '/account/privatekey',
+            method: 'POST',
+            data: 'privateKey=' + privateKey,
+            success: function (res) {
+                if (res.code == 0) {
+                    const result = res.data
+                    const address = result.address
+                    const privateKey = result.privateKey
+                    const balance = result.balance
+                    const tokenBalance = result.tokenBalance
+                    $("#balanceDiv").html(balance + ' ETH')
+                    $("#addressDiv").html(address)
+                    $("#currAccount").val(address)
+                    $("#currAccountKey").val(privateKey)
+                }
+            }
+        });
+    });
+
+    // 获取 from 地址 + private key
+    $('#unlockByKeystore').on('click', function () {
+        var formData = new FormData();
+        formData.append('file', document.getElementById('file').files[0]);
+        formData.append('password', $('#pwd').val());
+
+        $.ajax({
+            url: '/account/keystore',
+            type: 'POST',
+            cache: false,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (res) {
+                console.log(res)
+                if (res.code == 0) {
+                    const result = res.data
+                    const address = result.address
+                    const balance = result.balance
+                    const privateKey = result.privateKey
+                    const tokenBalance = result.tokenBalance
+
+                    $("#balanceDiv").html(balance + ' ETH')
+                    $("#addressDiv").html(address)
+                    $("#currAccount").val(address)
+                    $("#currAccountKey").val(privateKey)
+                }
+            }
+        });
+    });
+
+
+
+    // 发送 transaction
+    $('#sendSignedTransaction').on('click', function () {
+
+        const tokenType = $("#tokenType").val();
+
+        if (tokenType === 'eth') {
+            $.ajax({
+                url: '/transaction/signed/send',
+                method: 'POST',
+                data: {
+                    'currAccount': $("#currAccount").val(),
+                    'privateKey': $("#currAccountKey").val(),
+                    'reciptAccount': $("#reciptAccount").val(),
+                    'txValue': $("#txValue").val()
+                },
+                success: function (res) {
+                    console.log(res);
+                }
+            });
+        }
+    });
+
+    $('#sendTransaction').on('click', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/transaction/unsigned/send',
+            method: 'POST',
+            data: {
+                'from': $('#from').val(),
+                'to': $('#to').val(),
+                'phrase': $('#phrase').val()
+            },
+            success: function (res) {
+                console.log(res);
+            }
+        });
+    });
+</script>
+
+</html>

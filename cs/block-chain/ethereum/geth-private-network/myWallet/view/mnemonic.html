@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">添加账户</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/transaction">账户转账</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/mnemonic">助记词</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    New mnemonic words：
+                </h3>
+            </div>
+            <div class="panel-body">
+                <p id="words"></p>
+            </div>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Private Key:
+                </h3>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label>Please input mnemonic words:</label>
+                        <input type="email" class="form-control" id="mnemonic" name="mnemonic">
+                    </div>
+                    <p>Private key:</p>
+                    <p id="privateKey"></p>
+                    <p>Address:</p>
+                    <p id="adress"></p>
+                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <p id="keys"></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script>
+    var words = document.getElementById('words'),
+        mnemonic = document.getElementById('mnemonic'),
+        submit = document.getElementById('submit'),
+        privateKey = document.getElementById('privateKey'),
+        address = document.getElementById('adress'),
+        keys = document.getElementById('keys');
+
+    $(function () {
+        // 直接获取一个新的 mnemonic words
+        $.post('/mnemonic/create', function (res) {
+            console.log(res);
+            words.innerHTML = res;
+        });
+
+        $(submit).on('click', function (e) {
+            e.preventDefault();
+
+            address.innerHTML = '';
+            privateKey.innerHTML = '';
+
+            $.ajax({
+                url: 'mnemonic/privatekey',
+                type: 'POST',
+                data: 'mnemonic=' + mnemonic.value,
+                success: function (res) {
+                    address.innerHTML = res.address;
+                    privateKey.innerHTML = res.privateKey;
+                }
+            })
+        });
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>JavaScript RSA Encryption</title>
+  <script src="../node_modules/jsencrypt/bin/jsencrypt.min.js"></script>
+</head>
+
+<body>
+
+
+  <label for="privkey">Private Key</label><br />
+  <textarea id="privkey" rows="15" cols="65"></textarea><br />
+  <label for="input">Text to sign:</label><br />
+  <textarea id="inputSign" name="inputSign" type="text" rows=4 cols=70>This is a test!</textarea><br />
+  <button id="encrypt">sign</button> <br>
+
+
+  <label for="pubkey">Public Key</label><br />
+  <textarea id="pubkey" rows="15" cols="65"></textarea><br />
+  <label for="input">Text to verify:</label><br />
+  <textarea id="inputVerify" name="inputVerify" type="text" rows=4 cols=70></textarea><br />
+  <button id="decrypt">decrypt</button>
+</body>
+
+<script type="text/javascript">
+  var pubkeyElem = document.getElementById('pubkey'),
+    privkeyElem = document.getElementById('privkey'),
+    signatureBtn = document.getElementById('signature'),
+    verifyBtn = document.getElementById('verify'),
+    inputSign = document.getElementById('inputSign'),
+    inputVerify = document.getElementById('inputVerify');
+
+  // signature
+  signatureBtn.addEventListener('click', function () {
+    var sign = new JSEncrypt();
+    sign.setPrivateKey(privkeyElem);
+    var signature = sign.sign(inputSign, CryptoJS.SHA256, 'sha256');
+    console.log(signature);
+  });
+
+  // verify
+  decryptBtn.addEventListener('click', function () {
+
+    var verify = new JSEncrypt();
+    verify.setPublicKey();
+    var verified = verify.verify(inputVerify.value, signature, CryptoJS.SHA256);
+  });
+</script>
+
+</html>

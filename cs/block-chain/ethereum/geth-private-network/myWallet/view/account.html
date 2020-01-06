@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">添加账户</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/transaction">账户转账</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/mnemonic">助记词</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/util">Util 工具类</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div id="create" class="account">
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        新建一个账户
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <label>输入密码:</label>
+                    <input type="text" class="form-control" id="pwd" placeholder="Password" />
+                    <button type="button" class="btn btn-primary" id="createBtn">创建账户</button>
+                </div>
+            </div>
+        </div>
+        <div id="download" style="display: none">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        保存你的 Keystore 文件
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <a id="downloadUrl" class="btn btn-success" href="#" role="button">下载 Keystore 文件 (UTC / JSON)</a>
+                    <button id="next" type="button" class="btn btn-primary">下一步</button>
+                </div>
+            </div>
+        </div>
+        <div id="privateKey" style="display: none">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        保存你的私钥
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <textarea class="form-control" id="prikey" rows="3" disabled></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/jquery.min.js">
+</script>
+<script>
+
+    var $pwd = $('#pwd');
+
+    $('#createBtn').on('click', function () {
+
+        var pwd = $pwd.val();
+
+        if (pwd === '') {
+            alert('password cannot be blank!!!');
+            return;
+        }
+
+        $.ajax({
+            url: '/account/create',
+            method: 'POST',
+            data: 'pwd=' + pwd,
+            success: function (result) {
+                console.log(result.data)
+                if (result.code == 0) {
+                    $('#create').hide();
+                    $('#download').show();
+                    $('#downloadUrl').attr('href', result.data.keystore)
+                    $('#prikey').html(result.data.privateKey)
+                }
+            }
+        });
+    });
+
+    $('#next').on('click', function () {
+        $('#download').hide();
+        $('#privateKey').show();
+    });
+
+</script>
+
+</html>

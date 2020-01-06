@@ -1,0 +1,26 @@
+{
+    "coin":"btc",
+    "network":"testnet",
+    "xPrivKey":"tprv8ZgxMBicQKsPdqv3fj69TZh6bMaCV6hZTKmsdcF83kaH8q68hpJH2HdmU6Pn9r3G2YoyUgJSz5ChTNeSfTJNwHamN1PcExuutgPmjEKnZZR",
+    "xPubKey":"tpubDDUPDaYsquBaKkQt4u1Nmo71da1dU1Hvf9cghTEhwqhsXSk4b8D33mcqgydLSJBJFt56UHuN8Uhg7f4uL5ER536jhPdVyb6HKoLNyveCh1R",
+    "requestPrivKey":"90d724b482e529db87ef419bb559eafb73e7a6806b08bc55796ceafbe7dab307",
+    "requestPubKey":"0289da82df10e7942ed5e1555f56e4fcc2ed2455a08a84707081984e35cf45f505",
+    "copayerId":"3a2baa4c4c9fd8cc908d84a4c62e8fa954c077730c08a81ed20a0b8a56ff60c9",
+    "publicKeyRing":[{
+        "xPubKey":"tpubDDUPDaYsquBaKkQt4u1Nmo71da1dU1Hvf9cghTEhwqhsXSk4b8D33mcqgydLSJBJFt56UHuN8Uhg7f4uL5ER536jhPdVyb6HKoLNyveCh1R",
+        "requestPubKey":"0289da82df10e7942ed5e1555f56e4fcc2ed2455a08a84707081984e35cf45f505"
+    }],
+    "walletId":"93b84f45-d4ea-41e5-8966-be1ccd655146",
+    "walletName":"My Wallet",
+    "m":2,
+    "n":2,
+    "walletPrivKey":"e5a5e3e6405b1f491cd486a91551145e0727f6f0300057477d6ea530a43832a0",
+    "personalEncryptingKey":"VxTZayYOBHMOHVvoCPleGg==",
+    "sharedEncryptingKey":"RZOl7fBQL926oWWq6jdQIQ==",
+    "copayerName":"Irene",
+    "entropySource":"66274919e8281c43ba429af7161b46152d55ac4f70c51261772fadc9fc1c31c4",
+    "derivationStrategy":"BIP44",
+    "account":0,
+    "compliantDerivation":true,
+    "addressType":"P2SH"
+}
