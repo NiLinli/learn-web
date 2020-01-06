@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>read File</title>
+    <style>
+        .preview {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="file" name="" id="fileInput">
+
+    <img class="preview" id="preview1">
+    <img class="preview" id="preview2">
+
+</body>
+
+<script>
+    var fileInput = document.getElementById('fileInput'),
+        preview1 = document.getElementById('preview1'),
+        preview2 = document.getElementById('preview2');
+
+    URL = window.URL || window.webkitURL;   // 兼容性
+
+    fileInput.addEventListener('change', function (e) {
+
+        var files = this.files;
+
+        var file = files[0];
+
+        // FileReader ie10+
+        var fileReader = new FileReader();
+
+        fileReader.onload = function (e) {
+            preview1.src = e.target.result;
+            console.log(preview1.src);
+        };
+
+        fileReader.readAsDataURL(file);
+
+        // URL ie10+
+        preview2.src = URL.createObjectURL(file);
+
+        console.log(preview2.src);
+
+        preview2.onload = function () {
+            URL.revokeObjectURL(preview2.src);      // 浏览器关闭的时候会释放, 但是最好在适当的时候进行释放
+        };
+
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,35 @@
+<button class="btn btn-info" (click)="demoClick()">触发 Demo 组件cdRef</button>
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Default</h3>
+  </div>
+  <div class="panel-body">
+    <app-change-detection-default [profile]="profile1" (demoEvent)="onDemoEvent($event)"></app-change-detection-default>
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"> ChangeDetectionStrategy.OnPush</h3>
+  </div>
+  <div class="panel-body">
+    <app-change-detection-onpush [profile]="profile2"></app-change-detection-onpush>
+  </div>
+</div>
+
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">OnPush 有些变化需要刷新视图， 就手动刷新</h3>
+  </div>
+  <div class="panel-body">
+    <app-change-change-detector-ref [items]="itemObservable"></app-change-change-detector-ref>
+  </div>
+</div>
+
+
+{{ demoChange() }}
+

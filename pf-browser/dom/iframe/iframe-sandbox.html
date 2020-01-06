@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iframe sandbox</title>
+
+    <style>
+        iframe{
+            border: 1px dashed darksalmon;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>未设置 sandbox 属性</h3>
+    <iframe src="./iframe-sandbox-test.html" frameborder="0"></iframe>
+    <h3>设置 ""</h3>
+    <iframe src="./iframe-sandbox-test.html" frameborder="0" sandbox=""></iframe>
+    <h3>设置 allow-forms</h3>
+    <iframe src="./iframe-sandbox-test.html" frameborder="0" sandbox="allow-forms"></iframe>
+    <h3>设置 allow-scripts</h3>
+    <iframe src="./iframe-sandbox-test.html" frameborder="0" sandbox="allow-scripts"></iframe>
+</body>
+
+</html>

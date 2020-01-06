@@ -1,0 +1,72 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Pipe</h3>
+  </div>
+  <div class="panel-body">
+    <p>
+      Introducing Angular pipes, a way to write display-value transformations that you can declare in your
+      <mark>HTML</mark> .
+      <br> 管道把数据作为输入，然后转换它，给出期望的输出
+      <br> 1 内置管道 2. 自定义管道
+      <br>
+      <br> 变更检测： 1. pure 不检查 mutable 的更改(与变更检测一致) 2. impure 经常调用
+    </p>
+  </div>
+</div>
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Built-in pipes (来自@angular/common 模块)</h3>
+  </div>
+  <div class="panel-body">
+    <app-build-in-pipe></app-build-in-pipe>
+  </div>
+</div>
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Custom pipes</h3>
+  </div>
+  <div class="panel-body">
+    <app-custom-pipe-demo></app-custom-pipe-demo>
+  </div>
+</div>
+
+
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Pipe change detection</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item"> 改变 mutable 对象 ,管道不会返回新值 ,所以视图没有更新 </li>
+      <li class="list-group-item"> 1. 新建数组, 然后添加</li>
+      <li class="list-group-item"> 1. 使用 impure 管道</li>
+    </ul>
+    <app-pipes-change-detection></app-pipes-change-detection>
+  </div>
+</div>
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">The impure AsyncPipe</h3>
+  </div>
+  <div class="panel-body">
+    <app-async-pipe></app-async-pipe>
+  </div>
+</div>
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">An impure caching pipe</h3>
+  </div>
+  <div class="panel-body">
+    <app-async-caching-pipe></app-async-caching-pipe>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Change-item-without-input</h3>
+  </div>
+  <div class="panel-body">
+    <app-on-changes-item></app-on-changes-item>
+    1. 有输入属性 出发 ngOnChanges() 钩子
+    <br> 2. 初次出发在 ngOnInit() 之前
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Change-item-input</h3>
+  </div>
+  <div class="panel-body">
+
+
+    <h3>父组件更改</h3>
+    <h3>{{ obj?.name }}</h3>
+    <p>{{ comment }}</p>
+    <button class="btn btn-default" (click)="changeComment()">changeComment</button>
+    <button class="btn btn-default" (click)="changeObj()">changeObj</button>
+
+
+    <app-on-changes-item [comment]="comment" [person]="person"></app-on-changes-item>
+
+    一旦检测到该组件(或指令)的输入属性发生了变化
+    <br> 1. immutable 触发
+    <br> 2. mutable 不触发
+  </div>
+</div>

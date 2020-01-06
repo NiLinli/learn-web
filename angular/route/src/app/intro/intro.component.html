@@ -1,0 +1,21 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    路由 Demo
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a [routerLink]="['/test-params',1000]">传递 params (required)</a>
+      </li>
+      <li class="list-group-item">
+        <a (click)="onOptionalParamsClick()">传递 params (optional)</a>
+      </li>
+      <li class="list-group-item">惰性加载</li>
+      <li class="list-group-item">预加载 -> preloadingStrategy</li>
+      <li class="list-group-item">能不能访问路由 -> 路由守卫 CanActivate</li>
+      <li class="list-group-item">能不能加载路由对应的懒加载模块 -> 路由守卫 CanLoad</li>
+      <li class="list-group-item">能不能离开路由 -> 路由守卫 CanDeactivate</li>
+      <li class="list-group-item">预先获取组件数据 -> Resolve</li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test iframe</title>
+    <style>
+        iframe {
+            display: block;
+            /* height: 200px; */
+            overflow: scroll;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <iframe id="ifm" src="" frameborder="0">
+        这里可以放置一段说明文字, 不支持 iframe 的浏览器会显示这段文字
+    </iframe>
+
+    <button id="btn">动态添加 iframe 的 src 属性</button>
+    <button id="btn2">toggle iframe show/hide</button>
+
+</body>
+
+<script>
+    var btn = document.getElementById('btn'),
+        btn2 = document.getElementById('btn2'),
+        ifm = document.getElementById('ifm');
+
+    btn.addEventListener('click', function () {
+        ifm.src = 'https://davidwalsh.name/scroll-iframes-ios';
+    });
+
+    btn2.addEventListener('click', function () {
+        ifm.className = (ifm.className.indexOf('hidden') !== -1) ? '' : 'hidden';
+    });
+
+
+    ifm.addEventListener('load', function () {
+        console.log('iframe loaded!!!');
+    });
+</script>
+
+</html>

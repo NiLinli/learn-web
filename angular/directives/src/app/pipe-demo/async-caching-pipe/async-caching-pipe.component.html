@@ -1,0 +1,9 @@
+<h2>Persons from JSON File</h2>
+ 
+<div *ngFor="let person of ('mock-data/persons.json' | fetch) ">
+  {{ person.name }}
+</div>
+
+<p>Person as JSON:
+ {{ 'mock-data/persons.json' | fetch | json}}
+</p>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue if</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        div.wrapper {
+            border: 1px dashed darksalmon;
+        }
+    </style>
+</head>
+<body>
+    <div id="app1">
+        <div class="wrapper" v-if="awesome">
+            <h1>Vue is awesome!</h1>
+        </div>
+        <div class="wrapper" v-else>
+            <h1>Vue is ugly!</h1>
+        </div>
+
+        <template v-if="awesome">
+            <h1>Vue is awesome!</h1>
+        </template>
+
+        <template v-else>
+            <h1>Vue is ugly!</h1>
+        </template>
+
+        <template v-if="fruit === 'orange'">
+            <h1>orange</h1>
+        </template>
+        <template v-else-if="fruit === 'apple'">
+            <h1>apple</h1>
+        </template>
+        <template v-else-if="fruit === 'banana'">
+            <h1>banana</h1>
+        </template>
+        <template v-else>
+            <h1>other fruit</h1>
+        </template>
+        
+            
+    </div>
+
+</body>
+<script>
+    var app1 = new Vue({
+        el: '#app1',
+        data: {
+            awesome: true,
+            fruit: 'apple'
+        }
+    });
+
+    // v-if 与 v-for 不要用在一个标签上面
+</script>
+</html>

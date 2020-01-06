@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    output - console
+    <ol>
+        <li>Console 对象提供对 浏览器(V8) 控制台的接入</li>
+        <li>不同浏览器上它的工作方式是不一样的</li>
+    </ol>
+</body>
+<script>
+    const str = 'I\'m a string',
+        int = 123,
+        float = 123.111,
+        obj = {
+            name: 'nixixi',
+            age: 18
+        };
+
+    // 字符串形式输出 (toString)
+    console.log('String: %s, Int: %d, Float: %f, Object: %o', str, int, float, obj);        // 类 C printf 的写法
+    console.log('this is a loooooog string    ', str, int, float, obj);     // 没有占位符, 就在后面依次输入
+
+    // 对象形式输出 (非标准)
+    console.dir(obj);
+
+    // 输出一条 error 信息(error 提示, 但是不会阻碍程序运行)
+    console.error('this is a error msg');
+
+    console.warn('this is a warn msg');
+
+    console.info('this is a info msg');
+
+    console.log('end');
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dialog demo</title>
+    <style>
+        .overlay-container {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .overlay-container .overlay-backdrop {
+            background: rgba(0, 0, 0, .288);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            pointer-events: auto;
+            -webkit-tap-highlight-color: transparent;
+            transition: opacity .4s cubic-bezier(.25, .8, .25, 1);
+        }
+
+        .overlay-container .overlay-wrapper {
+            display: flex;
+            position: absolute;
+            z-index: 1000;
+            pointer-events: none;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay-wrapper .overlay-pane {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>dialog 简单的实现</h3>
+
+    <div class="overlay-container">
+        <div class="overlay-backdrop"></div>
+        <div class="overlay-wrapper">
+            <div class="overlay-pane">
+                这是一个 dialog
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

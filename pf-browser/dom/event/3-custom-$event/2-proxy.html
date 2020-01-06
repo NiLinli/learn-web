@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <p>
+        <button type="button" id="test">Test</button>
+    </p>
+    <div id="log"></div>
+
+    <script>
+        var me = {
+            type: 'zombie',
+            test: function (event) {
+                console.log(this)
+            }
+        };
+
+        var you = {
+            type: 'person',
+            test: function (event) {
+                console.log(this);
+            }
+        };
+
+
+        $("#test")
+            .on("click", $.proxy(me.test, me))
+            /* this === "person" */
+            .on("click", $.proxy(you.test, you))
+            /* this === "zombie" */
+            .on("click", $.proxy(you.test, me))
+            /* this === "<button> element" */
+            .on("click", you.test);
+    </script>
+
+</body>
+
+</html>

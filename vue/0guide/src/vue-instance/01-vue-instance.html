@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue instance</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="example">{{ a }}</div>
+</body>
+
+<script>
+  var data = {
+    a: 1
+  };
+
+  // 只有实例之中存在的属性是响应式的
+  var vm = new Vue({
+    data: data
+  });
+
+  console.log('vm.a === data.a', vm.a === data.a);
+  vm.a = 2;
+  console.log('data.a = ', data.a);
+  data.a = 3;
+  console.log('vm.a = ', vm.a);
+
+
+  var data = {
+    a: 1
+  }
+  var vm2 = new Vue({
+    el: '#example',
+    data: data,
+    // 不要使用箭头函数
+    create: function() {
+      // this 指向 vm 实例
+      console.log('a is', this.a);
+    }
+  })
+
+  console.log('vm2.$data === data', vm2.$data === data);  // => true
+  console.log('vm2.$el === document.getElementById(\'example\')', vm2.$el === document.getElementById('example')); // => true
+
+  // $watch 是一个实例方法
+  vm2.$watch('a', function (newValue, oldValue) {
+    // 这个回调将在 `vm.a` 改变后调用
+    console.log('newValue', newValue);
+    console.log('oldValue', oldValue);
+  });
+
+  vm2.a = 8;
+</script>
+
+</html>

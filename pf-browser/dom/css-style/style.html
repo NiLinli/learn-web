@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>style</title>
+</head>
+
+<body>
+
+    <p id="myP" style="background-color:yellow;float:right;">1231312</p>
+
+</body>
+
+<script>
+    // DOM2 提供的操作样式的规范
+    var supportsDOM2CSS = document.implementation.hasFeature('CSS', '2.0'),
+        supportsDOM2CSS2 = document.implementation.hasFeature('CSS2', '2.0');
+
+    console.log('supportsDOM2CSS = ' + supportsDOM2CSS + '\n' + 'supportsDOM2CSS2 = ' + supportsDOM2CSS2);
+
+    // dom.style 获取html attribute 对应的 DOM property
+    var myP = document.getElementById('myP'),
+        backgroundColor = myP.style.backgroundColor,
+        float = myP.style.float || myP.style.styleFloat;  // ie为styleFloat
+    console.log(
+        'backgroundColor = ' + backgroundColor + '\n' +
+        'float = ' + float + '\n'
+    );
+
+    // style 中可能用到的属性
+    // 1 style.cssText
+    console.log('myP.style.cssText = ' + myP.style.cssText);
+
+    myP.style.cssText = 'height: 200px;width:200px;';
+
+    // 2 item(index) 和 length 将 obj当作数组使用  
+    var prop, value, valueMore;
+    for (var i = 0; i < myP.style.length; i++) {
+        prop = myP.style.item(i);  // myP.style[i]
+        value = myP.style.getPropertyValue(prop);
+        console.log(prop + ':' + value);
+    }
+
+    // 3 delelte property
+    myP.style.removeProperty('height');
+
+</script>
+
+</html>

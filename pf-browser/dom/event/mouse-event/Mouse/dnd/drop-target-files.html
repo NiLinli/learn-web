@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>drop target</title>
+  <style>
+    #droptarget {
+      margin: 0 auto;
+      width: 400px;
+      height: 400px;
+      border: 1px solid #000;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="droptarget">
+    拖动文件到此范围内
+  </div>
+</body>
+
+<script>
+  var droptarget = document.getElementById('droptarget');
+
+  droptarget.addEventListener('dragenter', function (e) {
+    // 改变状态提示已经 drag 到范围内
+    e.preventDefault(); // 触发 drop 事件, 成为 valid drop target
+
+    e.target.style.border = '2px dashed #000';
+  });
+
+  droptarget.addEventListener('dragover', function (e) {
+    e.preventDefault(); // 触发 drop 事件 
+  });
+
+  droptarget.addEventListener('dragleave', function (e) {
+    // 离开时候恢复状态
+    e.target.style.border = '1px solid #000';
+  });
+
+  droptarget.addEventListener('drop', function (e) {
+    // 获取相关数据进行操作
+    console.log(e.dataTransfer.files)
+    e.preventDefault();
+  });
+
+
+  // 限制 drag 非指定位置的默认行为
+  document.addEventListener('dragenter', function (e) {
+    e.preventDefault();
+  });
+
+  document.addEventListener('dragover', function (e) {
+    e.preventDefault();
+  });
+
+  document.addEventListener('drop', function (e) {
+    e.preventDefault();
+  });
+</script>
+
+</html>

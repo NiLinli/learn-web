@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="" name="" value="" disabled id="myInput1">
+    <input type="" name="" value="" id="myInput2">
+    <input type="" name="" value="" disabled="123" id="myInput3">
+
+    <div id="print">
+
+    </div>
+</body>
+
+
+<script>
+    var myInput1 = document.getElementById('myInput1')
+    var myInput2 = document.getElementById('myInput2')
+    var myInput3 = document.getElementById('myInput3')
+    var print = document.getElementById('print');
+
+    myInput1.disabled = false;
+    print.innerHTML = 'myInput1.disabled = ' + myInput1.disabled + '-----------------------' + 'myInput1.getAttribute("disabled") = ' + myInput1.getAttribute('disabled') + '<br>';
+
+    myInput2.setAttribute('disabled', 'disabled');
+    print.innerHTML += 'myInput2.disabled = ' + myInput2.disabled + '-----------------------' + 'myInput2.getAttribute("disabled") = ' + myInput2.getAttribute('disabled') + '<br>';
+
+    print.innerHTML += 'myInput3.disabled = ' + myInput3.disabled + '-----------------------' + 'myInput3.getAttribute("disabled") = ' + myInput3.getAttribute('disabled');
+</script>
+
+</html>

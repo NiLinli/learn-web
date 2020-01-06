@@ -1,0 +1,20 @@
+<div class="panel panel-info">
+  <div class="panel-heading">动态表单</div>
+  <div class="panel-body">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
+      <div *ngFor="let question of questions" class="form-row">
+        <app-dynamic-form-question [question]="question" [form]="form"></app-dynamic-form-question>
+      </div>
+
+      <div class="form-row">
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Save</button>
+      </div>
+    </form>
+
+    <div *ngIf="payLoad" class="form-row">
+      <strong>Saved the following values</strong>
+      <br>{{payLoad}}
+    </div>
+  </div>
+</div>

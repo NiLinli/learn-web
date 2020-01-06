@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>capability detection</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // common style
+    // if (object.propertyInQuestion) {
+    // use propertyInQuestion...
+    // }
+
+    function getElement(id) {
+        if (document.getElementById) {
+            return document.getElementById(id);     // ie5 + 
+        } else if (document.all) {
+            return document.all[id];    // yes
+            // return document.documentElement.scrollTop;   // no 违反了第二条规则
+        } else {
+            throw new Error('No way to retrieve element!');
+        }
+    }
+
+    // object.propertyInQuestion 不适用于所有的方法检测
+    //credit: Peter Michaux
+    function isHostMethod(object, property) {
+        var t = typeof object[property];
+        return t === 'function' ||                    // typeof Func === 'object' | 'function'
+            (!!(t === 'object' && object[property])) ||
+            t === 'unknown';                     //  typeof xhr.open === 'unknown'
+    }
+
+    // ok
+    //determine if the browser has Netscape-style plugins
+    var hasNSPlugins = !!(navigator.plugins && navigator.plugins.length);
+    //determine if the browser has basic DOM Level 1 capabilities
+    var hasDOM1 = !!(document.getElementById && document.createElement &&
+        document.getElementsByTagName);
+
+    // no
+    //AVOID! Not specific enough
+    var isFirefox = !!(navigator.vendor && navigator.vendorSub);
+    //AVOID! Makes too many assumptions
+    var isIE = !!(document.all && document.uniqueID);
+
+
+
+
+</script>
+
+</html>

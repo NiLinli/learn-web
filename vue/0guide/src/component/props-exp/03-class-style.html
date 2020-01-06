@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class style</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app1">
+        <div v-bind:class="{ active: isActive }"></div>
+        <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }"></div>
+        <div v-bind:class="classObject"></div>  
+        <div v-bind:class="classObjectCompute"></div>  
+    </div>
+    
+</body>
+
+<script>
+    // v-bind 绑定属性 
+    // class style 都是属性
+    var app1 = new Vue({
+        el: '#app1',
+        data: {
+            isActive: true,
+            hasError: false,
+            // 作为 obj 放在 data 中
+            classObject: {
+                active: false,
+                'text-danger': true
+            },
+            error: null
+        },
+        computed: {
+            // 放在 computed 中
+            classObjectCompute: function() {
+                return {
+                    active: this.isActive && !this.error,
+                    'text-danger': this.error && this.error.type === 'fatal'
+                }
+            }
+        }
+    });
+</script>
+</html>

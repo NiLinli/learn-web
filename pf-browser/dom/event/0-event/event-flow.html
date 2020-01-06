@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>event flow</title>
+</head>
+
+<body>
+    <div id="grandpa">
+        <div id="father">
+            <div id="child">child</div>
+        </div>
+    </div>
+</body>
+
+<script>
+    // DOM 0 监听事件冒泡阶段(只支持)
+    var grandpa = document.getElementById('grandpa'),
+        father = document.getElementById('father'),
+        son = document.getElementById('child');
+
+    // son.onclick = childClick;
+    // father.onclick = fatherClick;
+    // grandpa.onclick = grandpaClick;
+
+
+    // DOM2 规定了DOM事件流 ：事件捕获 -> 目标 -> 事件冒泡
+    son.addEventListener('click', childClickCapture , true); // 捕获阶段抓取的事件
+    father.addEventListener('click', fatherClickCapture, true);
+    grandpa.addEventListener('click', grandpaClickCapture, true);
+
+    son.addEventListener('click', childClick, false); // 冒泡阶段抓取的事件
+    father.addEventListener('click', fatherClick, false);
+    grandpa.addEventListener('click', grandpaClick, false);
+
+
+    function childClick() {
+        console.log('son click');
+    }
+
+    function fatherClick() {
+        console.log('father click');
+    }
+
+    function grandpaClick() {
+        console.log('grandpa click');
+    }
+
+    function childClickCapture() {
+        console.log('son click Capture');
+    }
+
+    function fatherClickCapture() {
+        console.log('father click Capture');
+    }
+
+    function grandpaClickCapture() {
+        console.log('grandpa click Capture');
+    }
+</script>
+
+</html>

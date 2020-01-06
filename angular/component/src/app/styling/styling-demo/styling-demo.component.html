@@ -1,0 +1,37 @@
+<ol>
+  <li>在 @Component 的元数据中指定的样式只会对该组件的模板生效</li>
+  <li>控制视图的封装模式：原生 (Native)、仿真 (Emulated) 和无 (None)</li>
+  <li>特殊的选择器 -- :host 选择器 & :host-context 选择器</li>
+</ol>
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Native(shadow dom)</h3>
+  </div>
+  <div class="panel-body">
+    <app-native></app-native>
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">None(暴露到全局影响别人)</h3>
+  </div>
+  <div class="panel-body">
+    <app-none></app-none>
+  </div>
+</div>
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">特殊的选择器</h3>
+  </div>
+  <div class="panel-body">
+    <app-special-selectors [ngClass]="{'active': isActive}"></app-special-selectors>
+  </div>
+</div>
+
+
+<button class="btn btn-default" (click)="toggleClass()">toggle特殊的选择器的class</button>

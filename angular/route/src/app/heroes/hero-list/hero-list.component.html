@@ -1,0 +1,25 @@
+<div class="panel panel-warning">
+  <div class="panel-heading">HEROES LIST</div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let hero of heroes$ | async" [class.selected]="hero.id === selectedId">
+        <a [routerLink]="['/hero', hero.id]">
+          <span class="badge">{{ hero.id }}</span>{{ hero.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="panel panel-warning">
+  <div class="panel-heading">组件一直使用(不销毁) 订阅 paramsMap 变化的情况</div>
+  <div class="panel-body">
+    <ng-container *ngFor="let hero of heroes$ | async">
+      <a [routerLink]="['/hero-muti', hero.id]" routerLinkActive="badge-active">
+        <span class="badge">{{ hero.id }}</span>
+      </a>
+    </ng-container>
+
+    <app-hero-reuse-component></app-hero-reuse-component>
+  </div>
+</div>

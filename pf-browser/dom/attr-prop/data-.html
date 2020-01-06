@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div data-my-name="nilinli" data-my-age="23" data-location="WuHan" id="myDiv">haha</div>
+    <!-- <div data-name="nilinli" data-age="23" data-location="WuHan" id="myDiv">haha</div> -->
+
+
+    <script>
+        var myDiv = document.getElementById('myDiv');
+
+        // 1.0 古老的方法
+        var attrs = myDiv.attributes;
+        var expense = {};
+        for (var  i = 0; i < attrs.length; i++) {
+            if (attrs[i].name.substring(0, 5) == 'data-') {
+                expense[attrs[i].name.substring(5)] = attrs[i].value;
+            }
+        }
+
+        // 2.0 HTML5 DOM 新特性
+        var H5dataset = myDiv.dataset;
+
+
+        console.log(expense);
+        console.log(H5dataset);
+    </script>
+
+</body>
+
+</html>

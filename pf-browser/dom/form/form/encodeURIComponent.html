@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>URI编码</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+</body>
+
+<script>
+
+  // URI字符合集
+  // URI中允许出现的US-ASC II 字符的子集。
+  // 1.未保留 [A-Za-z0-9] | "-" | "_" | "." | "!" | "~" | "*" | "'" | "("|")"
+  // 2.保留 (在URI中有特殊含义) ";" | "/" | "?" | ":" | "@" | "&" | "=" | "" | "$" | ","
+  // 3.转义 "%"<HEX><HEX>
+
+  // 需要转义的字符：1.保留字符 2.不安全字符
+
+  // 如果你不转义的话, 保留字和不安全字符在 URL 中有特定的意义, 会造成 URL 解析错误(键值对解析不出来)
+  // 1. get 方式
+  // 2. application/x-www-form-urlencoded 的 POST 方式
+
+  // JS中相关的方法
+  // 1.URI编码方法 --> 对URL进行编码, 发送给浏览器
+  // 	1.1 encodeURI()           --> 整个uri进行编码, 过滤特殊字符, 基本很少使用
+  //	1.2 encodeURIComponent()  --> 对一段文字进行编码, 编码要求等级高
+
+  var uri1 = 'http://www.wrox.com/illegal value.html#start';
+  console.log(`encodeURI():${encodeURI(uri1)}`);
+  console.log(`encodeURIComponent():${encodeURIComponent(uri1)}`);
+
+  var testStr = '你好 摩托';
+  console.log(encodeURIComponent(testStr));
+  console.log(decodeURIComponent(encodeURIComponent(testStr)));
+
+
+</script>
+
+</html>

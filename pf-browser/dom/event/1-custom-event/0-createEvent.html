@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>create Event</title>
+</head>
+
+<body>
+    <button id="myBtn1">button1</button>
+</body>
+
+<script>
+    var btn = document.getElementById('myBtn1');
+    var event,
+        hasSupportCustomEvents = document.implementation.hasFeature('CustomEvents', '3.0');
+
+    if (hasSupportCustomEvents) {
+        event = document.createEvent('CustomEvent');
+        event.initCustomEvent('myevent', true, false, 'Hello world!');
+    }
+
+    btn.addEventListener('myevent', function (event) {
+        console.log('DIV: ' + event.detail);
+    });
+
+    document.addEventListener('myevent', function (event) {
+        console.log('DOCUMENT: ' + event.detail);
+    });
+
+    if (hasSupportCustomEvents) {
+        btn.dispatchEvent(event);
+    }
+
+</script>
+
+</html>

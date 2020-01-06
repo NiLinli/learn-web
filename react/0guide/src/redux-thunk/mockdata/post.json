@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Some Article",
+    "id": 1,
+    "author": {
+      "id": 1,
+      "name": "Dan"
+    }
+  },
+  {
+    "id": 2,
+    "title": "other Article",
+    "author": {
+      "id": 1,
+      "name": "Dan"
+    }
+  }
+]

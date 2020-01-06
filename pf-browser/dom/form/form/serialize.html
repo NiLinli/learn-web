@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>序列化 (Serialization):将对象的状态信息转换为可以 存储 或 传输 的形式的过程</h1>
+    <h2>浏览器默认提交表单时候，序列化表单的规则</h2>
+    <ul>
+        <li>不发送的:</li>
+        <li>不发送 type 为"reset"和"button"的按钮</li>
+        <li>不发送禁用的表单字段disabled</li>
+        <li>发送的:</li>
+        <li>对表单字段的名称和值进行 URL 编码，使用和号（&）分隔</li>
+        <li>只发送勾选了的复选框和单选按钮</li>
+        <li>多选选择框中的每个选中的值单独一个条目</li>
+        <li>点击提交按钮的时候，type为submit的input发送，ajax不发送</li>
+    </ul>
+    <form id="myForm">
+        <label class="radio-inline">
+            <input type="radio" name="rd" value="option1"> 1
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="rd" value="option2"> 2
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="rd" value="option3"> 3
+        </label>
+
+
+        <div class="checkbox">
+            <input type="checkbox" name="cb" id="" value="apple"> apple
+            <input type="checkbox" name="cb" id="" value="sony"> sony
+            <input type="checkbox" name="cb" id="" value="microsoft"> microsoft
+            <input type="checkbox" name="cb" id="" value="google"> google
+        </div>
+
+
+        <select class="form-control" name="sl1">
+            <option value="1value">1text</option>
+            <option value="2value">2text</option>
+            <option value="3value">3text</option>
+            <option value="4value">4text</option>
+            <option value="">5text</option>
+        </select>
+
+        <div class="form-control">
+            <label for="txt">disabled</label>
+            <input type="text" name="txt" id="txt" value="diabled" disabled>
+        </div>
+
+        <select class="form-control" multiple name="sl2">
+            <option value="001">1text</option>
+            <option value="002">2text</option>
+            <option value="003">3text</option>
+        </select>
+
+        <input type="submit" name="submit" value="submit">
+    </form>
+
+    <button id="btn">serialize form</button>
+
+</body>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+
+<script>
+
+    var myForm = document.getElementById('myForm'),
+        mfElements = myForm.elements;
+
+
+    $('#btn').on('click', function () {
+        console.log(serialize(myForm));
+        console.log($(myForm).serialize());             // jQuery中提供的方式
+    });
+
+    function serialize(form) {
+        var parts = [],
+            field = null,
+            i, len, j, optLen, option, optValue;
+        // 遍历一遍elements 数组
+        for (i = 0, len = form.elements.length; i < len; i++) {
+            field = form.elements[i];
+            // 禁用的不发送
+            if (field.disabled) {
+                continue;
+            }
+            switch (field.type) {
+                case "select-one":
+                case "select-multiple":
+                    if (field.name.length) {
+                        for (j = 0, optLen = field.options.length; j < optLen; j++) {
+                            option = field.options[j];
+                            if (option.selected) {
+                                optValue = "";
+                                if (option.hasAttribute) {
+                                    optValue = (option.hasAttribute("value") ?
+                                        option.value : option.text);
+                                } else {
+                                    optValue = (option.attributes["value"].specified ? option.value : option.text);
+                                }
+                                parts.push(encodeURIComponent(field.name) +
+                                    "=" + encodeURIComponent(optValue));
+                            }
+                        }
+                    }
+                    break;
+                case undefined: //字段集
+                case "file": //文件输入 
+                case "submit": //提交按钮 
+                case "reset": //重置按钮 
+                case "button": //自定义按钮 
+                    break;
+                case "radio": //单选按钮 
+                case "checkbox": //复选框 
+                    if (!field.checked) {
+                        break;
+                    }
+                // 执行默认操作
+                default: // 不包含没有名字的表单字段
+                    if (field.name.length) {
+                        parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(field.value));
+                    }
+            }
+        }
+        return parts.join("&");
+    }
+
+
+</script>
+
+</html>

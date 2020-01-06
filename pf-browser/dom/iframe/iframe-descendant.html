@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iframe</title>
+</head>
+
+<body>
+
+
+    <a href="#b1">b1</a>
+    <a href="#b2">b2</a>
+    <a href="#b3">b3</a>
+    <button id="btn1">parent 后退</button>
+    <button id="btn2">self 后退</button>
+
+</body>
+
+<script>
+    var foo = 'foo-iframe';
+    console.log('iframe self === parent is :' + (self === parent)); // false
+    console.log('parent.foo = ' + parent.foo);
+
+    document.getElementById('btn1').addEventListener('click', function () {
+        parent.history.go(-1);
+    });
+
+    document.getElementById('btn2').addEventListener('click', function () {
+        history.go(-1);
+    });
+
+    window.addEventListener('hashchange', function () {
+        console.log(location.href);
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>focus event</title>
+
+  <style>
+    input{
+      border-radius: 4px;
+      width: 200px;
+      height: 60px;
+    }
+
+    input:focus{
+      box-shadow: blue 1px 1px;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="text" id="txt">
+</body>
+<script>
+  var txt = document.getElementById('txt');
+
+  // 所有浏览器都支持 
+  txt.addEventListener('focus', function (e) {
+    console.log('focus');
+  });
+
+  // 冒泡版本的 focus
+  txt.addEventListener('focusin', function (e) {
+    console.log('focusin');
+  });
+
+  txt.addEventListener('blur', function (e) {
+    console.log('blur');
+  });
+
+  // 冒泡版本的 focusout
+  txt.addEventListener('focusout', function (e) {
+    console.log('focusout');
+  });
+</script>
+
+</html>

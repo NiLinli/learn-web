@@ -1,0 +1,13 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">Do check 配合 differs 检查 Angular 自身无法捕获的变更并采取行动</h3>
+  </div>
+  <div class="panel-body">
+    <app-comment *ngFor="let comment of comments" [comment]="comment" (removeEvent)="removeComment($event)">
+    </app-comment>
+
+    <button class="btn btn-primary" (click)="addComment()">
+      Add
+    </button>
+  </div>
+</div>

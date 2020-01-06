@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  
+</body>
+
+<script>
+  // 全局混入
+  Vue.mixin({
+    created: function() {
+      var myOption = this.$options.myOption;
+      if (myOption) {
+        console.log(myOption);
+      }
+    }
+  })
+
+  var myMixin = {
+    created: function() {
+      this.hello();
+    },
+    methods: {
+      hello: function() {
+        console.log('hello from mixin');
+      }
+    }
+  }
+
+  var Component = Vue.extend({
+    mixins: [myMixin]
+  });
+
+  var component = new Component({
+    myOption: 'Component Vue'
+  });
+
+  var mixin = {
+    data: function() {
+      return {
+        message: 'hello',
+        foo: 'abc'
+      }
+    },
+    created: function() {
+      console.log('混入对象的钩子被调用');
+    },
+    methods: {
+      foo: function () {
+        console.log('foo')
+      },
+      conflicting: function () {
+        console.log('from mixin')
+      }
+    }
+  }
+
+  var vm = new Vue({
+    myOption: 'Vue vue',
+    mixins: [mixin],
+    data: function() {
+      return {
+        message: 'goodbye',
+        bar: 'def'
+      }
+    },
+    created: function() {
+      // 都会被调用 1. 混入 2. 组件 
+      console.log('组件钩子被调用')
+    },
+    methods: {
+      bar: function () {
+        console.log('bar')
+      },
+      conflicting: function () {
+        console.log('from self')
+      }
+    }
+  });
+
+  console.log(vm.message);    // 组件优先
+  vm.conflicting();           // 组件优先
+  
+
+
+
+
+  // 自定义覆盖方式
+</script>
+</html>

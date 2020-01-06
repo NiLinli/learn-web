@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>file</title>
+    <style>
+        .preview {
+            width: 200px;
+        }
+
+        /* input[type='file'] {
+            opacity: 0;
+        } */
+    </style>
+</head>
+
+<body>
+    <h3>单个文件</h3>
+    <input type="file" name="myFile" id="myFile">
+    <div class="preview">
+        <p>No files currently selected for upload</p>
+    </div>
+    <h3>多个文件</h3>
+    <input type="file" name="myFile2" id="myFile2" multiple>
+
+    <h3>定制 file</h3>
+    <input type="file" id="customFile" multiple accept="image/*" style="display:none">
+    <a href="#" id="fileSelect">Select some files</a>
+
+</body>
+
+
+<script>
+    var myFile = document.getElementById('myFile'),
+        myFile2 = document.getElementById('myFile2'),
+        preview = document.querySelector('.preview');
+
+    myFile.addEventListener('change', function () {
+
+        console.log(this.value);
+        // console.log(this.files);
+        // console.log(this.value);
+        updateImageDisplay();
+    });
+
+    function updateImageDisplay() {
+        while (preview.firstChild) {
+            preview.removeChild(preview.firstChild);
+        }
+
+        var curFiles = myFile.files;
+        if (curFiles.length === 0) {
+            var para = document.createElement('p');
+            para.textContent = 'No files currently selected for upload';
+            preview.appendChild(para);
+        } else {
+            var list = document.createElement('ol');
+            preview.appendChild(list);
+            for (var i = 0; i < curFiles.length; i++) {
+                var listItem = document.createElement('li');
+                var para = document.createElement('p');
+                if (validFileType(curFiles[i])) {
+                    para.textContent = 'File name ' + curFiles[i].name + ', file size ' + returnFileSize(curFiles[i].size) + '.';
+                    var image = document.createElement('img');
+                    image.src = window.URL.createObjectURL(curFiles[i]);  // ie 10+
+
+                    listItem.appendChild(image);
+                    listItem.appendChild(para);
+
+                } else {
+                    para.textContent = 'File name ' + curFiles[i].name + ': Not a valid file type. Update your selection.';
+                    listItem.appendChild(para);
+                }
+
+                list.appendChild(listItem);
+            }
+        }
+    }
+
+    var fileTypes = [
+        'image/jpeg',
+        'image/pjpeg',
+        'image/png'
+    ]
+
+    function validFileType(file) {
+        for (var i = 0; i < fileTypes.length; i++) {
+            if (file.type === fileTypes[i]) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function returnFileSize(number) {
+        if (number < 1024) {
+            return number + 'bytes';
+        } else if (number > 1024 && number < 1048576) {
+            return (number / 1024).toFixed(1) + 'KB';
+        } else if (number > 1048576) {
+            return (number / 1048576).toFixed(1) + 'MB';
+        }
+    }
+</script>
+
+
+<script>
+    // 唤醒自定义样式 file
+    var customFile = document.getElementById('customFile'),
+        fileSelect = document.getElementById('fileSelect');
+
+
+    fileSelect.addEventListener('click', function (e) {
+        if (customFile) {
+            customFile.click();
+        }
+
+        e.preventDefault();
+    });
+
+    customFile.addEventListener('change', function (e) {
+        console.log(this.files);
+    });
+
+
+</script>
+
+</html>

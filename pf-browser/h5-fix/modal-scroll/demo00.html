@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+    body.modal-open {
+      position: fixed;
+      width: 100%;
+    }
+
+    #openOverlay {
+      border-radius: 1000px;
+      height: 100px;
+      background-color: white;
+    }
+
+    div.content {
+      height: 2000px;
+      background-color: darksalmon;
+    }
+
+    div.mask {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, .5);
+      overflow: scroll;
+      display: none;
+    }
+
+    div.mask-content {
+
+    }
+  </style>
+</head>
+<body>
+  <button id="openOverlay">openOverlay</button>
+  <div class="content">
+    content
+  </div>
+
+  <div class="mask" id="mask">
+    <button id="closeOverlay">closeOverlay</button>
+    <div class="mask-content">
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+      <p>omg</p>
+    </div>
+  </div>
+
+
+  <script>
+    var openOverlay = document.getElementById('openOverlay'),
+      closeOverlay = document.getElementById('closeOverlay'),
+      mask = document.getElementById('mask');
+
+    var ModalHelper = (function(bodyCls) {
+      var scrollTop;
+      return {
+        afterOpen: function() {
+          scrollTop = document.scrollingElement.scrollTop;
+          document.body.classList.add(bodyCls);
+          document.body.style.top = -scrollTop + 'px';
+        },
+        beforeClose: function() {
+          document.body.classList.remove(bodyCls);
+          // scrollTop lost after set position:fixed, restore it back.
+          document.scrollingElement.scrollTop = scrollTop;
+        }
+      };
+    })('modal-open');
+
+    openOverlay.addEventListener('click', function() {
+      mask.style = 'display: block;'
+      ModalHelper.afterOpen();
+    });
+    closeOverlay.addEventListener('click', function() {
+      mask.style = 'display: none;'
+      ModalHelper.beforeClose();
+    });
+  </script>
+</body>
+</html>

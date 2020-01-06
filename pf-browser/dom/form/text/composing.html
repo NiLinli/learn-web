@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>text 相关</title>
+</head>
+
+<body>
+    <h3>number 类型</h3>
+    <input type="number" id="inputNumber" maxlength="4">
+    <p>number不支持maxlength</p>
+
+
+    <h3>text 类型</h3>
+    <input type="divtype" id="inputText" maxlength="4">
+    <p>text支持maxlength</p>
+
+    <h3>textarea</h3>
+    <textarea name="" id="area" cols="30" rows="10"></textarea>
+
+    <h3>input 事件处理中文输入数据</h3>
+    <input type="text" id="ipt1">
+
+    <h3>中文输入 input 响应次数</h3>
+    <button id="ipt2Btn">点击 button 使中文键盘未成功 composing, input 事件</button>
+    <input type="text" id="ipt2" maxlength="10">
+    <ul id="ipt2Value"></ul>
+    
+
+</body>
+
+<script>
+    var inputNumber = document.getElementById('inputNumber'),
+        inputText = document.getElementById('inputText'),
+        area = document.getElementById('area'),
+        ipt1 = document.getElementById('ipt1'),
+        ipt2 = document.getElementById('ipt2'),
+        ipt2Value = document.getElementById('ipt2Value'),
+        ipt2Btn = document.getElementById('ipt2Btn');
+
+    inputNumber.onchange = function (event) {
+        console.log(typeof inputNumber.value);
+        console.log(inputNumber.value);
+    }
+
+    // 中文键盘输入
+    // 1. input 事件会处理 中文键盘输入时候的数据
+    // 2. maxlength 
+    // 3. 中文输入超过 maxlength 截取后的 value
+    inputNumber.oninput = function () {
+        console.log(this.value);                // 输入好了的变量
+        // 模拟 maxlength
+        if (this.value.length >= 3) {
+            this.value = this.value.substring(0, 3);
+        }
+    }
+
+
+    inputText.addEventListener('focus', function () {
+        // focus 了之后全选文字, 提升用户体验
+        inputText.select();
+    });
+
+
+    var canHandleInput;
+    ipt2.addEventListener('compositionstart', onCompositionStart);
+    ipt2.addEventListener('compositionend', onCompositionEnd);
+    ipt2.addEventListener('change', onCompositionEnd);
+
+    function onCompositionStart(e) {
+        e.target.composing = true
+    }
+
+    function onCompositionEnd(e) {
+        // prevent triggering an input event for no reason
+        if (!e.target.composing) return
+        e.target.composing = false
+        trigger(e.target, 'input')
+    }
+
+    function trigger(el, type) {
+        const e = document.createEvent('HTMLEvents');
+        e.initEvent(type, true, true);
+        el.dispatchEvent(e);
+    }
+
+    // 中文输入 不点空格 不点确认 点击其他按键
+    // 手机端 Safari 响应三次
+    // 1. 最新值 输入的带全角的最新值
+    // 2. 原有值 
+    // 3. 最新值 最新值被截取的值 maxlength
+    ipt2.addEventListener('input', function (event) {
+        if (!event.target.composing) {
+            ipt2Value.innerHTML += '<li>'+ event.target.value +'</li>';
+        }
+    })
+
+    ipt2Btn.addEventListener('click', function () {
+        alert(ipt2.value);
+    });
+
+
+
+</script>
+
+</html>

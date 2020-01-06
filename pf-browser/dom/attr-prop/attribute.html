@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>attribute</title>
+</head>
+
+<body>
+    <input type="text" value="123" id="myInput">
+    <button id="btn">getAttribute</button>
+    <div id="print">
+
+    </div>
+</body>
+
+<script>
+    var myInput = document.getElementById('myInput');
+
+    myInput.setAttribute('value', 'test Attr');
+
+    var print = document.getElementById('print');
+    print.innerHTML = 'myInput.value = ' + myInput.value + '-----------------------' + 'myInput.getAttribute("value") = ' + myInput.getAttribute('value');
+
+    document.getElementById('btn').onclick = function(){
+        print.innerHTML += myInput.getAttribute('value');
+    };
+</script>
+<!-- ff ie11 -->
+<!-- chrome : HTML标签改变。 -->
+<!-- myInput.value = test Attr-----------------------myInput.getAttribute("value") = test Attr -->
+
+<!-- IE 8: HTML 标签改变-->
+<!-- myInput.value = test Attr-----------------------myInput.getAttribute("value") = test Attr -->
+
+
+</html>

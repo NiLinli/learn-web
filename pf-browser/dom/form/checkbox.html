@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="" method="get" id="myForm">
+        <input type="checkbox" name="football" value="0"> 曼联
+        <input type="checkbox" name="football" value="1"> 曼城
+        <input type="checkbox" name="football" value="2"> 阿森纳
+    </form>
+
+    <button id="btn">btn1</button>
+
+</body>
+<script>
+
+
+    var myForm = document.getElementById('myForm'),
+        elements = myForm.elements,
+        btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function () {
+        elements[0].checked = true;
+
+        elements[1].checked = true;
+
+        setTimeout(() => {
+            elements[0].checked = true;
+        }, 5000);
+    });
+
+    Array.prototype.forEach.call(elements['football'], function (checkbox) {
+        checkbox.addEventListener('change', function (e) {
+            console.log('change: ' + e.target.value);
+        });
+        // 没有 input 事件
+        checkbox.addEventListener('input', function (e) {
+            console.log('input: ' + e.target.value);
+        });
+        checkbox.addEventListener('click', function (e) {
+            console.log('click: ' + e.target.value);
+        });
+    });
+
+
+
+
+
+</script>
+
+</html>

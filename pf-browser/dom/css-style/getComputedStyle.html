@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #myP {
+            background-color: pink;
+            border: 1px solid #000;
+        }
+
+        #myP::after {
+            content: 'after';
+            color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <p id="myP" style="background-color:yellow;float:right;">1231312</p>
+
+</body>
+
+<script>
+
+    var myP = document.getElementById('myP');
+
+    var computedStyle = document.defaultView.getComputedStyle(myP, null),
+        afterComputedStyle = document.defaultView.getComputedStyle(myP, ':after');
+
+    console.log(computedStyle.backgroundColor);
+    console.log(computedStyle.border);   // 综合属性，不一定在所有浏览器中都有返回值
+    console.log(computedStyle.visibility); // 有的默认值也会因为浏览器而不同 ，有的位 visible 有的位inherit
+    console.log(afterComputedStyle.color);
+
+    // 兼容ie
+    function getComputedStyle1(elem) {
+        if (elem.currentStyle) {
+            return elem.currentStyle;
+        } else {
+            return document.defaultView.getComputedStyle(elem, null);
+        }
+    }
+
+    console.log(getComputedStyle1(myP));
+
+</script>
+
+</html>

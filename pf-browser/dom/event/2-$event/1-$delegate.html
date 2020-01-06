@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>js delegate</h1>
+    <ul id="myUl1">
+        <li class="son">son1</li>
+        <li class="son">son2</li>
+        <li class="son">son3</li>
+        <li class="son">son4</li>
+        <li>son5</li>
+        <li>son6</li>
+    </ul>
+
+    <h1>jQuery delegate</h1>
+    <ul id="myUl2">
+        <li class="son">son1</li>
+        <li class="son">son2</li>
+        <li class="son">son3</li>
+        <li class="son">son4</li>
+        <li>son5</li>
+        <li>son6</li>
+    </ul>
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+
+<script>
+    // 普通
+    var myUl1 = document.getElementById('myUl1');
+    myUl1.addEventListener('click', function (event) {
+        var delegateTarget = this,  // 委托目标元素： 实际注册事件的元素
+            currentTarget = event.target || event.srcElement; // 目标元素
+
+        console.log(delegateTarget);
+        console.log(currentTarget);
+    });
+
+
+    // jQuery 
+    var $myUl2 = $('#myUl2');
+    $myUl2.on('click', 'li.son', function ($event) {
+        var delegateTarget = $event.delegateTarget,
+            currentTarget = this;
+
+        console.log(delegateTarget);
+        console.log(currentTarget);
+    });
+</script>
+
+</html>

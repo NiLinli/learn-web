@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="myDiv">myDiv</div>
+    <button id="btn">dispatchEvent</button>
+
+</body>
+
+<script>
+    // 创建一个支持冒泡且不能被取消的look事件 
+    var ev = new Event('look', {
+        'bubbles': true,
+        'cancelable': false
+    });
+
+    document.addEventListener('look', function () {
+        console.log('document look');
+    });
+
+    myDiv.addEventListener('look', function () {
+        console.log('myDiv look');
+    });
+
+    var btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function () {
+        document.dispatchEvent(ev);
+        myDiv.dispatchEvent(ev);
+    });
+</script>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>real time input</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.js"></script>
+</head>
+
+<body>
+  <div id="searchBox">
+    <h3>模糊城市查询</h3>
+    <div id="search-form">
+      <input type="text" id="search-input" @input="queryCity" v-model="searchStr">
+    </div>
+
+    <div id="search-box">
+      <div id="suggestions">
+        <ul>
+          <li v-for="item in searchResult">{{ item.name }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+<script>
+
+  // debounce 控制发送 ajax 请求次数
+  // 处理 ajax 返回数据, 只响应最后一次
+  new Vue({
+    el: '#searchBox',
+    data: {
+      searchStr: '',
+      searchResult: [],
+      fetchCounter: 0
+    },
+    methods: {
+      queryCity: _.debounce(function() {
+
+        this.fetchCounter ++;
+        let nowFetchNum = this.fetchCounter;
+        
+        fetch('https://h5.133.cn/hangban/basic/search_airport?q=' + encodeURIComponent(this.searchStr))
+          .then(res => res.json())
+          .then(result => {
+
+            if (nowFetchNum === this.fetchCounter) {
+              this.searchResult = result;
+              console.log(result)
+            }
+         
+          });
+
+      }, 500)
+    }
+
+  });
+
+
+</script>
+
+</html>

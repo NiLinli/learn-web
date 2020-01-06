@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h3>innerHTML</h3>
+  <div id="test1"></div>
+  <h3>innerText</h3>  
+  <div id="test2"></div>  
+
+  <h3>↵</h3>
+  <div id="test3"></div>  
+</body>
+<script>
+
+  console.log('\n'.charCodeAt(0));
+  console.log(JSON.stringify( String.fromCharCode(13)));
+
+  var str = '123\n456\n789';
+  // str = str.replace(/\n/g, '',);
+  var test1 = document.getElementById('test1'),
+    test2 = document.getElementById('test2'),
+    test3 = document.getElementById('test3');
+
+  test1.innerHTML = str;
+  console.log(test1.innerHTML);
+
+  // 将换行变为 <br> 
+  test2.innerText = str;
+  console.log(test2.innerText);
+
+  var str1 = '123↵456↵567↵↵↵↵3234';
+  test3.innerHTML = str1;
+
+
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <a id="a" href="#123">hehe</a>
+
+    <div id="parent2">
+        <button id="myBtn2">button2</button>
+    </div>
+
+
+    <button id="btn1">trigger myBtn2 click</button>
+    <button id="btn2">trigger a click </button>
+
+</body>
+
+<script>
+
+    var parent2 = document.getElementById('parent2'),
+        myBtn2 = document.getElementById('myBtn2'),
+        a = document.getElementById('a'),
+        btn1 = document.getElementById('btn1'),
+        btn2 = document.getElementById('btn2');
+
+    // 自定义事件与 build in 事件名一样
+    var clickEvent = document.createEvent('MouseEvent');
+    clickEvent.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0,
+        null);
+
+    myBtn2.addEventListener('click', function () {
+        console.log('btn2 click');
+    }, false);
+
+    parent2.addEventListener('click', function () {
+        console.log('parent2 click');
+    });
+
+    btn1.addEventListener('click', function (event) {
+        sendClick(myBtn2, event);
+    });
+
+    btn2.addEventListener('click', function (event) {
+        a.dispatchEvent(clickEvent);
+    });
+
+    function sendClick(targetElement, event) {
+        var clickEvent;
+
+        clickEvent = document.createEvent('MouseEvents');
+        clickEvent.initMouseEvent('click', true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        // clickEvent.initMouseEvent('click', true, true, window, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, false, false, false, false, 0, null);
+        // clickEvent.forwardedTouchEvent = true;
+        targetElement.dispatchEvent(clickEvent);
+    };
+
+
+</script>
+
+</html>

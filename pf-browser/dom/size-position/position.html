@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>position</title>
+    <style>
+        #parent {
+            width: 500px;
+            height: 2000px;
+            margin: 20px 30px;
+            border: 10px solid black;
+            overflow: scroll;
+        }
+
+        #child {
+            width: 100px;
+            height: 3000px;
+            margin: 10px 15px;
+            border: 3px dashed red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="parent">
+        <div id="child"></div>
+    </div>
+
+</body>
+
+<script src="./coordinates.js"></script>
+
+<script>
+    var child = document.getElementById('child');
+    var parent = document.getElementById('parent');
+
+    parent.scrollTop = 100;
+
+    window.addEventListener('scroll', function () {
+        console.log(getElementPosition(child));
+        console.log(child.getBoundingClientRect());
+        console.log(getBoundingClientRect(child));
+    });
+
+</script>
+
+</html>

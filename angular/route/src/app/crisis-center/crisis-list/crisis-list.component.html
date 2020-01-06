@@ -1,0 +1,17 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        危机列表
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let crisis of crises$ | async" [class.list-group-item-info]="crisis.id === selectedId">
+                <a (click)="goToDetail(crisis.id )">
+                    <span class="badge">{{ crisis.id }}</span>{{ crisis.name }}
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-body">
+        <router-outlet></router-outlet>
+    </div>
+</div>

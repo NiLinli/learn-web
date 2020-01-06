@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>audio</title>
+</head>
+
+<body>
+    <audio src="./menu_click06.wav" volume="0" autoplay>
+        Your browser does not support the
+        <code>audio</code> element.
+    </audio>
+
+    <audio id="clickAudio" src="./menu_click06.wav" controls>
+        Your browser does not support the
+        <code>audio</code> element.
+    </audio>
+
+    <button id="btn">click 声音111112</button>
+
+
+</body>
+
+<script>
+
+    var i = 0;
+
+
+    var clickAudio = document.getElementById('clickAudio'),
+        btn = document.getElementById('btn');
+
+
+    document.addEventListener('click', function () {
+        console.log(++i);
+
+
+        clickAudio.load();
+        clickAudio.play();
+
+    }, true);
+
+    clickAudio.addEventListener('ended', function () {
+        console.log(Date.now());
+    });
+
+
+
+    btn.addEventListener('click', function () {
+        for (var i = 0; i < 100; i++) {
+            console.log(1)
+        }
+    });
+
+</script>
+
+</html>

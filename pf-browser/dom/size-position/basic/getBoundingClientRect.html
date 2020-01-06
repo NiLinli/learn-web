@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>getBoundingClientRect</title>
+    <style>
+        div {
+            height: 1000px;
+            background-color: yellow;
+        }
+
+        #test1 {
+            width: 200.1px;
+            margin-left: 10.3px;
+            margin-top: 20.1px;
+        }
+
+        #test2 {
+            width: 200.6px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="test1">
+
+    </div>
+
+    <div id="test2">
+
+    </div>
+
+</body>
+
+<script src="../coordinates.js"></script>
+<script>
+    var test1 = document.getElementById('test1'),
+        test2 = document.getElementById('test2');
+
+    var react = test1.getBoundingClientRect();  // ie5 implement -> all browser
+    console.log('test1.getBoundingClientRect() = %o', react);
+
+    var scrollOffsets = getScrollOffsets();
+
+    // 转换为 document coordinate 标准化 react
+    // var width = react.right - react.left;
+    // var height = react.bottom - react.top;
+    react.width = react.width || (react.right - react.left);
+    react.height = react.height || (react.bottom - react.top);
+    console.log(react);
+
+    var domLeft = react.left + scrollOffsets.x;
+    var domRight = react.top + scrollOffsets.y;
+
+    console.log('------------------');
+    console.log('test1.clientWidth = %f', test1.clientWidth);       // 200
+    console.log('test2.clientWidth = %f', test2.clientWidth);       // 201
+
+
+
+</script>
+
+</html>

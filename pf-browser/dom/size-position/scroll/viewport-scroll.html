@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全局滚动</title>
+    <style>
+        p {
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">btn1</button>
+    <button id="btn2">btn2</button>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+</body>
+
+<script src="../coordinates.js"></script>
+<script>
+    var documentHeight = document.documentElement.offsetHeight;
+    var viewportHeight = getViewportSize().h;
+
+    console.log(documentHeight, getDocumentSize().h);
+
+    document.getElementById('btn1').addEventListener('click', function () {
+        // 滚到底
+        // window.scrollTo(0, documentHeight - viewportHeight);
+        window.scrollTo({
+            left: 0,
+            top: documentHeight - viewportHeight,
+            behavior: 'smooth'
+        });
+    });
+
+    document.getElementById('btn2').addEventListener('click', function () {
+        document.documentElement.scrollTop = 100000;        // chrome ok
+        // document.body.scrollTop = 100000;                // chrome failed
+    });
+
+    window.addEventListener('scroll', function () {
+        console.log('window srcoll');
+    });
+
+    document.addEventListener('scroll', function () {
+        console.log('document srcoll');
+    });
+
+    // document.body.addEventListener('scroll', function () {
+    //     console.log('body srcoll');
+    // });
+
+    // document.documentElement.addEventListener('scroll', function () {
+    //     console.log('documentElement srcoll');
+    // });
+
+</script>
+
+</html>

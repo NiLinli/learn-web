@@ -1,0 +1,37 @@
+<mat-sidenav-container  (backdropClick)="sidenavEnd.close()">
+  <!-- postion='start' 可以省略 -->
+  <mat-sidenav 
+    mode="push"
+    #sidenavStart
+    [(opened)]="openedStart"
+    (opened)="events.push('open!')"
+    (closed)="events.push('close!')"
+    fixedInViewport="true"
+    fixedBottomGap="20"
+    fixedTopGap="10"
+  >Start</mat-sidenav>
+  
+  <mat-sidenav-content>
+    <h4>sidenavStart</h4>
+    <p><mat-checkbox [(ngModel)]="openedStart">sidenavStart.opened</mat-checkbox></p>
+    <p><button mat-button (click)="sidenavStart.toggle()">sidenavStart.toggle()</button></p>
+    <h4>sidenavEnd</h4>
+    <p><mat-checkbox [(ngModel)]="openedEnd">sidenavEnd.opened</mat-checkbox></p>
+    <p><button mat-button (click)="sidenavEnd.toggle()">sidenavEnd.toggle()</button></p>
+    <p>Events:</p>
+    <div class="example-events">
+      <div *ngFor="let e of events">{{ e }}</div>
+    </div>
+  </mat-sidenav-content>
+
+  <mat-sidenav 
+    mode="push"
+    position="end"
+    #sidenavEnd
+    [(opened)]="openedEnd"
+    disableClose
+    (closedStart)="onClosedStart_end()"
+    (openedChange)="onOpenedChange_end()"
+    (openedStart)="onOpenedStart_end()"
+  >End</mat-sidenav>
+</mat-sidenav-container>

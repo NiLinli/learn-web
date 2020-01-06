@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="" method="get" id="myForm">
+        <input type="radio" name="rd" value="1">1t
+        <input type="radio" name="rd" value="2">2t
+        <input type="radio" name="rd" value="3">3t
+    </form>
+
+    <button id="btn">btn1</button>
+
+</body>
+<script>
+
+
+    var myForm = document.getElementById('myForm'),
+        elements = myForm.elements,
+        btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function () {
+        elements[0].checked = true;
+
+        elements[1].checked = true;
+
+        setTimeout(() => {
+            elements[0].checked = true;
+        }, 5000);
+    });
+
+    Array.prototype.forEach.call(elements['rd'], function (radio) {
+        radio.addEventListener('change', function (e) {
+            console.log('change: ' + e.target.value);
+        });
+        // 没有 input 事件
+        radio.addEventListener('input', function (e) {
+            console.log('input: ' + e.target.value);
+        });
+        radio.addEventListener('click', function (e) {
+            console.log('click: ' + e.target.value);
+        });
+    });
+
+    // 即使是通过改变property, 选中一个后, 其他的checked为false
+    // 但是改变property, 不会响应 change事件
+
+
+
+</script>
+
+</html>

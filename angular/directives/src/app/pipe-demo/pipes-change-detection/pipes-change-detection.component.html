@@ -1,0 +1,41 @@
+<h4>New hero:</h4>
+<input class="form-control" type="text" #box (keyup.enter)="addHero(box.value)" placeholder="hero name and enter">
+<div class="clearfix">
+  <button class="btn btn-primary pull-right" (click)="reset()">Reset</button>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Heroes who fly (no piped)</h3>
+  </div>
+  <div class="panel-body">
+    <p class="bg-warning">说明不是ngfor的问题, 是管道没有运行, 所以没有 transform 回来新的值</p>
+    <div *ngFor="let hero of heroes">
+      {{hero.name}}
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Heroes who fly (pure piped default)</h3>
+  </div>
+  <div class="panel-body">
+    <div *ngFor="let hero of ( heroes | flyingHeros )">
+      {{hero.name}}
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Heroes who fly (impure piped)</h3>
+  </div>
+  <div class="panel-body">
+    <div *ngFor="let hero of ( heroes | flyingHerosImpure )">
+      {{hero.name}}
+    </div>
+  </div>
+</div>

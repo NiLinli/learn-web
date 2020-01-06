@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>text area</title>
+</head>
+
+<body>
+    <input type="text" id="txt">
+    <textarea name="" id="area" cols="30" rows="10"></textarea>
+</body>
+
+
+<script>
+    var txt = document.getElementById('txt'),
+        area = document.getElementById('area');
+
+
+    // 检测 '\n' 判断是否输入完成
+    function logValue(e) {
+        var target = e.target || e.srcElement,
+            value = target.value;
+
+        var index = value.indexOf('\n');
+        if (index !== -1) {
+            console.log(value);
+            target.value = value.substring(0, index)
+        }
+
+    }
+
+    txt.addEventListener('input', logValue);
+    area.addEventListener('input', logValue);
+
+
+
+
+
+</script>
+
+</html>

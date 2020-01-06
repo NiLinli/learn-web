@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>select</title>
+
+</head>
+
+<body>
+    <form id="myForm">
+        <select class="form-control" name="football">
+            <option value="0">曼联</option>
+            <option value="1">利物浦</option>
+            <option value="2">切尔西</option>
+            <option value="3">阿森纳</option>
+            <option value="4">曼城</option>
+        </select>
+    </form>
+
+    <button id="btn">更改 option</button>
+
+    <button id="btn1">增加 option</button>
+    <button id="btn2">移除 option</button>
+
+    <input type="text">
+
+</body>
+
+<script>
+
+    var myForm = document.getElementById('myForm'),
+        elements = myForm.elements;
+
+
+    var football = elements['football'];
+
+    football.addEventListener('change', function () {
+
+        // 1. 获取被选的项目的在options中的index 
+        var selectedIndex = this.selectedIndex;
+
+        // 2. 找到对应option
+        var selectedOption = this.options[selectedIndex];
+        console.log("Selected index: " + selectedIndex + "\nSelected text: " + selectedOption.text +
+            "\nSelected value: " + selectedOption.value);
+    });
+
+    football.addEventListener('input', function () {
+
+        // 1. 获取被选的项目的在options中的index 
+        var selectedIndex = this.selectedIndex;
+
+        // 2. 找到对应option
+        var selectedOption = this.options[selectedIndex];
+        console.log("Selected index: " + selectedIndex + "\nSelected text: " + selectedOption.text +
+            "\nSelected value: " + selectedOption.value);
+    });
+
+    document.getElementById('btn').addEventListener('click', function () {
+        football.selectedIndex = 3;
+        console.log(football.options[football.selectedIndex])
+    });
+
+
+    document.getElementById('btn1').addEventListener('click', function () {
+        // 添加选项
+        // 1 createElement--> appendChild ...
+        // 2 new Option
+        var newOption = new Option('new Option text', 'new Option value');
+        // sl1.appendChild(newOption);  不推荐 ie有问题
+        football.add(newOption, undefined); // 通用
+    });
+
+    document.getElementById('btn2').addEventListener('click', function () {
+        // 移除选项
+        // 1 removeChild()
+        // 2 remove()
+        football.remove(1);             // value
+        football.options[2] = null;     // value DOM出现之前的机制
+
+    });
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

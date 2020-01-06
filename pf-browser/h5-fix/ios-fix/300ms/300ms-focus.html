@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>focus</title>
+
+    <style>
+        input {
+            transition: border-color ease-in-out .20s, box-shadow ease-in-out .20s;
+        }
+
+        input:focus {
+            border-color: #66afe9;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="txt">
+</body>
+
+<script src="./fastclick.js"></script>
+
+<script>
+    if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function () {
+            FastClick.attach(document.body, { tapDelay: 100 });
+        }, false);
+    }
+</script>
+
+</html>

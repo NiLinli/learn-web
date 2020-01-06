@@ -2,4 +2,4 @@
 
 Personal Note.
 
-git 提交记录 [type]DESCRIPTION
+git 提交记录 [根文件夹] DESCRIPTION

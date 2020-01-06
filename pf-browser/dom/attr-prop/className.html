@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .bg-blue {
+            background-color: skyblue;
+        }
+
+        .bg-red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="myDiv" class="bg-red">
+        this is a div tag
+    </div>
+
+</body>
+
+<script>
+    var myDiv = document.getElementById('myDiv'),
+
+        initClassName = myDiv.className,
+        initClass = myDiv.getAttribute('class');
+
+    myDiv.className = 'bg-blue';
+
+    var changedClassName = myDiv.className,
+        changedClass = myDiv.getAttribute('class');
+
+    myDiv.innerHTML =
+        'initClass = ' + initClass + '<br>' +
+        'initClassName = ' + initClassName + '<br>' +
+        'changedClass = ' + changedClass + '<br>' +
+        'changedClassName = ' + changedClassName + '<br>';
+
+    // 改变class的prop ，attr会跟着变
+</script>
+
+
+</html>

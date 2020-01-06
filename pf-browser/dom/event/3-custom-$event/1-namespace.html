@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>namespace</title>
+</head>
+
+<body>
+    <div id="myDiv">myDiv</div>
+
+    <button id="btn1">trigger 2</button>
+    <button id="btn2">trigger all</button>
+    <button id="btn3">取消一个 custom.someNamespace</button>
+    <button id="btn4">取消所有 custom</button>
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    var $myDiv = $('#myDiv'),
+        $btn1 = $('#btn1'),
+        $btn2 = $('#btn2'),
+        $btn3 = $('#btn3'),
+        $btn4 = $('#btn4');
+
+
+    $myDiv.on('click.one1', function (event) {
+        console.log('click.one1');
+    });
+
+    $myDiv.on('click.one2', function (event) {
+        console.log('click.one2');
+    });
+
+    $myDiv.on('click.one3', function (event) {
+        $myDiv.trigger('click.one1');
+        $myDiv.off('click.one1');
+        console.log('click.one3');
+    });
+
+
+    // 自定义
+    $btn1.on('click', function () {
+        $myDiv.trigger('custom.someNamespace2');
+    });
+
+
+    $btn2.on('click', function () {
+        $myDiv.trigger('custom');
+    });
+
+    $btn3.on('click', function () {
+        $myDiv.off('custom.someNamespace2');
+    });
+
+    $btn4.on('click', function () {
+        $myDiv.off('custom');
+    });
+
+
+    $myDiv.on('custom.someNamespace', function (event) {
+        console.log('someNamespace')
+        console.log(event.namespace);
+    });
+
+    $myDiv.on('custom.someNamespace2', function (event) {
+        console.log('someNamespace2')
+        console.log(event.namespace);
+    });
+
+    $myDiv.on('custom.someNamespace3', function (event) {
+        console.log('someNamespace3')
+        console.log(event.namespace);
+    });
+
+
+
+</script>
+
+</html>

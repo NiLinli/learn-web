@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="123.html">
+        <input type="text" name="test" value="123" id="myInput">
+        <button type="submit">submit</button>
+    </form>
+
+    <div id="print">
+
+    </div>
+</body>
+
+<script>
+    var myInput = document.getElementById('myInput');
+
+    myInput.value = 'test property';
+
+    var print = document.getElementById('print');
+    print.innerHTML = 'myInput.value = ' + myInput.value + '-----------------------' + 'myInput.getAttribute("value") = ' + myInput.getAttribute('value');
+</script>
+<!-- ff ie11 -->
+<!-- chrome : HTML 标签未改变 -->
+<!-- myInput.value = test property-----------------------myInput.getAttribute("value") = 123 -->
+
+<!-- IE 8: HTML 标签改变-->
+<!-- myInput.value = test property-----------------------myInput.getAttribute("value") = test property -->
+
+
+
+</html>

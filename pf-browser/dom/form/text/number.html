@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>number</title>
+</head>
+<body>
+    <h3>input[type='tel']</h3>
+    <input type="tel" name="phone_tel" id="phoneTel" maxlength="11">
+
+    <h3>input[type='number']</h3>
+    <input type="number" name="phone_number" id="phoneNumber" maxlength="11">
+    <button id="btn1">获取 input 输入</button>
+    
+</body>
+
+<script>
+    var phoneTel = document.getElementById('phoneTel'),
+        phoneNumber = document.getElementById('phoneNumber'),
+        btn1 = document.getElementById('btn1');
+
+    btn1.addEventListener('click', function() {
+        alert(JSON.stringify({
+            phoneTel: phoneTel.value,
+            phoneNumber: phoneNumber.value
+        }))
+    });
+
+    // tel
+    //  - 引导数字键盘(IOS 不可以切换)
+    //  - maxlength 有效
+    //  - tel 即使粘贴了非数字, value 和 显示也是相对应的
+    // number
+    //  - 引导数字键盘(IOS 上面可以切换)
+    //  - maxlength 无效
+    //  - BUG: IOS 手机端可以非 number 类型, 输入之后 value 属性为空, 但是页面上面有显示
+
+</script>
+</html>

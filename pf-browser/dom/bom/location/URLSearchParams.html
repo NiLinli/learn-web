@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>URLSearchParams</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    var searchUrl = '?foo=1&bar=2';
+    let params = new URLSearchParams(searchUrl.slice(1));
+
+    // 没有新建
+    params.set('baz', 3);
+    // 有就覆盖
+    params.set('foo', 555);
+
+    params.append('hehe1', 'hehe1');
+    params.append('hehe1', 'hehe2');
+
+
+
+    console.log(params.toString());
+    console.log(params.get('hehe1'));
+    console.log(params.getAll('hehe1'));
+
+
+</script>
+
+</html>

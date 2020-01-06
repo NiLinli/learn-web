@@ -1,0 +1,46 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"> For instance, we may want to:</h3>
+  </div>
+  <div class="panel-body">
+    <ol class="list-group">
+      <li class="list-group-item">
+        substitute out the implementation of B for MockB during testing
+      </li>
+      <li class="list-group-item">
+        share a single instance of the B class across our whole app (e.g. the Singleton pattern)
+      </li>
+      <li class="list-group-item">
+        create a new instance of the B class every time it is used (e.g. the Factory pattern)
+      </li>
+      <li class="list-group-item">
+        Dependency Injection can solve these problems.
+        <br> Dependency Injection (DI) is a system to make parts of our program accessible to other parts of the program - and
+        we can configure how that happens.
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">概念</h3>
+  </div>
+  <div class="panel-body">
+    <ol class="list-group">
+      <li class="list-group-item">
+        在 Angular 中注册服务 , 组件中注入服务 (组件不用关系如何创建 dependencies, 只需要如何使用他，即可)
+      </li>
+      <li class="list-group-item">
+        Provider(提供商)：绘制token(class or string) 普通的类或者字符串 到依赖列表中，告诉Angular 怎么创建object
+      </li>
+      <li class="list-group-item">
+        Injector(注入器): 创建object
+      </li>
+      <li class="list-group-item">
+        Dependency: 被注入的对象
+      </li>
+    </ol>
+  </div>
+</div>
+

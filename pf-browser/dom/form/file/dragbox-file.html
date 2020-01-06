@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>drag box file</title>
+    <style>
+        #dropbox {
+            width: 200px;
+            line-height: 100px;
+            border: 1px dashed #000;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #preview {
+            width: 400px;
+        }
+
+        #preview img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dropbox">
+        拖放文件到此处
+    </div>
+
+    <div id="preview">
+
+    </div>
+
+
+</body>
+
+<script src="./handle-files.js"></script>
+<script>
+
+    var dropbox, preview;
+    preview = document.getElementById('preview');
+
+    dropbox = document.getElementById("dropbox");
+
+
+    dropbox.addEventListener("dragenter", dragenter, false);
+    dropbox.addEventListener("dragover", dragover, false);
+    dropbox.addEventListener("drop", drop, false);
+
+
+    function dragenter(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    function dragover(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
+
+    function drop(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        console.log(e);
+
+        var dt = e.dataTransfer;        // dateTransfer 中获取文件
+        var files = dt.files;
+
+        console.log(files);
+        handleFiles(files);
+    }
+
+    function handleFiles(files) {
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var imageType = /^image\//;
+
+            if (!imageType.test(file.type)) {
+                continue;
+            }
+
+            var img = document.createElement('img');
+            img.classList.add('obj');
+            img.file = file;
+            preview.appendChild(img); // Assuming that "preview" is the div output where the content will be displayed.
+
+            var reader = new FileReader();
+            reader.onload = (function (aImg) {
+                return function (e) { aImg.src = e.target.result; };
+            })(img);
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+
+</html>

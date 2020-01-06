@@ -1,0 +1,19 @@
+Counter: {{ counter }}
+
+<button class="btn btn-warning" (click)="inc()">
+  Increment
+</button>
+
+<h3>组件初始化,没有输入属性的情况：</h3>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let lifecycle of lifecycles">{{ lifecycle }}</li>
+</ul>
+
+
+<div class="alert alert-success" role="alert">{{ person.name }}</div>
+
+
+
+<h3>测试 ngOnInit 与视图初次绑定的关系</h3>
+<p *ngIf="someObj.a.b"> {{ someObj.a.b }}</p>
+<p *ngIf="someInputObj.a.b"> {{ someInputObj.a.b }}</p>

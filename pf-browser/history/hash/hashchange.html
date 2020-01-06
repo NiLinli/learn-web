@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>hashchange</title>
+</head>
+
+<body>
+  <a href="#a1">a1</a>
+  <a href="#a2">a2</a>
+  <a href="#a3">a3</a>
+  <a href="./hashchange.html">当前页面</a>
+
+  <button id="btn1">location.hash 增加记录</button>
+  <button id="btn2">location.replace 替换记录</button>
+</body>
+
+<script>
+  console.log('the page is load or reload');
+
+  window.addEventListener('hashchange', function (e) {
+    console.log(e);
+    console.log(history.length);
+  });
+
+  document.getElementById('btn1').addEventListener('click', function(e) {
+    location.hash = 'a4';
+  });
+
+  document.getElementById('btn2').addEventListener('click', function(e) {
+    location.replace('#a5');
+  });
+
+</script>
+
+</html>

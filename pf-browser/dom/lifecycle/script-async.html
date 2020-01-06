@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>defer</title>
+    <script src="./js/print1.js" async="async"></script>
+    <script src="./js/print2.js" async="async"></script>
+    <script src="./js/load-script.js"></script>
+
+    <script type="text/javascript">
+
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('DOMContendLoaded');
+        })
+        window.onload = function () {
+            console.log('load');
+        }
+    </script>
+
+
+</head>
+
+<body>
+    content
+
+    <noscript>
+        <p>本页面需要浏览器支持 JavaScript</p>
+    </noscript>
+</body>
+
+<!-- 这里放脚本 -->
+
+</html>

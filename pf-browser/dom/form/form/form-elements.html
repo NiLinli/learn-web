@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>form control</title>
+</head>
+
+<body>
+    <form id="myForm">
+        <!-- radio -->
+        <label class="radio-inline">
+            <input type="radio" name="rd" value="option1"> 1
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="rd" value="option2"> 2
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="rd" value="option3"> 3
+        </label>
+        <!-- checkbox -->
+        <div class="checkbox">
+            <input type="checkbox" name="cb" id="" value="apple"> apple
+            <input type="checkbox" name="cb" id="" value="sony"> sony
+            <input type="checkbox" name="cb" id="" value="microsoft"> microsoft
+            <input type="checkbox" name="cb" id="" value="google"> google
+        </div>
+        <!-- select -->
+        <select class="form-control" name="sl1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <!-- input -->
+        <div class="form-group">
+            <label for="txt" class="col-sm-2 control-label">text:</label>
+            <input type="text" name="txt" id="txt">
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+
+    <button id="btn">获取 form.elements 属性</button>
+</body>
+
+<script>
+    var btn = document.getElementById('btn'),
+        myForm = document.getElementById('myForm');
+
+    btn.addEventListener('click', function () {
+        console.log('myForm.element');
+        console.log(myForm.elements);
+
+        // 通过顺序来取
+        var field1 = myForm.elements[0];        // Element
+        // 通过name来取
+        var cb = myForm.elements['cb'];         // NodeList
+        // 表单中字段的总数
+        var fieldCount = myForm.elements.length;
+    });
+</script>
+
+</html>

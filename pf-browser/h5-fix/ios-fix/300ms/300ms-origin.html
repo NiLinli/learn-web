@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #btn {
+            height: 100px;
+            background-color: darksalmon;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="btn">Click</div>
+    <p>Delay was
+        <span></span> milliseconds.</p>
+
+    <div id="log"></div>
+
+    <script>
+
+        var button = document.getElementById('btn'),
+            span = document.querySelector("span"),
+            log = document.getElementById('log'),
+            delay;
+
+        button.addEventListener('touchstart', function () {
+            // log.innerHTML += '--touchstart--';
+        }, false);
+
+        button.addEventListener("touchend", function () {
+            // log.innerHTML += '--touchend--';
+            delay = Date.now();
+        });
+        
+        button.addEventListener("click", function () {
+            log.innerHTML += '--click--';
+            span.innerHTML = Date.now() - delay;
+        });
+    </script>
+
+</body>
+
+</html>

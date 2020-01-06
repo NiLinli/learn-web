@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>passive</title>
+    <style>
+        #mydiv {
+            width: 200px;
+            height: 200px;
+            background-color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mydiv">
+
+    </div>
+</body>
+
+<script>
+    // passive: 不能在 事件处理程序中使用   event.preventDefault();
+    var mydiv = document.getElementById('mydiv');
+
+    mydiv.addEventListener('click', function (e) {
+        event.preventDefault(); // 会抛出一个警告
+        console.log('123');
+    }, {
+        passive: true
+    });
+</script>
+
+</html>

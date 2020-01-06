@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>doucument.write()</title>
+</head>
+
+<body>
+    <p>The current date and time is:
+        <script type="text/javascript">
+            document.write('<strong>' + (new Date()).toString() + '</strong>');
+        </script>
+    </p>
+
+    <script type="text/javascript">
+        document.write('<pre>');
+        document.writeln('line1');
+        document.writeln('line2');
+        document.write('</pre>');
+    </script>
+
+
+    <div id="divTag">Click me and ReWrite</div>
+
+</body>
+
+
+<script>
+    document.write('ooooommmmmmggggg');
+    document.getElementById('divTag').onclick = createNewDoc;
+
+    function createNewDoc() {
+        var newDoc = document.open("text/html", "replace");
+        var txt = "<html><body>Learning about the DOM is FUN!</body></html>";
+        newDoc.write(txt);
+        newDoc.close();
+    }
+
+    // 1. 页面加载中，可使用write想页面输入一些东西，如 new Date() , base 标签等
+    // 2. 页面加载完成后，onload或者其他事件触发会导致调用document.open()方法，使页面重写
+</script>
+
+
+
+
+
+</html>

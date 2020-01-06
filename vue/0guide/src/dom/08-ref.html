@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      padding: 10px;
+    }
+
+    .a {
+      border: 1px solid #000;
+    }
+
+    .b {
+      border: 1px solid #333;
+    }
+
+    .c {
+      border: 1px solid #999;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+
+<script>
+  Vue.component('component-a', {
+    template: `
+      <div class="a">
+        <h3>A</h3>
+        <button @click="getChild">获取 B 元素 ref</button>
+        <component-b ref="bComponent"></component-b>
+      </div>
+    `,
+    data: function() {
+      return {
+        type: 'a',
+        name: 'nixixi',
+        age: 18
+      }
+    },
+    methods: {
+      getChild: function() {
+        console.log(this.$refs.bComponent.type);
+      }
+    }
+  });
+
+  Vue.component('component-b', {
+    template: `
+      <div class="b">
+        <h3>B</h3>
+        <button @click="getParent">获取 A 元素 ref</button>
+        <component-c></component-c>
+      </div>
+    `,
+    data: function() {
+      return {
+        type: 'b'
+      }
+    }, 
+    methods: {
+      getParent: function() {
+        console.log(this.$parent.type);
+      }
+    }
+  });
+
+  Vue.component('component-c', {
+    template: `
+      <div class="c">
+        <h3>C</h3>
+        <button @click="getRoot">获取 root 元素 ref</button>
+      </div>
+    `,
+    methods: {
+      getRoot: function() {
+        console.log(this.$root.foo);
+      }
+    }
+  });
+
+  new Vue({
+    el: '#app',
+    data: {
+      foo: 1
+    },
+    template: '<component-a></component-a>'
+  });
+</script>
+
+</html>

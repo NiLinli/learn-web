@@ -1,0 +1,4 @@
+{
+    "HELLO": "你好 {{value}}",
+    "HELLOHTML": "<div>一 <br> 二<br> 三<br></div>"
+}

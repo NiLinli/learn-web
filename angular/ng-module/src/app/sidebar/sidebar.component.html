@@ -1,0 +1,4 @@
+<ul class="nav nav-pills nav-stacked">
+  <li app-sidebar-item *ngFor="let item of items" [item]="item" [ngClass]="{ active: isActive(item) }">
+  </li>
+</ul>

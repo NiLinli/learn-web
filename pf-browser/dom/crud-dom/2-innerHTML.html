@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>innerHTML</title>
+</head>
+
+<body>
+    <h3>1. get innerHTML OR innerText(textContent) Value</h3>
+    <ul id="ulTag">
+        <li>li1</li>
+        <li>li2</li>
+        <li>
+            <p>This is a
+                <i>simple</i> document</p>
+        </li>
+    </ul>
+    <table border="1" id="tb">
+        <tr>
+            <th>Month</th>
+            <th>Savings</th>
+        </tr>
+        <tr>
+            <td>January</td>
+            <td>$100</td>
+        </tr>
+    </table>
+    <h3>2. differ innerHTML & innerText(textContent)</h3>
+    <div id="myDiv1"></div>
+    <div id="myDiv2"></div>
+
+    <h3>3. DOM method instead of innerHTML & innerText(textContent)</h3>
+    <div id="myDiv3"></div>
+    <div id="myDiv4"></div>
+</body>
+
+<script src="./ployfill-textContent.js"></script>
+
+<script>
+    var ul = document.getElementById('ulTag');
+    console.log(ul.textContent);
+    console.log(ul.innerText);
+    console.log(ul.innerHTML);
+    console.log(ul.outerHTML);
+
+    // table
+    var tb = document.getElementById('tb');
+    console.log(tb.innerHTML);
+    try {
+        tb.innerHTML = "<tr>this is table</tr>";
+    } catch (error) {
+
+    }
+
+    // textContent ployfill ie8 
+    ul.textContent = '重新赋值了ul的textContent'; // 亲测ployfill可用
+
+    // innerHTML innerText qubie
+    document.getElementById('myDiv1').innerHTML =
+        '<p style="color:red;"><span style="color:blue;">123</span>这是一段带有颜色的文字</p>'
+    document.getElementById('myDiv2').textContent =
+        '<p style="color:red;"><span style="color:blue;">123</span>这是一段带有颜色的文字</p>';
+
+    // innerHTML 替代
+    var myDiv3 = document.getElementById('myDiv3');
+    // create Node
+    var p = document.createElement('p');
+    var pTextNode = document.createTextNode('这是一段带有颜色的文字');
+    var span = document.createElement('span');
+    var spanTextNode = document.createTextNode('123');
+    p.style.color = 'red';
+    span.style.color = 'blue';
+    // appendChild
+    span.appendChild(spanTextNode);
+    p.appendChild(span);
+    p.appendChild(pTextNode);
+    myDiv3.appendChild(p);
+
+    // innerText 替代
+    var myDiv4 = document.getElementById('myDiv4');
+    var p1 = document.createElement('p');
+    var p1TextNode = document.createTextNode('<p style="color:red;"><span style="color:blue;">123</span>这是一段带有颜色的文字</p>');
+    p1.appendChild(p1TextNode);
+    myDiv4.appendChild(p1);
+</script>
+
+</html>

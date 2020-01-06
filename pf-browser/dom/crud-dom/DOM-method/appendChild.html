@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="myDiv"></div>
+
+    <div id="myDiv2"></div>
+</body>
+    <script src="../../jquery-1.12.js"></script>
+    <script>
+        let myDiv = document.getElementById('myDiv');
+        // 添加节点
+        let newElement = document.createElement('p');
+        newElement.textContent = 'pppppppp';
+
+        let returnedNode = myDiv.appendChild(newElement);
+        console.log(`returnedNode === newElement: ${returnedNode === newElement}`);
+        console.log(`myDiv.lastChild === newElement :${myDiv.lastChild === newElement}`);
+
+
+        // jQuery 中的方式
+        // append() ---> appendChild()
+        (function(domlib){
+            let $myDiv2 = $('#myDiv2');
+            // 添加html string ,区别于html() ,html() 替换所有的子节点， append() 只是添加到了最后
+            $myDiv2.append('<span>添加html string</span>');
+            // 添加 node 
+            $myDiv2.append(document.createTextNode('添加了一个TextNode节点'));
+            // 添加 jQuery 对象
+            let $divArr = $('<div>1</div><div>2</div><div>3</div>');
+            console.log($divArr)
+            $myDiv2.append($divArr);
+
+            // 添加多个对象
+            let pElem = document.createElement('p');
+            pElem.textContent = 'p1 - ';
+            let htmlStr = '<p>p2 - </p>';
+            let $p = $('<p>p3 - </p>');
+            $myDiv2.append(pElem ,htmlStr ,$p);
+
+            // 总结：
+            // 1 append() 除了可以和appendChild() 一样添加DOM对象以外，还可以 添加 html string ，jQuery对象
+            // 2 可以一次性添加多个对象
+
+        })(jQuery);
+
+
+
+    </script>
+</html>

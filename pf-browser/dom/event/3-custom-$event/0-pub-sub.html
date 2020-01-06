@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pub/sub</title>
+</head>
+
+<body>
+    <input type="text" id="myInput">
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    var $myInput = $('#myInput');
+
+
+
+    $myInput.on('myKeydown', function (event) {
+        console.log(event.name);
+        console.log('my key down trigger');
+    });
+
+    $myInput.on('myKeydown', function (event) {
+        console.log(event.name);
+        console.log('my key down trigger2');
+    });
+
+    $myInput.on('myKeydown', function (event) {
+        console.log(event.name);
+        console.log('my key down trigger3');
+    });
+
+    // 1 新建 $event
+    var e = jQuery.Event('myKeydown', {
+        name: 65
+    });
+
+    setTimeout(() => {
+        $myInput.trigger(e);
+    }, 10000);
+
+    // 2 topic
+    setTimeout(() => {
+        $myInput.trigger('myKeydown');
+    }, 2000);
+
+
+</script>
+
+</html>

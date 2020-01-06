@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Relationship</title>
+    <style>
+        iframe {
+            display: block;
+            border: 1px solid #000;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="btn1">descendant 后退</button>
+    <a href="#a1">a1</a>
+    <a href="#a2">a2</a>
+    <a href="#a3">a3</a>
+
+
+    <iframe src="./iframe-descendant.html" id="f1" name="f1" frameborder="0"></iframe>
+
+</body>
+
+<script>
+    var foo = 'top';
+
+    console.log('top self === parent is :' + (self === parent));    // true
+
+
+    console.log(window.frames);
+
+
+    var f1 = document.getElementById('f1');      // id
+    // var f1 = frames.f1;                        // name
+
+
+
+    f1.addEventListener('load', function () {
+        var f1_window = f1.contentWindow;
+        console.log('f1_window.foo = ' + f1_window.foo);
+        console.log('f1_window.frameElement === f1:' + (f1_window.frameElement === f1));
+
+        var f1_document = f1.contentDocument || f1.contentWindow.document;
+        console.log(f1_document);
+
+
+        document.getElementById('btn1').addEventListener('click', function () {
+            f1_window.history.go(-1);
+        });
+
+        console.log(frames['f1']);
+    });
+
+
+
+    console.log('window.frameElement === null: ' + (window.frameElement === null));
+
+
+
+    window.addEventListener('hashchange', function () {
+        console.log(location.href);
+    })
+
+
+    window.onload = function () {
+        console.log(frames['f1']);
+    };
+
+
+
+
+</script>
+
+</html>

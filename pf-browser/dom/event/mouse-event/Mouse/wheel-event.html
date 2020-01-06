@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>wheel event</title>
+  <style>
+    div {
+      border: 5px solid #000;
+      height: 300px;
+    }
+
+    #content {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="myDiv1">1</div>
+  <div id="myDiv2">2</div>
+  <div id="myDiv3">3</div>
+  <div id="myDiv4">4</div>
+  <div id="content"></div>
+  <div id="myDiv5">5</div>
+  <div id="myDiv6">6</div>
+  <div id="myDiv7">7</div>
+  <div id="myDiv8">8</div>
+
+
+
+  </div>
+</body>
+
+<script>
+  // other
+  document.addEventListener('mousewheel', function (event) {
+    console.log('mousewheel', event);
+    console.log(event.target);
+    console.log(event.wheelDelta);
+  });
+
+  // firefox
+  document.addEventListener('DOMMouseScroll', function (event) {
+    console.log('DOMMouseScroll', event);
+    console.log(event.target);
+    console.log(event.detail * -40);
+  });
+
+  var content = document.getElementById('content');
+
+  // content.addEventListener('wheel', function (event) {
+  //   console.log('content' + event);
+  // });
+</script>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div user-my-name="nilinli" id="myDiv">haha</div>
+
+    <div id="print"></div>
+
+    <script>
+        var myDiv = document.getElementById('myDiv');
+
+        var print = document.getElementById('print');
+
+        print.innerHTML = 'myDiv.getAttribute("user-my-name") = ' + myDiv.getAttribute('user-my-name');
+    </script>
+</body>
+
+</html>

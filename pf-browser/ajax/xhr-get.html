@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>xhr</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var xhr = new XMLHttpRequest();
+    // xhr.addEventListener('readystatechange', function () {
+    //     // If the request is compete and was successful
+    //     if (xhr.readyState === 4 && xhr.status === 200) {
+    //         var type = xhr.getResponseHeader('Content-Type');
+    //         console.log(type);
+
+    //         if (type === 'application/json') {
+    //             console.log(JSON.parse(xhr.responseText))
+    //         } else {
+    //             console.log(xhr.responseText);
+    //         }
+    //     }
+    // });
+    // // true 为 async , false 有些浏览器已经不支持
+    // xhr.open('GET', 'http://192.168.0.143:8070', true);
+    // xhr.send();
+
+    // 1. data 发送 会自动格式化添加到 url? 链接后面
+    // 2. dataType 接收, 指定预计 response 类型会帮你做转换
+    //    不设置dataType  检测到响应头为 application/json , 自动 JSON.parse()
+    $.ajax({
+        url: 'http://192.168.0.143:8070',
+        data: {
+            name: 'nixixi',
+            age: 18
+        },
+        dataType: 'json', // text
+        success: function (data) {
+            console.log(data);
+        }
+    });
+
+</script>
+
+</html>

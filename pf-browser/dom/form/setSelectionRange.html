@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>setSelectionRange</title>
+</head>
+
+<body>
+    <h3>input 类型的 setSelectionRange</h3>
+    <form action="" id="myForm">
+        <input type="text">
+        <br>
+        <input type="search">
+        <br>
+        <input type="url">
+        <br>
+        <input type="tel">
+        <br>
+        <input type="password">
+        <!-- <input type="number"> -->
+    </form>
+    <button id="btn">test setSelectionRange</button>
+
+    <h3>选择部分文本/获得选中的文本</h3>
+    <input type="text" id="inputText">
+    <button id="btn2">setSelectionRange</button>
+
+
+
+</body>
+
+<script>
+
+    // test
+    var myForm = document.getElementById('myForm'),
+        btn = document.getElementById('btn'),
+        btn2 = document.getElementById('btn2'),
+        elements = myForm.elements;
+
+    btn.addEventListener('click', function () {
+        for (var i = 0; i < elements.length; i++) {
+            const element = elements[i];
+            element.focus();                    // focus 条件下
+            element.setSelectionRange(0, -1);   // 表现为选中状态, 无返回值
+        }
+    });
+
+
+    var inputText = document.getElementById('inputText');
+    // get set
+
+    btn2.addEventListener('click', function () {
+        selectText(inputText, 0, -1);
+    });
+
+    inputText.addEventListener('select', function () {
+        console.log(getSelectedText(this));
+    });
+
+    // 获得选中的文本
+    function getSelectedText(textbox) {
+        if (typeof textbox.selectionStart === 'number') {
+            return textbox.value.substring(textbox.selectionStart, textbox.selectionEnd);
+        } else if (document.selection) {
+            // ie8
+            return document.selection.createRange().text;
+        }
+    }
+
+    // 选择部分文本
+    function selectText(textbox, startIndex, stopIndex) {
+        if (textbox.setSelectionRange) {
+            // html5
+            textbox.setSelectionRange(startIndex, stopIndex);
+        } else if (textbox.createTextRange) {
+            // ie8
+            var range = textbox.createTextRange();
+            range.collapse(true);
+            range.moveStart('character', startIndex);
+            range.moveEnd('character', stopIndex - startIndex);
+            range.select();
+        }
+        textbox.focus();
+    }
+
+</script>
+
+</html>

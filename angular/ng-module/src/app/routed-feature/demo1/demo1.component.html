@@ -1,0 +1,24 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">带路由的特性模块</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item">1. 不用导出任何东西(特性模块的顶层组件) ,因为组件永远不会出现在外部组件的模板</li>
+      <li class="list-group-item">2. 普通路由模块, 导入到 需要立即加载的模块中去</li>
+      <li class="list-group-item">3. 惰性加载的路由特性模块不应该被任何模块导入</li>
+    </ul>
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">路由模块</h3>
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+      <li class="list-group-item">1. 路由模块只应该被它的配套模块导入</li>
+      <li class="list-group-item">2. 导出  RouterModule，以便其配套模块中的组件可以访问路由器指令，比如 RouterLink 和 RouterOutlet</li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>styleSheets | sheet</title>
+    <link rel="stylesheet" href="./css/a.css">
+    <link rel="stylesheet" href="./css/b.css">
+    <style>
+        p {
+            border: 1px solid #000;
+        }
+
+        div {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="myP"> p tag </p>
+</body>
+
+
+<script>
+
+    // 1 通过document.styleSheets 找到所有的
+    for (var i = 0; i < document.styleSheets.length; i++) {
+        sheet = document.styleSheets[i];
+        console.log(sheet);
+    }
+
+
+    // 2 通过dom元素查找单个
+    // 兼容ie的 styleSheet
+    function getStyleSheet(elem) {
+        return elem.sheet || elem.styleSheet;
+    }
+
+    var alink = document.getElementsByTagName('link')[0], // a.css
+        styleTag = document.getElementsByTagName('style')[0], // <style>
+        aSheet = getStyleSheet(alink),
+        styleSheet = getStyleSheet(styleTag);
+
+
+    // 2.1 href 
+    console.log(styleSheet.href); // <style>  -> null 
+    console.log(aSheet.href); // 
+
+    // 2.2 CSSRules(style 标签可以操作，link不可以操作) 
+    console.log(aSheet.CSSRules || aSheet.rules); // <link> -> null
+    var rules = styleSheet.CSSRules || styleSheet.rules;
+    console.log(rules);
+
+    function insertRule(sheet, selectorText, cssText, position) {
+        if (sheet.insertRule) {
+            // modern browser
+            sheet.insertRule(selectorText + '{' + cssText + '}', position);
+        } else {
+            // ie8
+            sheet.addRule(selectorText, cssText, position);
+        }
+    }
+
+    insertRule(styleSheet, 'p', 'font-style:italic;', 0);
+
+    function deleteRule(sheet, index) {
+        if (sheet.deleteRule) {
+            sheet.deleteRule(index);
+        } else {
+            sheet.removeRule(index);
+        }
+    }
+
+    deleteRule(styleSheet, 1);
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,12 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">child</h3>
+  </div>
+  <div class="panel-body">
+    <app-child [type]="type" [obj]="obj" [typeObj]="typeObj" #child11111111="app-child-point"></app-child>
+  </div>
+</div>
+
+<h4>在模版中引用component变量</h4>
+
+<p class="bg-primary">{{ child11111111.title }}</p>

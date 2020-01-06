@@ -1,0 +1,28 @@
+<div class="panel panel-info">
+  <div class="panel-heading">用户输入事件</div>
+  <div class="panel-body">
+    <form action="">
+      <div class="form-group">
+        <label for="">keyup ($event)：</label>
+        <input class="form-control" (keyup)="onKey1($event)">
+        <p class="help-block">{{ value1 }}</p>
+      </div>
+      <div class="form-group">
+        <label for="">keyup( 模版引用变量 )：</label>
+        <input class="form-control" #box2 (keyup)="onKey2(box2.value)">
+        <p class="help-block">{{ value2 }}</p>
+      </div>
+      <div class="form-group">
+        <label for="">loop-back(相应了事件才会刷新页面):</label>
+        <input class="form-control" #boxLoop (keyup)="0">
+        <p class="help-block">{{ boxLoop.value }}</p>
+      </div>
+      <div class="form-group">
+        <label for="">keyup.enter & blur & focus:</label>
+        <input class="form-control" #box3 (keyup.enter)="onEnter(box3.value)" (blur)="onBlur(box3.value)" (focus)="onFocus(box3.value)">
+        <p class="help-block">{{ value3 }}</p>
+      </div>
+    </form>
+  </div>
+</div>
+

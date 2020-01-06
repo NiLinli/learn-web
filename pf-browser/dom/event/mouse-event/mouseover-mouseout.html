@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>mouseover mouseout</title>
+  <style>
+    #parent {
+      padding: 100px;
+      border: 1px solid #000;
+    }
+
+    #myDiv {
+      background-color: red;
+      height: 100px;
+      width: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="myDiv"></div>
+
+  </div>
+
+</body>
+
+<script>
+  var myDiv = document.getElementById('myDiv');
+
+  myDiv.addEventListener('mouseover', function (e) {
+    console.log('mouseover', e.target);
+    console.log('mouseover', e.relatedTarget);
+  });
+
+  myDiv.addEventListener('mouseout', function (e) {
+    console.log('mouseout', e.target);
+    console.log('mouseout', e.relatedTarget);
+  });
+
+  myDiv.addEventListener('mouseenter', function (e) {
+    console.log('mouseenter', e.target);
+    console.log('mouseenter', e.relatedTarget);
+  });
+</script>
+
+</html>

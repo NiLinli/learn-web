@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>scrollbar position</title>
+
+    <style>
+        div {
+            height: 2000px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+<script src="../coordinates.js"></script>
+<script>
+    // viewport 的 scroll 事件
+    // content area is
+    // the actual content in content area is
+    document.addEventListener('scroll', function () {
+        const coordinates = getScrollOffsets();
+        console.log(coordinates);
+        console.log(document.documentElement.scrollTop);
+    });
+</script>
+
+</html>

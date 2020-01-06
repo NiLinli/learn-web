@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>mouseup mousedown</title>
+  <style>
+    #parent {
+      padding: 100px;
+      border: 1px solid #000;
+    }
+
+    #myDiv {
+      background-color: red;
+      height: 100px;
+      width: 100px;
+    }
+
+    #dragDiv {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="myDiv"></div>
+
+  </div>
+
+
+  <div id="dragDiv">
+
+  </div>
+
+</body>
+
+<script src="../../size-position/coordinates.js"></script>
+<script>
+  // 根据 pageX/pageY 属性计算 left top
+  function drag(elementToDrag, event) {
+    // The initial mouse position, converted to document coordinates
+    var scroll = getScrollOffsets(); // A utility function from elsewhere
+    var pageX = event.pageX || event.clientX + scroll.x;
+    var pageY = event.pageY || event.clientY + scroll.y;
+
+    // The original position (in document coordinates) of the element
+    // that is going to be dragged. Since elementToDrag is absolutely
+    // positioned, we assume that its offsetParent is the document body.
+    var origX = elementToDrag.offsetLeft;
+    var origY = elementToDrag.offsetTop;
+    // Compute the distance between the mouse down event and the upper-left
+    // corner of the element. We'll maintain this distance as the mouse moves.
+    var offsetX_Mouse = pageX - origX;
+    var offsetY_Mouse = pageY - origY;
+
+    elementToDrag.addEventListener('mousemove', moveHandler, false);
+    elementToDrag.addEventListener('mouseup', upHandler, false);
+
+    event.stopPropagation(); // We've handled this event. Don't let anybody else see it.
+    event.preventDefault(); // Now prevent any default action.
+
+    // mousemove -> 具体移动
+    function moveHandler(e) {
+      console.log('drag-mousemove');
+      // Move the element to the current mouse position, adjusted by the
+      // position of the scrollbars and the offset of the initial click.
+      var scroll = getScrollOffsets();
+      var pageX = e.pageX || e.clientX + scroll.x;
+      var pageY = e.pageY || e.clientY + scroll.y;
+
+      elementToDrag.style.left = (pageX - offsetX_Mouse) + 'px';
+      elementToDrag.style.top = (pageY - offsetY_Mouse) + 'px';
+
+      e.stopPropagation(); // And don't let anyone else see this event.
+    }
+
+    // mouseup -> remove 事件
+    function upHandler(e) {
+      console.log('drag-mouseup');
+      elementToDrag.removeEventListener('mouseup', upHandler, false);
+      elementToDrag.removeEventListener('mousemove', moveHandler, false);
+      e.stopPropagation(); // And don't let the event propagate any further.
+    }
+  }
+</script>
+
+<script>
+  var myDiv = document.getElementById('myDiv');
+
+  // event button
+  myDiv.addEventListener('mouseup', function (e) {
+    console.log('mouseup', e.button);
+  });
+
+  myDiv.addEventListener('mousedown', function (e) {
+    console.log('mousedown', e.button);
+  });
+
+  // simulate drag
+  // mousedown -> 绑定事件
+  var dragDiv = document.getElementById('dragDiv');
+  dragDiv.addEventListener('mousedown', function (event) {
+    console.log('mousedown')
+    drag(this, event);
+  });
+</script>
+
+</html>

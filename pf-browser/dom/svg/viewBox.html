@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>viewBox</title>
+  <style>
+    svg{
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>默认未设置 viewBox</h1>
+  <svg>
+    <circle cx="200" cy="200" r="200" fill="#fdd" stroke="none"></circle>
+  </svg>
+
+  <h1>默认未设置 viewBox + svg 默认宽度/高度</h1>
+  <svg width="300" height="150">
+    <circle cx="200" cy="200" r="200" fill="#fdd" stroke="none"></circle>
+  </svg>
+
+  <h1>设置 viewBox + 与高度/宽度比例一致</h1>
+  <svg viewBox="0 0 400 400" width="300" height="300">
+    <circle cx="200" cy="200" r="200" fill="#fdd" stroke="none"></circle>
+  </svg>
+
+  <h1>设置 viewBox + 与高度/宽度比例不一致</h1>
+  <svg viewBox="0 0 400 400" width="300" height="150">
+    <circle cx="200" cy="200" r="200" fill="#fdd" stroke="none"></circle>
+  </svg>
+
+  <h1>------------------------------------------------------------------------</h1>
+  <h2>默认 xMidYMid meet</h2>
+  <svg viewBox="0 0 400 400" width="300" height="150" preserveAspectRatio="xMidYMid meet">
+      <circle cx="200" cy="200" r="200" fill="#fdd" stroke="none"></circle>
+  </svg>
+  <h2>xMinYMax meet</h2>
+  <svg viewBox="0 0 400 400" width="300" height="150" preserveAspectRatio="xMinYMax meet">
+      <circle cx="200" cy="200" r="200" fill="#fdd" stroke="none"></circle>
+  </svg>
+  <h2>xMidYMid slice</h2>
+  <svg viewBox="0 0 400 400" width="300" height="150" preserveAspectRatio="xMidYMid slice">
+      <circle cx="200" cy="200" r="200" fill="#fdd" stroke="none"></circle>
+  </svg>
+  <h2>xMinYMax slice</h2>
+  <svg viewBox="0 0 400 400" width="300" height="150" preserveAspectRatio="xMinYMax slice">
+      <circle cx="200" cy="200" r="200" fill="#fdd" stroke="none"></circle>
+  </svg>
+  <h2>none === stretch</h2>
+  <svg viewBox="0 0 400 400" width="300" height="150" preserveAspectRatio="none">
+    <circle cx="200" cy="200" r="200" fill="#fdd" stroke="none"></circle>
+  </svg>
+  
+
+  <h1>示例</h1>
+  <img src="./demo02.svg"  style="border: 1px solid #000" alt="">
+  <img src="./demo03.svg"  style="border: 1px solid #000" alt="">
+</body>
+</html>

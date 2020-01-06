@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #parent {
+            height: 200px;
+            background-color: darksalmon;
+        }
+
+        #parent #child {
+            width: 30%;
+            height: 10%;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="parent">
+
+        <div id="child"></div>
+    </div>
+
+    <p>Delay was
+        <span></span> milliseconds.</p>
+
+    <div id="log"></div>
+</body>
+
+<script src="./fastclick.js"></script>
+<script>
+    // fast click
+    // if ('addEventListener' in document) {
+    //     document.addEventListener('DOMContentLoaded', function () {
+    //         FastClick.attach(document.body);
+    //         alert(111)
+    //     }, false);
+        
+    // }
+
+    console.log(FastClick)
+    FastClick.attach(document.body);
+
+
+    var parent = document.getElementById('parent'),
+        child = document.getElementById('child'),
+        log = document.getElementById('log'),
+        span = document.querySelector("span"),
+        delay;
+
+    parent.addEventListener('click', function (event) {
+        console.log('parent click');
+        span.innerHTML = Date.now() - delay;
+        log.innerHTML += '---father click---';
+    }, false);
+
+    child.addEventListener('click', function (event) {
+        event.stopPropagation();
+        span.innerHTML = Date.now() - delay;
+        log.innerHTML += '---child click---';
+    }, false);
+
+    parent.addEventListener("touchend", function () {
+        delay = Date.now();
+    });
+    child.addEventListener("touchend", function () {
+        delay = Date.now();
+    });
+
+</script>
+
+</html>

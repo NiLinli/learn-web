@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>simulates event</title>
+</head>
+
+<body>
+
+    <form id="myForm" action="">
+        <input type="text" id="txtInput">
+        <button type="submit">Submit</button>
+    </form>
+
+
+    <button onclick="simulateClick()">simulateClick</button>
+    <button onclick="simulateFocus()">simulateFocus</button>
+    <button onclick="simulateSubmit()">simulateSubmit</button>
+    <button onclick="simulateReset()">simulateReset</button>
+
+</body>
+
+<script>
+    var myForm = document.getElementById('myForm'),
+        txtInput = document.getElementById('txtInput');
+
+    myForm.addEventListener('submit', function (e) {
+        console.log('submit event handler');
+        e.preventDefault();
+    });
+
+    myForm.addEventListener('reset', function (e) {
+        console.log('reset event handler');
+        e.preventDefault();
+    });
+
+
+    txtInput.addEventListener('focus', function () {
+        console.log('focus event handler');
+    });
+
+    txtInput.addEventListener('click', function () {
+        console.log('click event handler');
+    });
+
+
+
+
+
+
+    function simulateClick() {
+        txtInput.click();
+    }
+
+    function simulateFocus() {
+        txtInput.focus();
+    }
+
+    // 不会触发submit事件，所以需要先做好验证
+    function simulateSubmit() {
+        myForm.submit();
+    }
+
+    function simulateReset() {
+        myForm.reset();
+    }
+
+
+</script>
+
+</html>

@@ -1,0 +1,13 @@
+<ul class="list-group">
+  <li class="list-group-item"> 引用始终引用 provide 里面的 token , 后面的是怎么具体实现 </li>
+  <li class="list-group-item">ProviderDemoService</li>
+  <li class="list-group-item">等同于：  provide: ProviderDemoService, useClass: ProviderDemoService </li>
+  <li class="list-group-item">
+    备选： provide: ProviderDemoService, useClass: ProviderDemoBackupService
+  </li>
+  <li class="list-group-item">
+    别名/指向别的 provide： provide: OldProviderDemoService, useExisting: ProviderDemoService 
+    <br> 迭代项目的时候, 假设某个旧组件依赖一个 Old 类。 Old 和 New 具有相同的接口，但是由于某些原因， 你不能升级这个旧组件并使用它
+  </li>
+
+</ul>

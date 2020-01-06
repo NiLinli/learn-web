@@ -1,0 +1,5 @@
+<ul class="nav nav-pills" style="margin-bottom: 2em;">
+  <li *ngFor="let item of items" [ngClass]="{'active': isActive(item)}">
+      <a [routerLink]="[item.path]">{{ item.label }}</a>
+  </li>
+</ul>

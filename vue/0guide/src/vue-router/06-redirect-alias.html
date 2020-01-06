@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+</body>
+
+<script>
+  const User = {
+    template: `
+      <div class="user">
+        <h2>User {{ $route.params.id }}</h2>
+        <router-view></router-view>
+      </div>
+    `
+  };
+
+  const router = new VueRouter({
+    routes: [
+      { 
+        path: '/user/:id',
+        name: 'user',
+        component: User
+      },
+
+      {
+        path: '/a',
+        redirect: {
+          name: 'user',
+          params: {
+            id: 789
+          }
+        }
+      },
+      {
+        path: '/c/:cid',
+        redirect: to => {
+          console.log(to)
+          const { hash, params, query } = to;
+          // 更加灵活
+          return {
+            name: 'user',
+            params: {
+              id: params.cid
+            } 
+          }
+           
+        }
+      },
+      // redirect
+      {
+        path: '/',
+        redirect: '/user/456'
+      },
+    ]
+  })
+
+  new Vue({ router }).$mount('#app');
+
+  // name 代替 path , 方便一些
+  setTimeout(() => {
+    router.push({
+      name: 'user',
+      params: {
+        id: 123
+      }
+    });
+  }, 2000);
+
+</script>
+</html>

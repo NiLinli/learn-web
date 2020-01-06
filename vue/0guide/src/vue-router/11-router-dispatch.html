@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+</body>
+<script>
+
+  function waitNetWork() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(1);
+      }, 3000);
+    });
+  }
+
+  var O = {
+    template: `
+      <div>
+        <router-link to="/a">go to B/C</router-link>
+      </div>
+    `
+  };
+
+  var B = {
+    template: `
+      <div>B</div>
+    `
+  };
+
+  var C = {
+    template: `
+      <div>C</div>
+    `
+  };
+
+  var router = new VueRouter({
+    routes: [
+      { path: '/', component: O },
+      { path: '/a', 
+        // 不支持异步 
+        // redirect: to => {
+        //   waitNetWork()
+        //     .then(() => {
+        //       if(Math.random() > 0.5) {
+        //         return '/b';
+        //       } else {
+        //         return '/c';
+        //       }
+        //     })
+        // },
+        beforeEnter: (to, from, next) => {
+          waitNetWork()
+            .then(() => {
+              if(Math.random() > 0.5) {
+                next('/b');
+              } else {
+                next('/c');
+              }
+            });
+        }
+      },
+      { path: '/b', component: B },
+      { path: '/c', component: C },
+    ]
+  });
+
+  new Vue({ router }).$mount('#app');
+</script>
+</html>

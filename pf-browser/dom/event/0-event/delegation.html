@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>delegation</title>
+</head>
+
+<body>
+    <ul id="ul">
+        <li id="li1">1</li>
+        <li id="li2">2</li>
+        <li id="li3">3</li>
+        <li id="li4">4</li>
+    </ul>
+</body>
+
+<script>
+    var ul = document.getElementById('ul'),
+        lis = ul.getElementsByTagName('li');
+
+    ul.addEventListener('click', function () {
+        var target = event.target;
+        switch (target.id) {
+            case 'li1':
+                alert('li1');
+                break;
+            case 'li2':
+                alert('li2');
+                break;
+            case 'li3':
+                alert('li3');
+                break;
+            case 'li4':
+                alert('li4');
+                break;
+        }
+    });
+</script>
+
+</html>

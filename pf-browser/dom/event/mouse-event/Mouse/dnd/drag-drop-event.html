@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #droptarget {
+      width: 400px;
+      height: 400px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <p>文字</p>
+  <img src="./test.jpg" alt="">
+  <a id="dropsource" href="https://nilinli.com">nilinli.com</a>
+  <div draggable="true">添加 HTML Attribute</div>
+  <div id="droptarget">
+    droptarget zone
+  </div>
+
+</body>
+<script>
+  var droptarget = document.getElementById('droptarget'),
+    dropsource = document.getElementById('dropsource');
+
+  dropsource.addEventListener('dragstart', function (event) {
+    console.log('dragstart', event);
+  });
+
+  // avoid 订阅这个事件
+  // dropsource.addEventListener('drag', function (event) {
+  //   console.log('drag', event);
+  // });
+
+  // dropsource.addEventListener('dragend', function (event) {
+  //   console.log('dragend', event);
+  // });
+
+  droptarget.addEventListener('dragenter', function (event) {
+    console.log('drapenter', event);
+    event.preventDefault();
+  });
+
+  droptarget.addEventListener('dragover', function (event) {
+    console.log('dragover', event);
+    event.preventDefault();
+  });
+
+  droptarget.addEventListener('dragleave', function (event) {
+    console.log('dragleave', event);
+  });
+
+  droptarget.addEventListener('drop', function (event) {
+    console.log('drop', event);
+
+    var text = event.dataTransfer.getData('Text');
+    var URL = event.dataTransfer.getData('url') ||    // IE10 只识别这个其他会报错, 必须要放在前面
+      event.dataTransfer.getData('text/uri-list');    // HTML 5 标准 MIME
+
+    console.log('text = ' + text, 'URL = ' + URL);
+
+    console.log('event.dataTransfer.types = ', event.dataTransfer.types);   // data 中数据的 key 值
+    console.log('event.dataTransfer.items = ', event.dataTransfer.items);   // HTML 5
+  });
+</script>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+</body>
+
+<script>
+  const User = {
+    props: ['id'],
+    template: `
+      <div class="user">
+        <h2>User {{ id }}</h2>
+        <router-view></router-view>
+      </div>
+    `
+  };
+
+  const Hello = {
+    props: ['user'],
+    template: `
+      <div>
+        Hello {{ user }}
+      </div>
+    `
+  };
+
+  const router = new VueRouter({
+    routes: [
+      { 
+        path: '/user/:id',
+        name: 'user',
+        component: User,
+        props: true     // route.params
+      },
+      {
+        path: '/hello',
+        component: Hello,
+        name: 'hello',
+        // static
+        // props: {
+        //   user: 'nixixi'
+        // }
+        // function
+        props: (route) => {
+          return {
+            user: route.name
+          }
+        }
+      }
+    ]
+  })
+
+  new Vue({ router }).$mount('#app');
+</script>
+</html>

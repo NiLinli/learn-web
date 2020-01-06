@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>passive</title>
+    <style>
+        body {
+            height: 200vh;
+            background-color: skyblue;
+            touch-action: none;
+        }
+
+        p:nth-child(n) {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+</body>
+
+<script>
+    // chrome 56
+    // window body 注册 touch 事件, 默认 passive: true  
+    // touch 默认行为为 滚动浏览器,  event.preventDefault() -> 阻止浏览器滚动
+    // 响应事件 -> 获取是否阻止默认行为 -> 浏览器才能知道是否能够滚动
+    // 为了让浏览如丝般顺滑, chrome 默认 passive: true  -> 直接去滚动 -> 不用等待事件执行完成后看是否滚动 -> event.preventDefault()
+
+    document.body.addEventListener('touchstart', function (event) {
+        event.preventDefault();
+        console.log('touchstart!!!');
+    });
+    document.body.addEventListener('touchmove', function (event) {
+        event.preventDefault();
+        console.log('touchmove!!!');
+    });
+
+    // 两种解决方式
+    // 1. 显示声明 { passive: false }
+    // 2. touch-action: none; 即 touch 不产生默认行为
+
+    // https://segmentfault.com/a/1190000008512184
+</script>
+
+</html>

@@ -1,0 +1,15 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title">ViewChild</h3>
+  </div>
+  <div class="panel-body">
+    <app-child-vvv *ngIf="childShow"></app-child-vvv>
+
+    <button class="btn btn-primary" (click)="toggleChild()">
+      toggleChild
+    </button>
+    <button class="btn btn-primary" (click)="callChild()">
+      Add
+    </button>
+  </div>
+</div>
