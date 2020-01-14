@@ -13,13 +13,19 @@
 
 </body>
 <script>
+    // formatSearchParams params
+    fetch('http://localhost:3000/users?name=倪&西西');
+
+    fetch(`http://localhost:3000/users?name=${encodeURIComponent('倪&西西')}`, {
+        method: 'delete'
+    });
+
     var xhr = new XMLHttpRequest();
+
     xhr.addEventListener('readystatechange', function () {
         // If the request is compete and was successful
         if (xhr.readyState === 4 && xhr.status === 200) {
             var type = xhr.getResponseHeader('Content-Type');
-            console.log(type);
-
             if (type === 'application/json') {
                 console.log(JSON.parse(xhr.responseText))
             } else {
@@ -27,14 +33,10 @@
             }
         }
     });
+
     // true 为 async , false 有些浏览器已经不支持
-    xhr.open('DELETE', 'http://localhost:8050', true);
+    xhr.open('GET', 'http://localhost:3000/users?name=倪&西西', true);
     xhr.send();
-
-    // 1. 与 get 方式相同 
-    
-
-
 
 </script>
 
