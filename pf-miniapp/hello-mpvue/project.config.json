@@ -10,7 +10,7 @@
     "miniprogramRoot": "dist/wx/",
     "compileType": "miniprogram",
     "appid": "touristappid",
-    "projectname": "mp-vue-demo",
+    "projectname": "hello-mpvue",
     "condition": {
         "search": {
             "current": -1,

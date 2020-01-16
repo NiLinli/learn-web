@@ -9,26 +9,19 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"coverView": true,
 		"autoAudits": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		}
+		"coverView": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.7",
-	"appid": "wxfa7b5a4aa9b93f2f",
-	"projectname": "mp-office-demo",
-	"cloudfunctionTemplateRoot": "",
+	"appid": "wx573dd9835561820e",
+	"projectname": "hello-mp",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
-	"scripts": {},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -38,11 +31,8 @@
 			"current": -1,
 			"list": []
 		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
 		"game": {
+			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
