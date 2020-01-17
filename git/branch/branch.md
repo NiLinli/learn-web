@@ -38,7 +38,7 @@ Not only can we check out branches, we can also checkout any commit revision exp
 ## 分支合并
 
 1. [merge](./merge/merge.md)
-2. [rebase](./merge/rebase.md)
+2. [rebase](./rebase.md)
 
 ## 通用分支管理
 
