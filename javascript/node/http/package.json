@@ -1,0 +1,18 @@
+{
+  "name": "http",
+  "version": "1.0.0",
+  "description": "",
+  "main": "create-server.js",
+  "scripts": {
+    "create-server": "nodemon create-server.js",
+    "request": "nodemon request.js",
+    "response": "nodemon response.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

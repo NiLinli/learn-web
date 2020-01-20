@@ -9,8 +9,8 @@ http.createServer 返回一个 Sever 对象
 
 method
 
-- get 获取参数
-- post 获取 body 数据
+- get 获取 searchParams
+- post 获取 searchParams + body
 
 ### URL 处理
 
@@ -40,3 +40,11 @@ href = https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash
 4. pathname = /p/a/t/h
 5. search = ?query=string
 6. hash = #hash
+
+## http.ServerResponse
+
+```js
+res.statusCode = 200;
+res.write('123');
+res.end();
+```
