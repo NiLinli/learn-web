@@ -42,3 +42,8 @@ dedupe 依赖 tree, 然后进行安装
    - dedupe 得到新的 tree
    - 下载
 3. postinstall
+
+## npm update
+
+1. `npm outdated` 查看那些包需要更新
+2. `npm update` 更新到 wanted (package.json 会更新)

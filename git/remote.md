@@ -19,10 +19,11 @@ Retrieve(常用)
 分支的互相创建:
 
 - 新建本地分支  - 推送给 -> 新建远程分支 `git push origin <本地>:<远程>`
-- 远程分支     
-  1. 拉取到 -> 新建本地分支 `git checkout -b [branch] [remotename]/[branch]` (clone 时候自动 `git checkout -b master origin/master`)
-  2. 跟踪分支: `git branch --set-upstream-to[-u] origin/my` 后续关联 本地当前与远程匹配
-  3. 上述两步可以直接 `git checkout --track [remotename]/[branch]`
+- 远程分支
+    1. 拉取到 -> 新建本地分支
+       - `git checkout -b [branch] [remotename]/[branch]` (clone 时候自动 `git checkout -b master --track origin/master`)
+    2. 跟踪分支: `git branch --set-upstream-to[-u] origin/my` 后续关联 本地当前与远程匹配
+    3. 上述两步可以直接 `git checkout -b [branch]  --track [remotename]/[branch]`
 
 ## 本地管理远端分支
 
@@ -47,7 +48,7 @@ Retrieve(常用)
 步骤：
 
 1. `git fetch` 取回远程主机分支信息
-2. `git merge` 与本地关联分支合并  
+2. `git merge origin/xxx` 与本地关联分支合并  
 
 `git pull <远程主机名> <远程>:<本地>` 指令缩写：
 
@@ -66,4 +67,3 @@ Retrieve(常用)
 远程存在就新建远程
 
 - `--force` `-f` 强制提交
-- `--force-with-lease` 适用于 rebase 导致本地和远程不能 fast-forward, 但是和 force 相比多了一个检查分支是否有其他人提交过代码

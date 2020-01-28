@@ -24,6 +24,11 @@ Not only can we check out branches, we can also checkout any commit revision exp
 
 切换之前项目必须要保证是提交完的, 即干净的分支, 如果没有提交, 可以考虑 [储藏和清理](stashing-clean.md)
 
+## 删除分支
+
+- `git branch -d <branchName>` 删除本地分支
+- `git push origin --delete <branchName>` 删除远程分支
+
 ## 分支管理
 
 1. `git branch` 列出所有分支
@@ -38,7 +43,7 @@ Not only can we check out branches, we can also checkout any commit revision exp
 ## 分支合并
 
 1. [merge](./merge/merge.md)
-2. [rebase](./merge/rebase.md)
+2. [rebase](./rebase.md)
 
 ## 通用分支管理
 

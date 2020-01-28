@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>xhr</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+    // formatSearchParams params
+    fetch('http://localhost:3000/users?name=倪&西西');
+
+    fetch(`http://localhost:3000/users?name=${encodeURIComponent('倪&西西')}`, {
+        method: 'delete'
+    });
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.addEventListener('readystatechange', function () {
+        // If the request is compete and was successful
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var type = xhr.getResponseHeader('Content-Type');
+            if (type === 'application/json') {
+                console.log(JSON.parse(xhr.responseText))
+            } else {
+                console.log(xhr.responseText);
+            }
+        }
+    });
+
+    // true 为 async , false 有些浏览器已经不支持
+    xhr.open('GET', 'http://localhost:3000/users?name=倪&西西', true);
+    xhr.send();
+
+</script>
+
+</html>
