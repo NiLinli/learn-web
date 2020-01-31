@@ -24,7 +24,7 @@ osx 切换 shell `chsh -s /bin/zsh`
 - `n` 不执行 scripts, 但是指出错误
 - `v` 显示 scrpits 内容, 并执行
 - `x` 有使用到的 scripts 显示在上面, 忽略注释等
-  -  `+ `source code
+  -  `+`source code, **会有每个变量的执行**
   -  不带 `+` 是 output
 
 ## variable 变量
@@ -79,3 +79,14 @@ status code 会写入到 `$?` 中
 ### exit
 
 `exit n` 中断程序执行, 将 n 写入程序执行的 `$?` 即 status code 中
+
+### if
+
+### case-in
+
+### &&, ||
+
+- -a 是 and , && 断路执行命令
+- -o 是 or, || 短路执行命令
+
+### for-in
