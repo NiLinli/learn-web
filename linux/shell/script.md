@@ -90,3 +90,23 @@ status code 会写入到 `$?` 中
 - -o 是 or, || 短路执行命令
 
 ### for-in
+
+### while/until
+
+## I/O
+
+- `read` 读取 data 通过
+  1. file
+  2. terminal
+- `printf` 输出格式话数据给标准输出
+
+### read
+
+`read variable` 将 file 或者 terminal 的值输入到 variable 上面
+
+`$$` 当前用户的 pid(process Id)
+
+### printf
+
+`echo` 输出简单数据  
+`printf` 输出格式化数据
