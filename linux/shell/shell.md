@@ -62,6 +62,19 @@ bash shell 配置(打开 shell, 会先读取配置文件)
 
 `source` 将配置文件重新读取一次, 不需要重新登录
 
+### login shell & subshell
+
+This login shell maintains what’s known as your environment
+
+- login shell: 默认的 shell (subshell 的 root)
+- sub shell: 执行一个单独的 sh script 时候, 会开启一个 subshell 去执行
+  - 读取变量类似于函数, local variable 和 global variable(不是login shell, 而是上层 shell export variable)
+  - export 可以导出变量给其 sub shell 访问(copy 给 subshell), 不能反向访问
+
+`export -p` 可以查看 login shell 中导出的变量  
+`. foo.sh` 可以在当前 login shell 中执行脚本  
+`source ~/.bash_profile` 也是在 login shell 执行脚本(source: 在当前 shell 中执行脚本)  
+
 ### 变量
 
 程序运行需要从内存中读取变量值, 如果是值存在于存储中, 则需要重新编译程序
