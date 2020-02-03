@@ -155,3 +155,127 @@ groups [username]
 # finger
 finger [-s] username
 ```
+
+## 例行性命令(定时任务)
+
+- `at` 执行一次
+- `crontab` 循环执行
+
+### crontab
+
+```bash
+# crontab 操作
+crontab [-u user] [-l | -e | -r]
+-l 列出
+-e 编辑
+-r 删除
+```
+
+- `/var/spool/cron/[username]` 这个文件中
+- `/etc/crontab` 系统级别直接编辑这个文件
+
+`0 12 * * * mail test < /home/test/test.txt`  
+`分 时 日 月 周 |========指令列===============|`
+
+适合做的事情
+
+- 数据定时备份 (登录数据)
+- rpm 数据库的建立
+- ...
+
+### at
+
+```bash
+# 下达指令
+at [-m] TIME
+
+# 查看已经下达的指令
+atq
+
+# 删除下达的指令
+atrm [jobnumber]
+```
+
+需要 atd 服务的支持, 默认启动, 如果没有启动(centos 中不自带, 需要下载)
+
+```bash
+# red hat 系统
+ntsysv   # 选择 ant
+
+# Mandrake
+ckconfig --add atd
+ckconfig --list
+
+# centos
+```
+
+`/var/spool/at` 需要执行的操作记录在这个文件当中
+
+适合做的事情
+
+## 资源管理
+
+查看当前运行的程序(背景执行)
+
+`ps -aux`
+
+- a 所有程序
+- u 所有用户
+- x 所有 ttf 程序
+
+`USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND`
+
+- USER：说明该程序是属于哪一个人
+- PID：该程序的代号
+- %CPU：代表该程序使用了多少 CPU 资源
+- %MEM：代表该程序使用了多少的 RAM
+- VSZ, RSS：占去的 ram 的大小 (bytes)
+- TTY：是否为登入者执行的程序？若为 tty1-tty6 则为本机登入者，若为 pts/?? 则为远程登录者执行的程序
+- STAT：该程序的状态
+  - ( R )为可执行的
+  - ( S )为该程序正在睡眠中，就是没有执行了
+  - ( T )正在侦测或者是停止了
+  - ( Z )僵尸程序，就是 zombie 死掉的程序啦！需要以 kill 除去啰！
+- START：该程序开始的日期
+- TIME：该程序跑了多久的时间？
+- COMMAND：该程序的内容啦
+
+`top` 动态查询程序执行情况
+
+`free` 显示内存使用情况
+
+`kill -signal PID`
+-9: 杀掉该程序  
+-15: 停止该程序
+
+### 背景工作
+
+```bash
+# 放入后台运行
+command &
+
+# 查看背景工作
+jobs
+
+# 背景当中的程序由 stopped 变成 Running
+bg %jobnumber
+
+# 移到前台
+fg %jobnumber
+
+# 杀掉背景程序
+kill -signal %jobnumber
+-1: reload
+-2: ctrl + c
+-9: 直接杀掉一个程序[强制]
+-15: 停止一个程序
+```
+
+ctrl + z 可以把程序放入背景工作中, 但是是 stopped 状态
+
+## 守护进程
+
+daemons
+
+`/etc/services` 记录网络服务和其端口映射表
+`<daemon name>   <port 与型态>   < 该服务的说明 >`
