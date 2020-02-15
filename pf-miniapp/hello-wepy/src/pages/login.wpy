@@ -1,0 +1,87 @@
+<template>
+  <view>
+    <button bindtap="onAuthorize">
+      询问授权
+    </button>
+    <button type="primary" size="{{primarySize}}" bindtap="onLogin"> 
+      primary 
+    </button>
+    <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGetUserInfo">
+      获取用户信息
+    </button>
+    <button open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber">获取手机号</button>
+  </view>
+</template>
+
+
+<script>
+import wepy from '@wepy/core'
+
+wepy.page({
+  // 选项
+  onLoad() {
+    wx.getSetting({
+      success (res) {
+        console.log(res.authSetting)
+        // res.authSetting = {
+        //   "scope.userInfo": true,
+        //   "scope.userLocation": true
+        // }
+      }
+    });
+
+    wx.se
+  },
+
+  methods: {
+    onLogin() {
+      wx.login({
+        success (res) {
+          if (res.code) {
+            console.log(res)
+          } else {
+            console.log('登录失败！' + res.errMsg)
+          }
+        }
+      })
+    },
+    onGetUserInfo(e) {
+
+      // console.log(e.detail.userInfo)
+      // wx.getSetting({
+      //   success(res) {
+      //     if (res.authSetting['scope.userInfo']) {
+      //       wx.getUserInfo({
+      //         success: function(res) {
+      //           console.log(res)
+      //           var userInfo = res.userInfo
+      //           var nickName = userInfo.nickName
+      //           var avatarUrl = userInfo.avatarUrl
+      //           var gender = userInfo.gender //性别 0：未知、1：男、2：女
+      //           var province = userInfo.province
+      //           var city = userInfo.city
+      //           var country = userInfo.country
+
+      //           // userInfo
+      //           // 
+      //         }
+      //       })
+      //     }
+      //   }
+      // })
+
+    },
+    onGetPhoneNumber(e) {
+      console.log(e.detail)
+    },
+    onAuthorize() {
+      wx.authorize({
+        scope: 'scope.record',
+        success() {
+          console.log(123)
+        }
+      })
+    }
+  }
+})
+</script>

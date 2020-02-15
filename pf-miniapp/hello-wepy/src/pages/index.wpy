@@ -1,66 +1,10 @@
-<style lang="scss">
-  input {
-    border: 1rpx solid #ccc;
-    display: inline-block;
-    width: 200rpx;
-    border-radius: 5rpx;
-  }
-  .info {
-    padding-right: 10rpx;
-  }
-  .userinfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .userinfo-avatar {
-    width: 80rpx;
-    height: 80rpx;
-    border-radius: 50%;
-  }
-
-  .userinfo-nickname {
-    color: #aaa;
-  }
-  .slide {
-    width: 640rpx;
-    display: flex;
-    border: 1rpx solid #ccc;
-    font-size: 28rpx;
-    align-items: center;
-    box-sizing: border-box;
-    .left {
-      width: 750rpx;
-      padding: 20rpx;
-    }
-    .right {
-      display: flex;
-      .right-item {
-        padding: 20rpx 30rpx;
-        background-color: red;
-        color: #fff;
-      }
-    }
-  }
-</style>
-<wxs module="m1" lang="babel">
-const getTime = (time) => {
-  let date = getDate(time);
-  let hour = date.getHours();
-  let mins = date.getMinutes();
-  let sec = date.getSeconds();
-  let milli = date.getMilliseconds();
-  return `${hour}:${mins}:${sec}.${milli}`;
-}
-module.exports.getTime = getTime;
-</wxs>
 <template>
   <div class="container">
-    <div class="userinfo" @tap="handleViewTap">
-      <image class="userinfo-avatar" src="\{{ userInfo.avatarUrl }}" background-size="cover"/>
-      <div class="userinfo-nickname">\{{ userInfo.nickName }}</div>
-    </div>
+
+    <navigator url="/pages/user-info">userinfo</navigator>
+    <navigator url="/pages/auth-scope">auth scope</navigator>
+
+
 
     <panel>
       <div class="title" slot="title">测试数据绑定</div>
@@ -139,6 +83,18 @@ module.exports.getTime = getTime;
   </div>
 </template>
 
+<wxs module="m1" lang="babel">
+const getTime = (time) => {
+  let date = getDate(time);
+  let hour = date.getHours();
+  let mins = date.getMinutes();
+  let sec = date.getSeconds();
+  let milli = date.getMilliseconds();
+  return `${hour}:${mins}:${sec}.${milli}`;
+}
+module.exports.getTime = getTime;
+</wxs>
+
 <script>
   import wepy from '@wepy/core'
   import eventHub from '../common/eventHub';
@@ -172,9 +128,7 @@ module.exports.getTime = getTime;
     data: {
       inputmodel: 'v-model',
       mynum: 20,
-      userInfo: {
-        nickName: '加载中...'
-      },
+  
       currentTime: +new Date(),
       setTimeoutTitle: '标题三秒后会被修改',
       count: 0,
@@ -233,6 +187,7 @@ module.exports.getTime = getTime;
     },
 
     methods: {
+
       tap () {
         throw 'can not go here';
       },
@@ -292,14 +247,44 @@ module.exports.getTime = getTime;
         self.setTimeoutTitle = '到三秒了';
       }, 3000);
 
-      wx.getUserInfo({
-        success (res) {
-          self.userInfo = res.userInfo;
-        }
-      });
+
     }
   });
 </script>
+
+<style lang="scss">
+  input {
+    border: 1rpx solid #ccc;
+    display: inline-block;
+    width: 200rpx;
+    border-radius: 5rpx;
+  }
+  .info {
+    padding-right: 10rpx;
+  }
+
+  .slide {
+    width: 640rpx;
+    display: flex;
+    border: 1rpx solid #ccc;
+    font-size: 28rpx;
+    align-items: center;
+    box-sizing: border-box;
+    .left {
+      width: 750rpx;
+      padding: 20rpx;
+    }
+    .right {
+      display: flex;
+      .right-item {
+        padding: 20rpx 30rpx;
+        background-color: red;
+        color: #fff;
+      }
+    }
+  }
+</style>
+
 <config>
 {
     navigationBarTitleText: 'WePY 2.0 Feature Demo',
