@@ -80,6 +80,12 @@ group id
 
 ### 账号新增
 
+1. 编辑/etc/passwd与/etc/group
+2. 创建用户主目录
+3. 从/etc/skel拷贝文件与目录
+4. 让新用户获得其主目录与文件的拥有权限
+5. 给新用户一个密码
+
 ```bash
 # 添加 group
 groupadd [-g GID] groupname
@@ -217,7 +223,7 @@ ckconfig --list
 
 查看当前运行的程序(背景执行)
 
-`ps -aux`
+`ps aux`
 
 - a 所有程序
 - u 所有用户
