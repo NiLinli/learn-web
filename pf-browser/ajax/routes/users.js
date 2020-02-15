@@ -4,7 +4,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   console.log(req.query);
   res.send({
-    data: 'get response'
+    data: 'get response111'
   });
 });
 
@@ -17,6 +17,7 @@ router.delete('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   console.log(req.body)
+
   res.send({
     data: 'post response'
   });
