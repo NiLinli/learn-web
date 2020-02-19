@@ -19,12 +19,36 @@ git add [filename]
 
 git reset HEAD [filename]
 
+## 提交
+
+## 放弃提交
+
 ## 修改 commit 方法
 
 1. git rebase
 2. git commit ammend
 3. git reset
 4. squash
+
+### git rebase -i
+
+提取指定的 commit 记录, 然后交互式一条一条编辑
+
+`git rebase -i  [startpoint]  [endpoint]`
+
+- startpoint
+- endpoint 如果不填, 就表示当前 HEAD point 指针
+
+`git rebase -i HEAD~2`
+
+- HEAD 指向位置, 最近几次
+
+需要指明对每此每次提交做什么什么操作:
+
+- pick 保留这一次提交
+- squash 合并当前一条和上一条信息(修改两条)
+
+## HEAD 操作
 
 ## 当前分支历史
 
