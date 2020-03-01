@@ -1,7 +1,11 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/form/index",
+    "pages/picker/index",
+    "pages/picker-view/index",
+    "pages/component/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

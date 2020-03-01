@@ -1,7 +1,8 @@
-//index.js
-//获取应用实例
+// 获取应用实例
 const app = getApp()
-console.log(app)
+console.log('app instance:', app);
+
+const after1s = require('../../utils/after1s');
 
 Page({
   data: {
@@ -16,7 +17,22 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: async function () {
+
+    console.log(this instanceof Page)
+    // this.sayHello();
+    wx.login({
+      success(res) {
+        console.log(res)
+      }
+    })
+    // 增强编译可以支持 async / await
+    let res = await after1s();
+    console.log(`async/await: ${res}`);
+
+    // wx.env 好像暂时没啥用
+    console.log('wx.env:', wx.env)
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -73,21 +89,9 @@ Page({
     })
   },
   formSubmit: function (e) {
-    console.log(e)
-    let formId = e.detail.formId;
-    this.dealFormIds(formId); //处理保存推送码
-    console.log('form发生了submit事件，推送码为：', formId)
-
     console.log(app.globalData);
   },
-  dealFormIds: function (formId) {
-    let formIds = app.globalData.gloabalFomIds;//获取全局数据中的推送码gloabalFomIds数组
-    if (!formIds) formIds = [];
-    let data = {
-      formId: formId,
-      expire: parseInt(new Date().getTime() / 1000) + 604800 //计算7天后的过期时间时间戳
-    }
-    formIds.push(data);//将data添加到数组的末尾
-    app.globalData.gloabalFomIds = formIds; //保存推送码并赋值给全局变量
+  onGetPhoneNumber(e) {
+    console.log(e.detail)
   },
 })

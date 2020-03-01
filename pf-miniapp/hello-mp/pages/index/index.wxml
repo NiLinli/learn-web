@@ -8,17 +8,12 @@
     </block>
   </view>
 
+
+
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
 
-  <button  bindtap="wxLogin">登录</button>    
-
-  <form bindsubmit="formSubmit" report-submit>
-    <button class="btn" form-type="submit" data-type="click">
-      顺便获取 form id
-    </button>  
-  </form>
-
-
+  <button  bindtap="wxLogin">登录</button>
+  <button open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber">获取手机号</button>
 </view>

@@ -1,3 +1,7 @@
+Page.prototype.sayHello = function() {
+  console.log('sayHello')
+}
+
 //app.js
 App({
   onLaunch: function () {

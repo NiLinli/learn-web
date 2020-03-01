@@ -6,15 +6,28 @@
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
-		"coverView": true
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"bundle": true,
+		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.7.7",
-	"appid": "wx573dd9835561820e",
+	"libVersion": "2.10.1",
+	"appid": "wx28600c7c7b59ba2e",
 	"projectname": "hello-mp",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -31,13 +44,29 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"gamePlugin": {
 			"current": -1,
 			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				}
+			]
 		}
 	}
 }
