@@ -50,23 +50,27 @@ http://www.nilinli.com:80
 
 三者必须完全相同, 同一 ip 的两个域名也不行
 
-### 浏览器限制
+### 同源策略 Same-Origin Policy
+
+- 浏览器需要保证每一个 origin 下面的数据都是独立的, 类似与 app 的沙箱
+- 浏览器发送请求时候会自动带上 cookies
+- 如果能跨域发送请求, 就相当于动了别人的数据
+
+所以浏览器做了**一定的**限制, 限制之外的可以通过服务器判断请求是不是相同 origin
+
+浏览器限制(发送请求, 并获取 http 相应数据):
 
 - xhr/fetch
 - web 字体 @font-face
 - WebGL 贴图
 - 使用 drawImage 将 Images/video 画面绘制到 canvas
 
-### 同源策略
+浏览器不限制(发送请求, 但是不能获取数据): 访问外部资源, 但是遗留了 **crsf** 攻击
 
-Same-Origin Policy:
-
-浏览器维持一个域的信息都独立再那个域里面, 而发送 http 请求会携带域里面的信息, 禁止跨域就是禁止 A 域访问 B 域名的信息(cookies)
-
-1. A 登录, 浏览器存有 cookie
-2. B 访问 A 的API, A http 请求携带有 cookie(B 访问 A 域下携带的信息), 这样可以做很多事情
-
-浏览器(客户端)默认需要保持各域的信息是独立的, 类似于 app
+- script src
+- img src
+- iframe src
+- form 提交
 
 ### Cors
 
@@ -82,7 +86,9 @@ cross origin resource sharing
 
 ### jsonp
 
-通过服务器配置开放跨域
+- 利用上面 script 不受限制发送跨域请求
+- 然后通过服务器配置 hack 达到能够获取数据
+- script 只能是 get 请求
 
 ### 反向代理
 
