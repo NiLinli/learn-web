@@ -15,6 +15,7 @@ app.use(function(req, res, next) {
     req.session.views = {}
   }
 
+  console.log(req.session)
   const pathname = parseurl(req).pathname;
 
   // count the view
@@ -30,5 +31,11 @@ app.get('/foo', function(req, res, next) {
 app.get('/bar', function(req, res, next) {
   res.send('you viewed this page ' + req.session.views['/bar'] + ' times')
 });
+
+app.get('/cookies', (req, res) => {
+  const product_id = 123452020;
+  res.setHeader('Set-Cookie', [`product_id=${product_id}`]);
+  res.send(product_id + '');
+})
 
 app.listen(3000);
