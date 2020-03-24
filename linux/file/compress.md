@@ -54,6 +54,9 @@ osx 不支持
 - `v` 打包过程输出
 - `f` 指定打包后的目标文件名
 
+tar -zxvf backend.tar.gz -C ./backend 解压到指定文件夹
+
 ## 备份
 
 ### cpio
+
