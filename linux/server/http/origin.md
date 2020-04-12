@@ -1,5 +1,3 @@
-# http
-
 ## header
 
 refer
@@ -10,5 +8,3 @@ origin
 ## status code
 
 304
-
-## 缓存
