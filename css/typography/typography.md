@@ -1,6 +1,7 @@
 # Web Typography
 
 ## Inline Element
+
 1. width height 设置了会被 user agent 忽略
     - 对于 可替换元素, 不会被忽略
 2. padding
@@ -14,62 +15,75 @@
     - left right 可以为负数, 使文本重叠
 
 ## font
+
 - typeface (font family)
 - font (font face)
 
-举个例子：
-font-family: 'CSS Mastery'; 
+举个例子: font-family: 'CSS Mastery';
+
 - typeface 就是 CSS Mastery
 - font 就是下面的每一个文件的集合 'CSS Mastery Regular' 'CSS Mastery Italic' 'CSS Mastery Light'
 
 ### color
+
 浏览器默认颜色一般为 black
 
 ### font-size/line-height
+
 1. 大多数 user agent 都设置默认的 font-size：16px
 2. 相对/绝对单位(medium, larger)浏览器表现不一致, 对于不同 font-family 的字体 em 计算也会有差别, 不推荐使用
 3. 尽量不要设置 font-size 为小数, user agent 渲染出来不一定是精确的
 4. 浏览器有最小渲染的值
 
-#### em 
+#### em
+
 1. 用在 font-size 上面的时候, 参照标准为 inherited font-size 的大小
 2. 用在其他属性的时候, 参照标准变为 元素自身的 font-size
 
 #### line height
+
 定义
+
 1. 两行之间 base line 的距离
 2. 定义 line-height 只是定义了最小值, 不是绝对值
 3. 可替换元素不应用这个效果(img)
 
-value 
+value
+
 1. 默认值为 normal, 一般浏览器默认为 1.2
 2. scale factor(number) 直接被继承
 3. percentage/em 其他的都是继承计算之后的 px 的值
 
 ### font-style
+
 - normal
 - italic
     1. 如果 typeface 中有, 则显示typeface 中的 italic 部分
     2. 如果 typeface 中没有, 浏览器会把 typeface 中的 regular 倾斜去模仿
 - ...
 
-
 ### font-weight
+
 绝对,一般而言
-1. normal 400 
+
+1. normal 400
 2. bold 700
 字体并不是提供100-900所有的等级,如果找不到对应的等级 , 只能取字体提供的附近的等级
+
 相对, 相对与父元素
+
 1. bolder
 2. lighter
 
 ### font-family
+
 1. 一些 font 文件的集合
-2. 有 fallback mechanism 
+2. 有 fallback mechanism
 3. 有 继承性, 所有元素都可以从 body 上面继承 font-family 属性
 4. 推荐总是提供一个a generic family 放在 font-family 的后面
 
 #### Generic font families
+
 1. Sans-serif
 2. Serif
 3. Monospace
@@ -77,22 +91,24 @@ value
 5. Fantasy
 
 #### 什么时候使用 quotation marks
+
 1. 名字中有 space
 2. 名字中有 一些特殊字符 # $
 3. **这个不是必须**, 现代浏览器可是识别没有 '', 但是最好遵守
 4. generic font family 不能使用 quotation marks , 使用了就成了自定义字体
 
-
 ### font-face
+
 定义 @font-face 使用 custom font
 
-
 #### 特点(懒加载)
+
 1. The intent of @font-face is to allow **lazy loading** of font faces. 
 2. This means that only those faces needed to render a document will actually be loaded, with the rest being left alone.
 3. In fact, a browser that downloads all declared font faces without considering whether they’re actually needed is considered to be buggy.
 
 #### Font Descriptors
+
 1. font-family: Required (this font-family is the font-family descriptor, not font-family property)
 2. src: Required
     + fallback 机制, 第一个不能识别就下载下一个
@@ -105,21 +121,20 @@ value
 
 如果只匹配到了 font-family 和 font-weight 当中的一个 ,正确的 font-family 比 正确的 font-weight 优先级高
 
-
 #### 疑问?
+
 1. 如果一个字符, 字体里面没有, 怎么办?
 2. 匹配到 font-family , 但是没有匹配到 font-weight 怎么办?
 3. 匹配到 font-family , 也匹配到了 font-style , 但对应的字体文件中 没有 italic 的字符, 怎么办?
 
-
 #### Loading font with Javascript
+
 [web font loader](https://github.com/typekit/webfontloader/)
 提供了加载 web font 的三种状态
+
 1. Loading：when fonts begin loading
 2. Active：success
 3. Inactive：failure
-
-
 
 ## 段落样式/排版
 
@@ -148,14 +163,10 @@ value
     - y offset
     - blur radius for the shadow(具体模糊的方法没有定义, 不同 user agent 处理的方式不同)
 
-
-
-
-
-
-
 ## IFC
+
 ### 基本概念
+
 - em box : font-size 定义的高度, 实际 glyphs 可以比这个 em box 高, 也可以比这个低
 - content area ：
     + 普通元素: em box
@@ -166,6 +177,7 @@ value
 - line box: 整体 line box 的高度是由 最高 inline box 的顶部, 最低 inline box 的底部决定
 
 ### vertical-align
+
 应用于 inline-level elements
 - inline
 - inline-block

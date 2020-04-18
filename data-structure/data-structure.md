@@ -15,17 +15,39 @@
 
 ## linear list 线性表
 
-同类型数据元素 构成 有序序列 的 **线性结构**
+1. 同类型数据元素
+2. 有序序列 的 **线性结构**
 
 - 表中的个数称为长度
 - 没有元素, 称为空表
 - 起始位置为表头, 表结束位置称为表尾
 
-- array-list 数组
-  - resizable array 可变大小的数组
-- linked-list 链表
+### array list
 
-## tree
+数组
+
+1. 大小必须初始化 (resizable array 可以解决)
+2. insert, delete 需要移动元素
+
+### linked list
+
+链表: 不要求逻辑上相邻的两个元素物理上也相连
+
+1. 大小是动态增长的
+2. insert, delete 不需要移动元素, 只需要修改 link
+3. 获得 size 长度比较麻烦
+
+### Stack
+
+堆栈
+
+1. 收约束的线性表
+2. 只在 Top 做插入删除
+    - 插入 push 入栈
+    - 删除 pop 出栈
+3. Last in First out(LIFO)
+
+## tree 树
 
 对于大量的数据, 链表的线性访问时间太慢， 不宜使用。  
 tree O(log N)

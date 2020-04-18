@@ -2,16 +2,6 @@
 #include <stdlib.h>
 #include "node.h"
 
-// typedef struct _node {
-//   int value;
-//   struct _node *next;
-// } Node;
-
-// typedef struct _list {
-//   Node *head;
-// } List;
-
-
 int main(void) {
 
   List list;
@@ -42,6 +32,15 @@ int main(void) {
   free_list(&list);
 
   return 0;
+}
+
+
+List create() {
+  
+}
+
+void list_size(List *pList) {
+
 }
 
 void add(List *pList, int number) {
@@ -93,13 +92,6 @@ void delete(List *pList, int number) {
   }
 }
 
-void print(List *pList)  {
-  Node *p;
-  for (p = pList->head; p; p = p->next) {
-    printf("%d\t", p->value);
-  }
-  printf("\n");
-}
 
 void free_list(List *pList) {
   Node *p, *q;
@@ -107,4 +99,19 @@ void free_list(List *pList) {
     q = p->next;
     free(p);
   }
+}
+
+void print(List *pList) {
+  printf("[");
+
+  for(int i = 0; i<= a->size - 1; i++) {
+
+    if (i == a->size -1) {
+      printf("%d", a->array[i]);
+    } else {
+      printf("%d, ", a->array[i]);
+    }
+  }
+
+  printf("]\n");
 }

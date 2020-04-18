@@ -21,10 +21,15 @@ typedef struct {
 Array array_create(int init_size);                // 创建数组
 void array_free(Array *a);                        // 清空数组
 int array_size(const Array *a);                   // 返回数组的大小
-int* array_at(Array *a, int index);               // 访问数组单元
-int array_get(const Array *a, int index);         //
-void array_set(Array *a, int index, int value);   //
+int* array_at(Array *a, int i);                   // 访问数组单元
+int array_get(const Array *a, int i);             // 取得数组单元
+void array_set(Array *a, int i, int value);       // 设置数组单元
 void array_inflate(Array *a, int more_size);      // 扩充数组
+int array_find(Array *a, int value);              // 查找
+void array_add(Array *a, int value);              // append
+void array_insert(Array *a, int i, int value);    // 插入 当前位置新增, 其他都往后面移 1 位
+void array_delete(Array *a, int i);               // 删除 当前位置删除, 其他都往前面移 1 位
+void array_print(Array *a);                       // print
 
 #endif
 

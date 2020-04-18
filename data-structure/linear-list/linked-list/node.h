@@ -11,9 +11,12 @@ typedef struct _list {
   Node *head;
 } List;
 
-void add(List *pList, int number);
-int find(List *pList, int number);
-void delete(List *pList, int number);
+List create();
+void add(List *pList, int value);
+int find(List *pList, int value);
+void insert(List *pList, int index, int value);
+void delete(List *pList, int index);
+void list_size(List *pList);
 void print(List *pList);
 void free_list(List *pList);
 
