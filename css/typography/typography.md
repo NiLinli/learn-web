@@ -142,22 +142,18 @@ value
     - text-transform: 控制字母大小写正常转换
     - font-variant: 小型大写字母
 2. word/letter spacing
-    - word spacing : 字间距
-    - letter spacing : 字符间距
+    - word-spacing: 字间距
+    - letter-spacing: 字符间距
     - 不对 whitespace 做任何处理
-4. 控制 word 写不下的时候换行
-
-    默认情况 遇到空白换行(white-space: normal;) 单词不论长短不会被折断, 考虑步骤
-    1. 先考虑遇到空格换不换行 设置 white-sapce
-    2. white-space 不为 no-wrap 的话, 考虑单词太长什么时候折断
-    3. 先考虑 overflow-wrap
-    4. 载考虑 word-break
-    
-    - white sapce(空格) normal 放不下的时候, 遇到空格就换行, 如果换行还放不下, overflow
-    - word-break (normal) 放不下的单词直接折断(break-all all 很霸气)
-    - word-wrap/overflow-wrap (normal) 放不下的单词, 放到下一行去, 下一行一整行都放不下, 才折断这个单词(break-word word 强调单词)
+3. 换行问题(white-space(换行) --> overflow-wrap(超长单词换行) --> word-break(暴力折断单词))
+    - white-space
+        - normal: 遇到空白换行
+        - no-wrap: 遇到空白**不换行**
+    - white-space: normal; 不处理一个单词占超过一行的问题, 所以会出现单词溢出了而没有换行
+    - word-wrap/overflow-wrap: break-word;  放不下的单词, 放到下一行去, 下一行一整行都放不下, 才折断这个单词
+    - word-break: break-all; 放不下的单词直接折断(break-all all 很霸气)
     - hypens
-5. shadow
+4. shadow
     - color
     - x offset
     - y offset
