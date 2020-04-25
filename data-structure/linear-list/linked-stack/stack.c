@@ -26,33 +26,40 @@ int main() {
 }
 
 // 生成一个 head Node, 但是不代表任何元素
-LinkedStack* stack_create(int init_size){
-  LinkedStack *s;
-  s = (LinkedStack *)malloc(sizeof(struct Node));
-  s->Next = NULL;
+LinkedStack* stack_create() {
+  LinkedStack *s = (LinkedStack *)malloc(sizeof(LinkedStack));
+  s->head = NULL;
   return s;
 }
 
-void push(LinkedStack *s, int item){
-  LinkedStack *temp_s;
-  temp_s = (LinkedStack*)malloc(sizeof(struct Node));
-  temp_s->data = item;
-  temp_s->Next = s->Next;
-  s->Next = temp_s;
+void push(LinkedStack *s, int value){
+  Node *pNode = (Node*)malloc(sizeof(Node));
+  pNode->value = value;
+  pNode->next = NULL;
+  if (s->head) {
+    pNode->next = s->head;
+    s->head = pNode;
+  } else {
+    s->head = pNode;
+  }
 }
 
 int pop(LinkedStack *s){
   if (stack_is_empty(s)) {
     return 1000000;
   }
+  Node* top = s->head;
+  int top_value = top->value;
 
-  LinkedStack* top_s = s->Next;
-  int top_data = top_s->data;
-  s->Next = top_s->Next;
-  free(top_s);
-  return top_data;
+  if (top->next) { 
+    s->head = top->next;
+  } else {
+    s->head = NULL;
+  }
+  free(top);
+  return top_value;
 }
 
 int stack_is_empty(LinkedStack *s){
-  return s->Next == NULL;
+  return s->head == NULL;
 }
