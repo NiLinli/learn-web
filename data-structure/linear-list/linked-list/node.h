@@ -8,17 +8,19 @@ typedef struct _node {
 } Node;
 
 typedef struct _list {
-  Node *head;
+  Node *head;     // 指向首个 Node 节点
 } List;
 
-List create();
+List* create();
 void add(List *pList, int value);
+void set(List *pList, int index, int value);
+int get(List *pList, int index);
 int find(List *pList, int value);
-void insert(List *pList, int index, int value);
 void delete(List *pList, int index);
-void list_size(List *pList);
-void print(List *pList);
+void insert(List *pList, int index, int value);
 void free_list(List *pList);
+int list_size(List *pList);
+void print(List *pList);
 
 #endif
 
