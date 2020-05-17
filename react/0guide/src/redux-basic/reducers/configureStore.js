@@ -16,7 +16,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);        // 1
 
 
 
-export default (preloadedState?: any) => {
+export default (preloadedState) => {
 
     const store = createStore(persistedReducer);
     const persistor = persistStore(store);         // 2

@@ -1,6 +1,6 @@
-import { ActionTypes } from '../actions/actionTypes';
+import * as ActionTypes from '../actions/actionTypes';
 
-export function todos(state = [], action: any) {
+export function todos(state = [], action) {
     switch (action.type) {
         case ActionTypes.ADD_TODO:
             // 添加一个 Todo 
@@ -17,7 +17,7 @@ export function todos(state = [], action: any) {
             return state.map((todo, id) => {
                 if (id === action.id) {
                     return Object.assign({}, todo, {
-                        completed: !(todo as any).completed
+                        completed: !todo.completed
                     });
                 }
                 return todo;

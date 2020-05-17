@@ -10,19 +10,18 @@ import VisibleTodoList from './containers/VisibleTodoList';
 import TestContainer from './containers/TestContainer';
 import configureStore from './reducers/configureStore';
 
-const  {store , persistor} = configureStore();
+const { store, persistor } = configureStore();
 
+class App extends React.Component {
 
-class App extends React.Component<any, any> {
-
-  constructor(props:any) {
+  constructor(props) {
     super(props);
     this.state = {
       isShowTest: true
-    }
+    };
   }
 
-  public render() {
+  render() {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>
@@ -33,15 +32,15 @@ class App extends React.Component<any, any> {
 
             <div onClick={this.toggleTest}>toggle</div>
 
-            { this.state.isShowTest && (<TestContainer /> )} 
+            {this.state.isShowTest && (<TestContainer />)}
           </div>
         </PersistGate>
       </Provider>
     );
   }
 
-  private toggleTest = () => {
-    this.setState((prevState:any)=>({isShowTest: !prevState.isShowTest}))
+  toggleTest = () => {
+    this.setState((prevState) => ({ isShowTest: !prevState.isShowTest }));
   }
 }
 

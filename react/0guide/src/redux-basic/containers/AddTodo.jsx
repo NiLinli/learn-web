@@ -2,8 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { addTodo } from '../actions/actions';
 
-let AddTodo:any = ({ dispatch }:any) => {
-  let input:any;
+let AddTodo = ({ dispatch }) => {
+  let input;
 
   return (
     <div>
@@ -30,6 +30,6 @@ let AddTodo:any = ({ dispatch }:any) => {
   )
 }
 
-AddTodo = connect()(AddTodo)
+AddTodo = connect()(AddTodo);
 
 export default AddTodo;

@@ -1,12 +1,6 @@
 import * as React from 'react';
 
-interface IProps {
-    active: boolean;
-    children: any;
-    onClick: any;
-}
-
-const Link = ({ active, children, onClick }:IProps) => {
+const Link = ({ active, children, onClick }) => {
   if (active) {
     return <span>{children}</span>
   }

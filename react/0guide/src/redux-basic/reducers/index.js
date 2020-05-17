@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { todos } from './todos';
 import { visibilityFilter } from './visibilityFilter';
 import { test } from './test'
-import { ActionTypes } from '../actions/actionTypes';
+import * as ActionTypes from '../actions/actionTypes';
 
 import { persistReducer } from 'redux-persist';
 
@@ -16,16 +16,16 @@ const testPersistConfig = {
 
 
 const appReducer = combineReducers({
-  todos ,
+  todos,
   visibilityFilter,
-  test:persistReducer(testPersistConfig, test)
+  test: persistReducer(testPersistConfig, test)
 });
 
-const rootReducer  = (state: any, action: any) => {
+const rootReducer = (state, action) => {
 
   if (action.type === ActionTypes.LOG_OUT) {
     state = undefined
-  } 
+  }
 
   return appReducer(state, action);
 

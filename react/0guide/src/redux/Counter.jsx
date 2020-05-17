@@ -1,13 +1,9 @@
 import * as React from 'react';
 
-interface IState {
-  value: number;
-}
-
 // 合理的使用内部 state
-export class Counter extends React.Component<{}, IState> {
+export default class Counter extends React.Component {
 
-  constructor(props: any) {
+  constructor(props) {
     super(props);
 
     this.state = {

@@ -1,14 +1,10 @@
-import { ActionTypes } from './actionTypes';
-// 
-export enum VisibilityFilters {
-    SHOW_ALL = 'SHOW_ALL',
-    SHOW_COMPLETED = 'SHOW_COMPLETED',
-    SHOW_ACTIVE = 'SHOW_ACTIVE'
-}
+import * as  ActionTypes from './actionTypes';
+
+
 
 // action 创建函数 -> call 之后返回一个 action
 let nextTodoId = 0;
-export function addTodo(text: string) {
+export function addTodo(text) {
     return {
         type: ActionTypes.ADD_TODO,
         text,
@@ -16,23 +12,23 @@ export function addTodo(text: string) {
     }
 }
 
-export function toggleTodo(id: any) {
+export function toggleTodo(id) {
     return {
         type: ActionTypes.TOGGLE_TODO,
         id
     }
 }
 
-export function setVisibilityFilter(filter: any) {
+export function setVisibilityFilter(filter) {
     return {
         type: ActionTypes.SET_VISIBILITY_FILTER,
         filter
     }
 }
 
-export function changeTest(key: string, value: any):any {
+export function changeTest(key, value) {
     if (key === 'name') {
-        return { 
+        return {
             type: ActionTypes.CHANGE_NAME,
             payload: value
         }
@@ -44,7 +40,7 @@ export function changeTest(key: string, value: any):any {
     }
 }
 
-export function logout(): any {
+export function logout() {
     return {
         type: ActionTypes.LOG_OUT,
         payload: true

@@ -1,8 +1,8 @@
-import * as React from 'react';
-
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // reducer - “how things change”
-const counter = (state = { value: 0 }, action:any) => {
+const counter = (state = { value: 0 }, action) => {
   switch (action.type) {
     case 'INCREMENT':
       return { value: state.value + 1 };
@@ -13,15 +13,15 @@ const counter = (state = { value: 0 }, action:any) => {
   }
 }
 
-export class CounterWithRedux extends React.Component<any, any> {
+export default class CounterWithRedux extends React.Component {
 
-  constructor(props: any) {
+  constructor(props) {
     super(props);
     this.state = counter(undefined, {});  // pure object
   }
 
   // dispatch
-  dispatch(action:any) {
+  dispatch(action) {
     this.setState(prevState => counter(prevState, action));
   }
 
@@ -32,7 +32,7 @@ export class CounterWithRedux extends React.Component<any, any> {
   decrement = () => {
     this.dispatch({ type: 'DECREMENT' });
   };
-  
+
   render() {
     return (
       <div>
