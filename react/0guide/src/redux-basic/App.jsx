@@ -26,7 +26,9 @@ class App extends React.Component {
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <div>
+            <h3>AddTodo</h3>
             <AddTodo />
+            <h3>VisibleTodoList</h3>
             <VisibleTodoList />
             <Footer />
 

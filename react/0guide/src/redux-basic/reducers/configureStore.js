@@ -1,11 +1,7 @@
 import { createStore } from 'redux';
-import rootReducer from './index';
-
-
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'
-
-
+import rootReducer from './index';
 
 const persistConfig = {
     key: 'root1',
@@ -14,10 +10,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);        // 1 
 
-
-
 export default (preloadedState) => {
-
     const store = createStore(persistedReducer);
     const persistor = persistStore(store);         // 2
     return {

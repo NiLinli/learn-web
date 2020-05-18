@@ -8,6 +8,8 @@ redux 思想
    2. reducer 接受 action + old_state => new_state
    3. reducer 可以被拆分成小的 reducer
 
+**分发 action, 会导致所有 reducer 都响应一遍**
+
 原则(由思想导出)
 
 - 单一数据源

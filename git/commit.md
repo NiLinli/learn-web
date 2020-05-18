@@ -1,36 +1,40 @@
-# commit
+# 提交
 
-## 取消文件的修改[工作区]
+- git status 用于查看工作区和暂存区
+- git log 用于查看 commit 提交记录
 
-Modify -> Unmodify
+## 工作区
 
-git checkout -- [filename]
+Untracked/Modified
 
-## 暂存和跟踪新文件[暂存区]
+工作区 --> 暂存区
+工作区 --> 取消 git checkout -- file
 
-Untracked -> Staged
-Modified -> Staged
+## add/reset 暂存区
+
+暂存和跟踪新文件[暂存区]
+
+- Untracked -> Staged
+- Modified -> Staged
 
 git add [filename]
+git reset HEAD file
 
-## 取消将文件放入暂存区
+## commit/reset 工作区
 
-和 add 操作相反
-
+git commit
 git reset HEAD [filename]
 
-## 提交
+## commit 技巧
 
-## 放弃提交
-
-## 修改 commit 方法
+### 修改 commit 方法
 
 1. git rebase
 2. git commit ammend
 3. git reset
 4. squash
 
-### git rebase -i
+#### git rebase -i
 
 提取指定的 commit 记录, 然后交互式一条一条编辑
 
