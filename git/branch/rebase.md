@@ -61,6 +61,22 @@ client rebase 到 dev 上
 
 `git rebase -i xxx`
 
+提取指定的 commit 记录, 然后交互式一条一条编辑
+
+`git rebase -i  [startpoint]  [endpoint]`
+
+- startpoint
+- endpoint 如果不填, 就表示当前 HEAD point 指针
+
+`git rebase -i HEAD~2`
+
+- HEAD 指向位置, 最近几次
+
+需要指明对每此每次提交做什么什么操作:
+
+- pick 保留这一次提交
+- squash 合并当前一条和上一条信息(修改两条)
+
 ## 问题
 
 不要对在你的仓库外有副本的分支执行 rebase

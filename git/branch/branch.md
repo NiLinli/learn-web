@@ -16,6 +16,14 @@
 
 ## 分支切换
 
+当检出一个分支时，
+
+1. 修改 HEAD 指向新的分支引用
+2. 将 Index 填充为该次提交的快照
+3. 将 Index 的内容复制到 Work Directory 中
+
+所以切换完成后, 三棵树保持一致, 不会产生违和感.
+
 HEAD pointer -> 指向当前工作的指针(checked out branch or commit)
 
 checkout
