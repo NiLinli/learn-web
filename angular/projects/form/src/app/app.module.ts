@@ -2,7 +2,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy } from '@angular/common';
 
@@ -19,9 +18,6 @@ import { DynamicallyFormsDemoModule } from './dynamically-forms-demo/dynamically
 import { DynamicallyFormsDemoComponent } from './dynamically-forms-demo/dynamically-forms-demo.component';
 import { CustomCountComponent } from './custom-count/custom-count.component';
 
-/*
- * Here's the master list of our examples for this chapter.
- */
 export const examples: ExampleDef[] = [
   { label: '用户输入相应事件', path: 'input-event-demo' },
   { label: '模版驱动表单', path: 'template-driven-forms-demo' },
@@ -36,7 +32,6 @@ const routes: Routes = [
   { path: 'reactive-forms-demo', component: ReactiveFormsDemoComponent },
   { path: 'dynamic-forms-demo', component: DynamicallyFormsDemoComponent },
 ];
-
 
 @NgModule({
   declarations: [
@@ -53,7 +48,6 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
     DynamicallyFormsDemoModule,
     RouterModule.forRoot(routes)
   ],
@@ -64,4 +58,5 @@ const routes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

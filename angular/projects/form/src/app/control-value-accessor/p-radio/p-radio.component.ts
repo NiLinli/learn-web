@@ -80,13 +80,4 @@ export class PRadioComponent implements ControlValueAccessor {
     }
     this.pRadioChange.emit(`${this.label}----${this.checked}`);
   }
-
 }
-
-@NgModule({
-  imports: [CommonModule],
-  exports: [PRadioComponent],
-  declarations: [PRadioComponent]
-})
-
-export class RadioButtonModule { }
