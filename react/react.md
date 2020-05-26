@@ -1,5 +1,7 @@
 # React
 
+[react](https://react.docschina.org/)
+
 ## package
 
 核心包:
@@ -7,17 +9,6 @@
 ```json
 react@16.6.1
 react-dom@16.6.1
-```
-
-typescript 支持:
-
-```json
-├── @types/jest@23.3.9
-├── @types/node@10.12.5
-├── @types/react@16.7.3
-├── @types/react-dom@16.0.9
-├── react-scripts-ts@3.1.0
-└── typescript@3.1.6
 ```
 
 ## create-react-app
