@@ -13,7 +13,7 @@ Vue.component('component-a', {
 });
 
 // PascalCase - React
-Vue.component('componentB', {
+Vue.component('ComponentB', {
   template: '<p>b</p>'
 });
 
