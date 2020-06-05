@@ -25,6 +25,10 @@
 - 需要清除的 effect
 - 无需清除的 effect
 
+## useCallback
+
+代替 class 中的方法
+
 ## 自定义 Hooks
 
 - 只是将两个函数之间一些共同的代码提取到单独的函数中

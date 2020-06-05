@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 // 函数组件
 function CountAdd() {
@@ -19,15 +19,19 @@ function CountAdd() {
     document.title = `You clicked ${count} times`;
     return () => {
       console.log('组件销毁时候清除副作用');
-    }
-  })
+    };
+  });
+
+  const handleClick = useCallback(() => {
+    setCount(count + 1);
+  }, [count]);
 
   // 在返回 view 之前 使用 hooks
   return (
     <div>
       {/* 读取变量即可 */}
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <button onClick={handleClick}>Click me</button>
     </div>
   );
 }
