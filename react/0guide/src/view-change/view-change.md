@@ -1,15 +1,20 @@
 # 视图刷新
 
-1. 执行 render 函数
-2. 更新 DOM 操作
+1. 触发执行 render 函数(React 更新机制)
+2. 更新 DOM 操作(直接操作)
 
 ## render 函数
 
-改变 state , 默认刷新 当前 节点 以及所有的子节点, 执行 render 函数, **并非从 root 节点开始更新**
+两种方式更新 view
 
-执行 render 函数返回的结果和 现有 DOM 进行对比 , 看是否刷新 DOM
+- setState
+- forceUpdate
 
-1. 没有改变 state , 需要执行 render => forceUpdate
-   - forceUpdate 跳过 shouldComponentUpdate , 直接执行 render ,
-   - 子节点依然按照正常的生命周期, 不会跳过 shouldComponentUpdate 方法
-2. DOM 对比不是想要的结果
+1. 默认刷新 当前 节点 以及所有的子节点, 执行 render 函数, **并非从 root 节点开始更新**
+2. 执行 render 函数返回的结果和 现有 DOM 进行对比 , 看是否刷新 DOM (diff 算法, key)
+3. forceUpdate 会跳过 shouldComponentUpdate , 直接执行 render, 仅此而已, 不影响子节点的生命周期和更新机制
+4. shouldComponentUpdate return false, 会阻止当前节点以及子节点视图更新
+
+## 生命周期钩子
+
+副作用
