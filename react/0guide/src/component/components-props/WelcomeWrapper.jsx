@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { Welcome } from './Welcome';
-import { SpecialWelcome } from './SpecialWelcome';
+import Welcome from './Welcome';
+import SpecialWelcome from './SpecialWelcome';
 
 export default function WelcomeWrapper(props) {
-
   const obj = {
     message: 'this is a message',
-    name: 'omg'
+    name: 'omg',
   };
 
   return (
@@ -16,13 +15,12 @@ export default function WelcomeWrapper(props) {
       <Welcome name={'ni' + 'xi' + 'xi'} />
       <Welcome name={'omg'} message={'this is a message'} />
 
-      <SpecialWelcome  name={'sp1'} onLog={(value) => console.log(value)}/>
-      <SpecialWelcome  name={'sp2'} onLog={(value) => console.log(value)}/>
-      <SpecialWelcome  name={'sp3'} onLog={(value) => console.log(value)}/>
+      <SpecialWelcome name={'sp1'} onLog={(value) => console.log(value)} />
+      <SpecialWelcome name={'sp2'} onLog={(value) => console.log(value)} />
+      <SpecialWelcome name={'sp3'} onLog={(value) => console.log(value)} />
 
-      
       {/* 传递一个配置对象 */}
-      <Welcome {...obj}/>
+      <Welcome {...obj} />
       {/* 被忽略的值 */}
       <div>{false}</div>
       <div>{true}</div>
@@ -37,7 +35,7 @@ export default function WelcomeWrapper(props) {
 // 2. 模块性开发
 
 // React 自定义组件的渲染
-// 1. 返回 render 函数返回值的 React Element
+// 1. 返回 render 函数返回值的 React Element(一个)
 // 2. 不会产生新的 html 结构影响 css 布局
 // 3. 所以 JSX expressions must have one parent element.
 
@@ -54,4 +52,3 @@ export default function WelcomeWrapper(props) {
 // { 任意 Javascript 表达式(if for 除外) }
 // 字符串常量
 // 扩展属性
-// falsy 表达式没不严谨 必须是 bool 类型的值才会渲染或者不渲染

@@ -1,15 +1,13 @@
-import * as React from 'react';
-import { Welcome } from './Welcome';
+import React from 'react';
+import Welcome from './Welcome';
 
-export class SpecialWelcome extends React.Component {
-
+// 类似于 curry 化函数, 指定一个属性或者多个属性
+export default class SpecialWelcome extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    return (
-      <Welcome  message={'message is the same'}  {...this.props}/> 
-    )
+    return <Welcome message={'message is the same'} {...this.props} />;
   }
 }
