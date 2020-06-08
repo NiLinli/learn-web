@@ -1,10 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 
 export class MyComponent extends React.Component {
+  myRef;
 
-  myRef: React.RefObject<any>;
-
-  constructor(props: any) {
+  constructor(props) {
     super(props);
     this.myRef = React.createRef();
   }

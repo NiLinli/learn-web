@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import C1 from './views-change/C1';
 import ClockWrapper from './state-lifecycle/ClockWrapper';
 import ListWrapper from './lists-keys/ListWrapper';
+import Greeting from './conditional-rendering/Greeting';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <ClockWrapper />
       <h3>key</h3>
       <ListWrapper />
+      <Greeting />
     </div>
   )
 }

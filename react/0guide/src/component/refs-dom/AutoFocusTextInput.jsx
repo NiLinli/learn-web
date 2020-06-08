@@ -1,11 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import { CustomTextInput } from './CustomTextInput';
 
 export class AutoFocusTextInput extends React.Component {
+  textInput;
 
-  textInput: React.RefObject<any>;
-
-  constructor(props: any) {
+  constructor(props) {
     super(props);
     this.textInput = React.createRef(); // 访问的 React 组件
   }
@@ -15,8 +14,6 @@ export class AutoFocusTextInput extends React.Component {
   }
 
   render() {
-    return (
-      <CustomTextInput ref={this.textInput} />
-    );
+    return <CustomTextInput ref={this.textInput} />;
   }
 }

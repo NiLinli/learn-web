@@ -1,24 +1,18 @@
-import * as React from 'react';
-
+import React from 'react';
 
 export class CallbackCustomTextInput extends React.Component {
+  textInput;
+  setTextInputRef;
 
-
-  textInput: any;
-  setTextInputRef: any;
-
-
-  constructor(props: any) {
+  constructor(props) {
     super(props);
 
     // React 将在组件挂载时将 DOM 元素传入ref 回调函数并调用
     // element 参数: DOM or React Component
-    this.setTextInputRef = (element: any) => {
-      console.log(element)
+    this.setTextInputRef = (element) => {
+      console.log(element);
       this.textInput = element;
     };
-
-
   }
 
   focusTextInput = () => {
@@ -26,7 +20,7 @@ export class CallbackCustomTextInput extends React.Component {
     if (this.textInput) {
       this.textInput.focus();
     }
-  }
+  };
 
   componentDidMount() {
     // 渲染后文本框自动获得焦点
@@ -38,13 +32,8 @@ export class CallbackCustomTextInput extends React.Component {
     // 实例上（比如 this.textInput）
     return (
       <div>
-        <input
-          type="text"
-          ref={this.setTextInputRef}
-        />
-        <button onClick={this.focusTextInput}>
-          Focus the text input
-        </button>
+        <input type="text" ref={this.setTextInputRef} />
+        <button onClick={this.focusTextInput}>Focus the text input</button>
       </div>
     );
   }
