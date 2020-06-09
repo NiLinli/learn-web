@@ -6,6 +6,7 @@ import Calculator from './lifting-state-up/Calculator';
 import RefDemoWrapper from './refs-dom/RefDemoWrapper';
 import Table from './fragments/Table';
 import ForwardRefDemo from './forward-ref/ForwardRefDemo';
+import ContextDemo from './context-consumer/ContextDemo';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
       <Table />
       <h3>forward ref</h3>
       <ForwardRefDemo />
+      <h3>context</h3>
+      <ContextDemo />
     </div>
   )
 }

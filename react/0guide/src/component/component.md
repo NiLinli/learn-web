@@ -6,7 +6,7 @@
 
 ## 通信
 
-- Context
+- Context 跨级别传递 props, 适用于 locale, theme...
 - forwardRef 将本属于组件的 ref 转发到组件内部 dom 或者 component 的 ref
 
 ## 结构
