@@ -7,6 +7,8 @@ import RefDemoWrapper from './refs-dom/RefDemoWrapper';
 import Table from './fragments/Table';
 import ForwardRefDemo from './forward-ref/ForwardRefDemo';
 import ContextDemo from './context-consumer/ContextDemo';
+import PortalsDemo from './portals/PortalsDemo';
+import './main.css';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
       <ForwardRefDemo />
       <h3>context</h3>
       <ContextDemo />
+      <h3>portals</h3>
+      <PortalsDemo />
     </div>
   )
 }

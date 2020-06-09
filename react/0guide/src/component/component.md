@@ -12,4 +12,4 @@
 ## 结构
 
 - Fragments 不返回 only child, 返回一些碎片
-- Portal
+- Portals 将 component 挂载到非父节点的位置
