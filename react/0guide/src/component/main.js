@@ -4,6 +4,7 @@ import WelcomeWrapper from './components-props/WelcomeWrapper';
 import EventWrapper from './handling-events/EventWrapper';
 import Calculator from './lifting-state-up/Calculator';
 import RefDemoWrapper from './refs-dom/RefDemoWrapper';
+import Table from './fragments/Table';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
       <Calculator />
       <h3>refs dom</h3>
       <RefDemoWrapper />
+      <h3>fragments</h3>
+      <Table />
     </div>
   )
 }
