@@ -5,6 +5,7 @@ import EventWrapper from './handling-events/EventWrapper';
 import Calculator from './lifting-state-up/Calculator';
 import RefDemoWrapper from './refs-dom/RefDemoWrapper';
 import Table from './fragments/Table';
+import ForwardRefDemo from './forward-ref/ForwardRefDemo';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
       <RefDemoWrapper />
       <h3>fragments</h3>
       <Table />
+      <h3>forward ref</h3>
+      <ForwardRefDemo />
     </div>
   )
 }
