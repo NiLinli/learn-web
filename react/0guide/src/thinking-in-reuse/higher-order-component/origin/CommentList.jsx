@@ -1,13 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 
-declare const DataSource: any;
-
-export class BlogPost extends React.Component<any, any> {
+export default class CommentList extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      blogPost: DataSource.getBlogPost(props.id)
+      comments: DataSource.getComments() || [],
     };
   }
 
@@ -21,11 +19,17 @@ export class BlogPost extends React.Component<any, any> {
 
   handleChange() {
     this.setState({
-      blogPost: DataSource.getBlogPost(this.props.id)
+      comments: DataSource.getComments(),
     });
   }
 
   render() {
-    return <span>{this.state.blogPost}</span>
+    return (
+      <div>
+        {this.state.comments.map((comment, index) => (
+          <span key={index}>{comment}</span>
+        ))}
+      </div>
+    );
   }
 }
