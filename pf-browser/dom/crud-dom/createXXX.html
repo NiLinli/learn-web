@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+
+  <script>
+    // createElement
+    var input = document.createElement('input');
+
+    input.addEventListener('click', function () {
+      console.log('click input');
+    });
+
+    document.body.appendChild(input);
+
+    // createTextNode
+    var span = document.createElement('span');
+    var someText = document.createTextNode('<strong>Hello </srtong> World');
+    span.appendChild(someText);
+
+    document.body.appendChild(span);
+
+    // documentFragment
+    var fragment = document.createDocumentFragment();
+    var span2 = document.createElement('span');
+    span2.innerText = '123';
+    fragment.appendChild(span2);
+    document.body.appendChild(fragment);
+  </script>
+</html>

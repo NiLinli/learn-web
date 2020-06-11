@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>child</title>
+  </head>
+
+  <body>
+    <div id="block">
+      123
+      <p>pppppppp</p>
+      <!--hehe-->
+    </div>
+  </body>
+
+  <script>
+    var div = document.getElementById('block');
+    var children = div.children; // 子元素 Element 1 类型 HTMLCollection
+    var childNodes = div.childNodes; // 子节点 NodeList
+
+    console.log(children);
+    console.log(childNodes);
+  </script>
+</html>

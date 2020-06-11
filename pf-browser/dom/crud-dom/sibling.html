@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul>
+      <li>list item 1</li>
+      <li>list item 2</li>
+      <li class="third-item" id="thirdItem">list item 3</li>
+      <!-- comment -->
+      <li>list item 4</li>
+      <li>list item 5</li>
+    </ul>
+  </body>
+
+  <script>
+    // element 下面操作
+    var thirdItem = document.getElementById('thirdItem');
+    console.log(thirdItem.nextElementSibling);
+    console.log(thirdItem.previousElementSibling);
+  </script>
+</html>

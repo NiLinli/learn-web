@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>nodeType</title>
+  </head>
+  <body></body>
+  <script>
+    var nodeList = [
+      document.body,
+      document.createElement('div'), // 1
+      document.createTextNode('123'), // 3
+      document, // 9
+      document.createDocumentFragment(), // 1
+    ];
+
+    var innerTextArr = [];
+    for (var i = 0; i < nodeList.length; i++) {
+      var node = nodeList[i];
+      var info = node.nodeName + "'s nodeType is " + node.nodeType;
+      innerTextArr.push(info);
+    }
+
+    document.body.innerText = innerTextArr.join('\n');
+  </script>
+</html>
