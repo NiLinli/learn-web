@@ -1,49 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>border-collapse</title>
     <style>
-        table {
-            border-collapse: separate;
-        }
+      table {
+        border-collapse: separate;
+      }
 
-        td {
-            border: 3px double black;
-            padding: 3px;
-        }
+      td {
+        border: 3px double black;
+        padding: 3px;
+      }
 
-        tr:nth-child(2) td:nth-child(2) {
-            border-color: gray;
-        }
+      tr:nth-child(2) td:nth-child(2) {
+        border-color: gray;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <table>
-        <tr>
-            <td>cell one</td>
-            <td>cell two</td>
-        </tr>
-        <tr>
-            <td>cell three</td>
-            <td>cell four</td>
-        </tr>
+      <tr>
+        <td>cell one</td>
+        <td>cell two</td>
+      </tr>
+      <tr>
+        <td>cell three</td>
+        <td>cell four</td>
+      </tr>
     </table>
     <table style="border-collapse: collapse;">
-        <tr>
-            <td>cell one</td>
-            <td>cell two</td>
-        </tr>
-        <tr>
-            <td>cell three</td>
-            <td>cell four</td>
-        </tr>
+      <tr>
+        <td>cell one</td>
+        <td>cell two</td>
+      </tr>
+      <tr>
+        <td>cell three</td>
+        <td>cell four</td>
+      </tr>
     </table>
-
-</body>
-
+  </body>
 </html>

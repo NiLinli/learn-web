@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css table</title>
+  <style>
+    .table {
+      display: table;
+      /* 必须要添加 border-collapse 属性, css table 下面的 border 属性才会生效 */
+      border-collapse: collapse;
+      border-collapse: separate;
+    }
+
+    .thead {
+      display: table-header-group;
+    }
+
+    .tbody {
+      display: table-row-group;
+    }
+
+    .tfoot {
+      display: table-footer-group;
+    }
+
+    .tr {
+      display: table-row;
+
+    }
+
+    .td {
+      display: table-cell;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="table">
+    <div class="thead">
+      <div class="tr">
+        <div class="td">姓名</div>
+        <div class="td">年龄</div>
+      </div>
+
+    </div>
+    <div class="tbody">
+      <div class="tr">
+        <div class="td">nixixi</div>
+        <div class="td">18</div>
+      </div>
+    </div>
+    <div class="tfoot">
+      <div class="tr">
+        <div class="td">nilinli</div>
+        <div class="td">18</div>
+      </div>
+    </div>
+
+  </div>
+  
+</body>
+</html>
