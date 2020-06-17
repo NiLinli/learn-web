@@ -9,6 +9,8 @@ Meta programming is programming where the operation targets the behavior of the 
 
 ## Proxy
 
+Due to the limitations of ES5, Proxies cannot be transpiled or polyfilled.
+
 class
 
 proxy Object: 作为 normalObject 的一个代理对象
