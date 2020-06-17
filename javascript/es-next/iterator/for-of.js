@@ -1,6 +1,6 @@
 const arr = [2, 3, 4, 5, 6];
 
-// while 遍历
+// while 遍历 for of 替代
 const it = arr[Symbol.iterator]();
 
 let result;
@@ -16,11 +16,3 @@ do {
 for (const value of arr) {
   console.log(value);
 }
-
-// key
-// for (const key in arr) {
-//   if (arr.hasOwnProperty(key)) {
-//     const element = object[key];
-    
-//   }
-// }
