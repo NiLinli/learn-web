@@ -2,6 +2,8 @@
 
 Promise 是异步编程的一种解决方案，使用链式调用解决回调地狱写法
 
+Promises are not about replacing callbacks, are to manage callbacks
+
 ## 状态变化
 
 - pending -> fulfilled
@@ -27,7 +29,5 @@ Event: Event 错过了, 再传递 callback (监听事件) , 是没有办法取�
 - promise2 Promise.prototype.then
 - promise3 Promise.prototype.catch
 - promise4 then 中忽略某个状态的 callback
-- promise5 Promise.resolve + Promise.reject
-- promise6 应用 链式调用
-- promise7 Promise.race + Promise.all
+- promise5 应用 链式调用
 - promise8 实现简易 Promise

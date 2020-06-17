@@ -1,4 +1,4 @@
-// 并发执行
+// 同时执行, 但是要按照顺序取结果 
 const asyncFunc = require('./async-func');
 
 // 按次序的进行

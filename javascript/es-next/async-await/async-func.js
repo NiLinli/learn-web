@@ -18,7 +18,6 @@ function resolveAfter1Seconds() {
     });
 }
 
-
 module.exports = {
     resolveAfter1Seconds,
     resolveAfter2Seconds
