@@ -3,9 +3,9 @@ import { Hero } from './hero';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-template-driven-forms-demo',
-  templateUrl: './template-driven-forms-demo.component.html',
-  styleUrls: ['./template-driven-forms-demo.component.css']
+  selector: 'app-template-driven-forms',
+  templateUrl: './template-driven-forms.component.html',
+  styleUrls: ['./template-driven-forms.component.css']
 })
 export class TemplateDrivenFormsDemoComponent implements OnInit {
 

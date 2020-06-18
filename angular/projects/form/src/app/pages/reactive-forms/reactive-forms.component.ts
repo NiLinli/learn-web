@@ -3,9 +3,9 @@ import { FormGroup, FormControl, FormBuilder, AbstractControl, Validators } from
 import { forbiddenNameValidator } from './custom-validators';
 
 @Component({
-  selector: 'app-reactive-forms-demo',
-  templateUrl: './reactive-forms-demo.component.html',
-  styleUrls: ['./reactive-forms-demo.component.css']
+  selector: 'app-reactive-forms',
+  templateUrl: './reactive-forms.component.html',
+  styleUrls: ['./reactive-forms.component.css']
 })
 export class ReactiveFormsDemoComponent implements OnInit {
 

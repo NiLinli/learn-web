@@ -6,7 +6,6 @@ export class QuestionBase<T> {
   order: number;
   controlType: string;
   type: string;
-  options: string[];
 
   constructor(options: {
     value?: T,

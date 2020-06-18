@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-input-event-demo',
-  templateUrl: './input-event-demo.component.html',
-  styleUrls: ['./input-event-demo.component.css']
+  selector: 'app-input-event',
+  templateUrl: './input-event.component.html',
+  styleUrls: ['./input-event.component.css']
 })
 export class InputEventDemoComponent implements OnInit {
 

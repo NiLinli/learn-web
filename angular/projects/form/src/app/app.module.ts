@@ -6,16 +6,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
+import { ExampleDef } from './components/sidebar/example.model';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { CvaComponent } from './pages/control-value-accessor/cva.component';
 import { PRadioComponent } from './components/p-radio/p-radio.component';
-import { ExampleDef } from './components/sidebar/example.model';
 
-import { InputEventDemoComponent } from './pages/input-event-demo/input-event-demo.component';
-import { TemplateDrivenFormsDemoComponent } from './pages/template-driven-forms-demo/template-driven-forms-demo.component';
-import { ReactiveFormsDemoComponent } from './pages/reactive-forms-demo/reactive-forms-demo.component';
-import { DynamicallyFormsDemoModule } from './pages/dynamically-forms-demo/dynamically-forms-demo.module';
-import { DynamicallyFormsDemoComponent } from './pages/dynamically-forms-demo/dynamically-forms-demo.component';
+import { InputEventDemoComponent } from './pages/input-event/input-event.component';
+import { TemplateDrivenFormsDemoComponent } from './pages/template-driven-forms/template-driven-forms.component';
+import { ReactiveFormsDemoComponent } from './pages/reactive-forms/reactive-forms.component';
+import { DynamicallyFormsDemoModule } from './pages/dynamically-forms/dynamically-forms-demo.module';
+import { DynamicallyFormsDemoComponent } from './pages/dynamically-forms/dynamically-forms-demo.component';
 import { CustomCountComponent } from './pages/custom-count/custom-count.component';
 
 export const examples: ExampleDef[] = [
