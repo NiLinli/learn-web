@@ -3,17 +3,17 @@ import { uuid } from '../util/uuid';
 
 // Thread - stores a collection of Messages as well as some data about the conversation
 // 聊天进程
- export class Thread {
-   id: string;
-   lastMessage: Message;
-   name: string;
-   avatarSrc: string;
+export class Thread {
+  id: string;
+  lastMessage: Message;
+  name: string;
+  avatarSrc: string;
 
-   constructor(id?: string,
-               name?: string,
-               avatarSrc?: string) {
-     this.id = id || uuid();
-     this.name = name;
-     this.avatarSrc = avatarSrc;
-   }
- }
+  constructor(id?: string,
+    name?: string,
+    avatarSrc?: string) {
+    this.id = id || uuid();
+    this.name = name;
+    this.avatarSrc = avatarSrc;
+  }
+}

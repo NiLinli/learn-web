@@ -1,5 +1,4 @@
-import { NgModule, Component, Input, Output, ElementRef, OnInit, EventEmitter, forwardRef, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, Input, Output, ElementRef, EventEmitter, forwardRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 // NG_VALUE_ACCESSOR 访问其值 / NG_VALIDATORS 成为表单控件

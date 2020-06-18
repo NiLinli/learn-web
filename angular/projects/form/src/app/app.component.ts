@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { ExampleDef } from './example.model';
+import { ExampleDef } from './components/sidebar/example.model';
 
 @Component({
   selector: 'app-root',

@@ -23,9 +23,7 @@
               "projects/component/src/favicon.ico",
               "projects/component/src/assets"
             ],
-            "styles": [
-              "projects/component/src/styles.css"
-            ],
+            "styles": ["projects/component/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -87,9 +85,7 @@
               "projects/component/src/favicon.ico",
               "projects/component/src/assets"
             ],
-            "styles": [
-              "projects/component/src/styles.css"
-            ],
+            "styles": ["projects/component/src/styles.css"],
             "scripts": []
           }
         },
@@ -101,9 +97,7 @@
               "projects/component/tsconfig.spec.json",
               "projects/component/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -140,9 +134,7 @@
               "projects/directives/src/favicon.ico",
               "projects/directives/src/assets"
             ],
-            "styles": [
-              "projects/directives/src/styles.css"
-            ],
+            "styles": ["projects/directives/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -204,9 +196,7 @@
               "projects/directives/src/favicon.ico",
               "projects/directives/src/assets"
             ],
-            "styles": [
-              "projects/directives/src/styles.css"
-            ],
+            "styles": ["projects/directives/src/styles.css"],
             "scripts": []
           }
         },
@@ -218,9 +208,7 @@
               "projects/directives/tsconfig.spec.json",
               "projects/directives/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -257,9 +245,7 @@
               "projects/dependency-injection/src/favicon.ico",
               "projects/dependency-injection/src/assets"
             ],
-            "styles": [
-              "projects/dependency-injection/src/styles.css"
-            ],
+            "styles": ["projects/dependency-injection/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -321,9 +307,7 @@
               "projects/dependency-injection/src/favicon.ico",
               "projects/dependency-injection/src/assets"
             ],
-            "styles": [
-              "projects/dependency-injection/src/styles.css"
-            ],
+            "styles": ["projects/dependency-injection/src/styles.css"],
             "scripts": []
           }
         },
@@ -335,9 +319,7 @@
               "projects/dependency-injection/tsconfig.spec.json",
               "projects/dependency-injection/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -374,9 +356,7 @@
               "projects/form/src/favicon.ico",
               "projects/form/src/assets"
             ],
-            "styles": [
-              "projects/form/src/styles.css"
-            ],
+            "styles": ["projects/form/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -438,9 +418,7 @@
               "projects/form/src/favicon.ico",
               "projects/form/src/assets"
             ],
-            "styles": [
-              "projects/form/src/styles.css"
-            ],
+            "styles": ["projects/form/src/styles.css"],
             "scripts": []
           }
         },
@@ -452,9 +430,7 @@
               "projects/form/tsconfig.spec.json",
               "projects/form/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -466,123 +442,6 @@
           "configurations": {
             "production": {
               "devServerTarget": "form:serve:production"
-            }
-          }
-        }
-      }
-    },
-    "http": {
-      "projectType": "application",
-      "schematics": {},
-      "root": "projects/http",
-      "sourceRoot": "projects/http/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/http",
-            "index": "projects/http/src/index.html",
-            "main": "projects/http/src/main.ts",
-            "polyfills": "projects/http/src/polyfills.ts",
-            "tsConfig": "projects/http/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              "projects/http/src/favicon.ico",
-              "projects/http/src/assets"
-            ],
-            "styles": [
-              "projects/http/src/styles.css"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "projects/http/src/environments/environment.ts",
-                  "with": "projects/http/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "http:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "http:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "http:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/http/src/test.ts",
-            "polyfills": "projects/http/src/polyfills.ts",
-            "tsConfig": "projects/http/tsconfig.spec.json",
-            "karmaConfig": "projects/http/karma.conf.js",
-            "assets": [
-              "projects/http/src/favicon.ico",
-              "projects/http/src/assets"
-            ],
-            "styles": [
-              "projects/http/src/styles.css"
-            ],
-            "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/http/tsconfig.app.json",
-              "projects/http/tsconfig.spec.json",
-              "projects/http/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/http/e2e/protractor.conf.js",
-            "devServerTarget": "http:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "http:serve:production"
             }
           }
         }
@@ -608,9 +467,7 @@
               "projects/ng-module/src/favicon.ico",
               "projects/ng-module/src/assets"
             ],
-            "styles": [
-              "projects/ng-module/src/styles.css"
-            ],
+            "styles": ["projects/ng-module/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -672,9 +529,7 @@
               "projects/ng-module/src/favicon.ico",
               "projects/ng-module/src/assets"
             ],
-            "styles": [
-              "projects/ng-module/src/styles.css"
-            ],
+            "styles": ["projects/ng-module/src/styles.css"],
             "scripts": []
           }
         },
@@ -686,9 +541,7 @@
               "projects/ng-module/tsconfig.spec.json",
               "projects/ng-module/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -725,9 +578,7 @@
               "projects/route/src/favicon.ico",
               "projects/route/src/assets"
             ],
-            "styles": [
-              "projects/route/src/styles.css"
-            ],
+            "styles": ["projects/route/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -789,9 +640,7 @@
               "projects/route/src/favicon.ico",
               "projects/route/src/assets"
             ],
-            "styles": [
-              "projects/route/src/styles.css"
-            ],
+            "styles": ["projects/route/src/styles.css"],
             "scripts": []
           }
         },
@@ -803,9 +652,7 @@
               "projects/route/tsconfig.spec.json",
               "projects/route/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -842,9 +689,7 @@
               "projects/route-reuse-strategy/src/favicon.ico",
               "projects/route-reuse-strategy/src/assets"
             ],
-            "styles": [
-              "projects/route-reuse-strategy/src/styles.css"
-            ],
+            "styles": ["projects/route-reuse-strategy/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -906,9 +751,7 @@
               "projects/route-reuse-strategy/src/favicon.ico",
               "projects/route-reuse-strategy/src/assets"
             ],
-            "styles": [
-              "projects/route-reuse-strategy/src/styles.css"
-            ],
+            "styles": ["projects/route-reuse-strategy/src/styles.css"],
             "scripts": []
           }
         },
@@ -920,9 +763,7 @@
               "projects/route-reuse-strategy/tsconfig.spec.json",
               "projects/route-reuse-strategy/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -959,9 +800,7 @@
               "projects/rxjs/src/favicon.ico",
               "projects/rxjs/src/assets"
             ],
-            "styles": [
-              "projects/rxjs/src/styles.css"
-            ],
+            "styles": ["projects/rxjs/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -1023,9 +862,7 @@
               "projects/rxjs/src/favicon.ico",
               "projects/rxjs/src/assets"
             ],
-            "styles": [
-              "projects/rxjs/src/styles.css"
-            ],
+            "styles": ["projects/rxjs/src/styles.css"],
             "scripts": []
           }
         },
@@ -1037,9 +874,7 @@
               "projects/rxjs/tsconfig.spec.json",
               "projects/rxjs/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -1076,9 +911,7 @@
               "projects/rxjs-chat/src/favicon.ico",
               "projects/rxjs-chat/src/assets"
             ],
-            "styles": [
-              "projects/rxjs-chat/src/styles.css"
-            ],
+            "styles": ["projects/rxjs-chat/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -1140,9 +973,7 @@
               "projects/rxjs-chat/src/favicon.ico",
               "projects/rxjs-chat/src/assets"
             ],
-            "styles": [
-              "projects/rxjs-chat/src/styles.css"
-            ],
+            "styles": ["projects/rxjs-chat/src/styles.css"],
             "scripts": []
           }
         },
@@ -1154,9 +985,7 @@
               "projects/rxjs-chat/tsconfig.spec.json",
               "projects/rxjs-chat/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -1172,6 +1001,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "form"
 }

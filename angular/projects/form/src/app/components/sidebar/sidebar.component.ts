@@ -3,7 +3,7 @@ import {
   OnInit,
   Input
 } from '@angular/core';
-import { ExampleDef } from '../example.model';
+import { ExampleDef } from './example.model';
 import { Location } from '@angular/common';
 
 @Component({
@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
   templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent implements OnInit {
-  @Input('items') items: ExampleDef[];
+  @Input() items: ExampleDef[];
 
   constructor(
     private location: Location
