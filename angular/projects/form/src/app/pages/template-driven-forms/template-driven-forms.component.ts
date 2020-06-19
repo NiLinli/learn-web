@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './template-driven-forms.component.html',
   styleUrls: ['./template-driven-forms.component.css']
 })
-export class TemplateDrivenFormsDemoComponent implements OnInit {
+export class TemplateDrivenFormsComponent implements OnInit {
 
   @ViewChild('heroForm') heroForm: NgForm;
 

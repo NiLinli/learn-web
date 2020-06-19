@@ -7,7 +7,7 @@ import { forbiddenNameValidator } from './custom-validators';
   templateUrl: './reactive-forms.component.html',
   styleUrls: ['./reactive-forms.component.css']
 })
-export class ReactiveFormsDemoComponent implements OnInit {
+export class ReactiveFormsComponent implements OnInit {
 
   powers: string[];
   name: AbstractControl;

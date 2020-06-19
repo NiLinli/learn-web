@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input
-} from '@angular/core';
-import { ExampleDef } from './example.model';
+import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({

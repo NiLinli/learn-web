@@ -1,5 +1,7 @@
 # Angular
 
+NgModule 在代码层面上对 Component ...做了模块化区分, 特性模块, 共享模块, 主模块
+
 ## 工具
 
 [stackblitz 在线编辑器](https://stackblitz.com/)  

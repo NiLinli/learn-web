@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './input-event.component.html',
   styleUrls: ['./input-event.component.css']
 })
-export class InputEventDemoComponent implements OnInit {
+export class InputEventComponent implements OnInit {
 
 
   value1 = '';
