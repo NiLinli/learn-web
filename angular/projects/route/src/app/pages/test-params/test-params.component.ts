@@ -4,8 +4,7 @@ import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-test-params',
-  templateUrl: './test-params.component.html',
-  styleUrls: ['./test-params.component.css']
+  templateUrl: './test-params.component.html'
 })
 export class TestParamsComponent implements OnInit {
 

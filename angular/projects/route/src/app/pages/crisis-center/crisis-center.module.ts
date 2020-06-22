@@ -1,23 +1,16 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
 import { CrisisService } from './providers/crisis.service';
-
-
 import { CrisisCenterComponent } from './crisis-center.component';
 import { CrisisListComponent } from './crisis-list/crisis-list.component';
 import { CrisisCenterHomeComponent } from './crisis-center-home/crisis-center-home.component';
 import { CrisisDetailComponent } from './crisis-detail/crisis-detail.component';
-import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
-import { CrisisDetailResolver } from './providers/crisis-detail-resolver.service';
-import { resolverFunc } from './providers/crisis-detail-resolver.func';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    CrisisCenterRoutingModule
+    FormsModule
   ],
   declarations: [
     CrisisCenterComponent,
@@ -26,9 +19,7 @@ import { resolverFunc } from './providers/crisis-detail-resolver.func';
     CrisisDetailComponent
   ],
   providers: [
-    CrisisService,
-    CrisisDetailResolver,
-    { provide: 'resolverFunc', useValue: resolverFunc }
+    CrisisService
   ]
 })
 export class CrisisCenterModule { }

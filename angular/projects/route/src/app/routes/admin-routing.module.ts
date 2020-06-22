@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AdminComponent } from './admin.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { ManageCrisesComponent } from './manage-crises/manage-crises.component';
-import { ManageHeroesComponent } from './manage-heroes/manage-heroes.component';
+import { AdminComponent } from '../pages/admin/admin.component';
+import { AdminDashboardComponent } from '../pages/admin/admin-dashboard/admin-dashboard.component';
+import { ManageCrisesComponent } from '../pages/admin/manage-crises/manage-crises.component';
+import { ManageHeroesComponent } from '../pages/admin/manage-heroes/manage-heroes.component';
 
 import { AuthGuard } from '../providers/auth-guard.service';
 

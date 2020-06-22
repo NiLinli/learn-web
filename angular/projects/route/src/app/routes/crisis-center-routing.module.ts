@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CrisisCenterHomeComponent } from './crisis-center-home/crisis-center-home.component';
-import { CrisisListComponent } from './crisis-list/crisis-list.component';
-import { CrisisCenterComponent } from './crisis-center.component';
-import { CrisisDetailComponent } from './crisis-detail/crisis-detail.component';
-
+import { CrisisCenterHomeComponent } from '../pages/crisis-center/crisis-center-home/crisis-center-home.component';
+import { CrisisListComponent } from '../pages/crisis-center/crisis-list/crisis-list.component';
+import { CrisisCenterComponent } from '../pages/crisis-center/crisis-center.component';
+import { CrisisDetailComponent } from '../pages/crisis-center/crisis-detail/crisis-detail.component';
 import { CanDeactivateGuard } from '../providers/can-deactivate-guard.service';
-import { CrisisDetailResolver } from './providers/crisis-detail-resolver.service';
-import { resolverFunc } from './providers/crisis-detail-resolver.func';
+import { CrisisDetailResolver } from '../pages/crisis-center/providers/crisis-detail-resolver.service';
+import { resolverFunc } from '../pages/crisis-center/providers/crisis-detail-resolver.func';
+
 
 const crisisCenterRoutes: Routes = [
   {
@@ -48,6 +48,10 @@ const crisisCenterRoutes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    CrisisDetailResolver,
+    { provide: 'resolverFunc', useValue: resolverFunc }
   ]
 })
 export class CrisisCenterRoutingModule { }

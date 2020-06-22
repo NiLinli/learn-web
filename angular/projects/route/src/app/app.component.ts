@@ -1,14 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { ExampleDef } from './example.model';
-import { filter, map, mergeMap } from 'rxjs/operators';
-import { URLSearchParams } from '@angular/http';
+import { ExampleDef } from './sidebar/example.model';
 import { HttpService } from './providers/http.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   constructor(

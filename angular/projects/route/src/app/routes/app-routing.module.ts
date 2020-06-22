@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { IntroComponent } from './intro/intro.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AuthGuard } from './providers/auth-guard.service';
-import { SelectivePreloadingStrategy } from './providers/selective-preloading-strategy';
-import { TestParamsComponent } from './test-params/test-params.component';
-import { TestParamsOptionalComponent } from './test-params-optional/test-params-optional.component';
+import { SelectivePreloadingStrategy } from '../providers/selective-preloading-strategy';
+import { AuthGuard } from '../providers/auth-guard.service';
+
+import { IntroComponent } from '../pages/intro/intro.component';
+import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
+import { TestParamsComponent } from '../pages/test-params/test-params.component';
+import { TestParamsOptionalComponent } from '../pages/test-params-optional/test-params-optional.component';
+
+
+import { AdminRoutingModule } from '../routes/admin-routing.module';
+import { HeroRoutingModule } from '../routes/heroes-routing.module';
+import { LoginRoutingModule } from '../routes/login-routing.module';
+import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
+
 
 const routes: Routes = [
   {
@@ -53,6 +61,10 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    AdminRoutingModule,
+    HeroRoutingModule,
+    LoginRoutingModule,
+    CrisisCenterRoutingModule,
     RouterModule.forRoot(routes, {
       enableTracing: true,
       preloadingStrategy: SelectivePreloadingStrategy

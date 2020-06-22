@@ -5,7 +5,6 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-test-params-optional',
   templateUrl: './test-params-optional.component.html',
-  styleUrls: ['./test-params-optional.component.css']
 })
 export class TestParamsOptionalComponent implements OnInit {
 

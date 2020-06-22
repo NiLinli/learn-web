@@ -3,7 +3,7 @@ import {
   Router,
   NavigationExtras
 } from '@angular/router';
-import { AuthService } from '../providers/auth.service';
+import { AuthService } from '../../providers/auth.service';
 
 @Component({
   templateUrl: './login.component.html'

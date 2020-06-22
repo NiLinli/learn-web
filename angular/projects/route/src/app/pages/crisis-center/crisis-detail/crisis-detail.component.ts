@@ -2,7 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Crisis } from '../providers/crisis.service';
-import { DialogService } from '../../providers/dialog.service';
+import { DialogService } from '../../../providers/dialog.service';
 
 @Component({
   templateUrl: './crisis-detail.component.html',

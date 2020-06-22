@@ -3,7 +3,7 @@ import {
   OnInit,
   Input
 } from '@angular/core';
-import { ExampleDef } from '../example.model';
+import { ExampleDef } from './example.model';
 import { Location } from '@angular/common';
 
 @Component({
