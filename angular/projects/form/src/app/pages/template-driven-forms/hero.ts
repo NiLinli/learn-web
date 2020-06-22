@@ -1,13 +1,13 @@
 export class Hero {
 
-    constructor(
-        public id: number,
-        public nickName: string,
-        public firstName: string,
-        public lastName: string,
-        public power: string,
-        public age: number
-    ) { }
+  constructor(
+    public id: number,
+    public nickName: string,
+    public firstName: string,
+    public lastName: string,
+    public power: string,
+    public age: number
+  ) { }
 
 }
 

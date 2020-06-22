@@ -3,6 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "component": "ng serve component",
+    "directives": "ng serve directives",
+    "di": "ng serve di",
+    "form": "ng serve form",
+    "route": "ng serve route",
+    "route-reuse-strategy": "ng serve route-reuse-strategy",
+    "rxjs-chat": "ng serve rxjs-chat",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
