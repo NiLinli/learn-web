@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { HeroListComponent } from './hero-list/hero-list.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
@@ -8,7 +8,7 @@ import { HeroReuseComponentComponent } from './hero-reuse-component/hero-reuse-c
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     FormsModule,
   ],
   declarations: [

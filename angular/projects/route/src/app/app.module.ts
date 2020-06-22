@@ -4,9 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ExampleDef } from './sidebar/example.model';
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { AppRoutingModule } from './routes/app-routing.module';
 import { DialogService } from './providers/dialog.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AdminModule } from './pages/admin/admin.module';
+import { CrisisCenterModule } from './pages/crisis-center/crisis-center.module';
+import { HeroesModule } from './pages/heroes/heroes.module';
+import { LoginModule } from './pages/login/login.module';
 
 const examples: ExampleDef[] = [
   { label: '默认路由', path: 'intro' },
@@ -23,11 +28,18 @@ const examples: ExampleDef[] = [
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    // 特性模块必须导入到主模块中
+    AdminModule,
+    CrisisCenterModule,
+    HeroesModule,
+    LoginModule,
+    // 路由模块
     AppRoutingModule
   ],
   providers: [

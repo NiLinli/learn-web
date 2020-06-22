@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { SelectivePreloadingStrategy } from '../providers/selective-preloading-strategy';
 import { AuthGuard } from '../providers/auth-guard.service';
 
-import { IntroComponent } from '../pages/intro/intro.component';
 import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
 import { TestParamsComponent } from '../pages/test-params/test-params.component';
 import { TestParamsOptionalComponent } from '../pages/test-params-optional/test-params-optional.component';
@@ -17,13 +16,6 @@ import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
 
 
 const routes: Routes = [
-  {
-    path: 'intro',
-    component: IntroComponent,
-    data: {
-      title: '路由介绍'
-    }
-  },
   {
     path: 'test-params/:id',
     component: TestParamsComponent,
@@ -54,7 +46,7 @@ const routes: Routes = [
       title: 'crisis-center'
     }
   },
-  { path: '', redirectTo: 'intro', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

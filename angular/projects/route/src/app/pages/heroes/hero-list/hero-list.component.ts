@@ -11,7 +11,7 @@ import { switchMap } from 'rxjs/operators';
 export class HeroListComponent implements OnInit, OnDestroy {
   heroes$: Observable<Hero[]>;
 
-  private selectedId: number;
+  selectedId: number;
 
   constructor(
     private service: HeroService,
