@@ -16,7 +16,7 @@ export class DomAbstractionsComponent implements OnInit, AfterViewInit {
     private injector: Injector,
     private r: ComponentFactoryResolver // 得到一个 component 的 factory
   ) {
-    console.log((hostElemnt.nativeElement as HTMLElement).outerHTML);
+
   }
 
   ngOnInit() {

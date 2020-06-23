@@ -225,7 +225,7 @@
         }
       }
     },
-    "di": {
+    "dependency-injection": {
       "projectType": "application",
       "schematics": {},
       "root": "projects/dependency-injection",

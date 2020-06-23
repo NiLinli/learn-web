@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule, Routes, Router } from '@angular/router';
 // url
 import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -97,10 +96,9 @@ const someServiceFactory = (config: AppConfig) => {
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
     FeatureModuleDemoModule,
-    RouterModule.forRoot(routes),
-    SidebarModule
+    SidebarModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     UserService,
