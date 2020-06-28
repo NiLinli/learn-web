@@ -16,3 +16,9 @@ end-to-end 端到端(功能), 使用 selenium 或者 webdriver 等工具, 模拟
 - Cypress
 - **Nightwatch**
 - Protractor(Angular)
+
+## jest
+
+### 匹配器
+
+- toBe
