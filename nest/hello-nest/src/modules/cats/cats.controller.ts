@@ -1,8 +1,10 @@
-import { Controller, Get, Req, Post, HttpCode, Header, Param, Body } from '@nestjs/common';
+import { Controller, Get, Req, Post, HttpCode, Header, Param, Body, UsePipes } from '@nestjs/common';
 import { Request } from 'express';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { Cat } from './model/cat.model';
 import { CatService } from './cats.service'
+import { ValidationPipe } from '../../pipe/validation.pipe';
+import { ParseIntPipe } from '../../pipe/parse-int.pipe';
 
 @Controller('cats')
 export class CatsController {
@@ -12,6 +14,7 @@ export class CatsController {
   ) { }
 
   @Post()
+  @UsePipes(ValidationPipe)
   @HttpCode(200)
   @Header('Cache-Control', 'none')
   create(@Body() createCatDto: CreateCatDto): string {
@@ -21,8 +24,8 @@ export class CatsController {
 
   // params
   @Get(':id')
-  findOne(@Param() params): string {
-    return `This action returns a #${params.id} cat`;
+  findOne(@Param('id', new ParseIntPipe()) id): string {
+    return `This action returns a #${id} cat`;
   }
 
   @Get()
