@@ -19,3 +19,11 @@ interface 可以用来实现 oo 中的 implement, 也可以和 type 一样, 用�
 定义(type)
 
 - 除函数和对象之外的其他类型, 就是写在变量声明后面的类型都可以用 type 表示
+
+## 装饰器 Decorators
+
+- class
+- method(function)
+- 属性
+- 参数
+- getter/setter

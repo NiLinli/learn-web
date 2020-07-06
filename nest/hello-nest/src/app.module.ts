@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
+import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatModule } from './modules/cats/cats.module';
 import { RedirectModule } from './modules/redirect/redirect.module';
 import { ExceptionModule } from './modules/exception/exception.module';
 import { HttpExceptionFilter } from './exception/http-exception.filter';
-import { APP_FILTER } from '@nestjs/core';
 import { AllExceptionFilter } from './exception/any-exception.filter';
+import { RolesGuard } from './middleware/roles.guard';
 
 @Module({
   imports: [
@@ -23,6 +24,10 @@ import { AllExceptionFilter } from './exception/any-exception.filter';
     // {
     //   provide: APP_FILTER,
     //   useClass: HttpExceptionFilter
+    // },
+    // {
+    //   provide: APP_GUARD,
+    //   useClass: RolesGuard
     // },
     AppService
   ],
