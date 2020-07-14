@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>throttle</title>
+  </head>
+  <body></body>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.19/lodash.min.js"></script>
+  <script>
+    var input = document.getElementById('input');
+
+    var options = {
+      leading: true,
+      trailing: true,
+    };
+
+    // var options = {
+    //   leading: true,
+    //   trailing: false,
+    // };
+
+    // var options = {
+    //   leading: false,
+    //   trailing: true,
+    // };
+
+    window.addEventListener(
+      'resize',
+      _.throttle(
+        function (e) {
+          console.log(e);
+        },
+        2000,
+        options
+      )
+    );
+  </script>
+</html>

@@ -1,19 +1,20 @@
 // arrow-functions adopt the this binding from the enclosing (function or global) scope.
 // 箭头函数所在 函数中的 this
+// call/apply/bind 都不为所动, 相当于创建了 that 传入
 
 function foo() {
   // The arrow-function created in foo() lexically captures
   return (a) => {
     console.log(this.a);
-  }
+  };
 }
 
 var obj1 = {
-  a: 2
+  a: 2,
 };
 
 var obj2 = {
-  a: 3
+  a: 3,
 };
 
 var bar = foo.call(obj1);
@@ -26,13 +27,15 @@ var objNested = {
     i: 1,
     b: {
       i: 2,
-      c: function() { console.log(this.i) },
-      d: () => console.log(this.i),     // 变量定义函数作用域的 this
-    }
-  }
+      c: function () {
+        console.log(this.i);
+      },
+      d: () => console.log(this.i), // 变量定义函数作用域的 this
+    },
+  },
 };
 
-objNested.a.b.d();  // globalThis
+objNested.a.b.d(); // globalThis
 
 function foo3() {
   // 引用无效, 只能在定义处
@@ -43,10 +46,12 @@ function foo3() {
       i: 1,
       b: {
         i: 2,
-        c: function() { console.log(this.i) },
+        c: function () {
+          console.log(this.i);
+        },
         d: () => console.log(this.i),
-      }
-    }
+      },
+    },
   };
 
   objNested2.a.b.c();
@@ -54,6 +59,3 @@ function foo3() {
 }
 
 foo3.call({ i: 10000 });
-
-
-
