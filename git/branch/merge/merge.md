@@ -25,3 +25,7 @@ They enable us to have parallel evolution of a code base.
 
 - fast-forward 快速合并
 - recursive 递归
+
+## 取消合并
+
+git reset --merge

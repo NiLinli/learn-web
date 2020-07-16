@@ -72,18 +72,6 @@ git reset/git checkout 根据不同参数有不同的工作范围
 
 带文件路径
 
-## revert 回滚
-
-没有文件层面的操作
-
-还原某一个提交, 并产生一个新的提交记录这个提交
-和 commit 是反向操作
-
-1. 需要 revert 的提交
-2. revert 操作记录的提交
-
-都会被记录
-
 ## commit 技巧
 
 ### 修改 commit 方法
