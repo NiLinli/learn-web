@@ -56,30 +56,22 @@
 - 没有元素, 称为空表
 - 起始位置为表头, 表结束位置称为表尾
 
-### array list
+数组类型的线性表: 数组 + 加一些属性 (size, top, front) 等等附加属性
+链表类型的线性表: Node 节点 + 保存有第一个节点地址的结构, 通常起名为 head
 
-数组
-
-1. 大小必须初始化 (resizable array 可以解决)
-2. insert, delete 需要移动元素
-
-### linked list
-
-链表: 不要求逻辑上相邻的两个元素物理上也相连
-
-1. 大小是动态增长的
-2. insert, delete 不需要移动元素, 只需要修改 link
-3. 获得 size 长度比较麻烦
-
-### Stack
-
-堆栈
+Stack 堆栈: 同一端进出
 
 1. 收约束的线性表
 2. 只在 Top 做插入删除
     - 插入 push 入栈
     - 删除 pop 出栈
 3. Last in First out(LIFO)
+
+Queue 队列: 一端进, 另外一端出
+
+1. 收约束的线性表
+2. Front 队列头 enqueue
+3. Rear 队列尾部 dequeue
 
 ## tree 树
 

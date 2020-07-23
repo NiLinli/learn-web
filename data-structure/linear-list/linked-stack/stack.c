@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "stack.h"
+#include "node.h"
 
 // 单向链表, 链表的头和尾部
 // 头部作为 top 

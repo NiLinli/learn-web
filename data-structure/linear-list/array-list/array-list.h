@@ -7,17 +7,6 @@ typedef struct {
   int size;
 } Array;
 
-// typedef struct {
-//   int *array;
-//   int size;
-// }*  Array;        // Array 表示 struct xxx * 
-
-// void f() {
-//   Array a;    // 无法本地声明一个变量
-// }
-
-// 不要定义 point 类型 typedef
-
 Array array_create(int init_size);                // 创建数组
 void array_free(Array *a);                        // 清空数组
 int array_size(const Array *a);                   // 返回数组的大小

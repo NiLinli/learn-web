@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "array.h"
+#include "array-list.h"
 
 int main() {
   Array a1 = array_create(20);

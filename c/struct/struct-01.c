@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// 声明结构类型
+// 声明结构类型, typedef 的时候 struct 的名字可以省略
 struct Point {
   int x;    // 结构成员
   int y;
