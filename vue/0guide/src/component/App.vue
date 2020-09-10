@@ -19,6 +19,7 @@
 const menuItem = [
   { title: 'slots', path: '/slots' },
   { title: 'render function', path: '/render' },
+  { title: 'ref', path: '/ref' }
 ]
 
 
