@@ -1,15 +1,24 @@
 {
-  "name": "process",
+  "name": "cross-env-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "args.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node env.js",
-    "dev": "export NODE_ENV=development && node env.js",
-    "build": "export NODE_ENV=production && node env.js",
+    "env": "cross-env NODE_ENV=production node env.js",
+    "env2": "NODE_ENV=production node env.js",
+    "env3": "EXPORT NODE_ENV=development && node env.js",
+    "build": "cross-env NODE_ENV=production node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "dotenv": "^8.2.0",
+    "dotenv-expand": "^5.1.0"
+  },
+  "dependencies": {
+
+  }
 }
