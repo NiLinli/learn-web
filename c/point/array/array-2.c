@@ -30,6 +30,7 @@ int main(int argc, char const *argv[]) {
 }
 
 // 函数参数中的数组 为 point
+// 只能添加长度参数 length
 void f(int a[]) {
   printf("f sizeof(a) is %lu\n", sizeof(a));  // 8 个字节
   a[3] = 300;
