@@ -10,3 +10,7 @@ int main(int argc, char const *argv[])
 
   return 0;
 }
+
+// '\0' 结尾是 空 的 char 数组为字符串
+// ASCII 编码码点为 0 对应的字符, 不是指数字 0 对应的字符
+// %s 格式化输出

@@ -132,6 +132,12 @@ malloc - free
   - point-2.c   指针与 const
   - point-3.c   指针作为函数 params
 - string
+  - string-0.c  字符串定义
+  - string-1.c  字符串声明 scanf
+  - string-2.c
+  - string-3.c
+  - string-4.c 
+  - string-5.c 
 - malloc
   - malloc-01.c  malloc 和 free 基本使用
   - malloc-02.c  malloc 最大的内存
