@@ -7,8 +7,7 @@
     "env": "cross-env NODE_ENV=production node env.js",
     "env2": "NODE_ENV=production node env.js",
     "env3": "EXPORT NODE_ENV=development && node env.js",
-    "build": "cross-env NODE_ENV=production node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "argv1": "node argv.js name=nilinli age=18 -- foo=123"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +18,6 @@
     "dotenv-expand": "^5.1.0"
   },
   "dependencies": {
-
+    "commander": "^6.2.0"
   }
 }

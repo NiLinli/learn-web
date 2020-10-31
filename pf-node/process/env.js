@@ -2,6 +2,7 @@ const path = require('path');
 const config = require('./config');
 const dotenv = require('dotenv');
 const dotenvExpand = require('dotenv-expand');
+const printArgv  = require('./argv');
 
 // 根据 NODE_ENV 设置不同版本
 console.log('listen on version %s', config.version);
