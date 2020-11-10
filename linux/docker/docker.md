@@ -41,15 +41,25 @@ $  sudo yum list docker-ce --showduplicates | sort -r
 
 ## docker 启动
 
+将用户加入 Docker 用户组
+
+`sudo usermod -aG docker $USER`
+
 启动 docker
 
 ```bash
-$  sudo systemctl start docker
+$ sudo systemctl start docker
 ```
 
 启动 docker 镜像
 
 ```bash
+# 列出镜像列表
+docker image ls
+
+# 删除镜像
+docker image rm [imageName]
+
 # 运行一个 image
 docker run hello-world
 ```
@@ -84,6 +94,14 @@ docker run hello-world
 "registry-mirrors":["https://registry.docker-cn.com"]
 ```
 
+```bash
+docker build \
+  --rm  \
+  --no-cache=true \               # 
+  -t jianghu-server[:tagName] \   # 指定 image 的名字 tagName 默认为 latest
+  .                               # . 表示 Dockerfile 文件所在的路径
+```
+
 ### 容器 Container
 
 容器是镜像的运行实体 = 镜像 + 运行时需要的可写文件层  
@@ -93,9 +111,27 @@ docker run hello-world
 
 OCI 容器标准
 
+```bash
+docker run \              #
+  -p 8000:3000 \          # 容器的 3000 端口映射到本机的 8000 端口
+  -it  \                  # 容器的 Shell 映射到当前的 Shell，然后你在本机窗口输入的命令，就会传入容器
+  --rm  \                 # 容器停止运行后, 自动删除容器文件
+  --name  \               # 自定义容器名字
+  [containerID] \         # image 文件的名字
+  /bin/bash               # 容器启动以后，内部第一个执行的命令。这里是启动 Bash，保证用户可以使用 Shell
+
+
+docker rm [containerID]
+docker stop [containerID]
+```
+
 ### 仓库
 
 Docker 的镜像仓库类似于代码仓库，用来存储和分发 Docker 镜像  
 相对于 npm 之于 js
 
 ## Dockerfile 文件
+
+1. Dockerfile -> 制作成字节的 image(二进制文件, 应用程序 + 依赖)
+2. image -> container
+3. 运行 container
