@@ -41,15 +41,18 @@ void travel_v1() {
     }
   }
 
-  // for (int i = m -2; i >= 0; i--) {
+  for (int i = m -2; i >= 0; i--) {
 
-  //   for (int j = n-1; j >= 0; j--)
-  //   {
-  //     int distance = n-1-j;
-  //     printf("%d\n", dp[i-distance][j]);
-  //   }
+    for (int j = n-1; j >= 0 ; j--)
+    {
+      int distance = n-1-j;
+
+      if (i-distance < 0) continue;
+
+       printf("%d\n", dp[i-distance][j]);
+    }
     
-  // }
+  }
   
 
 }
