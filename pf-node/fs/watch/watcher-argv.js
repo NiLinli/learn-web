@@ -1,5 +1,7 @@
 const fs = require('fs');
-const filename = process.argv[2];
+const filename = process.argv[1];
+
+console.log(process.argv)
 
 // argv = argument vector
 
@@ -12,5 +14,5 @@ fs.watch(filename, () => {
   // async callback 中的错误会导致进程退出
   console.log(`File ${filename} changed!`);
 });
-
-console.log(`Now watching ${filename} for changes...`);
+ 
+console.log(`Now watching ${filename} for changes...`);       
