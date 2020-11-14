@@ -22,7 +22,7 @@ const fsWatcher = fs.watch(
         console.log(`eventType : ` + eventType + ' ' + cMD5);
         console.log(filename);
         previousTime = mtime;
-        previousMD5 = cMD5;
+        previousMD5 = cMD5; 
       }
     }
   }

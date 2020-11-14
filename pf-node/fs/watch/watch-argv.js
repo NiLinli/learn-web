@@ -1,3 +1,4 @@
+// watch 的文件通过参数传入
 const fs = require('fs');
 const spawn = require('child_process').spawn;
 const filename = process.argv[2];
