@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "pm2 start ecosystem.config.js --env dev",
+    "reload_dev": "pm2 start ecosystem.config.js --env dev",
+    "test": "pm2 start ecosystem.config.js --env test",
+    "ut": "pm2 start ecosystem.config.js --env ut",
+    "production": "pm2 start ecosystem.config.js --env production"
   },
   "keywords": [],
   "author": "",
