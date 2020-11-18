@@ -8,3 +8,8 @@
 - fork(modulePath[, args][, options])  
 
 返回值 ChildProcess
+
+## 集群
+
+1. 单进程单线程对多核使用不足, 启动多进程 master-work 模式
+2. 进程间通信
