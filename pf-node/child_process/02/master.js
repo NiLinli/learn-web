@@ -4,17 +4,31 @@ const net = require('net');
 
 const server = net.createServer();
 server.on('connection', (socket) => {
-  socket.end('hanled by master! \n');
+  socket.end('handled by master! \n');
 });
 
 // 子进程
-const children = cpus.map((v, i) => {
-  return fork(__dirname + '/work.js');
+const workers = {};
+
+cpus.forEach((v, i) => {
+  const worker = fork(__dirname + '/work.js');
+  workers[worker.pid] = worker;
 });
+
+
 
 server.listen(8228, () => {
   // 第二个参数为句柄 指向对象的文件描述符
-  children.forEach((child, i) => {
-    child.send('server', server);
-  });
+  for (const pid in workers) {
+    const worker = workers[pid];
+    worker.send('server', server);
+  }
+});
+
+
+process.on('exit', () => {
+  for (const pid in workers) {
+    const worker = workers[pid];
+    worker.kill();
+  }
 });

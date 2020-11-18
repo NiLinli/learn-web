@@ -4,23 +4,29 @@ const net = require('net');
 
 const server = net.createServer();
 
+server.listen(8228);
+
 // 子进程
 const workers = {};
 
-cpus.forEach((v, i) => {
+function createWorker() {
   const worker = fork(__dirname + '/work.js');
+
+  worker.send('server', server);
   workers[worker.pid] = worker;
-});
+  console.log(`Create worker.pid ${worker.pid}`);
 
-server.listen(8228, () => {
-  // 第二个参数为句柄 指向对象的文件描述符
-  for (const pid in workers) {
-    const worker = workers[pid];
-    worker.send('server', server);
-  }
+  // worker 退出
+  worker.on('exit', () => {
+    console.log(`Worker ${worker.pid} exited`);
+    delete workers[worker.pid];
+    // 重新开启一个新的 worker
+    createWorker();
+  });
+}
 
-  // 关掉 tcp 链接
-  server.close();
+cpus.forEach((v, i) => {
+  createWorker();
 });
 
 process.on('exit', () => {
