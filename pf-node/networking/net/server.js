@@ -9,8 +9,11 @@ const server = net.createServer();
 server.on('connection', (socket) => {
   // 获取数据
   socket.on('data', (data) => {
+
+    // data 是 Buffer 类型的
     console.log(data);
-    socket.write('hello');
+    console.log(data.toString('utf8'));
+    socket.write('服务端收到信息了\n');
   });
 
   // 

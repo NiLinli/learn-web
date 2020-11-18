@@ -15,7 +15,4 @@ TCP 服务
 - port
 - domain socket
 
-## 请求 TCP 工具
-
-- telnet
-- nc
+接受一切给予 TCP 连接的数据
