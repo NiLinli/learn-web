@@ -7,6 +7,9 @@ http
       throw new Error('某个未捕获的错误');
     }
     res.end('hello world\n');
-
   })
-  .listen(Math.round((1 + Math.random()) * 1000));
+  .listen(8228);
+
+
+// EADDRINUSE: address already in use :::8228
+// error address in use

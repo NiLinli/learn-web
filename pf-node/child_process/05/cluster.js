@@ -31,6 +31,8 @@ process.on('exit', () => {
   }
 });
 
+// https://github.com/nodejs/node-v0.x-archive/blob/master/lib/cluster.js#L548
+
 // 性能问题
 // 多个工作进程存活状态管理
 // 工作进程的平滑重启

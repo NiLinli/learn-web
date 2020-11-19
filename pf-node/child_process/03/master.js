@@ -2,8 +2,6 @@ const { fork } = require('child_process');
 const cpus = require('os').cpus();
 const net = require('net');
 
-const server = net.createServer();
-
 // 子进程
 const workers = {};
 
@@ -12,16 +10,16 @@ cpus.forEach((v, i) => {
   workers[worker.pid] = worker;
 });
 
-server.listen(8228, () => {
-  // 第二个参数为句柄 指向对象的文件描述符
-  for (const pid in workers) {
-    const worker = workers[pid];
-    worker.send('server', server);
-  }
+// 使用 `pauseOnConnect` 防止 socket 在被发送到子进程之前被读取
+const server = net.createServer({ pauseOnConnect: true });
 
-  // 关掉 tcp 链接
-  server.close();
+server.on('connection', (socket) => {
+  const pidArr = Object.keys(workers);
+  const randomWorker = workers[getRandomArrItem(pidArr)];
+  randomWorker.send('socket', socket);
 });
+
+server.listen(8228);
 
 process.on('exit', () => {
   for (const pid in workers) {
@@ -29,3 +27,9 @@ process.on('exit', () => {
     worker.kill();
   }
 });
+
+// utils
+function getRandomArrItem(arr) {
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+}

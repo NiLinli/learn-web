@@ -1,8 +1,19 @@
+const http = require('http');
 
-process.on('message', (m, server) => {
+const server = http.createServer((req, res) => {
+  res.writeHead(200);
+
+  if (req.url.indexOf('/error') !== -1) {
+    throw new Error('某个未捕获的错误');
+  }
+  
+  res.end(`hello world pid = ${process.pid} \n`);
+});
+
+process.on('message', (m, tcpServer) => {
   if (m === 'server') {
-    server.on('connection', (socket) => {
-      socket.end(`handled by child! ${process.pid} \n`);
-    })
+    tcpServer.on('connection', (socket) => {
+      server.emit('connection', socket);
+    });
   }
 });

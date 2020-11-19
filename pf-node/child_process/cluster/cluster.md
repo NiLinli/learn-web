@@ -8,3 +8,8 @@ Node.js 不会自动管理工作进程的数量，而应该由具体的应用根
 - work
   - cluster.fork()
   - cluster.works Hash table
+
+## 实现方式
+
+- Round-robin: Master 主进程负责监听端口, 接受新连接后将连接循环分发给工作进程
+- Shared listen socket: 主进程创建监听 socket 后发送给感兴趣的工作进程
