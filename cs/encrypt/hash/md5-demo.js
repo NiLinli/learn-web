@@ -1,5 +1,5 @@
-var MD5 = require("crypto-js/md5");
-var blueMD5 = require("blueimp-md5");
+var MD5 = require('crypto-js/md5');
+var blueMD5 = require('blueimp-md5');
 
 console.log(MD5('nilinli').toString());
 
