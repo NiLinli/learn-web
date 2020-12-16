@@ -1,10 +1,6 @@
-var MD5 = require('crypto-js/md5');
-var blueMD5 = require('blueimp-md5');
+# Hash
 
-console.log(MD5('nilinli').toString());
-
-console.log(blueMD5('nilinli'));
-console.log(blueMD5('nilinli', null, true));
+Hash 算法 - 就是把**任意长度**的输入（又叫做预映射pre-image）通过散列算法变换成**固定长度**的输出，该输出就是散列值
 
 // 7a26 69f2 7dba 2ba1 1152 244f 7dca f364    -- 128 bit
 
@@ -30,3 +26,9 @@ console.log(blueMD5('nilinli', null, true));
 //      H[S(a) + P(a)] -> P'(a)
 //      保存 salt (随机生成的字符串) + P'(a)
 //      因为 salt 是随机的, 所以 rainbow table 需要根据每个用户计算出特定的 rainbow table , 提升了成本
+
+## openssl 方法
+
+## 相关语言实现
+
+- [crypto-js](https://github.com/brix/crypto-js)
