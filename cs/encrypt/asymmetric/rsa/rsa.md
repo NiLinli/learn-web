@@ -16,19 +16,10 @@
 
 ## 签名->验证
 
+- hash
+- rsa 签名算法
+
+形成的为数字签名
+
 1. 所有者加密信息: Information + Private key(所有者) = Digital Signature
 2. 其他人获取信息: Digital Signature + Public key(其他人) = Information
-
-## openssl 方法
-
-
-
-
-
-签名
-
-
-
-## 相关语言实现
-
-- RSA [jsencrypt](https://github.com/travist/jsencrypt)

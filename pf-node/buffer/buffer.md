@@ -1,5 +1,7 @@
 # buffer
 
+全局, 无需 require('buffer').Buffer
+
 - Buffer Nodejs 在 ES6 TypedArray 之前定义, 适用于 Node 环境
 - Buffer 为 Unit8Array 实例
 - 处理 byte 流
