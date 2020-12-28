@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "crypto-js": "^4.0.0",
+    "jsencrypt": "^3.0.0-rc.1",
     "sjcl": "^1.0.8"
   }
 }
