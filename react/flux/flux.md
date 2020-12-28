@@ -45,8 +45,12 @@ ADSV (Action --> Dispatcher --> Store --> View), 数据和逻辑永远单向流�
     - 没有数据请求逻辑
     - 只有业务逻辑
 
-## redux
+## 具体实现
+
+### redux
 
 1. 单一数据源 -- 一个应用只有唯一一个数据源
 2. 状态是只读的 -- reducer 迭代 当前 state
 3. 状态修改均有 pure function 完成
+
+### mobx
