@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TimerView from './component/TimerView';
-import { timerStore } from './store';
+import { Provider } from 'mobx-react';
+import * as store from './store';
 
-ReactDOM.render(<TimerView state={timerStore} />, document.getElementById('root'));
+console.log(store)
+import TimerView from './component/TimerView';
+
+ReactDOM.render(
+  <Provider {...store}>
+    <TimerView />
+  </Provider>,
+  document.getElementById('root')
+);
