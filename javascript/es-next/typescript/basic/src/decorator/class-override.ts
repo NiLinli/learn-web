@@ -5,9 +5,8 @@ function classDecorator<T extends { new(...args: any[]): {} }>(constructor: T) {
   }
 }
 
-// 可以用来监视，修改或替换类定义
 @classDecorator
-class Greeter {
+class GreeterO {
   property = 'property';
   hello: string;
 
@@ -16,4 +15,4 @@ class Greeter {
   }
 }
 
-console.log(new Greeter('world'));
+console.log(new GreeterO('world'));
