@@ -1,3 +1,0 @@
-exports.baz = 'baz';
-
-exports = {};

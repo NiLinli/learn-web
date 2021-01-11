@@ -54,3 +54,43 @@ TypeScript中的声明会创建以下三种实体之一
 - 命名空间 Namespace-creating declarations create a namespace, which contains names that are accessed using a dotted notation.
 - 类型 Type-creating declarations do just that: they create a type that is visible with the declared shape and bound to the given name.
 - 值 value-creating declarations create values that are visible in the output JavaScript.
+
+## 模块
+
+比如变量，函数，类，类型别名或接口
+
+别名
+
+- `export { A as B }`
+- `import { B as A }`
+
+全部
+
+- `export * from 'module'` 导入 + 导出(重新导出)/导出转发
+- `import * as All from 'module'` 导入
+
+默认导出
+
+- `export default`
+- `import A from 'module'`
+
+支持 commonjs 的 exports 对象
+
+- `export = A`  这里和 exports = A 有区别, cjs 代码不能改变 exports 指针的指向
+- `import A from 'A'`
+
+## 命名空间 1.7
+
+
+## declare 声明 和 d.ts 1.8
+
+## module 和配置文件 1.9
+## ts 和 babel
+
+## 项目类型结构划分 1.11-1.12
+
+
+
+https://www.tslang.cn/docs/handbook/decorators.html
+https://www.typescriptlang.org/docs/handbook/decorators.html
+https://www.staging-typescript.org/tsconfig
