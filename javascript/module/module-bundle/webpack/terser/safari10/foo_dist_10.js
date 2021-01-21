@@ -1,0 +1,1 @@
+const foo=(o,l)=>`${o}  ${l}`,bar=o=>{console.log(o);for(let l=0;l<5;l++)console.log(l)};
