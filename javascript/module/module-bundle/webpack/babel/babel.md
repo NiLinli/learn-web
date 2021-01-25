@@ -4,7 +4,7 @@ Babel 是一个编译器（输入源码 => 输出编译后的代码）
 ECMAScript 2015+ 版本的代码转换为向后兼容的 JavaScript 语法
 
 - 语法转换
-- Ployfill (@babel/polyfill 模块)
+- Polyfill (@babel/polyfill 模块)
 - ...
 
 编译过程
