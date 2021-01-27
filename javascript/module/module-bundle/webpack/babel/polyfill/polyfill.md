@@ -44,3 +44,10 @@ Modular standard library for JavaScript.
 - core-js-bundle: 同 client, 独立 npm 包
 
 corejs2 和 core3 最大的变化是 feature 的细分程度, **corejs3 是按照类进行区分的, 便于组合**
+
+### core-js 与 babel
+
+1. babel-preset-env
+2. @babel/plugin-transform-runtime
+    - @babel/runtime-corejs2
+    - @babel/runtime-corejs3
