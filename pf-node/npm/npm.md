@@ -43,7 +43,22 @@ dedupe 依赖 tree, 然后进行安装
    - 下载
 3. postinstall
 
+选项
+
+- --no-save 不添加到 dependencies  
+- --save-exact/-E package.json 记录某个具体的版本
+
 ## npm update
 
 1. `npm outdated` 查看那些包需要更新
 2. `npm update` 更新到 wanted (package.json 会更新)
+
+## .npmrc
+
+npm 配置文件
+
+1. 项目级别 `/path/to/my/project/.npmrc`
+2. 用户级别 `~/.npmrc`
+3. global config file ($PREFIX/etc/npmrc)
+4. npm builtin config file (/path/to/npm/npmrc)
+
