@@ -1,31 +1,4 @@
-# project
-
-## 编辑器
-
-`.editorconfig`
-
-## 预处理器
-
-- scss
-- ts
-
-## lint 工具
-
-- eslint
-- tslint
-
-## 工作流
-
-husky
-
-## 部署 deploy
-
-持续集成 (CI): continuous integration
-持续交付 (CD): continuous deploy
-
-### travis
-
-### jenkins
+# jenkins
 
 构建参数化: Build script 里面可以读取一些参数
 
