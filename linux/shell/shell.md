@@ -69,11 +69,18 @@ This login shell maintains what’s known as your environment
 - login shell: 默认的 shell (subshell 的 root)
 - sub shell: 执行一个单独的 sh script 时候, 会开启一个 subshell 去执行
   - 读取变量类似于函数, local variable 和 global variable(不是login shell, 而是上层 shell export variable)
-  - export 可以导出变量给其 sub shell 访问(copy 给 subshell), 不能反向访问
+  - **export 可以导出变量给其 sub shell 访问**(copy 给 subshell), 不能反向访问
+
+
 
 `export -p` 可以查看 login shell 中导出的变量  
 `. foo.sh` 可以在当前 login shell 中执行脚本  
-`source ~/.bash_profile` 也是在 login shell 执行脚本(source: 在当前 shell 中执行脚本)  
+`source ~/.bash_profile` 也是在 login shell 执行脚本(source: 在当前 shell 中执行脚本) 
+
+### 环境变量
+
+1. 全局的环境变量只能在系统配置文件中改, 然后 shell 加载时候读取
+2. export 临时环境变量是 export 给 sub sub sub sub, **export 向下导入**, 不是导出给 father, 所以不会影响全局环境变量
 
 ### 变量
 
