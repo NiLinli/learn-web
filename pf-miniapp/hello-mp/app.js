@@ -1,3 +1,5 @@
+require('./polyfill');
+
 Page.prototype.sayHello = function() {
   console.log('sayHello')
 }

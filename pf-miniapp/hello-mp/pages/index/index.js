@@ -1,4 +1,8 @@
 // 获取应用实例
+
+console.log(global);
+console.log(global.Array);
+
 const app = getApp()
 console.log('app instance:', app);
 
