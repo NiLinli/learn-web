@@ -6,8 +6,9 @@ terser [tɜːs] 基本释义: adj.简洁的;简明的
 
 ## 代替
 
-uglify-js 不支持 ES6
-uglify-es 支持 ES6 但是不再维护
+1. uglify-js 不支持 ES6
+2. uglify-es(fork uglify-js) 支持 ES6 但是不再维护
+3. terser(uglify-js)
 
 ## safari10
 
@@ -16,7 +17,9 @@ syntaxerror cannot declare a let variable twice e
 We incorrectly throw a syntax error when declaring a top level for-loop iteration variable the same as a parameter.
 参数和 for 循环中let 变量名相同， safari10 会错误的抛出一个错误。
 
-## 未解决疑问
+## webpack
 
-webpack 打包时候 babel-loader 和 uglifyJS 执行顺序
-如果 babel-loader 先执行, uglifyJS 应该不会报错, 就没有必要有 terser 这个 lib
+webpack4.6 开始推 terser
+webpack5 默认配置 terser
+
+babel-loader -> uglify-js 也可以满足大多场景

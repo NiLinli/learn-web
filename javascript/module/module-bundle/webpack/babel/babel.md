@@ -79,3 +79,7 @@ a library that contains:
 - npm package 使用 runtime 的方式引入 corejs-pure 保证 package 兼容性, 原因
   1. 引用 package 的工程不一定会使用 entry 方式引入 polyfill (不保证可以作用的到 npm package, 所以需要 polyfill)
   2. package 不能污染全局, 所以使用只能限定与 corejs-pure 的方式
+
+### webpack
+
+webpack 通过 babel-loader, 配置同正常配置相同
