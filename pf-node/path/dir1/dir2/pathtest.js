@@ -5,12 +5,12 @@ console.log(`__dirname = ${ __dirname}`);
 console.log(`path.resolve(__dirname) = ${ path.resolve(__dirname)}`);
 
 // dir1/dir2
-//. = /Users/nilinli/Desktop/Note/learn-nodejs/path/dir1/dir2
-//__dirname = /Users/nilinli/Desktop/Note/learn-nodejs/path/dir1/dir2
+//. = .../dir1/dir2
+//__dirname = .../dir1/dir2
 
 // dir1
-// . = /dir1
-// __dirname = /dir1/dir2
+// . = .../dir1
+// __dirname = .../dir1/dir2
 
 // working directory
 // pathtest.js 所在的目录

@@ -1,22 +1,23 @@
 # webpack
 
+模块打包器
+ES Module/CommonJs Module 转化为 webpack Module 运行  
+
+- entry 打包入口(单个/多个)
+- output 输出文件
+- loader 模块转化器 **文件** module transform
+- plugins 打杂, 非模块化的操作文件, 可以理解为不直接操作文件
+
 ## 整体结构
 
 - runtime:
 - manifest:
 
-## 概念
-
-- entry
-- output
-- loader
-- plugins
-
 ### loader
 
 ### plugin
 
-- tree shaking 
+- tree shaking
   - (uglifyjs-webpack-plugin) 源自于 rollup
   - uglifyjs-webpack-plugin 也可以在 npm script 中添加 `--optimize-minimize` 调用
   - package.json 的 "sideEffects" 配置有副作用的属性不被 tree shaking, 例如 polyfill
@@ -89,18 +90,14 @@ externals
 (function (modules) {
   // 执行下面各个模块的各个引用
 
-
-  return __webpack_require__(__webpack_require__.s = "./index.js");
-})
-({
-  "./demo00/foo.js":
-    (function (module, __webpack_exports__, __webpack_require__) {
-      // "./demo00/foo.js" 模块代码
-    }),
-  "./demo00/main.js":
-    (function (module, __webpack_exports__, __webpack_require__) {
-      // "./demo00/main.js" 模块代码
-    })
+  return __webpack_require__((__webpack_require__.s = './index.js'));
+})({
+  './demo00/foo.js': function (module, __webpack_exports__, __webpack_require__) {
+    // "./demo00/foo.js" 模块代码
+  },
+  './demo00/main.js': function (module, __webpack_exports__, __webpack_require__) {
+    // "./demo00/main.js" 模块代码
+  },
 });
 ```
 
@@ -116,42 +113,45 @@ var module = installedModules[moduleId] = {
 ### require 函数
 
 ```js
-__webpack_require__   // 函数
+__webpack_require__; // 函数
 
 // 属性
-__webpack_require__.s // 
-__webpack_require__.m // 
-__webpack_require__.c // 
-__webpack_require__.p // 
+__webpack_require__.s; //
+__webpack_require__.m; //
+__webpack_require__.c; //
+__webpack_require__.p; //
 
 // 方法
-__webpack_require__.d // 
-__webpack_require__.r // 
-__webpack_require__.t // 
-__webpack_require__.n // 
-__webpack_require__.o // 
-
+__webpack_require__.d; //
+__webpack_require__.r; //
+__webpack_require__.t; //
+__webpack_require__.n; //
+__webpack_require__.o; //
 ```
 
 ### esm 引用 cjs
 
 ```js
-__webpack_require__.n = function(module) {
-	var getter = module && module.__esModule ?
-		function getDefault() { return module['default']; } :
-		function getModuleExports() { return module; };
-	__webpack_require__.d(getter, 'a', getter);
-	return getter;
+__webpack_require__.n = function (module) {
+  var getter =
+    module && module.__esModule
+      ? function getDefault() {
+          return module['default'];
+        }
+      : function getModuleExports() {
+          return module;
+        };
+  __webpack_require__.d(getter, 'a', getter);
+  return getter;
 };
 ```
 
 ```js
-import foo from './m';        // n 函数处理一层
-import * as foo from './m';   // 直接 require
+import foo from './m'; // n 函数处理一层
+import * as foo from './m'; // 直接 require
 
 // 上面个两种情况等同于
 var foo = require('./m');
-
 
 import { foo } from './m';
 
