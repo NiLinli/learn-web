@@ -18,14 +18,15 @@ module.exports = {
         use: [
           'raw-loader',
           resolvePath('./loaders/uppercase-loader.js'),
-          resolvePath('./loaders/reverse-loader.js')
+          resolvePath('./loaders/reverse-loader.js'),
+          resolvePath('./loaders/sync-loader.js'),
+          resolvePath('./loaders/async-loader.js'),
+          resolvePath('./loaders/buffer-loader.js'),
         ],
       },
     ],
   },
-  plugins: [
-    new MyPlugin({ param: 'xxx' })
-  ],
+  plugins: [new MyPlugin({ param: 'xxx' })],
   output: {
     path: resolvePath('dist'),
     filename: '[name].bundle.js',

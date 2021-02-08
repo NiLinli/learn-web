@@ -8,6 +8,20 @@ ES Module/CommonJs Module 转化为 webpack Module 运行
 - loader 模块转化器 **文件** module transform
 - plugins 打杂, 非模块化的操作文件, 可以理解为不直接操作文件
 
+## API
+
+- Compiler 编译器
+- Compilation 一次编译过程
+- module 每个代码文件对应的模块, 上面模块相关的信息
+  - 通过 module.hot 模块获取
+
+### HMR
+
+修改文件再次编译过程中, 模块代码可以访问 `module.hot` API 去操作做一些操作, 比如插入/修改 css 等
+
+- HMR 代替 LiveReload
+- webpack-dev-server 先尝试 HMR, 再尝试 LiveReload
+
 ## 整体结构
 
 - runtime:

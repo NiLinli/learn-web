@@ -1,11 +1,13 @@
+const PLUGIN_NAME = 'MyPlugin2';
+
+// 实例化得到 一个有 apply 方法的对象
 class MyPlugin {
   constructor(options) {
     console.log('MyPlugin constructor:', options);
   }
 
   apply(compiler) {
-    // compilation 创建之后执行
-    compiler.plugin('compilation', (complition) => {
+    compiler.hooks.compilation.tap(PLUGIN_NAME, (complition, compilationParams) => {
       console.log('MyPlugin');
     });
   }
