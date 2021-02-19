@@ -7,7 +7,7 @@
     "0": "webpack --config ./0-hello-webpack/webpack.config.js",
     "asset-management": "webpack --config ./asset-management/webpack.config.js",
     "2": "webpack --config ./2-output-management/webpack.config.js",
-    "3": "webpack --config ./3-development/webpack.config.js",
+    "development": "webpack serve --config ./development/webpack.config.js",
     "5": "webpack --config ./5-tree-shaking/webpack.config.js",
     "7": "webpack --config ./7-code-splitting/webpack.config.js",
     "8": "webpack --config ./8-caching/webpack.config.js",
