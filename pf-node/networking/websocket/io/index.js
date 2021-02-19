@@ -1,10 +1,10 @@
-const express = require('./node_modules/express');
-const http = require('./node_modules/http');
-const path = require('./node_modules/path');
+const express = require('express');
+const http = require('http');
+const path = require('path');
 
 const app = express();
 const serve = http.createServer(app);
-const socket_io = require('./node_modules/socket.io');
+const socket_io = require('socket.io');
 const io = socket_io(serve);
 
 

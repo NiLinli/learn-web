@@ -28,6 +28,9 @@ vscode/chrome 还有很多其他的玩法
 
 ## Node
 
+Node.js 进程通过监听 socket, 接受调试信息
+调试客户端通过协议连接 socket, 发送操作信息
+
 ### 内置调试器
 
 bash 命令行输入命令进行调试 **古老的方式**
@@ -65,3 +68,7 @@ request
 - attach: VS Code's debugger attaches to already running app
 
 都是将 debugger attach 到 Node/Browser 实例上面, 只是 launch 添加了一个启动
+
+## 相关资料
+
+- [Node 调试指南](https://nodejs.org/zh-cn/docs/guides/debugging-getting-started/)
