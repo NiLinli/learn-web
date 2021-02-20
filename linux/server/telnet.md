@@ -1,4 +1,4 @@
-# telnet
+# telnet / nc
 
 作为 TCP 连接的客户端
 

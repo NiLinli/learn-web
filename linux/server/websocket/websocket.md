@@ -44,7 +44,11 @@ Sec-WebSocket-Protocol: chat
 
 ## Messages
 
-webpack 信息传输方式
+websocket 信息传输方式
+
+## 子协议
+
+自定义的文件类型/数据类型声明， 比如类似于 json 等
 
 ## 心跳监测
 
@@ -53,7 +57,4 @@ webpack 信息传输方式
 
 ## 参考资料
 
-- [ws](https://github.com/websockets/ws#protocol-support)
-- [io]()
-https://juejin.cn/post/6844903582290935822
-https://github.com/abbshr/abbshr.github.io/issues/22
+https://www.zhihu.com/question/37647173/answer/1403359896

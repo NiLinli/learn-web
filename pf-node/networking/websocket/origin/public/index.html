@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+
+  <script>
+    var ws = new WebSocket('ws://127.0.0.1:8989');
+
+    // 连接建立
+    ws.addEventListener('open', function (event) {
+      ws.send('Hello Websocket');
+    });
+
+    // 接受消息
+    ws.addEventListener('message', function (event) {
+      console.log('Message from server', event.data);
+    });
+
+    // 关闭连接
+    // ws.close();
+  </script>
+</html>

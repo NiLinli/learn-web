@@ -14,15 +14,7 @@
 TCP net 模块
 UDP dgram 模块
 
-## 会话层
-
-## 表示层
-
 ## 应用层
 
 HTTP http 模块
 
-## 请求 TCP 工具
-
-- telnet
-- nc
