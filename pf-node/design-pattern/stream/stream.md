@@ -1,11 +1,16 @@
-# stream
+# Stream
 
-流可以是可读的、可写的、或是可读写的 所有的流都是 `EventEmitter` 的实例。
- 对于以消费流对象为主的开发者，极少需要直接使用 stream 模块。
+- `Steam` 都是 `EventEmitter` 的实例, 所以暴露了很多 event 出来
+- 一般开发都是在消费 Stream, 很少情况会直接使用 Stream 模块
+- 流数据的类型(取决于直接创建 Stream 的 API, 有些 API 提供了参数):
+  - 字符串
+  - Buffer/Uint8Array 等类 Buffer
 
-- readable  可读
-- writable  可写
-- duplex    可读可写 (双工)
+类别
+
+- readable 可读
+- writable 可写
+- duplex 可读可写 (双工)
 - transform 读写过程中可以修改或者转换数据的 duplex
 - classic
 
@@ -22,61 +27,27 @@ stream.push(chunk) -> buffer 区
 
 ## writable 可写流
 
-可写流是对数据要被写入的目的地的一种抽象(类似于简单的 observer)
+可写流是对数据要被写入的目的地的一种抽象
 
-属性：
-
-- `writableHighWaterMark`
-- `writableLength`
-
-实例方法：
-
-- `write()`
-- `end()`
-- `cork()`
-- `uncork()`
-- `destory()`
-- `setDefaultEncoding()`
-
-可以监听的事件:
-
-- `close`
-- `error`
-- `drain`
-- `finish`
-- `pipe`
-- `unpipe`
+- 写入可写流的时候，需要考虑背压
+- 可以被 pipe 传入，已经处理了背压
 
 ## readable 可读流
 
 可读流是对提供数据的来源的一种抽象
 
-作用：数据传送到一个 writable , transform 或者 duplex 流
+- 作用:不需要一次操作全部内容, 分次去取 比如数据传送下游的 writable , transform 或者 duplex 流
+- 副作用: 是如果需要全部内容, 需要自己去拼全部的内容(比如取 http.IncomingMessage 中的 json或者其他文本数据类型的数据)
 
-属性：
+模式
 
-- `readableHighWaterMark`
-- `readableLength`
-
-实例方法:
-
-- `read([size])`
-- `pipe(dst)`
-
-可以监听的事件：
-
-- `readable`  流中有数据可供读取时触发
-- `data`      流将数据传递给消费者时触发
-- `close`
-- `end`
-- `error`
+- 暂停模式(默认): readable + read() 方式显示去取数据, 控制更加精细
+- 流动模式
+  - 监听 data 事件自动切换/调用 pipe() 方法
+  - 显示调用 resume() 方法
 
 ### pipe 方法
 
-`src.pipe(dst)`
+## duplex
 
-1. src 源头数据
-2. dst 输出到可写的流中
-3. 返回 dist
-
-单个可读流上绑定多个可写流, 数据流将被自动管理。这样, 即使是可读流较快, 目标可写流也不会超负荷(overwhelmed)
+## transform

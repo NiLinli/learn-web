@@ -13,3 +13,6 @@ package-lock.json
 # Java
 
 *.class
+
+
+test.txt
