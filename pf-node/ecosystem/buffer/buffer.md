@@ -9,19 +9,14 @@
 ## 特点
 
 1. Buffer 的大小在被创建时确定, 且无法调整, 大小是固定的
-2. 且在 V8 堆外分配物理内存
+2. 且在 V8 堆外分配物理内存, 直接操作 Buffer, 非必要不转换为 string
 3. Buffer 为 global variable
 4. array-like , 值为 连个 hex 数
 
-## CRUD
-
-### Create
-
-
-### RUD
-
-
 ## 字符编码的转换
 
+- Node 运行时候, 内存中 string 变量转 Buffer
+- Buffer 转化成 string
 
-显式的字符编码, 就可以在 Buffer 实例与普通的 JavaScript 字符串之间进行相互转换
+转换都需要指定字符编码  
+不支持 gbk 等中文编码转换

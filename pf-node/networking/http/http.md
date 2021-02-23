@@ -12,9 +12,19 @@ method
 - get 获取 searchParams
 - post 获取 searchParams + body
 
-### URL 处理
+body 的获取是一次性获取 read stream 的操作, 需要考虑 buffer 的拼接
 
-1. url 模块(URL 模块 & URLSearchParams 模块, 使用 WHATWG API 标准) 
+## http.ServerResponse
+
+```js
+res.statusCode = 200;
+res.write('123');
+res.end();
+```
+
+## URL 处理
+
+1. url 模块(URL 模块 & URLSearchParams 模块, 使用 WHATWG API 标准)
 2. querystring 模块
 
 - URL 字符串是具有结构的字符串
@@ -26,25 +36,17 @@ method
 href = https://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash
 
 1. origin = https://
-    - protocol = https:
-    - //
-2. username & password  = user:pass@
-    - username = user
-    - :
-    - password = pass
-    - @
+   - protocol = https:
+   - //
+2. username & password = user:pass@
+   - username = user
+   - :
+   - password = pass
+   - @
 3. host = sub.host.com:8080
-    - hostname = sub.host.com
-    - :
-    - port = 8080
+   - hostname = sub.host.com
+   - :
+   - port = 8080
 4. pathname = /p/a/t/h
 5. search = ?query=string
 6. hash = #hash
-
-## http.ServerResponse
-
-```js
-res.statusCode = 200;
-res.write('123');
-res.end();
-```

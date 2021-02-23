@@ -1,0 +1,18 @@
+{
+  "name": "fs-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cat.js",
+  "scripts": {
+    "iconv:file-to-string": "node ./iconv/file-to-string.js",
+    "iconv:string-to-file": "node ./iconv/string-to-file.js",
+    "iconv:file-gbk": "node ./iconv/file-gbk.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "iconv-lite": "^0.6.2"
+  }
+}

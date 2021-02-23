@@ -16,7 +16,7 @@ A 参数1 B -- 参数2
 1. 执行 A 参数1
 2. 唤起 B 参数2
 
-commander.js
+commander.js v7+ API 有变更
 
 ## env
 
