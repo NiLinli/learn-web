@@ -11,7 +11,7 @@ fs.stat('/fs.md', (err,stats) => {
 
 
 // 相对路径
-// process.cwd() + 路径名
+// process.cwd() 工作区目录 + 路径名
 fs.stat('fs.md', (err,stats) => {
     if(err) console.log(err)
 

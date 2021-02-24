@@ -7,6 +7,12 @@
     "iconv:file-to-string": "node ./iconv/file-to-string.js",
     "iconv:string-to-file": "node ./iconv/string-to-file.js",
     "iconv:file-gbk": "node ./iconv/file-gbk.js",
+    "access:access": "node ./access/access.js",
+    "access:chmod": "node ./access/chmod.js",
+    "link:link": "node ./link/link.js",
+    "link:symlink": "node ./link/symlink.js",
+    "fd:fd": "node ./fd/fd.js",
+    "fd:time": "node ./fd/time.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

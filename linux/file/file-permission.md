@@ -16,7 +16,7 @@
 
 - `-` 普通文件
 - `d` 文件夹
-- `l` link file
+- `l` link file 软链接
 - `b` 存储
 - `c` 串行设备
 
@@ -26,9 +26,9 @@
 
 ### 具体权限
 
-- r (read)
-- w (write)
-- x (execute)
+- r (read) 4
+- w (write) 2
+- x (execute) 1
   - 文件: linux 通过 x 来判断, windows 通过文件后缀判断
   - 目录: x 判断是否可以切换到该目录 cd ./abc
 
