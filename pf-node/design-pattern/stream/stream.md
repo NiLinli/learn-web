@@ -37,7 +37,7 @@ stream.push(chunk) -> buffer 区
 可读流是对提供数据的来源的一种抽象
 
 - 作用:不需要一次操作全部内容, 分次去取 比如数据传送下游的 writable , transform 或者 duplex 流
-- 副作用: 是如果需要全部内容, 需要自己去拼全部的内容(比如取 http.IncomingMessage 中的 json或者其他文本数据类型的数据)
+- 副作用: 是如果需要全部内容, 需要自己去拼全部的内容(比如取 http.IncomingMessage 中的 json或者其他文本数据类型的数据) **通过流拼接获取全部内容需要考虑字符串转码问题**
 
 模式
 

@@ -13,6 +13,9 @@
     "link:symlink": "node ./link/symlink.js",
     "fd:fd": "node ./fd/fd.js",
     "fd:time": "node ./fd/time.js",
+    "crud:read": "node ./crud/read.js",
+    "crud:read-file": "node ./crud/read-file.js",
+    "crud:read-stream": "node ./crud/read-stream.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

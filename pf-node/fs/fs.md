@@ -103,9 +103,7 @@ X_OK 可执行 (Windows 上无效)
 
 符号链接文件
 
-- fs.lstat()
-      - 对普通文件而言与 fs.stat 相同
-      - 对链接文件(symbol link) 时候, 返回链接文件的信息, 而不是像 fs.stat 会返回源文件信息
+- fs.lstat() - 对普通文件而言与 fs.stat 相同 - 对链接文件(symbol link) 时候, 返回链接文件的信息, 而不是像 fs.stat 会返回源文件信息
 - stats.isSymbolicLink() 判断对象描述符号链接
 
 源文件
@@ -124,7 +122,7 @@ file descriptor: integer
 
 打开文件, 然后下一步对文件进行操作, 对文件的操作比如 readFile 等都是基于 open 函数获取 fd  
 flags 参数决定打开文件后做什么操作
-mode 仅限于创建文件时候指定文件的权限使用  
+mode 仅限于创建文件时候指定文件的权限使用
 
 - crud 的函数因为是基于 open 实现的, 所以一般都支持 fd 传入
 - 其他不支持的方法 都会提供 `fs.fXXX` 版本的方法
@@ -133,9 +131,23 @@ mode 仅限于创建文件时候指定文件的权限使用
 
 文件信息, 和 `stat [filename]` 取得结果相同
 
-## directory
 
 
 ## crud
 
-- 判断是否存在 fs.stat()/fs.access(), 不使用 fs.exists()
+### - 普通文件
+
+文件内容
+
+- 判断是否存在? fs.stat()/fs.access()/fs.existsSync(), 不使用 fs.exists()
+- 读取文件
+      - read
+      - readFile
+      - createReadStream
+- 写入文件
+- 清空文件内容
+- 删除文件
+
+文件信息
+
+### d 文件夹

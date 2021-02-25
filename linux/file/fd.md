@@ -35,7 +35,11 @@ process table entry 存放 fd
 
 ### time
 
-atime=1614155734 最近一次访问时间 acess
-mtime=1614155733 最近一次 **内容** 修改时间 modify
-ctime=1614155733 最近一次 **状态** (inode 区域的内容, mtime 改变 -> inode block 信息改变 -> ctime 改变)变更时间 change
-birthtime=1587537489
+- atime=1614155734
+  - 最近一次访问时间 acess
+  - 以前的内核访问文件 atime 会更新, 后续版本不会
+  - atime 小雨 mtime或者 ctime 时候会更新
+  - ...
+- mtime=1614155733 最近一次 **内容** 修改时间 modify
+- ctime=1614155733 最近一次 **状态** (inode 区域的内容, mtime 改变 -> inode block 信息改变 -> ctime 改变)变更时间 change
+- birthtime=1587537489
