@@ -16,6 +16,11 @@
     "crud:read": "node ./crud/read.js",
     "crud:read-file": "node ./crud/read-file.js",
     "crud:read-stream": "node ./crud/read-stream.js",
+    "crud:truncate": "node ./crud/truncate.js",
+    "crud:write": "node ./crud/write.js",
+    "crud:write-file": "node ./crud/write-file.js",
+    "crud:write-stream": "node ./crud/write-stream.js",
+    "crud:append-file": "node ./crud/append-file.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

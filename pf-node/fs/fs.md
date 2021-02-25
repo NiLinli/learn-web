@@ -131,8 +131,6 @@ mode 仅限于创建文件时候指定文件的权限使用
 
 文件信息, 和 `stat [filename]` 取得结果相同
 
-
-
 ## crud
 
 ### - 普通文件
@@ -141,11 +139,16 @@ mode 仅限于创建文件时候指定文件的权限使用
 
 - 判断是否存在? fs.stat()/fs.access()/fs.existsSync(), 不使用 fs.exists()
 - 读取文件
-      - read
-      - readFile
-      - createReadStream
-- 写入文件
-- 清空文件内容
+  - read
+  - readFile
+  - createReadStream
+- 截断文件(去尾)
+  - truncate
+- 写入文件 truncate 0 后写入
+  - write
+  - writeFile
+  - createWriteStream
+  - appendFile 追加数据
 - 删除文件
 
 文件信息
