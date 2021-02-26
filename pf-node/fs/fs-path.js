@@ -17,3 +17,9 @@ fs.stat('fs.md', (err,stats) => {
 
     console.log(JSON.stringify(stats));
 });
+
+
+fs.realpath(path[, options], callback)
+fs.realpath.native(path[, options], callback)
+fs.realpathSync(path[, options])
+fs.realpathSync.native(path[, options])

@@ -150,7 +150,24 @@ mode 仅限于创建文件时候指定文件的权限使用
   - createWriteStream
   - appendFile 追加数据
 - 删除文件
+  - fs.unlink(path, callback) 删除文件/符号链接
+  - fs.unlinkSync(path)
+  - fs.rm(path[, options], callback)  v14.14.0+
+  - fs.rmSync(path[, options]) v14.14.0+
 
 文件信息
 
+- 修改文件名
+  - fs.rename(oldPath, newPath, callback)
+  - fs.renameSync(oldPath, newPath)
+
 ### d 文件夹
+
+- 新建文件夹
+  - fs.mkdir(path[, options], callback)
+  - fs.mkdirSync(path[, options])
+- 删除文件夹
+  - fs.rmdir(path[, options], callback)
+  - fs.rmdirSync(path[, options])
+- 读取文件夹
+  - fs.readdir

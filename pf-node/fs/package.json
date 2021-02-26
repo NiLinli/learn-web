@@ -21,6 +21,9 @@
     "crud:write-file": "node ./crud/write-file.js",
     "crud:write-stream": "node ./crud/write-stream.js",
     "crud:append-file": "node ./crud/append-file.js",
+    "crud:rm": "node ./crud/rm.js",
+    "crud:dir": "node ./crud/dir.js",
+    "crud:rename": "node ./crud/rename.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -28,5 +31,8 @@
   "license": "ISC",
   "dependencies": {
     "iconv-lite": "^0.6.2"
+  },
+  "devDependencies": {
+    "fs-extra": "^9.1.0"
   }
 }
