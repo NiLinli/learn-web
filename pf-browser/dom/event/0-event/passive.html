@@ -26,6 +26,7 @@
     var mydiv = document.getElementById('mydiv');
 
     mydiv.addEventListener('click', function (e) {
+        console.log(event);     // callback 传入的参数在其调用的环境中就命名为 event
         event.preventDefault(); // 会抛出一个警告
         console.log('123');
     }, {
