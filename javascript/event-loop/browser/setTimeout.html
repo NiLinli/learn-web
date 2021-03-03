@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTimeout</title>
+  </head>
+  <body>
+    <div id="myDiv"></div>
+  </body>
+
+  <script>
+    var myDiv = document.getElementById('myDiv');
+
+    let now = Date.now();
+    // 定时器执行不准, 收到
+    // 1. call stack
+    // 2. call stack 检查为空的时间影响
+    setTimeout(() => {
+      myDiv.innerText = 'omg';
+      console.log(Date.now() - now);
+    }, 0);
+
+    // 占用 call stack
+    for (let index = 0; index < 10000000000; index++) {
+      var a = 1;
+      var b = 2;
+      a + b;
+    }
+  </script>
+</html>

@@ -1,6 +1,6 @@
 // 密封
-// 1.
-// 2.
+// 1. 将所有属性设置为 configurable: false
+// 2. Object.preventExtensions()
 
 const p1 = {
   age: 18,

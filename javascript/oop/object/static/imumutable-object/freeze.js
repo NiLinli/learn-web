@@ -1,5 +1,5 @@
-// 1. seal
-// 2. writable: false
+// 1. writable: false 所有对象都不可以改写
+// 2. seal 操作
 const obj = {
   name: 'nixixi',
 };
