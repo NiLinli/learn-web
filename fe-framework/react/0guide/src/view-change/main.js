@@ -1,25 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import C1 from './views-change/C1';
-import ClockWrapper from './state-lifecycle/ClockWrapper';
-import ListWrapper from './lists-keys/ListWrapper';
-import Greeting from './conditional-rendering/Greeting';
-import ReconcliationDemo from './reconcliation/ReconcliationDemo';
+import NumberList from './components/NumberList';
+import Greeting from './components/ConditionalRendering';
+import UpdateState from './components/UpdateState';
+import Lifecycle from './components/Lifecycle';
+import Reconcliation from './components/Reconcliation'
+
+import './main.css';
 
 function App() {
   return (
     <div>
-      <h3>视图更新</h3>
-      <C1 />
-      <h3>lifecycle</h3>
-      <ClockWrapper />
-      <h3>key</h3>
-      <ListWrapper />
-      <Greeting />
-      <h3>reconcliation</h3>
-      <ReconcliationDemo />
+      <div className="block">
+        <h3>state 更新</h3>
+        <UpdateState />
+      </div>
+
+      <div className="block">
+        <h3>lifecycle</h3>
+        <Lifecycle />
+      </div>
+
+      <div className="block">
+        <h3>循环 for</h3>
+        <NumberList numbers={[1, 2, 3, 4, 5, 6, 7]} />
+      </div>
+
+      <div className="block">
+        <h3>条件判断 if</h3>
+        <Greeting />
+      </div>
+
+      <div className="block">
+        <h3>Reconcliation Fiber Node</h3>
+        <Reconcliation />
+      </div>
     </div>
-  )
+  );
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));

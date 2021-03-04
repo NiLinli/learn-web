@@ -1,4 +1,5 @@
-
+// React 即使没有被引用, 也需要 import
+// 因为 jsx 编译后会用到 React.createElement, 隐式引用了
 import React from 'react';
 import ReactDOM from 'react-dom';
 

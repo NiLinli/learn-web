@@ -2,6 +2,12 @@
 
 [react](https://react.docschina.org/)
 
+版本
+
+- v15
+- v16 添加了 Scheduler
+- v16.8 添加了 hooks
+
 ## package
 
 核心包:

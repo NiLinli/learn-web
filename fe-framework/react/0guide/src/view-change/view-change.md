@@ -8,7 +8,7 @@
 两种方式更新 view
 
 - setState
-- forceUpdate
+- forceUpdate: render 方法依赖除开 state 和 props 以外的状态
 
 1. 默认刷新 当前 节点 以及所有的子节点, 执行 render 函数, **并非从 root 节点开始更新**
 2. 执行 render 函数返回的结果和 现有 DOM 进行对比 , 看是否刷新 DOM (diff 算法, key)
@@ -18,6 +18,27 @@
 ## 生命周期钩子
 
 副作用
+
+生命周期
+
+1. 挂载
+   - constructor
+   - render
+   - componentDidMount
+2. 更新状态
+   - shouldComponentUpdate
+   - componentDidUpdate
+3. 卸载
+   - componentWillUnmount
+
+数据更新(调用 render 函数返回 React Element)
+数据流向自顶向下: 只能上面组件影响下面组件, 反之不行
+
+1. props 改变 componentWillReceiveProps -->
+2. setState 方法 shouldComponentUpdate --> [true] --> componentWillUpdate --> render --> componentDidUpdate
+
+shouldComponentUpdate() 性能优化点  
+钩子函数中, 有参数传递的是通过 this 获取不到的状态
 
 ## reconcliation 协调
 
