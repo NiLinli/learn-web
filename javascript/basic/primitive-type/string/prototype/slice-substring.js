@@ -1,22 +1,22 @@
-// slice 和 substring 都是取下标
-// 返回一个新的字符串
-let str = '012345678';
+// begin index + end index
+
+const str = '012345678';
 console.log(`
-  str.substring(3,3) = ${str.substring(3,3)}
-  str.substring(3,4) = ${str.substring(3,4)}
-  str.slice(3,3) = ${str.slice(3,3)}
-  str.slice(3,4) = ${str.slice(3,4)}
+  str.substring(3,3) = ${str.substring(3, 3)}
+  str.substring(3,4) = ${str.substring(3, 4)}
+  str.slice(3,3) = ${str.slice(3, 3)}
+  str.slice(3,4) = ${str.slice(3, 4)}
 `);
 
+// slice 特异功能
+// slice 支持负数 负数效果等为 负数 + length
+console.log(`${str.slice(2, -1) === str.slice(2, str.length + -1)}`);
+console.log(str.slice(2));
+console.log(str.slice());
 
-// 不同点
-// substring 两个 index 会判断大小, 小的为起始位置
-// substring 负数当作 0
-// slice 负数等效于 负数 + length
-console.log(`
-  str.substring(3,1) = ${str.substring(3,1)}
-  str.slice(3,1) = ${str.slice(3,1)}
+// substring 支持 begin 和 end 自动比较大小
+console.log(`${str.substring(3, 1) === str.substring(1, 3)}`);
+console.log(`${str.substring(3, -1) === str.substring(0, 3)}`);
+console.log(`${str.substring(2)}`);
+console.log(`${str.substring()}`);
 
-  str.substring(2, -1) = ${str.substring(2, -1)}
-  str.slice(2, -1) = ${str.slice(2,-1)}
-`)

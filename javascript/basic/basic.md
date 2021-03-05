@@ -3,8 +3,8 @@
 lexical structure: 定义如何书写代码的规则
 
 1. Unicode character set.
-  - ES3: Unicode 2.1
-  - ES5: Unicode 3 or later
+   - ES3: Unicode 2.1
+   - ES5: Unicode 3 or later
 2. Case Sensitivity (HTML 大小写不敏感 onclick, onClick)
 
 ## operator
@@ -25,7 +25,7 @@ side-effect:
 ## variable
 
 除去关键字(对象 key 中可以使用关键字)
-a-z, A-Z, $, or _. It can then contain any of those characters plus the numerals 0-9.
+a-z, A-Z, $, or \_. It can then contain any of those characters plus the numerals 0-9.
 
 ## type & values
 
@@ -52,7 +52,7 @@ Values that are included directly in the source code are called **literals**.
 
 本质区别
 
-- ==(Abstract Equality) allows coercion in the equality comparison 
+- ==(Abstract Equality) allows coercion in the equality comparison
 - === disallows coercion
 
 效果
@@ -66,12 +66,26 @@ Values that are included directly in the source code are called **literals**.
 - 比较不同 type, 性能并不是主要因素
 - 结论： 性能并不是选用 == / === 的考虑因素, 主要考虑是不是需要隐式转换的比较
 
-== 
+==
 
 - true/false 不要使用
 - [] '' 0 谨慎使用
 
-## array
+## String
+
+- slice
+- substring
+- substr
+
+- slice/substring
+  - begin index + end index
+  - 默认值 0, length
+- slice 支持负数
+- substring 支持比大小
+
+- substring/substr 不支持负数, 负数为 0
+
+## Array
 
 An array is an ordered collection of values.
 
@@ -84,8 +98,8 @@ An array is an ordered collection of values.
 2. zero-based
 3. use 32-bits indexes -> have a maximum array size
 4. dynamic:
-    + grow or shrink as needed 
-    + there is no need to declare a fixed size for the array
+   - grow or shrink as needed
+   - there is no need to declare a fixed size for the array
 5. sparse: length is larger than the index of all elements
 
 ### array is object
@@ -105,7 +119,7 @@ use arrays for numerically positioned values and use objects for named propertie
 ### create array
 
 1. array literal
-2. ~~Array() constructor~~  quirk and no-efficient
+2. ~~Array() constructor~~ quirk and no-efficient
 3. `Array.of()`
 4. `Array.from()`
 
@@ -115,8 +129,8 @@ use arrays for numerically positioned values and use objects for named propertie
 - All array are object , so can create properties of any name on them
 - only use properties that are array indexes -> update length as needed
 - numbers convert to string
-    1. negative
-    2. not integers
+  1. negative
+  2. not integers
 
 ### Sparse
 
@@ -128,9 +142,7 @@ use arrays for numerically positioned values and use objects for named propertie
 1. Every array has a length property, and it is property that make different from regular JavaScript object.
 2. if you set the length property to a non-negative iteger n smaller than its current value, any array elements whose index is greater than or equal to n are deleted from the array.
 
-
 adding named properties (regardless of . or [ ] operator syntax) does not change the reported length of the array.
-
 
 ### prototype
 
