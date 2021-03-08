@@ -9,7 +9,9 @@ console.log(getCharLength(stringObj));
 function getCharLength(string) {
   let count = 0;
 
-  for (const char of string) {
+  const iterator = string[Symbol.iterator]();
+
+  while (!iterator.next().done) {
     count++;
   }
 

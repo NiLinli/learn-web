@@ -14,3 +14,8 @@ input prefix 确定了 => base58 output prefix 确定
 
 ## base64
 
+## ascii
+
+0-9 0x30-0x39  
+A-Z 0x41-0x5A  
+a-z 0x61-0x7A  

@@ -73,6 +73,19 @@ Values that are included directly in the source code are called **literals**.
 
 ## String
 
+### char
+
+- bmp: js 和 人对一个 char 的定义是相同的, 一个 code unit
+- ubmp: js 还是认为一个 char 为 code unit, 人认为一个 Unicode character 为 一个 char
+
+ubmp 中 Unicode character 为 Surrogate pairs 表示
+JS 虽然不认识, 但是也不会报错, 当作两个 UCS-2 字符处理, 只是 string 内置方法使用会和理解有差异
+也不影响 JS 输出/输入该 char 到其他平台
+
+ubmp 字符一般是用户输入的
+
+### substring
+
 - slice
 - substring
 - substr

@@ -1,19 +1,4 @@
-// 0 或多个 16位Unicode 组成的 2个字节
-// utf-16 为 unit, 开辟类数组空间, 所有长度相关的都是以 16bit 为一个单位
-// 常见的 英文字母 中文 16 = 2 个字节
-// 不常见的 中文, 其他字符 16 * 2 = 4 个字节
-
-// length
-let stringObj = new String('hello world'),
-  han1 = '𠮷a', // 0xD842 0xDFB7 32bit 4个字节（两个字节16bit为一个长度）
-  han2 = '倪林立';
-
-// length
-console.log(`
-    stringObj.length = ${stringObj.length},
-    han1.length = ${han1.length},
-    han2.length = ${han2.length}
-`);
+const stringObj = new String('hello world');
 
 // 转译字符
 console.log('a\nb'); // 换行
