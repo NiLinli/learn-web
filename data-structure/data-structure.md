@@ -47,63 +47,6 @@
 - 线性, 常见 for/while
 - 非线性, 常见递归
 
-## linear list 线性表
-
-1. 同类型数据元素
-2. 有序序列 的 **线性结构**
-
-- 表中的个数称为长度
-- 没有元素, 称为空表
-- 起始位置为表头, 表结束位置称为表尾
-
-数组类型的线性表: 数组 + 加一些属性 (size, top, front) 等等附加属性
-链表类型的线性表: Node 节点 + 保存有第一个节点地址的结构, 通常起名为 head
-
-Stack 堆栈: 同一端进出
-
-1. 收约束的线性表
-2. 只在 Top 做插入删除
-    - 插入 push 入栈
-    - 删除 pop 出栈
-3. Last in First out(LIFO)
-
-Queue 队列: 一端进, 另外一端出
-
-1. 收约束的线性表
-2. Front 队列头 enqueue
-3. Rear 队列尾部 dequeue
-
-## tree 树
-
-对于大量的数据, 链表的线性访问时间太慢， 不宜使用。  
-tree O(log N)
-
-定义
-
-- node (节点) + edge (边): 一棵树 tree 由 N 个节点 + (N - 1) 条 边组成
-- leaf (树叶): 没有 child 节点
-- sibling (兄弟): 具有相同 parent 的节点
-- path (路径): 从节点 n1 到 nk 的路径定义为节点 n1, n2, ... , nk 的一个序列, 使得对于 1 <= i <= k, 节点 n_i 是 n_i+1 的 parent
-  - 路径的 length 为该路径边的条数 k - 1
-  - 每一棵 tree 从 root 到每个节点只存在一条路径
-- depth (深度): root 到 该节点的 edge 的长度
-- height (高度): 到一片 leaf 最长 edge 的长度
-- 整棵树的 总深度 = 总高度
-
-遍历方式
-
-1. 前序遍历
-2. 中序遍历
-3. 后序遍历
-4. 宽度遍历
-
-### binary tree 二叉树
-
-每个节点最多只能有两个 child
-
-二叉查找(搜索) 树: 对于每个节点 X, left child < X < right child
-
-
 ## 面试重点
 
 - 链表
@@ -116,3 +59,5 @@ tree O(log N)
 - 排序
   - 归并排序
   - 快速排序
+
+https://github.com/trekhleb/javascript-algorithms/blob/master/src/data-structures/tree/BinaryTreeNode.js
