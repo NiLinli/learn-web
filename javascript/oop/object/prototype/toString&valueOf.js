@@ -2,7 +2,7 @@
 // 1. 先调用 valueOf
 // 2. 再调用 toString
 
-// valueOf
+// valueOf 默认返回值的本身, 不过会被重写
 var timestamp = (new Date()).valueOf(); // 返回值为 number(特例)
 var arr = [1, 2, 3, 4, 5].valueOf(); // 返回值是对象本身
 console.log(/x/.valueOf());

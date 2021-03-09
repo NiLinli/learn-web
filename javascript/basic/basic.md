@@ -71,6 +71,11 @@ Values that are included directly in the source code are called **literals**.
 - true/false 不要使用
 - [] '' 0 谨慎使用
 
+## Number
+
+- double float(默认)
+- Big Int
+
 ## String
 
 ### char
