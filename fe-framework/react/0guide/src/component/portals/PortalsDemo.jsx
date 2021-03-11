@@ -1,5 +1,34 @@
 import React from 'react';
-import Modal from './Modal';
+import ReactDOM from 'react-dom';
+import './main.css';
+
+const modalRoot = document.createElement('div');
+modalRoot.id = 'modal-root';
+document.body.appendChild(modalRoot);
+
+class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.el = document.createElement('div');
+  }
+
+  componentDidMount() {
+    modalRoot.appendChild(this.el);
+  }
+
+  componentWillUnmount() {
+    modalRoot.removeChild(this.el);
+  }
+
+  render() {
+    return ReactDOM.createPortal(
+      // react component children jsx...
+      this.props.children,
+      // container/dom element 挂载点
+      this.el
+    );
+  }
+}
 
 export default class PortalsDemo extends React.Component {
   constructor(props) {
@@ -16,9 +45,8 @@ export default class PortalsDemo extends React.Component {
   };
 
   handleClick = (e) => {
-    if (e.target.className === 'modal')
-    console.log('即使不是实际DOM的父子关系, 但是还是会冒泡到 React Element 父级别');
-  }
+    if (e.target.className === 'modal') console.log('即使不是实际DOM的父子关系, 但是还是会冒泡到 React Element 父级别');
+  };
 
   render() {
     const modal = this.state.showModal ? (

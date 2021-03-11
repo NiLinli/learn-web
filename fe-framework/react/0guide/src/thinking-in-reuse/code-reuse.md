@@ -18,6 +18,9 @@
 
 注意: WrappedComponent static method, 还有 ref 指向需要考虑
 
+- state 通过 hoc props 传入共享
+- method 通过 hoc props listen 传入共享
+
 ### 应用
 
 Redux 的 connect
@@ -31,3 +34,6 @@ render prop 是一个用于告知组件需要渲染什么内容的函数 prop
 3. render 函数参数为 state, 返回值为特定组件
 
 render prop 可以和 HOC 一起使用, 不过这样就嵌套两层
+
+- state - callback 参数共享
+- method 通过 ref 访问 render props 组件访问

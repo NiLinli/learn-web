@@ -4,6 +4,11 @@
 
 ## event
 
+## ref
+
+- 在 props 和 state 状态外, 管理组件
+- functional component 没有 ref 实例
+
 ## 通信
 
 - Context 跨级别传递 props, 适用于 locale, theme...

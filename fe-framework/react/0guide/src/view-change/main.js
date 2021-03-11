@@ -6,7 +6,7 @@ import UpdateState from './components/UpdateState';
 import Lifecycle from './components/Lifecycle';
 import Reconcliation from './components/Reconcliation'
 
-import './main.css';
+import '../main.css';
 
 function App() {
   return (

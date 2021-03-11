@@ -1,17 +1,17 @@
 # hooks
 
-不编写 class 的情况下, 函数组件里“钩入” class 组才有的特性
+hooks is a **function**
 
-1. 使用 state
-2. 以及相应的特性 生命周期等特性的函数
+class 是对 react 介入执行流程的抽象  
+hooks 是对 react 执行流程的另外一种访问与介入  
+设计思想: 不编写 class 的情况下, 函数组件里 “钩入” class 组才有的特性
+
+1. state
+2. effect(类比生命周期)
+3. other hooks
+4. 复用: 组合 state effect function 等
 
 注意: React 记录 Hooks 对应的状态是依照 hooks 的顺序(只在函数顶层调用 Hooks, 不要在条件判断中调用)
-
-## 分类
-
-- state hooks
-- effect hooks 生命周期等副作用
-- 自定义 hooks 重用状态逻辑 代替 高阶组件 + render props
 
 ## useState
 
@@ -19,7 +19,7 @@
 
 ## useEffect
 
-**渲染之后**角度考虑执行时机  
+**渲染**角度考虑执行时机  
 不再以挂载和更新角度去考虑执行世纪
 
 - 需要清除的 effect
