@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 // 没有匹配上, 也就是没有通过 Provider 传入的时候, 才会显示这个默认值
 const ThemeContext = React.createContext('light');
@@ -16,14 +16,6 @@ const DynamicContext = React.createContext({
 export default class AppContext extends React.Component {
   constructor(props) {
     super(props);
-    this.updateDynamicState = (val) => {
-      this.setState({
-        dynamicState: {
-          ...this.state.dynamicState,
-          payload: val,
-        },
-      });
-    };
     this.state = {
       dynamicState: {
         payload: 123,
@@ -32,11 +24,23 @@ export default class AppContext extends React.Component {
     };
   }
 
+  updateDynamicState = (val) => {
+    this.setState({
+      dynamicState: {
+        ...this.state.dynamicState,
+        payload: val,
+      },
+    });
+  };
+
   render() {
     return (
       <DynamicContext.Provider value={this.state.dynamicState}>
         <ThemeContext.Provider value={'dark'}>
           <Toolbar />
+          -----
+          <h4>hooks</h4>
+          <ThemedContainer />
         </ThemeContext.Provider>
       </DynamicContext.Provider>
     );
@@ -83,4 +87,10 @@ class Button extends React.Component {
       </div>
     );
   }
+}
+
+function ThemedContainer() {
+  const theme = useContext(ThemeContext);
+
+  return <div style={{ width: '100px', height: '100px' }}>{theme}</div>;
 }

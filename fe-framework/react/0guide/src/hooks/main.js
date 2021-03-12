@@ -4,6 +4,7 @@ import '../main.css';
 import CountAdd from './components/CountAdd';
 import FriendMessges from './components/FriendMessage';
 import FriendStatusWrapper from './components/FriendStatus';
+import Todos from './components/Todos';
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
       <div className="block">
         <h4>自定义 Hooks(State Reuse)</h4>
         <FriendStatusWrapper />
+      </div>
+      <div className="block">
+        <h4>simple reducer hooks</h4>
+        <Todos />
       </div>
     </div>
   );

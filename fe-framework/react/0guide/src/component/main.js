@@ -6,8 +6,10 @@ import Calculator from './lifting-state-up/Calculator';
 import RefDemoWrapper from './refs-dom/RefDemoWrapper';
 import ForwardRefDemo from './forward-ref/FancyButton';
 import Table from './fragments/Table';
-import ContextDemo from './context-consumer/ContextDemo';
+import AppContext from './context-consumer/AppContext';
 import PortalsDemo from './portals/PortalsDemo';
+import PureDemo from './pure/PureDemo';
+import MemoDemo from './memo/MemoDemo';
 import '../main.css';
 
 function App() {
@@ -39,11 +41,19 @@ function App() {
       </div>
       <div className="block">
         <h3>context</h3>
-        <ContextDemo />
+        <AppContext />
       </div>
       <div className="block">
         <h3>portals</h3>
         <PortalsDemo />
+      </div>
+      <div className="block">
+        <h3>PureComponent</h3>
+        <PureDemo />
+      </div>
+      <div className="block">
+        <h3>memo</h3>
+        <MemoDemo />
       </div>
     </div>
   );
