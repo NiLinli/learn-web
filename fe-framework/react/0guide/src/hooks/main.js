@@ -5,6 +5,7 @@ import CountAdd from './components/CountAdd';
 import FriendMessges from './components/FriendMessage';
 import FriendStatusWrapper from './components/FriendStatus';
 import Todos from './components/Todos';
+import HelloMemo from './components/HelloMemo';
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
       <div className="block">
         <h4>simple reducer hooks</h4>
         <Todos />
+      </div>
+      <div className="block">
+        <h4>memo hooks</h4>
+        <HelloMemo />
       </div>
     </div>
   );

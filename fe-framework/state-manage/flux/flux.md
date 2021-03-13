@@ -39,11 +39,11 @@ ADSV (Action --> Dispatcher --> Store --> View), 数据和逻辑永远单向流�
 数据请求 + 业务逻辑
 
 - 容器组件 container component
-    - 含有抽象数据
-    - 没有业务逻辑
+  - 含有抽象数据
+  - 没有业务逻辑
 - 展示型组件 presentational component
-    - 没有数据请求逻辑
-    - 只有业务逻辑
+  - 没有数据请求逻辑
+  - 只有业务逻辑
 
 ## 具体实现
 

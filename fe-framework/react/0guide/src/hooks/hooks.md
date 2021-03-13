@@ -1,6 +1,6 @@
 # hooks
 
-hooks is a **function**
+hooks is a **function**, hooks 的具体实现在 react-dom 中
 
 class 是对 react 介入执行流程的抽象  
 hooks 是对 react 执行流程的另外一种访问与介入  

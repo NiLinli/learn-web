@@ -4,10 +4,12 @@ const obj = {
   name: 'nixixi',
 };
 
-Object.freeze(obj);
+const returnObj = Object.freeze(obj);
+console.log(returnObj === obj);
 
+returnObj.name = '123';
+returnObj.age = 18;
 obj.name = '123';
 obj.age = 18;
 
-console.log(obj.name);
-console.log(obj.age);
+console.log(returnObj, obj);
