@@ -1,0 +1,12 @@
+# 构建
+
+flow + rollup
+
+## compiler
+
+- 运行时编译 runtime + compiler(JIT)
+- 预编译 runtime + compiler(AST)
+
+compiler: 将 template(字符串) 转换为 render 函数(类似于 jsx 语法糖的装换)
+
+`Vue.compile = compileToFunctions(template, options, this)`
