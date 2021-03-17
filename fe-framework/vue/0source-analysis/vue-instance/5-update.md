@@ -4,12 +4,15 @@
 // src/core/instance/lifecycle.js
 Vue.prototype._update = function (vnode: VNode, hydrating?: boolean) {
   const vm: Component = this;
+  // 获取之前的 _vnode
   const prevEl = vm.$el;
   const prevVnode = vm._vnode;
   const restoreActiveInstance = setActiveInstance(vm);
+
+  // 赋值新的 _vnode
   vm._vnode = vnode;
-  // Vue.prototype.__patch__ is injected in entry points
-  // based on the rendering backend used.
+
+  // 将 prevVnode 和 当前的 vnode 进行对比, _vnode.elem 返回的 DOM 结构 赋值给 $el
   if (!prevVnode) {
     // initial render
     vm.$el = vm.__patch__(vm.$el, vnode, hydrating, false /* removeOnly */);
@@ -37,6 +40,7 @@ Vue.prototype._update = function (vnode: VNode, hydrating?: boolean) {
 ## vm.**patch**
 
 patch 方法是平台相关的， 所以在 platforms 中实现
+patch vnode 生成 vnode.elem
 
 ```js
 // src/platforms/web/runtime/index.js

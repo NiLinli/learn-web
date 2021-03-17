@@ -1,11 +1,6 @@
 <template>
   <div>
-    <el-menu
-      :default-active="activeIndex"
-      mode="horizontal"
-      @select="handleSelect"
-      :router="true"
-    >
+    <el-menu mode="horizontal" :router="true">
       <el-menu-item v-for="(item, key) in menuItem" :key="key" :index="item.path">
         {{ item.title }}
       </el-menu-item>
@@ -15,28 +10,28 @@
 </template>
 
 <script>
-
 const menuItem = [
+  { title: 'props', path: '/props' },
+  { title: 'state', path: '/state' },
   { title: 'slots', path: '/slots' },
   { title: 'render function', path: '/render' },
   { title: 'ref', path: '/ref' }
-]
-
+];
 
 export default {
-  name: "app",
+  name: 'app',
   data() {
     return {
-      menuItem: menuItem
-    }
+      menuItem: menuItem,
+    };
   },
-  components: {}
+  components: {},
 };
 </script>
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
