@@ -1,5 +1,7 @@
 # update
 
+patch 是 对比新旧 vNode, 找出 diff, 打上 patch, 最小限度的修改真实 DOM
+
 ```js
 // src/core/instance/lifecycle.js
 Vue.prototype._update = function (vnode: VNode, hydrating?: boolean) {

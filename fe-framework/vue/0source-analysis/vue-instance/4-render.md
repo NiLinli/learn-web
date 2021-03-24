@@ -2,6 +2,8 @@
 
 作用: 将 vm 渲染成 vNode
 
+初始化或者更新都是创建一个全新的 vNode
+
 ```js
 // src/core/instance/init.js
 initRender(vm); // 混入到 Vue.prototype
