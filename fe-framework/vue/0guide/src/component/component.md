@@ -1,5 +1,21 @@
 # component
 
+## props
+
+- vm.$props
+- vm.$attrs
+
+## state
+
+- vm.$data
+- Vue.set/vm.$set
+- Vue.delete/vm.$delete
+- Vue.watch/vm.$watch
+
+## event
+
+- vm.$listeners
+
 ## slot
 
 承载分发内容的出口  

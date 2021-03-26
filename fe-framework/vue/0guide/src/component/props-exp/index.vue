@@ -1,21 +1,32 @@
 <template>
   <div>
-    <h2>静态 props</h2>
-    <blog-post post-title="静态 props 的 title" />
-
-    <h2>动态 props</h2>
-    <blog-post
-      v-bind:post-title="post.title + ' by ' + post.author.name"
-      v-bind:likes="42"
-      v-bind:is-published="true"
-      v-bind:comment-ids="[234, 266, 273]"
-      v-bind:author="{ name: 'Veronica', company: 'Veridian Dynamics' }"
-      v-bind:undefined-prop="123"
-    />
-    <h2>props 作为 data 的初始值</h2>
-    <counter :initialCounter="1" />
-    <h2>增强处理 attr class and style</h2>
-    <enhance-attrs />
+    <el-tabs type="border-card">
+      <el-tab-pane label="静态 props" lazy>
+        <blog-post post-title="静态 props 的 title" />
+      </el-tab-pane>
+      <el-tab-pane label="动态 props" lazy>
+        <blog-post
+          v-bind:post-title="post.title + ' by ' + post.author.name"
+          v-bind:likes="42"
+          v-bind:is-published="true"
+          v-bind:comment-ids="[234, 266, 273]"
+          v-bind:author="{ name: 'Veronica', company: 'Veridian Dynamics' }"
+          v-bind:undefined-prop="123"
+        />
+      </el-tab-pane>
+      <el-tab-pane label="props 作为 data 的初始值" lazy>
+        <counter :initialCounter="1" />
+      </el-tab-pane>
+      <el-tab-pane label="增强处理 attr class and style" lazy>
+        <enhance-attrs />
+      </el-tab-pane>
+      <el-tab-pane label="$attrs" lazy>
+        <female-duck :weight="18" />
+      </el-tab-pane>
+      <el-tab-pane label="DOM property" lazy>
+        <div :text-content.prop="'omg dom property'"></div>
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
@@ -23,13 +34,15 @@
 import BlogPost from './blog-post';
 import Counter from './counter';
 import EnhanceAttrs from './enhance-attrs';
+import FemaleDuck from './female-duck';
 
 // v-bind
 export default {
   components: {
     BlogPost,
     Counter,
-    EnhanceAttrs
+    EnhanceAttrs,
+    FemaleDuck
   },
   data() {
     return {

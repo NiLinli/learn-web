@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import StateExp from './state-exp';
 import PropsExp from './props-exp';
+import EventExp from './event-exp';
 import SlopExp from './slot-exp';
 import RenderExp from './render-exp';
 import FormExp from './form-exp';
@@ -11,6 +12,7 @@ const routes = [
   { path: '/', redirect: '/props' },
   { path: '/props', component: PropsExp },
   { path: '/state', component: StateExp },
+  { path: '/event', component: EventExp },
   { path: '/slots', component: SlopExp },
   { path: '/render', component: RenderExp },
   { path: '/form', component: FormExp },

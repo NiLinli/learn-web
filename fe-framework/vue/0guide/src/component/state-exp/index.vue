@@ -7,6 +7,13 @@
     <button @click="onChangeFirstName">
       改变 firstName
     </button>
+    <button @click="onWatchFullName">
+      动态 watch/unwatch fullname
+    </button>
+
+    <h3>vm.$set 在数组中的应用</h3>
+    <p>{{ arr.toString() }}</p>
+    <button @click="onSetArrValue">改变某个索引下面的值</button>
   </div>
 </template>
 
@@ -15,12 +22,15 @@ export default {
   // data.call(vm, vm)
   data(vm) {
     console.log(vm === this);
+    // 每个属性都有一个 dep(observation) 去收集 watcher
+    // vm.message -> vm._data(vm.$data 公开) -> closure val
     return {
       message: 'Hello',
       firstName: 'Foo',
       lastName: 'Bar',
       fullName: 'Foo Bar',
       unuseVar: '123',
+      arr: [1, 2, 3, 4, 5, 6],
     };
   },
   // 对于复杂的逻辑 都应该使用 compute 属性
@@ -63,7 +73,20 @@ export default {
   },
   methods: {
     onChangeFirstName() {
-      this.firstName = 'Linli';
+      this.firstName = 'Linli' + (Math.floor(Math.random() * 9) + 1); // [1, 10]
+    },
+    onWatchFullName() {
+      if (this.unwatch) {
+        this.unwatch();
+        return (this.unwatch = null);
+      }
+      // Vue.watch(this, 'fullName', callback);
+      this.unwatch = this.$watch('fullName', (val, oldVal) => {
+        console.log(`fullName ${val} change to ${oldVal}`);
+      });
+    },
+    onSetArrValue() {
+      this.$set(this.arr, 2, 99);
     },
   },
 };
