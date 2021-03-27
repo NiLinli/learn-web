@@ -1,7 +1,7 @@
 <template>
   <div class="input-wrapper">
     <label for="">{{ label }}</label>
-    <input type="text" v-on="inputListeners" />
+    <input type="text" v-on="inputListeners" v-bind="$attrs" />
   </div>
 </template>
 

@@ -1,10 +1,9 @@
 <template>
-  <div></div>
+  <base-input v-model="inputValue" />
 </template>
 
 <script>
-
-// someProp.sync 
+// someProp.sync
 // 父组件(定义在父组件当中, 可以写任意)
 // 指定 prop
 // event 为 update:someProp(必须以update: 开头)
@@ -18,11 +17,19 @@
 // value 指定 prop (默认为 value)
 // event 指定 event (任意, 默认为 input)
 // emit 事件
-export default {
 
-}
+import BaseInput from './base-input';
+
+export default {
+  components: {
+    BaseInput,
+  },
+  data() {
+    return {
+      inputValue: '',
+    };
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
