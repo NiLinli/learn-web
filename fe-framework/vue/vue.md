@@ -1,11 +1,8 @@
 # Vue 2.x
 
-- 指令是干啥的
-- v-model 完成
 - slot 意义以及相关
 - 非普通组件
-
-
+- use/mixin
 
 ## vue-cli
 

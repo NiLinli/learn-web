@@ -4,6 +4,7 @@ import StateExp from './state-exp';
 import PropsExp from './props-exp';
 import EventExp from './event-exp';
 import DirectiveExp from './directive-exp';
+import FilterExp from './filter-exp';
 import SlopExp from './slot-exp';
 import RenderExp from './render-exp';
 import FormExp from './form-exp';
@@ -15,6 +16,7 @@ const routes = [
   { path: '/state', component: StateExp },
   { path: '/event', component: EventExp },
   { path: '/directive', component: DirectiveExp },
+  { path: '/filter', component: FilterExp },
   { path: '/slots', component: SlopExp },
   { path: '/render', component: RenderExp },
   { path: '/form', component: FormExp },
