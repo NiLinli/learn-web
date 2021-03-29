@@ -16,7 +16,6 @@ export function optimize (root: ?ASTElement, options: CompilerOptions) {
 }
 ```
 
-
 ```js
 function isStatic (node: ASTNode): boolean {
   if (node.type === 2) { // expression 表达式非静态
