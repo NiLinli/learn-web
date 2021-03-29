@@ -1,11 +1,11 @@
 <template>
   <div>
-    <item ref="item1"/>
+    <item ref="item1" />
     <item ref="item2" />
     <item />
     <item />
 
-    <button @click="onBtnClick">btn</button>
+    <button @click="onBtnClick">log</button>
   </div>
 </template>
 
@@ -15,21 +15,14 @@ import Item from './Item';
 export default {
   name: 'RefExp',
   components: { Item },
-  mounted() {
-    console.log(this.$refs.item1.domRef === this.$refs.item2.domRef)
-  },
+  mounted() {},
   methods: {
     onBtnClick() {
-      console.log(this.$refs.item1.$refs.domRef === this.$refs.item2.$refs.domRef)
-      console.log(this.$refs.item1.$refs.domRef === this.$refs.item2.domRef)
-      console.log(this.$refs.item1.domRef)
-      console.log(this.$refs.item2.domRef)
-    }
-  }
-
-}
+      console.log(this.$refs.item1.$refs.domRef);
+      console.log(this.$refs.item2.$refs.domRef);
+    },
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

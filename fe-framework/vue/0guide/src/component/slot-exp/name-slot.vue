@@ -14,7 +14,11 @@
 
 <script>
 export default {
-  name: 'base-layout'
+  name: 'base-layout',
+  mounted() {
+    // 存放父组件编译好的 vnode
+    console.log(this.$slots)
+  }
 };
 </script>
 

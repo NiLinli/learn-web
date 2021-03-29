@@ -6,7 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
 
-// 全局注册
+// 全局注册 Component
 // kebab-case - Angular
 Vue.component('component-a', {
   template: '<p>a</p>',
@@ -31,6 +31,15 @@ bus.$on('global-message', (e) => {
   console.log('receive global-message', e);
 });
 Vue.prototype.$bus = bus;
+
+// 全局混入 mixin
+Vue.mixin({
+  data() {
+    return {
+      mixinData: 'gloal-mixin',
+    };
+  },
+});
 
 new Vue({
   router,

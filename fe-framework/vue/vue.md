@@ -1,9 +1,12 @@
 # Vue 2.x
 
-- slot 意义以及相关
 - 非普通组件
-- use/mixin
-
+  - 函数式组件
+  - 异步组件
+  - keep-alive
+  - transition
+  - component
+  
 ## vue-cli
 
 - chromedriver `npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver`

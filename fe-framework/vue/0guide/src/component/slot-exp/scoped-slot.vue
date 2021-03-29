@@ -1,5 +1,6 @@
 <template>
   <span>
+    <!-- slot 上面定义的 props 称为 slotProps -->
     <slot :user="user">{{ user.lastName }}</slot>
   </span>
 </template>
@@ -13,6 +14,10 @@ export default {
         lastName: 'Ni'
       }
     }
+  },
+  mounted() {
+    // 存储 render function, 并在子组件内调用
+    console.log(this.$scopedSlots)
   }
 };
 </script>

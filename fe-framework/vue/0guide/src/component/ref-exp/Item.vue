@@ -2,7 +2,7 @@
   <div class="ref-item">
     <div style="margin-top: 20px;">
       <sub-item ref="sub"></sub-item>
-      <div ref="domRef" @click="onClick">123</div>
+      <button ref="domRef" @click="onClick">123</button>
     </div>
   </div>
 </template>

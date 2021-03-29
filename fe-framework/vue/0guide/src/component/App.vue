@@ -19,8 +19,9 @@ const menuItem = [
   { title: 'directive', path: '/directive' },
   { title: 'filter', path: '/filter' },
   { title: 'slots', path: '/slots' },
-  { title: 'render function', path: '/render' },
   { title: 'ref', path: '/ref' },
+  { title: 'mixin', path: '/mixin' },
+  { title: 'render function', path: '/render' },
 ];
 
 export default {

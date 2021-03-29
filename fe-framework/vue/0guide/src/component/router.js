@@ -6,9 +6,11 @@ import EventExp from './event-exp';
 import DirectiveExp from './directive-exp';
 import FilterExp from './filter-exp';
 import SlopExp from './slot-exp';
+import RefExp from './ref-exp';
+import MixinExp from './mixin-exp';
+
 import RenderExp from './render-exp';
 import FormExp from './form-exp';
-import RefExp from './ref-exp';
 
 const routes = [
   { path: '/', redirect: '/props' },
@@ -18,9 +20,10 @@ const routes = [
   { path: '/directive', component: DirectiveExp },
   { path: '/filter', component: FilterExp },
   { path: '/slots', component: SlopExp },
+  { path: '/ref', component: RefExp },
+  { path: '/mixin', component: MixinExp },
   { path: '/render', component: RenderExp },
   { path: '/form', component: FormExp },
-  { path: '/ref', component: RefExp },
 ];
 
 Vue.use(VueRouter);
