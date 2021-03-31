@@ -1,7 +1,6 @@
 # Vue 2.x
 
 - 非普通组件
-  - 函数式组件
   - 异步组件
   - keep-alive
   - transition

@@ -40,20 +40,25 @@
         </template>
       </current-user>
     </el-tab-pane>
+    <el-tab-pane label="scopedSlots render function" lazy>
+      <user-ni></user-ni>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
 <script>
 import BaseLayout from './name-slot';
 import CurrentUser from './scoped-slot';
+import UserNi from './user-ni';
 // slot 相比 prop 可以传递组件, 更加灵活
 // slot 类似于 children
-// slot-props 共享数据方式类似于 render props, 可以在插槽中使用 子组件 传递过来的数据
+
 
 export default {
   components: {
     BaseLayout,
     CurrentUser,
+    UserNi
   },
 };
 </script>

@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  props: ["level"]
+  props: ['level']
 };
 </script>
 

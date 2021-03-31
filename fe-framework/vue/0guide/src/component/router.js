@@ -8,6 +8,7 @@ import FilterExp from './filter-exp';
 import SlopExp from './slot-exp';
 import RefExp from './ref-exp';
 import MixinExp from './mixin-exp';
+import FunctionalExp from './functional-exp'
 
 import RenderExp from './render-exp';
 import FormExp from './form-exp';
@@ -22,6 +23,7 @@ const routes = [
   { path: '/slots', component: SlopExp },
   { path: '/ref', component: RefExp },
   { path: '/mixin', component: MixinExp },
+  { path: '/functional-component', component: FunctionalExp },
   { path: '/render', component: RenderExp },
   { path: '/form', component: FormExp },
 ];

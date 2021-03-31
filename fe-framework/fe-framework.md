@@ -10,7 +10,7 @@ vue 不收集更新 state, 直接通过 setter 更新
 2. state -> vdom
 
 react 直接更新
-vue 在该阶段收集 vdom update **nextTick**
+vue 在该阶段收集 watcher vdom update **nextTick**
 
 3. vdom -> dom
 

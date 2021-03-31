@@ -1,3 +1,6 @@
+// 如果没有引用其他
+// 不用定义 script
+// 直接在 template 声明 functional
 <template functional>
   <div>
     <h1 v-if="props.level === 1">
@@ -20,8 +23,3 @@
     </h6>
   </div>
 </template>
-
-
-<script>
-  export default {};
-</script>

@@ -21,7 +21,7 @@
         <enhance-attrs />
       </el-tab-pane>
       <el-tab-pane label="$attrs" lazy>
-        <female-duck :weight="18" />
+        <female-duck :age="2" :weight="18" />
       </el-tab-pane>
       <el-tab-pane label="DOM property" lazy>
         <div :text-content.prop="'omg dom property'"></div>

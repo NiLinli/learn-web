@@ -21,6 +21,7 @@ const menuItem = [
   { title: 'slots', path: '/slots' },
   { title: 'ref', path: '/ref' },
   { title: 'mixin', path: '/mixin' },
+  { title: 'functional-component', path: '/functional-component' },
   { title: 'render function', path: '/render' },
 ];
 
