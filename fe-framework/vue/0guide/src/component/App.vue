@@ -23,6 +23,7 @@ const menuItem = [
   { title: 'mixin', path: '/mixin' },
   { title: 'functional-component', path: '/functional-component' },
   { title: 'render function', path: '/render' },
+  { title: 'async component', path: '/async' },
 ];
 
 export default {

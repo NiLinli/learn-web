@@ -9,8 +9,9 @@ import SlopExp from './slot-exp';
 import RefExp from './ref-exp';
 import MixinExp from './mixin-exp';
 import FunctionalExp from './functional-exp'
-
 import RenderExp from './render-exp';
+import AsyncExp from './async-exp'
+
 import FormExp from './form-exp';
 
 const routes = [
@@ -25,6 +26,7 @@ const routes = [
   { path: '/mixin', component: MixinExp },
   { path: '/functional-component', component: FunctionalExp },
   { path: '/render', component: RenderExp },
+  { path: '/async', component: AsyncExp },
   { path: '/form', component: FormExp },
 ];
 
