@@ -10,7 +10,9 @@ import RefExp from './ref-exp';
 import MixinExp from './mixin-exp';
 import FunctionalExp from './functional-exp'
 import RenderExp from './render-exp';
-import AsyncExp from './async-exp'
+import AsyncExp from './async-exp';
+import DynamicExp from './dynamic-exp';
+import TransitionExp from './transition-exp';
 
 import FormExp from './form-exp';
 
@@ -27,6 +29,8 @@ const routes = [
   { path: '/functional-component', component: FunctionalExp },
   { path: '/render', component: RenderExp },
   { path: '/async', component: AsyncExp },
+  { path: '/dynamic', component: DynamicExp },
+  { path: '/transition', component: TransitionExp },
   { path: '/form', component: FormExp },
 ];
 

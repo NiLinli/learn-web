@@ -24,6 +24,8 @@ const menuItem = [
   { title: 'functional-component', path: '/functional-component' },
   { title: 'render function', path: '/render' },
   { title: 'async component', path: '/async' },
+  { title: 'dynamic component', path: '/dynamic' },
+  { title: 'transition component', path: '/transition' }
 ];
 
 export default {

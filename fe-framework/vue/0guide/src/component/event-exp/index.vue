@@ -1,23 +1,21 @@
 <template>
-  <div>
-    <el-tabs type="border-card">
-      <el-tab-pane label="Dom Event" lazy>
-        <dom-event></dom-event>
-      </el-tab-pane>
-      <el-tab-pane label="Custom Event" lazy>
-        <custom-event></custom-event>
-      </el-tab-pane>
-      <el-tab-pane label="$listeners" lazy>
-        <hoc-listeners> </hoc-listeners>
-      </el-tab-pane>
-      <el-tab-pane label=".sync" lazy>
-        <sync-sugar></sync-sugar>
-      </el-tab-pane>
-      <el-tab-pane label="v-model" lazy>
-        <hoc-listeners> </hoc-listeners>
-      </el-tab-pane>
-    </el-tabs>
-  </div>
+  <el-tabs type="border-card">
+    <el-tab-pane label="Dom Event" lazy>
+      <dom-event></dom-event>
+    </el-tab-pane>
+    <el-tab-pane label="Custom Event" lazy>
+      <custom-event></custom-event>
+    </el-tab-pane>
+    <el-tab-pane label="$listeners" lazy>
+      <hoc-listeners> </hoc-listeners>
+    </el-tab-pane>
+    <el-tab-pane label=".sync" lazy>
+      <sync-sugar></sync-sugar>
+    </el-tab-pane>
+    <el-tab-pane label="v-model" lazy>
+      <hoc-listeners> </hoc-listeners>
+    </el-tab-pane>
+  </el-tabs>
 </template>
 
 <script>

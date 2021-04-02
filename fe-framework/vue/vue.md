@@ -1,10 +1,9 @@
 # Vue 2.x
 
+[vue-analysis](https://ustbhuangyi.github.io/vue-analysis/)
+
 - 非普通组件
-  - 异步组件
-  - keep-alive
   - transition
-  - component
   
 ## vue-cli
 
