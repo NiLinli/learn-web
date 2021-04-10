@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 // const 只读
-// int * const p;   // p 为 const
-// const int *p;    // *p 为 const
+// int* const p;   // 变量 p 为 const
+// const int *p;    // 变量对应的值 *p 为 const
 
 void constPoint();
 void constValue();

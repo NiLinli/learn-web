@@ -2,6 +2,8 @@
 
 void f(void);
 
+// 结构成员的拷贝  数组不能做这个操作因为 数组 a 为 const 指针 
+
 int main(int argc, char const *argv[])
 {
     f();

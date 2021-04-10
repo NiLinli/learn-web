@@ -29,7 +29,7 @@ int main() {
 
   // 动态分配的内存必须手动释放
   // free 只能释放 malloc 空间
-  free(p);
+  free(a);
 
   return 0;
 }
