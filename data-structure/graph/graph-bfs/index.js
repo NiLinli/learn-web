@@ -18,7 +18,7 @@ graph2['mike'] = ['you'];
 
 function bfsSearch(graph) {
   let queue = [];
-  let searchRecord = [];
+  let processed = [];
 
   queue = queue.concat(graph['you']);
 
@@ -26,12 +26,12 @@ function bfsSearch(graph) {
     // dequeue
     const pick = queue.shift();
     // 检查过的不再检查
-    if (searchRecord.includes(pick)) continue;
+    if (processed.includes(pick)) continue;
 
     if (isMongoDms(pick)) {
       return pick;
     } else {
-      searchRecord.push(pick);
+      processed.push(pick);
       queue = queue.concat(graph[pick]);
     }
   }
