@@ -1,23 +1,21 @@
-function selectSort(arr) {
-  const newArr = [];
+function selectionSort(arr) {
   let length = arr.length;
   for (let i = 0; i < length; i++) {
-    let minIndex = 0;
-    let minValue = arr[minIndex];
+    let minIndex = i;
 
-    for (let i = minIndex + 1; i < arr.length; i++) {
-      const pickValue = arr[i];
-      if (pickValue < minValue) {
-        minValue = pickValue;
-        minIndex = i;
+    for (let j = minIndex; j < arr.length; j++) {
+      const pickValue = arr[j];
+      if (pickValue < arr[minIndex]) {
+        minIndex = j;
       }
     }
 
-    newArr.push(minValue);
-    arr.splice(minIndex, 1);
+    const temp = arr[i];
+    arr[i] = arr[minIndex];
+    arr[minIndex] = temp;
   }
 
-  return newArr;
+  return arr;
 }
 
 const arr = [1, 7, 8, 2, 3, 9, 1, 4, 3];

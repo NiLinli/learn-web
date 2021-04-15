@@ -1,19 +1,46 @@
-var arr1 = [1, 2, 5];
-var arr2 = [2, 3, 7];
+const arr = [1, 7, 8, 2, 3, 9, 1, 4, 3];
 
+function mergeSort(arr, start, end) {
+  start = typeof start === 'undefined' ? 0 : start;
+  end = typeof end === 'undefined' ? arr.length - 1 : end;
 
-function combineTwoArr(arr1, arr2) {
-  var a = 0, b = 0;
-  var newArr = [];
-  for(var i = 0; i < 2 * arr1.length; i ++) {
-    if(arr1[a] <= arr2[b]) {
-      newArr.push(arr1[a++]);
-    } else {
-      newArr.push(arr2[b++]);
-    }
+  if (start < end) {
+    const mid = parseInt((start + end) / 2);
+    mergeSort(arr, start, mid);
+    mergeSort(arr, mid + 1, end);
+
+    mergeArr(arr, start, mid, end);
   }
-
-  console.log(newArr);
 }
 
-combineTwoArr(arr1, arr2);
+function mergeArr(arr, start, mid, end) {
+  const temp = [];
+
+  let i1 = start;
+  let i2 = mid + 1;
+  let k = 0;
+
+  while (i1 <= mid && i2 <= end) {
+    temp[k] = arr[i1] <= arr[i2] ? arr[i1++] : arr[i2++];  
+    k++;
+  }
+  
+
+  while (i1 <= mid) {
+    temp[k] = arr[i1++];
+    k++;
+  } 
+
+  while (i2 <= end) {
+    temp[k] = arr[i2++];
+    k++;
+  }
+
+  for (let i = 0; i < k; i++) {
+    arr[start + i] = temp[i];
+  }
+}
+
+
+mergeSort(arr)
+console.log(arr)
