@@ -15,5 +15,4 @@ console.log(Set.prototype[Symbol.iterator] === Set.prototype.values);
 
 for (const item of s) {
   console.log(item);
-  
 }

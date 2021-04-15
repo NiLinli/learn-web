@@ -7,16 +7,10 @@ console.log(s.size);  // 3
 // R
 console.log(s.has(1));
 
-// U
-// 无
-
 // D
 s.delete(1);
 console.log(s);
 
 s.clear();
-console.log(s);
-
-
-// 
+console.log(s); 
 
