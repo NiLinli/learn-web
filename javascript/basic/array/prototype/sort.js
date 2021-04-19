@@ -1,19 +1,38 @@
 // 修改原数组
+let arr = [33, 4, 1111, 10200, 12344, 222];
 
-let arr = [33, 4, 1111, 222];
-let oldArr = arr.sort();
+// 默认行为
+// 会把数组里面的 item 当作字符串处理
+// 每个依次对比
+// 等同
+let oldArr = arr.sort((a, b) => {
+  if (a.toString() > b.toString()) return 1;
+  if (a.toString() < b.toString()) return -1;
+  return 0;
+});
 
-console.log(oldArr === arr); // true
+console.log(arr, oldArr === arr);
 
-// lambda function return
-// > 0 a 在后 升序
-// = 0 
-// < 0 a 在前 降序
+// a b 代表的排序算法中不同的指向
+// 也就是不同排序中相比较的两个数
+// ascend
+arr.sort((a, b) => {
+  if (a > b) return 1; // 实际算法中取这个条件
+  if (a < b) return -1;
+  return 0;
 
-arr.sort((a, b) => a - b);
+  // 等同于
+  // return a - b;
+});
+
 console.log(arr);
 
-arr.sort((a, b) => b - a);
+// descend
+arr.sort((a, b) => {
+  if (a < b) return 1;
+  if (a > b) return -1;
+  return 0;
+
+  // return b - a;
+});
 console.log(arr);
-
-
