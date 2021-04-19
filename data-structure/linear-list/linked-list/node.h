@@ -9,6 +9,7 @@ typedef struct _node {
 
 typedef struct _list {
   Node *head;     // 指向首个 Node 节点
+  int size;
 } List;
 
 List* create();

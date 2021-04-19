@@ -7,13 +7,13 @@ typedef struct {
   int size;
 } Array;
 
-Array array_create(int init_size);                // 创建数组
-void array_free(Array *a);                        // 清空数组
-int array_size(const Array *a);                   // 返回数组的大小
-int* array_at(Array *a, int i);                   // 访问数组单元
-int array_get(const Array *a, int i);             // 取得数组单元
-void array_set(Array *a, int i, int value);       // 设置数组单元
-void array_inflate(Array *a, int more_size);      // 扩充数组
+Array array_create(int init_size);                // 创建线性表
+void array_free(Array *a);                        // 清空线性表
+int array_size(const Array *a);                   // 返回线性表的大小
+int* array_at(Array *a, int i);                   // 访问线性表单元
+int array_get(const Array *a, int i);             // 取得线性表单元
+void array_set(Array *a, int i, int value);       // 设置线性表单元
+void array_inflate(Array *a, int more_size);      // 扩充线性表
 int array_find(Array *a, int value);              // 查找
 void array_add(Array *a, int value);              // append
 void array_insert(Array *a, int i, int value);    // 插入 当前位置新增, 其他都往后面移 1 位

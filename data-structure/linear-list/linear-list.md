@@ -9,9 +9,16 @@
 
 ## 数组
 
-数组 + 加一些属性 (size, top, front) 等等附加属性
+- Array
+- size
 
 ## 链表
 
-Node 节点 + 保存有第一个节点地址的结构, 通常起名为 head
+- Node
+- LinkedList
+  - head
+  - size
 
+- 单向链表
+- 双向链表
+- 循环链表
