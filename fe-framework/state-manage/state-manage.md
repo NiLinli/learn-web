@@ -2,6 +2,7 @@
 
 - MV\*
 - Flux
+- mobx
 
 ## angular
 

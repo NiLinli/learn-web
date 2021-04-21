@@ -1,53 +1,55 @@
 import * as React from 'react';
-import { PersistGate } from 'redux-persist/integration/react'
-
-import './App.css';
-
 import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
+import { PersistGate } from 'redux-persist/integration/react';
+// component
 import Footer from './components/Footer';
 import AddTodo from './containers/AddTodo';
 import VisibleTodoList from './containers/VisibleTodoList';
-import TestContainer from './containers/TestContainer';
-import configureStore from './reducers/configureStore';
+import UserContainer from './containers/UserContainer';
+import AsyncApp from './containers/AsyncApp';
+// action
+import { logout } from './store/actions/index';
+
+import '../main.css';
 
 const { store, persistor } = configureStore();
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
-    this.state = {
-      isShowTest: true
-    };
   }
+
+  onResetState = () => {
+    store.dispatch(logout());
+  };
 
   render() {
     return (
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <div>
-            <h3>AddTodo</h3>
-            <AddTodo />
-            <h3>VisibleTodoList</h3>
-            <VisibleTodoList />
-            <Footer />
-
-            <div onClick={this.toggleTest}>toggle</div>
-
-            {this.state.isShowTest && (<TestContainer />)}
+            <div className="block">
+              <button onClick={this.onResetState}>重置 State</button>
+            </div>
+            <div className="block">
+              <h3>AddTodo</h3>
+              <AddTodo />
+              <h3>VisibleTodoList</h3>
+              <VisibleTodoList />
+              <Footer />
+            </div>
+            <div className="block">
+              <UserContainer />
+            </div>
+            <div className="block">
+              <AsyncApp />
+            </div>
           </div>
         </PersistGate>
       </Provider>
     );
   }
-
-  toggleTest = () => {
-    this.setState((prevState) => ({ isShowTest: !prevState.isShowTest }));
-  }
 }
 
 export default App;
-
-
-
-

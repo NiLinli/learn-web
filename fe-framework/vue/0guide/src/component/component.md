@@ -25,6 +25,25 @@
 - name slot 多个出口
 - scoped slot 访问子级别 state
 
+## lifetimes
+
+初次渲染
+
+- beforeCreate
+- created
+- beforeMount
+- mounted
+
+更新
+
+- beforeUpdate
+- updated
+
+移除
+
+- beforeDestory
+- destroyed
+
 ## render
 
 render(jsx/h) 和 template 之间的较量
@@ -38,3 +57,4 @@ context
 - data: render 函数第二个参数(包括 props 和 listeners ...)
 - slots() 返回的 Map
 - children 返回的 List
+

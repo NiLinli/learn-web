@@ -1,56 +1,73 @@
 # flux
 
-Flux is a pattern for managing data flow in your application.
+managing data flow pattern, 不是具体的 framework
 
-- unidirectional data flow
-- a pattern rather than a formal framework
+ADSV  
+Action --> Dispatcher --> Store --> View
+数据和逻辑永远单向流动
+
+## MV*
+
+Model --> View
+View  -直接修改-> Model
+
+多个 Model View 互相修改, 导致数据流很乱  
+通过限制 View 直接修改 Model, 而是通过全局的 dispatcher 分发 action 去修改 Model, 让数据流更加清晰
 
 ## 组成部分
 
-- action
-- dispatcher: 分发事件 (发送事件)
-  - receives actions
-  - dispatches them to stores that have registered with the dispatcher.
-  - every store will receive every action.
-  - only one singleton dispatcher in each application.
-- store
-  - holds the data of an application
-  - The data in a store must only be mutated by responding to an action.
-  - Stores will register with the application's dispatcher so that they can receive actions.
-  - Every time a store's data changes it must emit a "change" event
-- view (React, Angular, Vue)
-  - view uses data from a store
-  - subscribe to "change" events from that store
+### action
 
-controller-view:
+一个简单的对象, 通过 action create 创建
 
-1. 连接 view 与 store
-2. 必须要有一个组件去订阅 store 的变化, 类似于 container component
-3. 顶层 view
+```js
+{
+  type: 'omg',  // 约定俗成的保留字段
+  payload: {}
+}
+```
 
-## 数据流向
+### dispatcher
 
-ADSV (Action --> Dispatcher --> Store --> View), 数据和逻辑永远单向流动
+全局单例
 
-## view
+1. 接受 actions
+2. 分发 action 到并通知 store(已在 dispatcher 上注册)
 
-容器组件解决了数据请求逻辑的问题, 没有解耦出业务逻辑
+### store
 
-数据请求 + 业务逻辑
+在 dispatcher 上面注册
 
-- 容器组件 container component
-  - 含有抽象数据
-  - 没有业务逻辑
-- 展示型组件 presentational component
-  - 没有数据请求逻辑
-  - 只有业务逻辑
+- 记录 state
+- 接受 action, 更新 state **具体框架具体实现**
+- 对外发送 state(store) change 事件
+
+state(store) 只能通过 action 来改变, 没有 setter API
+
+### view
+
+- view 通过 controller-view 获取(getter) state(store)
+- 监听 store change 事件
 
 ## 具体实现
 
 ### redux
 
-1. 单一数据源 -- 一个应用只有唯一一个数据源
-2. 状态是只读的 -- reducer 迭代 当前 state
-3. 状态修改均有 pure function 完成
+单一数据源
 
-### mobx
+store 组织
+
+- state
+- reducer: pure function 改变 state
+- dispatch(): 调用 dispatcher 分发 action
+
+### vuex
+
+单一数据源
+
+store 组织
+
+- state
+- mutation: commit 改变 state
+- dispatch(): 调用 dispatcher 分发 action
+  - action 也注册在 store 中方便引用分发

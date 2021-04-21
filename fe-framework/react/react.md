@@ -60,3 +60,14 @@ ts 支持: `npx create-react-app my-app --scripts-version=react-scripts-ts`
 
 - components 展示组件
 - containers 容器组件
+
+容器组件解决了数据请求逻辑的问题, 没有解耦出业务逻辑
+
+数据请求 + 业务逻辑
+
+- 容器组件 container component
+  - 含有抽象数据
+  - 没有业务逻辑
+- 展示型组件 presentational component
+  - 没有数据请求逻辑
+  - 只有业务逻辑
