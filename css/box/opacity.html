@@ -1,53 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>opacity</title>
     <style>
-        .parent {
-            width: 300px;
-            height: 300px;
-        }
+      .parent {
+        width: 300px;
+        height: 300px;
+      }
 
-        .child {
-            width: 100px;
-            height: 100px;
-        }
+      .child {
+        width: 100px;
+        height: 100px;
+      }
 
-        .parent-rgba {
-            background-color: rgba(247, 8, 8, 0.3);
-        }
+      .parent-rgba {
+        background-color: rgba(247, 8, 8, 0.3);
+      }
 
-        .child-rgba {
-            background-color: yellow;
-        }
+      .child-rgba {
+        background-color: yellow;
+      }
 
-        .parent-opacity {
-            background-color: rgba(247, 8, 8);
-            opacity: 0.3;
-        }
+      .parent-opacity {
+        background-color: rgba(247, 8, 8);
+        opacity: 0.3;
+      }
 
-        .child-opacity {
-            background-color: yellow;
-        }
+      .child-opacity {
+        background-color: yellow;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h3>rgba</h3>
     <div class="parent-rgba parent">
-        <div class="child-rgba child">123</div>
-        456
+      <div class="child-rgba child">123</div>
+      456
     </div>
 
     <h3>opacity</h3>
     <div class="parent-opacity parent">
-        <div class="child-opacity child">123</div>
-        456
+      <div class="child-opacity child">123</div>
+      456
     </div>
-</body>
-
+  </body>
 </html>

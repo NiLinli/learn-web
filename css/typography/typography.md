@@ -3,7 +3,7 @@
 ## Inline Element
 
 1. width height 设置了会被 user agent 忽略
-    - 对于 可替换元素, 不会被忽略
+    - 对于可替换元素 eg: input, 不会被忽略
 2. padding
     - top bottom 不影响 line-height , 但是会扩展背景(即不影响布局)
     - 对于 可替换元素， top 和 bottom 会影响 line-height
@@ -138,26 +138,41 @@ value
 
 ## 段落样式/排版
 
-1. 大小写/首字母大写
-    - text-transform: 控制字母大小写正常转换
-    - font-variant: 小型大写字母
-2. word/letter spacing
-    - word-spacing: 字间距
-    - letter-spacing: 字符间距
-    - 不对 whitespace 做任何处理
-3. 换行问题(white-space(换行) --> overflow-wrap(超长单词换行) --> word-break(暴力折断单词))
-    - white-space
-        - normal: 遇到空白换行
-        - no-wrap: 遇到空白**不换行**
-    - white-space: normal; 不处理一个单词占超过一行的问题, 所以会出现单词溢出了而没有换行
-    - word-wrap/overflow-wrap: break-word;  放不下的单词, 放到下一行去, 下一行一整行都放不下, 才折断这个单词
-    - word-break: break-all; 放不下的单词直接折断(break-all all 很霸气)
-    - hypens
-4. shadow
-    - color
-    - x offset
-    - y offset
-    - blur radius for the shadow(具体模糊的方法没有定义, 不同 user agent 处理的方式不同)
+### 大小写/首字母大写
+
+- text-transform: 控制字母大小写正常转换
+- font-variant: 小型大写字母
+
+### word/letter spacing
+
+- word-spacing: 字间距
+- letter-spacing: 字符间距
+- 不对 whitespace 做任何处理
+
+### 空白/换行
+
+white-space(换行) 遇到空白换不换行
+
+- normal: 遇到空白换行
+- no-wrap: 遇到空白**不换行**
+
+word-wrap/overflow-wrap 超长单词显示不下
+
+- normal; 默认不处理
+- break-word;  显示不下 -> 放到下一行去 -一整行都放不下->, 折断
+
+word-break 超长单词显示不下暴力方案
+
+- break-all; 放不下的单词直接折断(break-all all 很霸气)
+
+hypens
+
+### shadow
+
+- color
+- x offset
+- y offset
+- blur radius for the shadow(具体模糊的方法没有定义, 不同 user agent 处理的方式不同)
 
 ## IFC
 
@@ -165,31 +180,34 @@ value
 
 - em box : font-size 定义的高度, 实际 glyphs 可以比这个 em box 高, 也可以比这个低
 - content area ：
-    + 普通元素: em box
-    + 可替换元素: 垂直方向的 margin + border + padding + height
-- inline box: 
-    + 普通元素： line-height
-    + 可替换元素：content area (leading 不应用与不可替换元素)
+    - 普通元素: em box
+    - 可替换元素: 垂直方向的 margin + border + padding + height
+- inline box:
+    - 普通元素： line-height
+    - 可替换元素：content area (leading 不应用与不可替换元素)
 - line box: 整体 line box 的高度是由 最高 inline box 的顶部, 最低 inline box 的底部决定
 
 ### vertical-align
 
 应用于 inline-level elements
+
 - inline
 - inline-block
-- inline-table 
+- inline-table
 
-1. Inline-level elements are laid out next to each other in lines. 
+1. Inline-level elements are laid out next to each other in lines.
 2. Once there are more elements than fit into the current line, a new line is created beneath it.
 
 ### 特点
+
 1. half-leading 是每个 inline box 高度的一个因素
-3. 粗略的来说,  baseline 在font 高度的一半以下
-4. CSS 2.1 没有定义 line box's baseline的 位置, 放置一个x 在line box 的前面就可以知道 baseline 的位置
-5. middle 为    inline box 的中点   与     baseline 加 一半的 x-height 的高度 对齐
-6. 背景只能到 inline box(正常情况下就是font-size的大小)
+2. 粗略的来说,  baseline 在font 高度的一半以下
+3. CSS 2.1 没有定义 line box's baseline的 位置, 放置一个x 在line box 的前面就可以知道 baseline 的位置
+4. middle 为    inline box 的中点   与     baseline 加 一半的 x-height 的高度 对齐
+5. 背景只能到 inline box(正常情况下就是font-size的大小)
 
 ### 分析
+
 1. 分析 inline box 
     - 普通元素: 
         1. line-height(inline box's height) 
@@ -213,6 +231,7 @@ value
 3. 每个 inline box 的vertical-align 赋值即将 inline box 的 xx线 与 line box 的xx线对齐
 
 ### 布局工具
+
 1. To make inline blocks align to the top (much like floats do), set vertical-align: top.
 2. 每个元素垂直居中对齐
     - 都设置为 inline blocks/ inline
@@ -225,9 +244,3 @@ line box 基线的移动
 vertical-align 的方式会导致 line box‘s baseline 移动
 1. top bottom 不影响(可以使用)
 2. 高的元素因为上下没有空间可以移动了, 所以只会能 line box 去移动适应高度元素达到 vertical-align 的对齐效果
-
-
-
-
-
-

@@ -2,16 +2,18 @@
 
 ## overflow
 
-控制移除的元素怎么处理, 默认显示
+控制移除的元素怎么处理
 
-1. visiable
-2. hidden 
-3. scroll 
+1. visiable(默认)
+2. hidden
+3. scroll
     - 显示滚动条, 即使没有达到要滚动的底部, 始终显示
     - print 的时候, 浏览器会转换为 hidden
-4. auto 
+4. auto
     - 浏览器自己去判断(浏览器不坑的情况下可以使用)
-    - 可以到达 溢出就 scroll(即显示滚动条) 不溢出就不显示滚动条的 效果
+    - 可以到达溢出就 scroll(即显示滚动条) 不溢出就不显示滚动条的 效果
+
+滚动条的显示和系统有关
 
 ## visibility
 
@@ -23,36 +25,49 @@
 
 说明:
 
-- display:none; 不影响 document 布局, 从 document flow 中移除
-- visibility:hidden; 依然存在, 影响布局, 效果同 opacity: 0; 一样
+- display: none;
+    - 不影响 document 布局
+    - 从 document flow 中移除
+    - 不再 render tree 中
+- visibility:hidden;
+    - 依然存在, 影响布局
+    - 效果同 opacity: 0;
 - 父元素为 hidden, 子元素由于继承也为 hidden , 可以设置为 visible
 
 ## backgroud
 
+### background-clip
+
+背景显示区域
+默认为 border-box
+border 如果是 solid 会盖住 background
+dashed 模式下看得到 background
+
 ### background-color
 
-transparent 默认, 范围
-
-- background-clip 处理( 默认为 border-box )
-- border(solid 颜色盖住了背景色, dashed 模式下面卡得到) + padding + content 部分
-- ...
+transparent 默认
 
 ### opacity (不透明度)
 
 - rgba 只影响背景色, 内容, child 都不影响
 - opacity 整个元素所有内容都变透明了
 
+### background-origin
+
+图片放置的位置, 定位, 有可能不在绘制的区域内
+
+### background-attachment: fixed;
+
+ 类似于 fixed 定位
+
+### background-size
+
+- 不设置： auto 原始图片大小
+- 设置指定的 width height
+- 设置 一个大小, 另外一个设置为 auto 自适应
+- 自动判断 image 宽高与 box 的宽高去适应 contain cover
+
 ### backgroud-image
-
-- background-clip: 背景绘制区域(超过此区域的不绘制)
-- background-origin: 图片放置的位置, 定位, 有可能不在绘制的区域内
-- background-attachment: fixed; 类似于 fixed 定位
-- background-size:
-
-    - 不设置： auto 原始图片大小
-    - 设置指定的 width height
-    - 设置 一个大小, 另外一个设置为 auto 自适应
-    - 自动判断 image 宽高与 box 的宽高去适应 contain cover
 
 支持多个背景图
 
@@ -101,5 +116,4 @@ transparent 默认, 范围
     1. 设置宽度 width
     2. 设置 padding-top 百分比(依照 width), 定位
     3. 需要显示的元素定位(postion:absolute; 0 0 0 0 不适用与可替换元素)
-
-
+    

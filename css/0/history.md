@@ -1,70 +1,73 @@
 # History
 
-## HTML
-
-> The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.  -— Tim Berners-Lee
-
-1. Tim Berners-Lee created HTML in 1990, for the purpose of formatting scientific research documents. 
-2. HTML 4.01 became a recommendation in 1999 ( W3C switched its attention to XHTML 1.0. XHTML 1.1 was meant to follow)
-3. In 2009
-    - the W3C gave up on XHTML completely 
-    - embraced the new standard from the WHATWG that had become known as HTML5
-
-## CSS
-
-1. CSS was first proposed in 1994
-2. CSS 1 became a W3C recommendation at the end of 1996 and contains very basic properties such as fonts, colors, and margins.
-3. CSS 2 became a recommendation in 1998 and added advanced concepts such as floating and positioning...
-4. in 2002, the W3C published CSS 2 Revision 1. CSS 2.1 fixes errors in CSS 2
-
-## HTML5
-
-1. improved the semantics of our HTML 
-2. ie9 +
-3. 资源
-    - [html5doctor](http://html5doctor.com)
-    - [html5shiv](https://github.com/aFarkas/html5shiv)
-4. redefined tag
-    - use `<strong> <em>` instead of `<i> <b>`
-
-## Extending the Semantics of HTML
-
-1. ARIA Role Attributes
-2. [Microformats]((http://microformats.org/2012/06/25/microformats-org-at-7)
-    - a set of standardized naming conventions
-    - markup patterns to represent specific types of data
-    - with microformats make it easier for developers to write tools that extract this data
-3. [Microdata]( http://schema.org)
-    - html5
-    - seo
-
 ## Progressive Enhancement
 
 渐进增强: 平衡新特性已经回退机制(兼容性)
 
-The ability to balance backward compatibility with the latest HTML and CSS features involves a strategy known as progressive enhancement. 
+1. 支持新特性
+2. 不支持新特性的情况下回退兼容老特性
 
-### html fallback
+html/css 都会忽略不认识的新特性, 不会报错
 
-原理： 浏览器不识别的 html attribute, 会忽略, 采用默认的
+## HTML
 
-- input `type="email|phone|number..."` 如果不支持, 应用默认值 `type="text"`
-- `<!DOCTYPE html>` You can safely switch to writing your HTML documents with this doctype because the HTML5 syntax and doctype are backward compatible. 
+> The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.  -— Tim Berners-Lee
 
-### css fallback
+1. HTML 创建 1990 (Tim Berners-Lee)
+2. HTML4.01(recommendation) 1999
+    - W3C 发展 XHTML 1.0. XHTML 1.1
+3. HTML5 2009(WHATWG)
+    - W3C 放弃 XHTML
 
-原理： 浏览器会忽略不识别的 css property/value
+### HTML5
 
-1. 回退样式写在正常样式之前
-  - 支持新的, 覆盖旧的
-  - 不支持新的, 应用旧的, 忽略新的
-2. js 判断 modernizr
-3. vendor prefixing
+ie9+
+
+1. 语义话标签
+2. 重新定义了标签  `<strong> <em>` => `<i> <b>`
+
+- [html5doctor](http://html5doctor.com)
+- [html5shiv](https://github.com/aFarkas/html5shiv) 兼容 html5 标签
+
+### fallback
+
+直接写新的特性
+
+- 识别: 应用新特性
+- 不识别: 回退到默认特性, 不会报错 `type="email|phone|number..."` =回退=> `type="text"`
+
+#### DOCTYPE
+
+```html
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+`<!DOCTYPE html>`
+```
+
+html5 是 html4 的简写, 过时的浏览器本来就支持
+
+## CSS
+
+1. CSS 初次提案 1994
+2. CSS1(W3C recommendation) 1996, 只有一些基础的 property(fonts, colors, margin...)
+3. CSS2 1998, 添加一些新特性 (floating, positioning...)
+4. CSS2.1 2002, CSS2 bug fix
+5. CSS3 2001 提案, 特性逐渐支持
+
+### fallback
+
+1. 先写旧的特性, 保证基本显示
+2. 在写新的特性
+    - 能够识别: 覆盖旧的特性
+    - 不能够识别: 不报错, 显示旧的特性
 
 #### Vendor prefixing
 
-+ -epub- International Digital Publishing Forum ePub format
-+ -moz- Mozilla-based browsers (e.g., Firefox)
-+ -ms- Microsoft Internet Explorer
-+ -o- Opera-based browsers
-+ -webkit- WebKit-based browsers (e.g., Safari and Chrome)
+- -moz- Mozilla-based browsers (e.g., Firefox)
+- -epub- International Digital Publishing Forum ePub format
+- -ms- Microsoft Internet Explorer
+- -o- Opera-based browsers
+- -webkit- WebKit-based browsers (e.g., Safari and Chrome)
+
+#### 通过 JS 检测 CSS feature
+
+modernizr

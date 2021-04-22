@@ -1,11 +1,3 @@
-# CSS-Basic-Note
+# CSS
 
-- 0
-  - unit
-  - variable
-  - selector
-- animation
-- flex
-- form
-- z-demo-layout 布局 demo
-
+Cascading Style Sheet

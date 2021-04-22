@@ -1,36 +1,49 @@
 # Specificity
 
 ## Cascade
-With even a moderately complicated style sheet, it is likely that two or more rules will target the same
-element. CSS handles such conflicts through a process known as the cascade.
+
+多个选择器中相同的样式会命中同一个元素
+CSS 处理这个冲突的过程称为层叠 Cascade
 
 ## Specificity
-[abcd]
-- a 
-    + style is an inline style, a equals 1
-- b equals the total number of 
-    + ID selectors
-- c equals the number of 
-    + class
-    + pseudo-class
-    + attribute selectors
-- d equals the number of 
-    + type selectors 
-    + pseudo-element selectors.
+
+权重/独特性
+
+[inline-style | id | class/pseudo-class/attribute | type/pseudo-element]
+
+```css
+.a .b .c #p {
+    font-size: 18px;
+}
+```
+
+```html
+<div class="a">
+  <div class="a">
+    <div class="a">
+        <p id="p" style="font-weight: 800;"></p>
+    </div>
+  </div>
+</div>
+```
+
+font-weight: 800; 权重为 1000  
+font-size: 18px;  权重为 0(1)(1+1+1)0 => 0130
 
 ### Universal
-1. The universal selector (*) always has a specificity of 0
+
+`*` specificity 等于 0
 
 ### Inheritance
-Inheritance is very useful, as it lets you avoid having to add the same style to every descendant of an element.
 
-1. inherited styles have a null specificity,  not even zero.
-2. universal selector, which has a specificity of zero, will override inherited properties. 
+继承的权重为 null
+null 比任何权重都要小, 包括 0
 
 ### Important
-1. Declarations that are marked !important do not have a special specificity value, but are instead considered separately from non-important declarations. 
-2. Thus, in any case where an important and a non-important declaration conflict, the important declaration always wins.
-    
+
+!important 也没有权重
+但是比任何权重都要大
 
 ## 应用
-1. link的 lvhfa
+
+- `<a>` 的 lvhfa

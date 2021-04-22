@@ -1,10 +1,15 @@
 # Flash
 
-## FOUC(eventually solved)
+样式没加载完结构显示了 FOUC  
+字体没加载完结构显示了 FOIT / FOUFT
 
-Flash of Unstyled Content：
+## FOUC
 
-1. 早期浏览器才会有这种现象：load html 并且 display 
+Flash of Unstyled Content
+
+**不存在了**
+
+1. 早期浏览器才会有这种现象：load html 并且 display
     - 在 css 文件没有加载完之前
     - 在 css 还没有 paint Render Tree 之前
 2. 现在的浏览器会等待 css 渲染完了, 再显示

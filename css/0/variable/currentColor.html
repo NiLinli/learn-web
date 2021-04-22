@@ -1,32 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>currentColor</title>
-  <style>
-    div#d1 {
-      color: green;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>currentColor</title>
+    <style>
+      div#d1 {
+        color: green;
+      }
 
-    }
+      div#d2 {
+        color: red;
+      }
 
-    div#d2 {
-      color: red;
-    }
-
-    div{
-      border: 1px solid currentColor;
-    }
-  </style>
-</head>
-<body>
-  <div id="d1">
-    omg currentColor 与 color 的值一直, 变量
-  </div>
-  <div id="d2">
-    omg currentColor 与 color 的值一直, 变量
-  </div>
-  
-</body>
+      div {
+        border: 1px solid currentColor;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="d1">omg currentColor 与 color 的值一直, 变量</div>
+    <div id="d2">omg currentColor 与 color 的值一直, 变量</div>
+  </body>
 </html>

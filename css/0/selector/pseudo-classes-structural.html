@@ -20,6 +20,10 @@
             content: '[前两个]';
         }
 
+        #demo1 p:nth-child(2)::after {
+            content: '[父元素的第2个元素, 不为p, 不显示]';
+        }
+
         #demo1 p:nth-child(6)::after {
             content: '[父元素的第6个元素, 并且刚好为p]';
         }

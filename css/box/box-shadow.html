@@ -1,56 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>box shadow</title>
     <style>
-        div {
-            width: 100px;
-            height: 200px;
-            display: inline-block;
-            background-color: whitesmoke;
-            margin: 0 20px 20px 0;
-        }
+      div {
+        width: 100px;
+        height: 200px;
+        display: inline-block;
+        background-color: whitesmoke;
+        margin: 0 20px 20px 0;
+      }
 
-        .shadow {
-            box-shadow: 1em 1em .5em rgba(0, 0, 0, 0.3);
-        }
+      .shadow {
+        box-shadow: 1em 1em 0.5em rgba(0, 0, 0, 0.3);
+      }
 
-        .inset-shadow {
-            box-shadow: inset 1em 1em .5em rgba(0, 0, 0, 0.3);
-        }
+      .inset-shadow {
+        box-shadow: inset 1em 1em 0.5em rgba(0, 0, 0, 0.3);
+      }
 
-        .shadow-radius {
-            box-shadow: 1em 1em .5em -0.6em rgba(0, 0, 0, 0.3);
-        }
+      .shadow-radius {
+        box-shadow: 1em 1em 0.5em -0.6em rgba(0, 0, 0, 0.3);
+      }
 
-        .shadow-muti {
-            box-shadow: 0 0 0 10px #1C318D,
-            0 0 0 20px #3955C7,
-            0 0 0 30px #546DC7,
-            0 0 0 40px #7284D8;
-        }
+      .shadow-muti {
+        box-shadow: 0 0 0 10px #1c318d, 0 0 0 20px #3955c7, 0 0 0 30px #546dc7, 0 0 0 40px #7284d8;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h3>box shadow basic</h3>
     <div class="shadow">shadow</div>
     <div class="inset-shadow">inset shadow</div>
 
     <h3>inset 效果应用</h3>
-    <section style="height: 50px;;;box-shadow: inset 0 -.5em .5em rgba(0, 0, 0, 0.3);"></section>
+    <section style="height: 50px; box-shadow: inset 0 -0.5em 0.5em rgba(0, 0, 0, 0.3)"></section>
 
     <h3>shadow 有 扩散半径 的效果</h3>
     <div class="shadow-radius"></div>
 
-
     <h3>多个 shadow</h3>
     <div class="shadow-muti"></div>
-
-</body>
-
+  </body>
 </html>

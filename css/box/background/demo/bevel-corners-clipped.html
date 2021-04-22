@@ -1,54 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>bevel-corners-clipped</title>
-  <style>
-    div {
-      margin-top: 50px;
-      width: 200px;
-      height: 80px;
-    }
-    
-    .gradient-demo {
-      background: darksalmon; /* fallback */   
-      background: linear-gradient(-45deg, transparent 15px, darksalmon 0);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>bevel-corners-clipped</title>
+    <style>
+      div {
+        margin-top: 50px;
+        width: 200px;
+        height: 80px;
+      }
 
-    .gradient-demo-2 {
-      background:
-       linear-gradient(135deg, transparent 15px, #58a 0) top left,
-       linear-gradient(-135deg, transparent 15px, #58a 0) top right,
-       linear-gradient(-45deg, transparent 15px, #58a 0) bottom right,
-       linear-gradient(45deg, transparent 15px, #58a 0) bottom left;
-      background-size: 50% 50%;
-      background-repeat: no-repeat;
-    }
-    
-    .gradient-demo-3 {
-      background: #58a;
-      background:
-       radial-gradient(circle at top left, transparent 15px, #58a 0) top left,
-       radial-gradient(circle at top right, transparent 15px, #58a 0) top right,
-       radial-gradient(circle at bottom right, transparent 15px, #58a 0) bottom right,
-       radial-gradient(circle at bottom left, transparent 15px, #58a 0) bottom left;
-      background-size: 50% 50%;
-      background-repeat: no-repeat;
-    }
-  </style>
-</head>
-<body>
-  <div class="gradient-demo">
-    使用 linear-gradient 完成切角
-  </div>
+      .gradient-demo {
+        background: darksalmon; /* fallback */
+        background: linear-gradient(-45deg, transparent 15px, darksalmon 0);
+      }
 
-  <div class="gradient-demo-2">
+      .gradient-demo-2 {
+        background: linear-gradient(135deg, transparent 15px, #58a 0) top left, linear-gradient(-135deg, transparent 15px, #58a 0) top right,
+          linear-gradient(-45deg, transparent 15px, #58a 0) bottom right, linear-gradient(45deg, transparent 15px, #58a 0) bottom left;
+        background-size: 50% 50%;
+        background-repeat: no-repeat;
+      }
 
-  </div>
+      .gradient-demo-3 {
+        background: #58a;
+        background: radial-gradient(circle at top left, transparent 15px, #58a 0) top left, radial-gradient(circle at top right, transparent 15px, #58a 0) top right,
+          radial-gradient(circle at bottom right, transparent 15px, #58a 0) bottom right, radial-gradient(circle at bottom left, transparent 15px, #58a 0) bottom left;
+        background-size: 50% 50%;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gradient-demo">使用 linear-gradient 完成切角</div>
 
-  <div class="gradient-demo-3"></div>
-  
-</body>
+    <div class="gradient-demo-2"></div>
+
+    <div class="gradient-demo-3"></div>
+  </body>
 </html>

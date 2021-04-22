@@ -1,42 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>background-size</title>
     <style>
-        .profile-box {
-            width: 100%;
-            height: 200px;
-            background-color: #8Da9cf;
-            background-image: url('../layout-positioning/helan.png');
-            /* 背景相关参数 */
-            background-repeat: no-repeat;
-
-        }
+      .profile-box {
+        width: 100%;
+        height: 200px;
+        background-color: #8da9cf;
+        background-image: url('../position/helan.png');
+        /* 背景相关参数 */
+        background-repeat: no-repeat;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h3>不设置： auto 原始图片大小</h3>
-    <header class="profile-box">
-    </header>
+    <header class="profile-box"></header>
     <h3>宽度 100% 高度自适应</h3>
-    <header class="profile-box" style="background-size: 100% auto;">
-    </header>
+    <header class="profile-box" style="background-size: 100% auto"></header>
     <h3>高度 100% 宽度自适应</h3>
-    <header class="profile-box" style="background-size: auto 100%;">
-    </header>
+    <header class="profile-box" style="background-size: auto 100%"></header>
     <h3>contain</h3>
-    <header class="profile-box" style="height: 600px;background-size: contain;">
-    </header>
+    <header class="profile-box" style="height: 600px; background-size: contain"></header>
     <h3>cover</h3>
-    <header class="profile-box" style="height: 600px; background-size: cover;">
-    </header>
-
-
-</body>
-
+    <header class="profile-box" style="height: 600px; background-size: cover"></header>
+  </body>
 </html>
