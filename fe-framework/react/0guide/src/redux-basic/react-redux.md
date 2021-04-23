@@ -19,5 +19,6 @@ value
 
 返回 HOC, HOC 维护 state (和传递进 mapStateToProps 参数一样)
 
-订阅 subscription, 接受更新, setState({ state: store.getState() })  -> 更新 HOC component
-mapStateToProps(state, ownProps) 生成 Props 更新, wrapperedComponent 更新
+- 订阅 subscription, 接受更新, setState({ state: store.getState() })  -> 更新 HOC component
+- mapStateToProps(state, ownProps) 生成 Props 更新
+- wrapperedComponent 更新

@@ -6,7 +6,7 @@ import rootReducer from './reducers/index';
 
 // middleware
 import thunkMiddleware from 'redux-thunk';
-import { loggerMiddleware } from './middleware';
+import { loggerMiddleware, crashReporter } from './middleware';
 
 // const persistConfig = {
 //   key: 'root1',
@@ -22,7 +22,9 @@ export default (preloadedState) => {
     preloadedState,
     applyMiddleware(
       thunkMiddleware,
-      loggerMiddleware
+      loggerMiddleware,
+      crashReporter
+
     )
   );
   const persistor = persistStore(store); // 2
