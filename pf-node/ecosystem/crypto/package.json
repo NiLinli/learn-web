@@ -12,6 +12,8 @@
   "dependencies": {
     "crypto-js": "^4.0.0",
     "jsencrypt": "^3.0.0-rc.1",
+    "jsrsasign": "^10.2.0",
+    "jsrsasign-util": "^1.0.5",
     "sjcl": "^1.0.8"
   }
 }
