@@ -1,5 +1,10 @@
 # websocket
 
+## 特点
+
+全双工
+双向
+
 ## 目的
 
 - 支持持久连接 (http 1.1 支持 keep-alive 改善了该问题)
@@ -14,6 +19,21 @@
 1. 客户端 http 请求告知服务器, 升级协议与我通信
 2. 服务器端收到请求后升级到 websocket 协议, 然后返回信息告知客户端已经升级了
 3. 客户端-服务端按照新的 websocket 协议通信
+
+## RFC 6455
+
+W3C => WebSocket API 
+IETF => WebSocket 协议
+
+
+传输 
+
+二进制数据
+文本
+
+1. 握手
+2. 基本消息框架
+
 
 ### http 切换协议
 
@@ -45,6 +65,7 @@ Sec-WebSocket-Protocol: chat
 ## Messages
 
 websocket 信息传输方式
+
 
 ## 子协议
 
