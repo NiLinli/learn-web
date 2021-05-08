@@ -1,5 +1,7 @@
 # websocket
 
+[rfc6455](https://tools.ietf.org/html/rfc6455)
+
 ## 特点
 
 全双工
@@ -31,8 +33,9 @@ IETF => WebSocket 协议
 二进制数据
 文本
 
-1. 握手
-2. 基本消息框架
+1. 借用 http 协议握手
+2. 计算响应键值
+3. 定义消息格式 frame
 
 
 ### http 切换协议
@@ -66,10 +69,27 @@ Sec-WebSocket-Protocol: chat
 
 websocket 信息传输方式
 
-
 ## 子协议
 
+更高级的协议和协议协商, RFC64FF 奇怪的将这些称为子协议
+
+请求头和响应头相同 Sec-WebSocket-Protocol
+
+请求头表示客户端期望处理的子协议, 可以有多个
+响应头表示服务端使用某种子协议, 从请求头选择一个当前服务器支持的协议
+
 自定义的文件类型/数据类型声明， 比如类似于 json 等
+
+## 扩展 extension
+
+服务端不能同时协商多个协议，但是可以协商多个扩展
+
+Sec-WebSocket-Extensions
+
+简单扩展 websocket
+
+为 frame 添加新的操作码和数据字段
+需要浏览器支持这些扩展
 
 ## 心跳监测
 
@@ -77,5 +97,6 @@ websocket 信息传输方式
 2. 服务端收到 ping 消息后, 发送 pong 消息
 
 ## 参考资料
+
 
 https://www.zhihu.com/question/37647173/answer/1403359896

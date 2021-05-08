@@ -4,7 +4,7 @@ const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
-const WebSocket = require('./WebSocket');
+const WebSocket = require('./ws/index');
 
 // 加载静态文件
 app.get('/', (req, res) => {

@@ -1,10 +1,8 @@
 # web
 
-
-
 ## API Gateway
 
-## BFF
+### BFF
 
 Backends For Frontends
 

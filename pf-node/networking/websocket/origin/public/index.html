@@ -3,24 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>WebSocket Demo</title>
   </head>
-  <body></body>
+  <body>
+    <h3>建立 websocket 链接</h3>
+    <button id="new">new WebSocket</button>
+    <h3>发送消息 send</h3>
+    <button id="send">send message</button>
+    <h3>关闭链接</h3>
+    <button id="close">close WebSocket</button>
+  </body>
 
   <script>
-    var ws = new WebSocket('ws://127.0.0.1:8989');
+    var ws;
 
-    // 连接建立
-    ws.addEventListener('open', function (event) {
-      ws.send('Hello Websocket');
+    document.getElementById('new').addEventListener('click', () => {
+      ws = new WebSocket('ws://127.0.0.1:8989');
+
+      // 连接建立
+      ws.addEventListener('open', function (event) {
+        ws.send('Hello Websocket');
+      });
+
+      // 接受消息
+      ws.addEventListener('message', function (event) {
+        console.log('Message from server', event.data);
+      });
     });
 
-    // 接受消息
-    ws.addEventListener('message', function (event) {
-      console.log('Message from server', event.data);
+    document.getElementById('send').addEventListener('click', () => {
+      ws.send(Math.random() * 10);
     });
 
-    // 关闭连接
-    // ws.close();
+    document.getElementById('close').addEventListener('click', () => {
+      // 关闭连接
+      ws.close();
+    });
   </script>
 </html>
