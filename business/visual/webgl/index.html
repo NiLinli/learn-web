@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>webgl</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      button {
+        display: block;
+        font-size: inherit;
+        margin: auto;
+        padding: 0.6em;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="3d" width="500" height="500"></canvas>
+  </body>
+
+  <script>
+    // 检测浏览器是否支持 webgl
+    function detectWebGLContext() {
+      var canvas = document.createElement('canvas')
+
+      var gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
+
+      return gl && gl instanceof WebGLRenderingContext
+    }
+
+    window.onload = function () {
+      if (!detectWebGLContext()) return
+    }
+  </script>
+</html>
