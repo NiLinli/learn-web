@@ -3,6 +3,8 @@
 Cross-Site Scripting: 跨站 脚本 攻击(代码注入攻击)  
 CSS 和 css 重名, 所以称为 xss
 
+常规操作：执行脚本，窃取用户数据
+
 ## 攻击
 
 injects HTML tags or scripts into a target website. 
@@ -19,7 +21,7 @@ However, client-side JavaScript programmers must also be aware of, and defend ag
 1. url 上面的查询参数
 2. ajax 返回的数据
 
-攻击者可以通过执行 js 获取收据, 然后通过 http 发送到攻击者服务器以达到窃取用户敏感数据
+攻击者可以通过执行 js 获取收据 cookies token, 然后通过 http 发送到攻击者服务器以达到窃取用户敏感数据
 
 ## 防护
 

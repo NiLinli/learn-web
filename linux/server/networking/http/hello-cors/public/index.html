@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello Cors</title>
+  <link rel="stylesheet" href="./index.css">
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.20.0/axios.min.js"></script>
+</head>
+<body>
+
+
+<script>
+  // 简单请求
+  fetch('http://localhost:9088/simple', {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  });
+
+  fetch('http://localhost:9088/simple', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  });
+
+  // 非简单请求
+  fetch('http://localhost:9088/unsimple', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+</script>
+
+</body>
+</html>
