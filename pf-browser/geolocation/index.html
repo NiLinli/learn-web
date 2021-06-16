@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>geolocation</title>
+  </head>
+  <body>
+    <div>
+      <h3>获取当前位置</h3>
+      <p>
+        <button onclick="geoFindMe()">show my location</button>
+      </p>
+      <div id="out"></div>
+    </div>
+    <div>
+      <h3>监视位置变化</h3>
+      <p>
+        <button onclick="geoWatchMe()">watch my location</button>
+      </p>
+      <div id="out2"></div>
+    </div>
+  </body>
+
+  <script src="./geo.js"></script>
+
+  <script>
+    function geoFindMe() {
+      var output = document.getElementById('out')
+
+      const options = {
+        enableHighAccuracy: true,
+        timeout: Infinity,
+        maximumAge: 0,
+      }
+
+      getCurrentPosition(options)
+        .then((position) => {
+          var latitude = position.coords.latitude
+          var longitude = position.coords.longitude
+
+          output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>'
+        })
+        .catch((err) => {
+          output.innerHTML = `<p>${err.code} -- ${err.message}</p>`
+        })
+    }
+
+    function geoWatchMe() {
+
+      var output = document.getElementById('out2')
+
+      const p = watchPosition()
+      p.then((position) => {
+        var latitude = position.coords.latitude
+        var longitude = position.coords.longitude
+
+        output.innerHTML = Date.now() + '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>'
+      }).catch((err) => {
+        output.innerHTML = `<p>${err.code} -- ${err.message}</p>`
+      })
+      
+      setTimeout(() => {
+        clearWatch(p.watchId);  
+      }, 120 * 1000);
+      
+    }
+  </script>
+</html>
