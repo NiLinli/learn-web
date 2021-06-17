@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script crossorigin="anonymous" src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  </head>
+  <body>
+    <img id="img" src="http://localhost:9088/abc.jpg?uuid=12312lhl" />
+    <img id="corsImg" crossorigin="anonymous" src="http://localhost:9088/abc.jpg?uuid=12312lhlfslidfjsla" />
+
+    <canvas id="canvas1" width="400" height="400"></canvas>
+    <canvas id="canvas2" width="400" height="400"></canvas>
+
+    <script>
+      window.onerror = function (e) {
+        // 可以监听到 crossorigin="anonymous" 中的执行错误（script 执行js的数据）
+        // script src 为 js 时候不携带 cookie
+        // src 为其他内容时候携带 cookie
+      }
+
+      window.onload = function () {
+        var img = document.getElementById('img')
+        var corsImg = document.getElementById('corsImg')
+        var canvas1 = document.getElementById('canvas1')
+        var canvas2 = document.getElementById('canvas2')
+
+        var ctx1 = canvas1.getContext('2d')
+        var ctx2 = canvas2.getContext('2d')
+
+        try {
+          // 只要能够显示 就能够 draw 出来
+          ctx1.drawImage(img, 0, 0)
+          // 但是无法获取 CORS error
+          ctx1.getImageData(0, 0, 100, 100)
+       
+        } catch (error) {
+          console.log(error)
+        }
+
+        ctx2.drawImage(corsImg, 0, 0)
+        // crossorigin 流程的可以获取数据
+        var imgData = ctx2.getImageData(0, 0, 100, 100)
+        console.log(imgData)
+      }
+    </script>
+  </body>
+</html>

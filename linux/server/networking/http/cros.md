@@ -27,14 +27,12 @@ Same-Origin Policy
 - xhr/fetch
 - web 字体 @font-face
 - WebGL 贴图
-- 使用 drawImage 将 Images/video 画面绘制到 canvas
 
 ### 浏览器不限制
 
-浏览器不限制
-
+- link src
 - script src
-- img src
+- img/video src
 - iframe src
 - form 提交
 
@@ -44,6 +42,21 @@ Same-Origin Policy
 - 发送请求，提交信息，形成 action
 - xss 注入脚本获取 token 并且发送跨域请求收集信息
 - 但是不能获取数据
+  - link css 不能通过 js 去操作
+  - script 执行任何信息都不能获取，包括 error
+  - img/video 不能使用 getImageData 读取信息
+  - ...
+
+#### CORS settings attributes
+
+crossrorigin 配置 CORS
+
+1. 控制浏览器默认不限制的跨域请求，防止 crsf
+2. 访问数据
+
+- 未声明 no-cors + include
+- 'anonymous' 不指定值也为该值 cors + same-origin(跨域请求不带 cookie)
+- 'use-credentials' cors + include
 
 ## 解决跨域
 
@@ -92,13 +105,22 @@ Cross Origin Resource Sharing
 
 #### CORS Http headers
 
+##### 预检请求头
+
+请求
+
+- Access-Control-Request-Headers 告知服务器正式请求会使用的 
+- Access-Control-Request-Method 告知服务器正式请求会使用的 methods
+
+响应
+
+- Access-Control-Allow-Methods: POST, GET, OPTIONS   实际请求可以允许的 methods
+- Access-Control-Allow-Headers: X-PINGOTHER, Content-Type  实际请求可以允许的 headers 
+- Access-Control-Max-Age: 86400   预检请求结果缓存时间(该值与浏览器默认值取小值)
+
+##### 预检请求头 + 实际请求头
+
 - Access-Control-Allow-Origin: http://foo.example
-
-预检请求专用，表示实际请求可以允许的 methods, headers 以及预检请求结果缓存时间(该值与浏览器默认值取小值)
-
-- Access-Control-Allow-Methods: POST, GET, OPTIONS
-- Access-Control-Allow-Headers: X-PINGOTHER, Content-Type
-- Access-Control-Max-Age: 86400
 
 ### jsonp
 
