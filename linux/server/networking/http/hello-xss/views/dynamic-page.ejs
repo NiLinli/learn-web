@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>动态页面</p>
+  <div class="rich-text-container">
+
+    <h5>1. 未转义 html, 回显富文本, 收到了 XSS 攻击</h5>
+    <%- dangerRichText %>
+
+    <h5>2. 转义 html, 防止 xss 攻击, 误伤了正常的 HTML Tag</h5>
+    <%= dangerRichText %>
+
+    <h5>3. 通过第 xss.js 转义 html, 回显富文本, 显示正常 HTML Tag(WhiteList)</h5>
+    <%- filterRichText %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello XSS</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script src="./xss.js"></script>
+  </head>
+  <body>
+    <h1>客户端渲染</h1>
+    <button id="btn">渲染富文本</button>
+    <div id="richTextContainer"></div>
+
+
+    <h1>服务端渲染</h1>
+    <a href="./dynamic-page">动态页面</a>
+  </body>
+
+  <script>
+    var richTextContainer = document.getElementById('richTextContainer')
+    var btn = document.getElementById('btn')
+
+    btn.addEventListener('click', () => {
+      fetch('/get_rich_text', { method: 'get' })
+        .then(data => data.json())
+        .then((data) => {
+          console.log(data)
+          // xss 有默认的白名单
+          // 可以自行配置规则
+          richTextContainer.innerHTML = filterXSS(data); ;
+        })
+    })
+  </script>
+</html>

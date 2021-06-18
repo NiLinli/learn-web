@@ -3,31 +3,34 @@
 Cross-Site Scripting: 跨站 脚本 攻击(代码注入攻击)  
 CSS 和 css 重名, 所以称为 xss
 
-常规操作：执行脚本，窃取用户数据
+常规操作：
+
+1. 网页渲染回显植入脚本/html结构
+2. 执行脚本/类似于 crsf 中发送请求
+3. **窃取用户数据**，执行操作
 
 ## 攻击
 
-injects HTML tags or scripts into a target website. 
-Defending against XSS attacks is typically the job of server-side web developers.
-However, client-side JavaScript programmers must also be aware of, and defend against, cross-site scripting.
-
-1. 依靠数据动态生成页面内容
-    - php 动态网页
-    - 前端模版生成
-2. 数据没有 sanitizing
-
-数据来源
-
-1. url 上面的查询参数
-2. ajax 返回的数据
-
-攻击者可以通过执行 js 获取收据 cookies token, 然后通过 http 发送到攻击者服务器以达到窃取用户敏感数据
+- html tag
+  - href
+  - onclick
+  - src
+  - 一些危险 attribute
+- script
+  - innerHTML 设置的 script 不会执行
 
 ## 防护
 
-1. html 标签转译 escapeHtml
-2. 去除 javascript: (大小写) 开头的数据, 影响 href
-3. 尽量避免使用 innerHTML(v-html) 等等
+- escapeHtml/ deleteHtml
+  - html 所有标签转译 (普通输入)
+  - only script 标签 (富文本输入)
+- href/onclick 中 javascript:
+- ...
 
-富文本编辑器比如要使用 innerHTML, 但是不需要考虑 href, onclick 中的 javascript:  
-所以在过滤 `<script></script>` 标签即可
+### 保护数据
+
+- cookie 设置为 http-only
+
+### 时机
+
+展示时候处理 优于提交时候处理 不过不一定
