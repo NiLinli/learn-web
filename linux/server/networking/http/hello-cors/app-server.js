@@ -43,4 +43,11 @@ app.post('/unsimple', (req, res) => {
   res.send('非简单请求');
 })
 
+
+app.get('/jsonp', function(req, res, next) {
+  const callback = req.query.callback;
+  const returnString = `${callback}(${JSON.stringify(req.query)})`;
+  res.send(returnString);
+});
+
 app.listen(9088);

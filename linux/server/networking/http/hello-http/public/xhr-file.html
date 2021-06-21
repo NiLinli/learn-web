@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>file</title>
+</head>
+
+<body>
+
+  <input type="file" id="file">
+
+  <button id="btn" >Upload Img</button>
+
+</body>
+
+<script src="./ajax.js"></script>
+
+<script>
+
+  document.getElementById('btn').addEventListener('click', uploadImg);
+
+
+
+  function uploadImg() {
+
+    const file = document.getElementById('file').files[0];
+
+    ajax({
+        url: 'http://localhost:3000/uploadImg',
+        method: 'post',
+        body: {
+          file
+        },
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+    .then(data => console.log(data))
+    .catch(error => console.log(error))
+  }
+
+</script>
+
+</html>

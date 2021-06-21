@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jsonp</title>
+  <script src="./jsonp.js"></script>
+</head>
+<body>
+  
+</body>
+
+
+<script>
+  JSONP({
+    url: 'http://localhost:9088/jsonp',
+    params: {
+      name: 'nixixi',
+      age: 18
+    },
+    cb: function(res) {
+      console.log(res)
+    }
+  });
+
+  JSONP({
+    url: 'http://localhost:9088/jsonp',
+    params: {
+      name: 'omg',
+      age: 0
+    },
+    cb: function(res) {
+      console.log(res)
+    }
+  });
+
+</script>
+</html>

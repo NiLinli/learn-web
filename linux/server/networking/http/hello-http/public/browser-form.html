@@ -7,13 +7,22 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="http://localhost:3000/form" method="post">
+  <h3>get</h3>
+  <form action="http://localhost:3000/browser-form" method="get">
     姓名: <input type="text" name="name">
     年纪: <input type="text" name="age">
     <button type="submit">提交</button>
   </form>
 
-  <form action="http://localhost:3000/form" method="post" enctype="multipart/form-data">
+  <h3>post application/x-www-form-urlencoded</h3>
+  <form action="http://localhost:3000/browser-form" method="post">
+    姓名: <input type="text" name="name">
+    年纪: <input type="text" name="age">
+    <button type="submit">提交</button>
+  </form>
+
+  <h3>multipart/form-data</h3>
+  <form action="http://localhost:3000/browser-form" method="post" enctype="multipart/form-data">
     姓名: <input type="text" name="name">
     年纪: <input type="text" name="age">
     <button type="submit">提交</button>
