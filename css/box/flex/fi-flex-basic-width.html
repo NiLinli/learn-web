@@ -1,102 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>flex-basic</title>
     <style>
-        .flex-container {
-            width: 540px;
-            display: flex;
-            border: 1px dashed darksalmon;
-        }
+      .flex-container {
+        width: 500px;
+        display: flex;
+        border: 1px dashed darksalmon;
+      }
 
-        .flex-container>div {
-            /* flex-shrink: 0; */
-            border: 1px solid #000;
-        }
-
-
-        .item1 {
-            width: 100px;
-            flex-basis: 300px;
-        }
-
-        .item2 {
-            width: 200px;
-            flex-basis: 200px;
-        }
-
-        .item3 {
-            width: 300px;
-            flex-basis: 100px;
-        }
+      .flex-container > div {
+        border: 1px solid #000;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
-    <h3>flex-basis:auto; & width:auto; </h3>
+  <body>
+    <h3>flex-basis:auto; & width:auto;</h3>
     <p>flex-basic 依照 content 大小去适应</p>
     <div class="flex-container">
-        <div>
-            flex-basis: auto;
-        </div>
-        <div>
-            flex-basis: auto;
-        </div>
-        <div>
-            flex-basis: auto;
-        </div>
-        <div>
-            flex-basis: auto;
-        </div>
-
+      <div>width:auto;</div>
+      <div>width:auto;</div>
+      <div>width:auto;</div>
+      <div>width:auto;</div>
     </div>
-
 
     <h3>flex-basis:auto; & width(win)</h3>
     <div class="flex-container">
-        <div style="width:2000px;">flex-basis:auto;
-            <br>width:2000px;</div>
-        <div style="width:3000px;">flex-basis:auto;
-            <br>width:3000px;</div>
-        <div style="width:4000px;">flex-basis:auto;
-            <br>width:4000px;</div>
+      <div style="width: 2000px">width:2000px;</div>
+      <div style="width: 3000px">width:3000px;</div>
+      <div style="width: 4000px">width:4000px;</div>
     </div>
 
-
     <h3>flex-basis(win) & width</h3>
-    <p>widths 会被 flex-basic 覆盖</p>
+    <p>width 会被 flex-basic 覆盖</p>
     <div class="flex-container">
-        <div class="item1">
-            width: 100px;
-            <br> flex-basis: 300px;
-        </div>
-        <div class="item2">
-            width: 200px;
-            <br> flex-basis: 200px;
-        </div>
-        <div class="item3">
-            width: 300px;
-            <br> flex-basis: 100px;
-        </div>
+      <div style="width: 300px; flex-basis: 100px;">width: 300px; flex-basis: 100px;</div>
+      <div style="width: 500px; flex-basis: 100px;">width: 500px; flex-basis: 100px;</div>
+      <div style="width: 300px; flex-basis: 100px;">width: 300px; flex-basis: 100px;</div>
+    </div>
+    <div class="flex-container">
+      <div style="width: 100px; flex-basis: 300px;">width: 100px; flex-basis: 300px;</div>
+      <div style="width: 100px; flex-basis: 500px;">width: 100px; flex-basis: 500px;</div>
+      <div style="width: 100px; flex-basis: 300px;">width: 100px; flex-basis: 300px;</div>
     </div>
 
     <h3>flex-basic & min-width(win)</h3>
     <p>min-width 设置的值, 不会被收缩</p>
     <div class="flex-container">
-        <div class="item1" style="min-width:400px;">
-            min-width:400px;
-            <br> flex-basic:300px;
-        </div>
-        <div class="item1" style="min-width:400px;">
-            min-width:400px;
-            <br> flex-basic:300px;
-        </div>
+      <div style="flex-basis:300px;min-width: 400px">
+        min-width:400px;
+        flex-basic:300px;
+      </div>
+      <div style="flex-basis:300px;min-width: 400px">
+        min-width:400px;
+        flex-basic:300px;
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

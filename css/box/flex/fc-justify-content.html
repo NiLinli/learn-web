@@ -1,117 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>justify-content</title>
 
     <style>
-        div.flex-container {
-            display: flex;
-            border: 1px solid #000;
+      div.flex-container {
+        display: flex;
+        border: 1px solid #000;
+      }
 
-        }
+      .flex-start {
+        justify-content: flex-start;
+      }
 
-        .flex-start {
-            justify-content: flex-start;
-        }
+      .flex-end {
+        justify-content: flex-end;
+      }
 
-        .flex-end {
-            justify-content: flex-end;
-        }
+      .center {
+        justify-content: center;
+      }
 
-        .center {
-            justify-content: center;
-        }
+      .space-between {
+        justify-content: space-between;
+      }
 
-        .space-between {
-            justify-content: space-between;
-        }
+      .space-around {
+        justify-content: space-around;
+      }
 
-        .space-around {
-            justify-content: space-around;
-        }
+      .space-evenly {
+        justify-content: space-evenly;
+        /* 还不在最新的标准当中，但是大多数浏览器都支持 */
+      }
 
-        .space-evenly {
-            justify-content: space-evenly;
-            /* 还不在最新的标准当中，但是大多数浏览器都支持 */
-        }
-
-
-        .flex-item {
-            width: 100px;
-            height: 100px;
-            background-color: darksalmon;
-            margin: 0 10px;
-        }
+      .flex-item {
+        width: 100px;
+        height: 100px;
+        background-color: darksalmon;
+        margin: 0 10px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <h3>justify-contents：</h3>
     <div class="flex-container">
-        <div class="flex-item">1</div>
-        <div class="flex-item">2</div>
-        <div class="flex-item">3</div>
-        <div class="flex-item">4</div>
-        <div class="flex-item">5</div>
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
     </div>
     <div class="flex-container flex-end">
-        <div class="flex-item">1</div>
-        <div class="flex-item">2</div>
-        <div class="flex-item">3</div>
-        <div class="flex-item">4</div>
-        <div class="flex-item">5</div>
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
     </div>
     <div class="flex-container center">
-        <div class="flex-item">1</div>
-        <div class="flex-item">2</div>
-        <div class="flex-item">3</div>
-        <div class="flex-item">4</div>
-        <div class="flex-item">5</div>
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
     </div>
+    <h5>space-between(在什么之间)  两边贴边</h5>
     <div class="flex-container space-between">
-        <div class="flex-item">1</div>
-        <div class="flex-item">2</div>
-        <div class="flex-item">3</div>
-        <div class="flex-item">4</div>
-        <div class="flex-item">5</div>
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
     </div>
+    <h5>space-around(环绕的) 一个元素左右两边环绕相同</h5>
     <div class="flex-container space-around">
-        <div class="flex-item">1</div>
-        <div class="flex-item">2</div>
-        <div class="flex-item">3</div>
-        <div class="flex-item">4</div>
-        <div class="flex-item">5</div>
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
     </div>
+    <h5>space-evenly(平均的) 每个留白相同</h5>
     <div class="flex-container space-evenly">
-        <div class="flex-item">1</div>
-        <div class="flex-item">2</div>
-        <div class="flex-item">3</div>
-        <div class="flex-item">4</div>
-        <div class="flex-item">5</div>
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
     </div>
 
     <h3>margin:auto</h3>
     <p>如果一个元素一边有空白, 设置相反的 marigin 为 auto, 这个 margin 会把空白占满</p>
     <div class="flex-container">
-        <div class="flex-item">1</div>
-        <div class="flex-item">2</div>
-        <div class="flex-item">3</div>
-        <div class="flex-item">4</div>
-        <div class="flex-item" style="margin-left: auto;">5</div>
+      <div class="flex-item">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item" style="margin-left: auto">5</div>
     </div>
     <div class="flex-container flex-end">
-        <div class="flex-item" style="margin-right: auto;">1</div>
-        <div class="flex-item">2</div>
-        <div class="flex-item">3</div>
-        <div class="flex-item">4</div>
-        <div class="flex-item">5</div>
+      <div class="flex-item" style="margin-right: auto">1</div>
+      <div class="flex-item">2</div>
+      <div class="flex-item">3</div>
+      <div class="flex-item">4</div>
+      <div class="flex-item">5</div>
     </div>
-
-</body>
-
+  </body>
 </html>

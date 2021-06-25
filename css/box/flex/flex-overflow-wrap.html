@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>overflow wrap in flex container</title>
+  <style>
+    .container {
+      width: 200px;
+      background-color: darksalmon;
+      overflow-wrap: break-word;
+      margin-bottom: 20px;
+    }
+
+    .flex-container {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    i really not like css, it is very difficult.
+    omgomgomgomgomgomgomgomgomgomgomgomg
+    omgomgomgomgomgomgomgomgomg
+  </div>
+
+  <p>overflow-wrap: break-word; 在 flex 布局下无效</p>
+  <p>不直接在 flex-container 写文本相关的</p>
+  <div class="container flex-container">
+    i really not like css, it is very difficult.
+    omgomgomgomgomgomgomgomgomgomgomgomg
+    omgomgomgomgomgomgomgomgomg
+    但是的咖啡机拉法基撒旦浪费精力撒
+    设计费辣椒粉打快速反击埃里克森积分
+  </div>
+  <div class="container flex-container">
+    <div style="word-wrap: break-word;flex: 1;min-width: 0;">
+      i really not like css, it is very difficult.
+      omgomgomgomgomgomgomgomgomgomgomgomg
+      omgomgomgomgomgomgomgomgomg
+    </div>
+    
+  </div>
+  
+</body>
+</html>

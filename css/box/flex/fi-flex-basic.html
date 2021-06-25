@@ -1,38 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>flex-basic</title>
     <style>
-        .flex-container{
-            display: flex;
-            border: 1px solid darksalmon;
-        }
+      * {
+        box-sizing: border-box;
+      }
 
-        .flex-item1{
-            flex: 1 0 0;
-            border: 1px dashed #000;
-        }
+      .flex-container {
+        width: 300px;
+        display: flex;
+        border: 1px solid darksalmon;
+      }
+
+      .flex-item-1 {
+        flex: 1 0 auto;
+        border: 1px dashed #000;
+      }
+
+      .flex-item-2 {
+        flex: 1 0 0;
+        border: 1px dashed #000;
+      }
+
+      .flex-item-3 {
+        flex: 0 0 33.3%;
+        border: 1px dashed #000;
+        /* 避免 flex-basis 失效 */
+        min-width: 0;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <h3>flex-basic 不为 auto , 为 0 到达平分 flex item 的效果</h3>
-
-
+  <body>
+    <h3>flex-basic 为 auto, 大小根据内容确定，剩余的大小进行平分</h3>
     <div class="flex-container">
-
-        <div class="flex-item1">
-            short
-        </div>
-        <div class="flex-item1">
-            longlonglonglong
-        </div>
-
+      <div class="flex-item-1">short</div>
+      <div class="flex-item-1">long longlonglong</div>
     </div>
-</body>
-
+    <h3>flex-basic 为 0 , 到达平分 flex item 的效果</h3>
+    <div class="flex-container">
+      <div class="flex-item-2">short</div>
+      <div class="flex-item-2">long longlonglong</div>
+    </div>
+    <h3></h3>
+    <div class="flex-container">
+      <div class="flex-item-3">short</div>
+      <div class="flex-item-3">long longlonglonglonglonglong</div>
+      <div class="flex-item-3">long longlonglonglonglonglong</div>
+    </div>
+  </body>
 </html>
