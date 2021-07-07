@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>xhr</title>
-</head>
+  </head>
 
-<body>
-
-</body>
-<script src="./ajax.js"></script>
-<script>
-
+  <body></body>
+  <script src="./ajax.js"></script>
+  <script>
     const body = {
-        find: '倪西西',
-        zipcode: 02134,
-        radius: '1km'
-    };
+      find: '倪西西',
+      zipcode: 02134,
+      radius: '1km',
+    }
 
     ajax({
-        url: 'http://localhost:3000/users',
-        method: 'post',
-        body,
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
+      url: 'http://localhost:3000/users',
+      method: 'post',
+      body,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
     })
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error))
 
     ajax({
-        url: 'http://localhost:3000/users',
-        method: 'post',
-        body,
-        headers: {
-            'Content-Type': 'application/json'
-        }
+      url: 'http://localhost:3000/users',
+      method: 'post',
+      body,
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
-    .then(data => console.log(data))
-    .catch(error => console.log(error))
-
-
-</script>
-
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error))
+  </script>
 </html>

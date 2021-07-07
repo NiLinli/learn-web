@@ -1,45 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>xhr</title>
-</head>
+  </head>
 
-<body>
-
-</body>
-<script src="./ajax.js"></script>
-<script>
-
+  <body></body>
+  <script src="./ajax.js"></script>
+  <script>
+    ajax({
+      url: 'http://localhost:3000/users',
+      method: 'get',
+      params: {
+        name: '倪&西西',
+      },
+    })
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error))
 
     ajax({
-        url: 'http://localhost:3000/users',
-        method: 'get',
-        params: {
-            name: '倪&西西'
-        }
+      url: 'http://localhost:3000/users',
+      method: 'delete',
+      params: {
+        name: '倪&西西',
+      },
+      cb: (xhr) => {
+        xhr.responseType = 'json'
+      },
     })
-    .then(data => console.log(data))
-    .catch(error => console.log(error))
-
-    ajax({
-        url: 'http://localhost:3000/users',
-        method: 'delete',
-        params: {
-            name: '倪&西西'
-        },
-        cb: (xhr) => {
-            xhr.responseType = 'json';
-        }
-    })
-    .then(data => console.log(data))
-    .catch(error => console.log(error))
-
-
-
-</script>
-
+      .then((data) => console.log(data))
+      .catch((error) => console.log(error))
+  </script>
 </html>

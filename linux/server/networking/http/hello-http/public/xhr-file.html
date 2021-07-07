@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>file</title>
+    <script src="./download-blob.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>file</title>
-</head>
+  <body>
+    <input type="file" id="file" />
 
-<body>
-
-  <input type="file" id="file">
-
-  <button id="btn" >Upload Img</button>
-
-</body>
-
-<script src="./ajax.js"></script>
-
-<script>
-
-  document.getElementById('btn').addEventListener('click', uploadImg);
+    <button id="btn">Upload Img</button>
 
 
+    <div>
+      <h3>直接处理返回的二进制数据</h3>
+      <button id="btn2">Download</button>
+    </div>
+  </body>
 
-  function uploadImg() {
+  <script src="./ajax.js"></script>
 
-    const file = document.getElementById('file').files[0];
+  <script>
+    document.getElementById('btn').addEventListener('click', uploadImg)
+    document.getElementById('btn2').addEventListener('click', download)
 
-    ajax({
-        url: 'http://localhost:3000/uploadImg',
+    function uploadImg() {
+      const file = document.getElementById('file').files[0]
+
+      ajax({
+        url: 'http://localhost:3000/file/uploadImg',
         method: 'post',
         body: {
-          file
+          file,
         },
         headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-    })
-    .then(data => console.log(data))
-    .catch(error => console.log(error))
-  }
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error))
+    }
 
-</script>
-
+    function download() {
+      ajax({
+        url: 'http://localhost:3000/file/getSomeFile',
+        method: 'post',
+        body: {},
+        headers: {},
+        cb: (xhr) => xhr.responseType = 'blob'
+      })
+        .then((data) => {
+          downloadBlob(data, 'ajax.js');
+        })
+        .catch((error) => console.log(error))
+    }
+  </script>
 </html>

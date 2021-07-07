@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blob</title>
+    <script src="./download-blob.js"></script>
+  </head>
+  <body></body>
+
+  <script>
+    // blob
+    var debug = { hello: 'world' };
+    var blob = new Blob([JSON.stringify(debug, null, 2)], { type: 'application/json' });
+
+    console.log(blob)
+    console.log(`blob.size(byte): ${blob.size}`);
+    console.log(`blob.type(MIME): ${blob.type}`);
+
+    // 以 utf-8 方式转化成 text
+    blob.text()
+      .then(text => console.log(text));
+
+    // 转变成 ArrayBuffer
+    blob.arrayBuffer()
+      .then(arrayBuffer => console.log(arrayBuffer));
+    
+    // 转变成 Stream 处理
+    // blob.stream();
+
+
+    // 下载 blob
+    downloadBlob(blob, 'hello-world.json');
+
+  </script>
+</html>

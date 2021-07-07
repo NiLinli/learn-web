@@ -64,6 +64,10 @@ function ajax({ url, method = 'get', headers = {}, params = {}, body = {}, cb })
             return resolve(xhr.response);
           }
 
+          if (xhr.responseType === 'blob') {
+            return resolve(xhr.response);
+          }
+
           // responseType 为 'text' '' 读取 responseText
           const type = xhr.getResponseHeader('Content-Type')
           if (type.indexOf('application/json') !== -1) {
