@@ -1,12 +1,18 @@
 {
   "name": "number-demo",
   "version": "1.0.0",
-  "description": "",
   "main": "Number.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "big.js": "^6.1.1",
+    "bignumber.js": "^9.0.1",
+    "decimal.js": "^10.3.1",
+    "number-precision": "^1.5.0"
+  }
 }

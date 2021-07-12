@@ -1,23 +1,37 @@
-// 返回string类型
-var numObj = 12345.6789;
 
-numObj.toFixed();         // 返回 "12346"：进行四舍五入，不包括小数部分
-numObj.toFixed(1);        // 返回 "12345.7"：进行四舍五入
+const np = require('number-precision');
+const Big = require('big.js');
+const a = 12345.6789
 
-numObj.toFixed(6);        // 返回 "12345.678900"：用0填充
+console.log(a.toFixed(), a.toFixed(1), a.toFixed(6))
 
-(1.23e+20).toFixed(2);    // 返回 "123000000000000000000.00"
+// 四舍六入 五看
+const b = 2.55
+console.log(b.toFixed(1));    // 2.5
 
-(1.23e-10).toFixed(2);    // 返回 "0.00"
+// np 方案: float -> int -> Math.round -> float
+console.log(np.round(b, 1));  // 2.6
 
-2.34.toFixed(1);          // 返回 "2.3"
+// big
+// Math.ceil 处理
+Big.RM = Big.roundUp;
+const c = 2.55;
+const d = 2.57;
+console.log(Big(c).toFixed(1));
+console.log(Big(d).toFixed(1));
 
--2.34.toFixed(1);         // 返回 -2.3 (由于操作符优先级，负数不会返回字符串)
+// Math.floor 处理
+Big.RM = Big.roundDown;
+console.log(Big(c).toFixed(1));
+console.log(Big(d).toFixed(1));
 
-(-2.34).toFixed(1);       // 返回 "-2.3" (若用括号提高优先级，则返回字符串)
+// Math.round
+Big.RM = Big.roundHalfUp;
+console.log(Big(c).toFixed(1));
+console.log(Big(d).toFixed(1));
 
-// invalid use
-// 42.toFixed(2);         // 调用方法的 . 和小数点 . 冲突了
-(42).toFixed(2);
+// 银行家算法 5 前面是奇数才进位
+Big.RM = Big.roundHalfEven;
+console.log(Big(2.45).toFixed(1));
+console.log(Big(2.55).toFixed(1));
 
-windworeplace

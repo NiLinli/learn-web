@@ -4,20 +4,10 @@ Personal Note.
 
 git 提交记录 [根文件夹] DESCRIPTION
 
-## 2021 年学习路线
 
-- ~~调试工具~~
-- ~~单元测试代码~~
-- ~~计算机网络笔记整理~~
-- ~~websocket 应用~~
-- ~~https~~
-- 数据结构与算法
-- 前端框架源码 + 前端组件库源码
-  - vue
-  - react
-  - ...
-- 前端 Node 工具源码
-- 服务端 Node/Java 常用场景学习
-  - 登陆 JWT
-  - GraphQL
-  - DataBase Redis/类SQL
+vue 表单
+onchange 视图不刷新
+表单
+限制
+formatter
+等处理
