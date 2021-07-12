@@ -16,6 +16,7 @@ const menuItem = [
   { title: 'props', path: '/props' },
   { title: 'state', path: '/state' },
   { title: 'event', path: '/event' },
+  { title: 'form', path: '/form' },
   { title: 'directive', path: '/directive' },
   { title: 'filter', path: '/filter' },
   { title: 'slots', path: '/slots' },

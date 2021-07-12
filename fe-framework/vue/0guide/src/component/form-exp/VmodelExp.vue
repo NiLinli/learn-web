@@ -5,13 +5,6 @@
       the input is: <span class="name">{{ name }}</span>
     </p>
     <input :value="name" @input="onInput" @compositionstart="onComStart" @compositionend="onComEnd" />
-
-    <h3>不实用 v-model, 同时不控制表单组件</h3>
-    <p>会导致 state 和表单内部状态不一致, 在下一次视图更新之前都是不一致的</p>
-    <p>
-      the input is: <span class="name">{{ nickname }}</span>
-    </p>
-    <input :value="nickname" />
   </div>
 </template>
 
