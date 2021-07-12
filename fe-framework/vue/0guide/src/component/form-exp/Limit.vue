@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>onchange 局限(test 输入 'abc')</h2>
+    <h2>修复 input 非受控组件 视图 和 data 不一致</h2>
     <h3>value + input</h3>
     <input type="text" :value="bar" @input="validateInput" />
     <p>{{ bar }}</p>
@@ -17,8 +17,8 @@
 
 <script>
 
-const NUMERIC_DOT =  /[^-0-9.]/g;
-const NUMERIC = /[^-0-9]/g; 
+const NUMERIC_DOT = /[^-0-9.]/g;
+const NUMERIC = /[^-0-9]/g;
 
 export default {
   name: 'FormLimit',
@@ -30,13 +30,24 @@ export default {
   },
   methods: {
     validateInput(e) {
+      const input = e.target;
       const value = e.target.value;
-      if (value === 'abc') {
-        this.bar = '';
+      let newVal;
+      if (value === 'a') {
+        newVal = '';
       } else {
-        this.bar = value;
+        newVal = value;
       }
+
+      // fix 修正视图不一致问题
+      if (input && newVal !== value) {
+        input.value = newVal;
+      }
+
+      this.bar = newVal;
     },
+    // v-model 
+    // next tick input or change
     limitInput(e) {
       const value = e.target.value;
       this.foo = value.replace(NUMERIC_DOT, '');
