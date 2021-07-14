@@ -1,43 +1,49 @@
 # form
 
+- 改变 input.value 不会触发 input change 事件
+- 模拟操作 focus()/click() ... **除 submit() 外**, 都会触发对应事件
+
 ## form 元素
 
-获取了 form 元素
+### field
 
-- `submit()` 模拟点击 submit button
-- `reset()` 模拟点击 reset button
-- `serialize` 模拟表单提交序列化表单元素
+`formElem.elements` HTMLFormControlsCollection
+
+- array-like 访问, 按照先后顺序排列
+- key(name 对应) 访问 NodeList or Element
 
 ### submit
 
-浏览器 Enter 键默认操作：
+#### 浏览器默认
+
+##### Enter 提交
 
 1. 在相应表单控件(在 textarea 中除外)拥有焦点的情况下, 这个就可以确定是哪个表单
-2. 点击 enter 键提交表单
-3. 按回车键就可以提交该表单
+2. 点击 Enter 键提交表单
 
-形式：
+##### click 与 submit
 
-- button[type='submit']
-- input[type='submit']
+- click 先, submit 后(不确定)
+- submit 的相关操作应该写到 submit 事件当中
 
-click 与 submit 事件先后:
+##### submit()
 
-- 触发click事件,大部分浏览器click事件先响应(但是不能确定)
-- 所以对submit的相关操作应该写到submit事件当中
+模拟提交行为不会触发 submit 事件，需要在模拟提交方法中单独调用一次 submit 事件 callback
+
+#### Ajax 提交
+
+- 组合数据提交/模拟浏览器默认数据格式提交
+- 模拟 Enter 键提交
+
+### reset
+
+`reset()` 会触发 reset 事件
 
 ## event
 
 1. `input[type='text']`
-    - focus
-    - blur
-    - change: 失去焦点后触发
-    - key 三件套
-        - keypress deprecated 并且手机端不支持
-        - keydown
-        - keyup
-    - input ie9+ (onpropertychange IEonly)
-    - select
+  
+ 
 2. `input[type='number']`
     - number 的 value 也为 string 类型, 并不是 number 类型
     - 在非英文模式下, 小数点输入有问题, 因为是句号
@@ -50,25 +56,58 @@ click 与 submit 事件先后:
 5. `input[type='file']`
     - change
     - input
-6. `form`
-    - reset(默认行为为重置)
-    - submit(默认行为为提交)
 
-注:
+## input
 
-1. 操作 DOM 改变 value 属性, 不会触发 `text` `radio` `select` `checkbox` input 或者 change 事件
-2. `submit()` 方法不会触发 submit 事件, `click() focus() reset() select()` 都会触发相应的事件
+- focus/blur
+- change: blur + value 发生改变
+- input(ie9+) or onpropertychange(ie9-)
+- keydown/keyup  mobile partial supported
+  - charCode 0  -> decimal(十进制) number 类型
+  - keyCode 小写识别为大写  -> decimal(十进制) number 类型
+  - 扫码枪 keydown -> keypress -> keyup(chrome)
+- ~~keypress~~ deprecated + mobile unsupported
+  - keyCode 正确识别大小写
+  - charCode 正确识别大小写
+- select: 选中文本
+  - setSelectionRange() 选中文本
 
-## field (form-control)
+### number
 
-`formElem.elements`
+- 引导数字键盘
+  - IOS 可以切换, weired in iOS
+  - Android 可以切换, 不能阻止 . 输入
+- maxlength 无效
 
-1. array-like, 按照先后顺序排列
-2. name 属性为 key 访问 ( name 相同的集合 NodeList )
+弊端:
 
-## range
+1. value 如果不为数字，`input.value` 会为 `''`
+2. 但是页面上面会有显示
+3. `input.value` 为空，无法通过 input 过滤用户输入，消除怪异点
+4. `keydown` ios 不支持, 也没法过滤
 
-ie10+
+总结: 尽量不要使用
+
+#### tel
+
+- 引导电话键盘
+  - IOS 不能输入小数，并且不可切换
+  - Android 可以输入小数
+- maxlength 有效
+- tel 即使粘贴了非数字, value 和显示也是相对应的
+
+正整数 + 小数(不能保证) => 正整数
+
+#### inputmode 方案
+
+- `<input type="text" inputmode="decimal">`  小数(可能带正负号)
+- `<input type="text" inputmode="numeric">`  整数(可能带正负号)
+
+负数不能确保
+
+## radio
+
+## checkbox
 
 ## select
 
@@ -81,6 +120,10 @@ ie10+
 
 1. 增加 option
 2. 移除 option
+
+## range
+
+ie10+
 
 ## file
 
@@ -117,44 +160,6 @@ DOM PROP
 
 textarea 可以输入 '\n'
 
-## 键盘事件
-
-键盘, 扫码枪
-
-键盘码
-
-事件触发顺序 chrome keydown -> keypress -> keyup
-
-event.value
-
-- keydown & keypress 输入之前的变量
-- keyup 输入之后的变量
-
-keyCode & charCode：十进制数表示形式, number 类型
-
-- keydown
-    - keyCode 小写识别为大写
-    - charCode 0
-- keypress
-    - keyCode 正确识别大小写
-    - charCode 正确识别大小写
-- keyup
-    - 与 keydown 结果相同
-
-应用
-
-- keydown
-    1. 阻止默认行为忽略输入
-- keypress
-    1. 阻止默认行为忽略输入
-- keyup
-    1. 达到 maxLength 自动切换焦点
-
-## 操作文本
-
-1. 设置选中文本 setSelectionRange
-2. 获取选中文本(一般响应 select 事件)
-
 ## 表单验证
 
 覆盖 75-85% 的前纯端验证比较合适, 其他的使用 ajax 验证, 原因
@@ -162,30 +167,19 @@ keyCode & charCode：十进制数表示形式, number 类型
 1. 代码量太大
 2. 业务逻辑(验证规则)转移到前端
 
-实现的效果
-
-- 在 DOM 元素中显示错误信息
-- 监听事件去验证 input 的 keyup , blur , click 等, submit 的 submit 事件
-
-## 管理表单
+## 组件化
 
 建立一个表单模型/状态 来操作表单状态
 
 Model -> View
 View -> Model
 
-## 组件化
-
-1. 内部状态 HTML Form State 根据用户的输入改变
-2. React State / Angular Model
-
 ### React
 
-- 受控表单
+受控表单
 
-需要将 HTML Form 中的内部状态 **更新到** React state 中, 使得 HTML Form 受到 React 的控制
-
-HTML Form state --> 构造一个可以访问用户输入表单数据的函数 onchange --> React State
+- 将 HTML Form 中的内部状态 **更新到** React state
+- 使得 HTML Form 受到 React 的控制
 
 ### Angular
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>number</title>
+    <script src="./number.js"></script>
+  </head>
+  <body>
+    <h3>引导 H5 数字键盘</h3>
+    <h5>type="number"</h5>
+    <input type="number" id="numberInput" maxlength="11" />
+
+    <h5>type="tel"</h5>
+    <input type="tel" id="telInput" maxlength="11" />
+
+    <h5>type="text" + inputmode="numeric"</h5>
+    <input type="text" id="textNumericInput" inputmode="numeric" />
+
+    <h5>type="text" + inputmode="decimal"</h5>
+    <input type="text" inputmode="decimal" />
+
+    <div>
+      <button id="btn">获取 input 输入</button>
+    </div>
+  </body>
+
+  <script>
+    var numberInput = document.getElementById('numberInput'),
+      telInput = document.getElementById('telInput'),
+      textNumericInput = document.getElementById('textNumericInput'),
+      btn = document.getElementById('btn');
+
+    // 无效 value 在非法时候为空, 过滤无效
+    // numberInput.addEventListener('input', limitNumberInput)
+
+    // IOS 不支持
+    numberInput.addEventListener('keydown', ignoreNumberInput);
+
+    // 正常
+    textNumericInput.addEventListener('input', limitNumberInput);
+
+    btn.addEventListener('click', function () {
+      const inputValueObj = {
+        numberInput: numberInput.value,
+        telInput: telInput.value,
+      };
+
+      alert(JSON.stringify(inputValueObj));
+    });
+  </script>
+</html>

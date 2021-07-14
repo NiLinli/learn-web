@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>key event</title>
+  </head>
+
+  <body>
+    <input type="text" name="txt" id="txt" />
+    <h3>键盘过滤事件</h3>
+    <form action="" id="myForm">
+      <h3>tabForward</h3>
+      <input type="text" name="tab1" maxlength="1" />
+      <input type="text" name="tab2" maxlength="1" />
+      <input type="text" name="tab3" maxlength="1" />
+      <input type="text" name="tab4" maxlength="1" />
+    </form>
+  </body>
+
+  <script>
+    var txt = document.getElementById('txt');
+
+    // keypress deprecated 并且手机端不支持
+    // txt.addEventListener('keypress', function (event) {
+    //    const charCode = event.charCode;
+    //    // charCode 只在 keypress 中有 deprecated
+    //    // keyup & keydown 中为 0
+    // });
+
+    // 过滤输入
+    function ignoreInput(e) {
+      var keyCode = e.keyCode;
+      if (!/\d/.test(String.fromCharCode(keyCode)) && keyCode > 9 && !e.ctrlKey) {
+        // 事件的默认行为就是输入
+        e.preventDefault();
+      }
+    }
+
+    txt.addEventListener('keydown', function (e) {
+      console.log(e.keyCode, e.which);
+      // 输入之前的变量
+      console.log('keydown value is ' + e.target.value);
+      ignoreInput(e);
+    });
+
+    txt.addEventListener('keyup', function (e) {
+      // 输入好了的变量 与 input 作用类似
+      console.log('keyup value is ' + e.target.value);
+      console.log(event.keyCode);   // 小写识别为大写
+      console.log(event.which);
+    });
+
+    var myForm = document.getElementById('myForm'),
+      elements = myForm2.elements;
+
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].addEventListener('keyup', function (e) {
+        tabForward(e);
+      });
+    }
+
+    // 自动切换焦点
+    // 用户输入已经到达了maxLength  keyup
+    // 自动切换到下一个焦点
+    function tabForward(event) {
+      var target = event.target;
+      if (target.value.length === target.maxLength) {
+        var form = target.form;
+
+        for (var i = 0; i < form.elements.length; i++) {
+          if (form.elements[i] === target) {
+            if (form.elements[i + 1]) {
+              form.elements[i + 1].focus();
+            }
+            break;
+          }
+        }
+      }
+    }
+  </script>
+</html>

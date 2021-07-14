@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>textarea</title>
+    <script src="./enter.js"></script>
+  </head>
+
+  <body>
+    <input type="text" id="txt" />
+    <textarea name="" id="area" cols="30" rows="10">
+   
+        默认内容     
+    </textarea>
+  </body>
+
+  <script>
+    var txt = document.getElementById('txt'),
+      area = document.getElementById('area');
+
+    // \n input 输入不进去 没啥效果
+    txt.addEventListener('input', isEnterInput);
+
+    // input 使用 keydown 检测按键输入
+    txt.addEventListener('keydown', isEnterKey);
+
+    // textarea 可以输入 \n
+    area.addEventListener('input', isEnterInput);
+  </script>
+</html>

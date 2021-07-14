@@ -9,47 +9,32 @@
 </head>
 
 <body>
-    <h1>表单1</h1>
     <form action="123.html" id="myForm">
         <input type="text" name="o1" id="">
         <!-- 通用提交按钮 -->
         <input type="submit" id="submit" value="Submit Form">
         <input type="reset" value="Reset Form">
     </form>
-
-    <h1>表单2</h1>
-    <form action="abc.html" id="myForm2">
-        <input type="text" name="a1" id="">
-        <input type="text" name="a2" id="">
-        <input type="text" name="a3" id="">
-
-        <!-- 通用提交按钮 -->
-        <input type="submit" id="submit" value="Submit Form">
-        <input type="reset" value="Reset Form">
-
-    </form>
-
 </body>
 
 <script>
-    //  form -> HTMLFormElement -> HTMLElement
+    //  form instance -> HTMLFormElement -> HTMLElement
 
     var myForm = document.getElementById('myForm'),
         submit = document.getElementById('submit');
 
-
-
     myForm.addEventListener('submit', function (event) {
         console.log('submit');
         submit.disabled = true;     // 禁用提交按钮, 阻止多次提交
-
-
         event.preventDefault();     // 测试打印 click 使用
+
+        setTimeout(() => {
+            submit.disabled = false;
+        }, 200);
     }, false);
 
     submit.addEventListener('click', function (e) {
         console.log('click');
-        
     });
 
 </script>

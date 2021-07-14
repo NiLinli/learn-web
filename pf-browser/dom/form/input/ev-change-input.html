@@ -1,41 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>change input</title>
-</head>
+  </head>
 
-<body>
-
-    <input type="text" id="txt">
+  <body>
+    <input type="text" id="txt" />
 
     <button id="btn">改变txt的value值</button>
+  </body>
 
-</body>
-
-<script>
+  <script>
     var txt = document.getElementById('txt');
 
-
     txt.addEventListener('change', function (e) {
-        console.log('change:' + e.target.value);
+      console.log('change:' + e.target.value);
     });
 
     txt.addEventListener('input', function (e) {
-        console.log('input:' + e.target.value);
+      console.log('input:' + e.target.value);
     });
-
 
     document.getElementById('btn').addEventListener('click', function () {
-        txt.value = Math.random().toString();
+      txt.value = Math.random().toString();
     });
-
 
     // 改变 DOM value 属性不会触发 change input 事件
     // 不然有机率形成死循环
-</script>
-
+  </script>
 </html>
