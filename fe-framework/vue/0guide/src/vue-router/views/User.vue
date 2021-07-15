@@ -1,14 +1,16 @@
 <template>
   <div class="user">
-    <h2>User {{ $route.params.id }}</h2>
-    <div class="user-router-view">
-      <router-view></router-view>
-    </div>
+    <h2>User params id: {{ $route.params.id }}</h2>
+    <h2>User prop id: {{ id }}</h2>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    id: [String]
+  }
+};
 </script>
 
 <style>
