@@ -26,6 +26,9 @@
     <router-link to="/test-prop-object/1000" tag="li">Go to object prop</router-link>
     <router-link to="/test-prop-function/10000" tag="li">Go to function prop</router-link>
 
+    <h2>dynamic routes</h2>
+    <router-link to="/abc" tag="li">dynamic</router-link>
+
     <div class="main-router-view">
       <router-view></router-view>
     </div>

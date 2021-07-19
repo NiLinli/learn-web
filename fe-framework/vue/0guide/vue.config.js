@@ -36,10 +36,24 @@ module.exports = {
     },
     'vue-router': {
       entry: 'src/vue-router/main.js',
-      template: 'public/vue-router.html',
+      template: 'public/index.html',
       filename: 'vue-router.html',
       title: 'Vue Router',
       chunks: ['chunk-vendors', 'chunk-common', 'vue-router'],
     },
+    'vue-router-guards': {
+      entry: 'src/vue-router-guards/main.js',
+      template: 'public/index.html',
+      filename: 'vue-router-guards.html',
+      title: 'Vue Router Guards',
+      chunks: ['chunk-vendors', 'chunk-common', 'vue-router-guards'],
+    },
+    'vue-router-ka': {
+      entry: 'src/vue-router-ka/main.js',
+      template: 'public/index.html',
+      filename: 'vue-router-ka.html',
+      title: 'Vue Router Keep Alive',
+      chunks: ['chunk-vendors', 'chunk-common', 'vue-router-ka'],
+    }
   },
 };

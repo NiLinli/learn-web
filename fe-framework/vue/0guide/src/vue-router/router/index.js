@@ -7,6 +7,7 @@ import User from '@/vue-router/views/User';
 import UserPosts from '@/vue-router/views/UserPosts';
 import UserProfile from '@/vue-router/views/UserProfile';
 import Help from '@/vue-router/views/Help';
+import Abc from '@/vue-router/views/Abc';
 
 Vue.use(VueRouter);
 
@@ -107,6 +108,33 @@ const routes = [
   { path: '*', component: NotFound },
 ];
 
-export default new VueRouter({
-  routes,
-});
+
+const dynamicRoutes = [
+  { path: '/abc', component: Abc },
+];
+
+let dynamicAddFinish = false;
+
+const createRouter = () => new VueRouter({ routes });
+
+const router = createRouter();
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/abc' && !dynamicAddFinish) {
+    dynamicAddFinish = true;
+    // 访问的是需要动态生成的
+    router.addRoutes(dynamicRoutes);
+    // 再次导航到 to, 重新走整个路由生命周期, 确保 addRoutes 添加完成
+    return next({ ...to, replace: true });
+  }
+
+  next();
+})
+
+// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // reset router
+}
+
+export default router;
