@@ -21,7 +21,15 @@ const routes = [
   { path: '/index', component: Index },
   { path: '/login', component: Login },
   { path: '/form', component: Form },
-  { path: '/user', component: UserInfo, meta: { auth: true } },
+  {
+    path: '/user',
+    component: UserInfo,
+    meta: { auth: true },
+    beforeEnter(to, from, next) {
+      console.log('beforeEnter');
+      next();
+    },
+  },
   {
     path: '/random',
     // 不支持异步
@@ -61,6 +69,7 @@ router.beforeEach((to, from, next) => {
   console.log('beforeEach', to.path, from.path, history.length);
 
   if (to.path === '/beforeEachFail') {
+    debugger;
     return next(false);
   }
 
@@ -74,7 +83,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-
 });
 
 // 解析守卫
@@ -87,9 +95,7 @@ router.beforeResolve((to, from, next) => {
   }
 });
 
-// 后置钩子
-// 确认导航前的最后一个钩子
-// 不能改变导航事实
+// 后置钩子 不能改变导航事实
 router.afterEach((to, from) => {
   console.log('afterEach', to.path, from.path, history.length);
   setTimeout(() => console.log(history.length), 0);

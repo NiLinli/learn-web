@@ -1,59 +1,73 @@
 # history
 
-Web browsers
+浏览器
 
-- keep track of what documents have been loaded into a window
-- display Back and Forward buttons that allow the user to navigate among those documents.
+- 记录网页文档访问记录
+- 提供前进/后退导航按钮
 
 ## 历史记录
 
-出于安全原因, 一般不能访问历史记录, 只能访问 length
+`window.history`
 
-1. back forward 不会影响 history stack 
-2. back 之后
-  -  push 新的 url, 会抛弃当前到栈顶原有的记录, 添加新的记录
-  -  replace 新的 url, 不会抛弃当前到栈顶原有记录
-
-## 模拟浏览器按钮
-
-- `go()` 传递数字, 数字相当于点击浏览器前进后退按钮的次数
-  - 1  = `forward()`  前进
-  - -1 = `back()`     后退
-
-## 改变 url 页面会刷新
-
-- 地址栏重新输入一样(不同)的 url , 按 enter 键浏览器会 reload
-- a 标签导航到一样(不同)的 url , 浏览器同样会 reload
-
-## 改变 url 页面不刷新
-
-- hash
-- html5(ie10+)
-
-两种方式都会添加历史记录
-
-### hash
-
-- location.hash
-- location.replace()
-- hashchange 监听
-  - 浏览器 back forward (真实/模拟)
-  - location.hash / location.replace() 改变 hash
-
-### html5
-
-同源 url
-
-- pushState
-- replaceState
-- popstatechange 监听
-  - 浏览器 back forward (真实/模拟)
+1. 不能访问历史记录(安全原因)
+2. 只能访问 length
 
 ## 导航
 
-1. js 导航
-  - 可以自行通过钩子控制页面路径
-2. back forward 导航
-  - 页面路径一定会变
-  - 但是不会添加历史记录
-  
+1. 浏览器 back 不会丢弃 stack top 的记录, 和 **app/小程序的差异**
+2. back 之后 forward 也不会影响 history stack
+3. back 之后
+    - push 抛弃当前到栈顶原有的记录 => 添加新的记录
+    - replace 不会抛弃当前到栈顶原有记录
+
+- `history.go()`
+- `history.go(1)` => `history.forward()`
+- `history.go(-1)` => `history.back()`
+
+## SPA
+
+### 阻止浏览器重新加载
+
+重新加载情况
+
+- 地址栏 Enter (初次进入)
+- a 标签导航 (hash 除外)
+
+地址相同/不同, 都会 reload
+
+不会 reload, 但是会添加历史记录的方式
+
+- hash
+- history pushState(ie10+)
+
+### hash mode
+
+#### 方法
+
+- push => 修改 location.hash
+- replace => location.replace()
+- go()/back()/forward()
+
+#### 事件
+
+hashchange
+
+- 改变 hash 会触发 hashchange
+- 没有默认行为可以阻挡
+
+### history mode
+
+同源 url
+
+#### 方法
+
+- push => history.pushState()
+- replace => history.replaceState()
+- go()/back()/forward()
+
+#### 事件
+
+popstatechange
+
+- push/replace **不会**触发 popstatechange/hashchange
+- 没有默认行为可以阻挡

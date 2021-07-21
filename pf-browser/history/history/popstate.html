@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>popstate</title>
+  </head>
+
+  <body>
+    <div id="btnGroup">
+      <button id="btn1">hash</button>
+      <button id="btn2">path</button>
+      <button id="btn3">query</button>
+    </div>
+  </body>
+
+  <script>
+    var btnGroup = document.getElementById('btnGroup');
+
+    window.addEventListener('popstate', function (e) {
+      console.log('popstate event:', history.length);
+    });
+
+    // 使用 pushState replaceState 改变 hash 也不会触发 hashchange
+    window.addEventListener('hashchange', function (e) {
+      console.log('popstate event:', history.length);
+    });
+
+    // 也可以使用 pushState 来改变 #
+    btnGroup.addEventListener('click', function (e) {
+      var id = e.target.id;
+      var map = {
+        btn1: '#bar1',
+        btn2: '/user',  // File:// 不可用
+        btn3: '?name=nixixi',
+      };
+
+      // pushState
+      // replaceState
+      history.replaceState(null, null, map[id]);
+      console.log(history.state, history.length);
+    });
+  </script>
+</html>
