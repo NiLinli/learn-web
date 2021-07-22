@@ -3,15 +3,32 @@ import VueRouter from 'vue-router';
 
 import Index from '../views/Index.vue';
 import Form from '../views/Form.vue';
-import Intro from '../views/Intro.vue'
+import Intro from '../views/Intro.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/index', component: Index },
-  { path: '/form', component: Form, meta: { keepAlive: true } },
-  { path: '/intro', component: Intro },
-  { path: '/', redirect: '/index' }
+  {
+    path: '/index',
+    name: 'Index',
+    component: Index,
+    meta: { keepAlive: true },
+  },
+  {
+    path: '/form',
+    name: 'Form',
+    component: Form,
+
+  },
+  {
+    path: '/intro',
+    name: 'Intro',
+    component: Intro,
+  },
+  {
+    path: '/',
+    redirect: '/index',
+  },
 ];
 
 const router = new VueRouter({ routes });

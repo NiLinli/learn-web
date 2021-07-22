@@ -83,14 +83,14 @@ const routes = [
   {
     path: '/test-prop-true/:id',
     component: User,
-    props: true
+    props: true,
   },
   {
     path: '/test-prop-object/:id',
     component: User,
     props: {
-      id: 10000
-    }
+      id: 10000,
+    },
   },
   {
     path: '/test-prop-function/:id',
@@ -99,7 +99,7 @@ const routes = [
       const { hash, params, query } = to;
       // 更加灵活
       return {
-        ...params
+        ...params,
       };
     },
   },
@@ -108,10 +108,7 @@ const routes = [
   { path: '*', component: NotFound },
 ];
 
-
-const dynamicRoutes = [
-  { path: '/abc', component: Abc },
-];
+const dynamicRoutes = [{ path: '/abc', component: Abc }];
 
 let dynamicAddFinish = false;
 
@@ -129,12 +126,17 @@ router.beforeEach((to, from, next) => {
   }
 
   next();
-})
+});
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
+  const newRouter = createRouter();
+  router.matcher = newRouter.matcher; // reset router
 }
+
+// router API
+// router.resolve
+const { location, route, href } = router.resolve({ path: '/p/nixixi' });
+console.log(location, route, href);
 
 export default router;

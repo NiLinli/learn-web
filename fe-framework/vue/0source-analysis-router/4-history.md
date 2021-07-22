@@ -10,13 +10,18 @@
 
 - js transitionTo
   1. 通过 guards
+      - 不通过 guards, 阻止
   2. resolve component
   3. 改变 path
 - 浏览器行为监听 popstate/hashchange => transitionTo
   1. 改变 path
   2. 通过 guards
-     - 不通过 guards, path 通过 `ensureURL` 改变为当前
+     - 不通过 guards, 阻止, path 通过 `ensureURL` 改变为当前
   3. resolve component
+  4. 确认改变 path
+
+
+transitionTo 成功后 => 替换当前 path
 
 ## transitionTo
 
@@ -100,7 +105,7 @@
     const lastRouteIndex = route.matched.length - 1
     const lastCurrentIndex = current.matched.length - 1
 
-    // 
+    // 阻断 hash + hashchange 的 transitionTo
     if (
       isSameRoute(route, current) &&
       // in the case the route map has been dynamically appended to
@@ -111,6 +116,7 @@
       return abort(createNavigationDuplicatedError(current, route))
     }
 
+    // 对比导航前后得出 不同状态的 RouteRecord
     const { updated, deactivated, activated } = resolveQueue(
       this.current.matched,
       route.matched
