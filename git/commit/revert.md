@@ -35,3 +35,8 @@ revert merge 过来的代码, 在次 merge 时候, 会丢失代码, 因为 rever
 
 1. git revert 使代码复原
 2. 需要合并的分支正常后, git revert 上次的 revert, revert of revert 抵消掉 revert 的对代码的影响
+
+code
+code
+code
+code
