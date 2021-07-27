@@ -39,5 +39,4 @@ revert merge 过来的代码, 在次 merge 时候, 会丢失代码, 因为 rever
 code
 code
 code
-bug
 code
