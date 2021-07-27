@@ -2,9 +2,17 @@
 
 三颗树
 
-- HEAD 当前分支引用的指针, 指向上一次提交的快照(即下一次提交的父结点)
-- Index 预期的下一次提交的快照(可以理解为暂存区, git commit 时候 git 应该有的样子)
-- Working Directory 沙盒 (工作区更改的文件都放在 .git 文件夹中, 随意修改不会影响 git)
+- HEAD
+  - 当前分支引用的指针
+  - 指向上一次提交的快照/即下一次提交的父结点
+- Index
+  - 可以理解为暂存区
+  - 预期的下一次提交的快照
+  - git commit 之前的状态
+- Working Directory
+  - 工作区
+  - 当前修改的未放入暂存区的
+  - 沙盒 更改的文件都放在 .git 文件夹中, 随意修改不会影响 git
 
 ## status
 
@@ -13,6 +21,8 @@ git status 会对比三颗树的状态, 给出差异
 ## 工作区 Working Directory
 
 Untracked/Modified
+
+`git checkout -- file` 工作区 -> 检出文件, 干掉
 
 ## 暂存区 Index
 
@@ -38,19 +48,30 @@ git reset/git checkout 根据不同参数有不同的工作范围
 
 `git reset --soft HEAD~ [filename]`
 
-改变 head 指向指针的值, 改变 指针所指的对象的值, 覆盖都是很暴力的, 不做检查, 全量覆盖
+```
+const commitObj = { v: some+version, file1....};
+const head = commitObj;
+// git reset
+commitObj = { v: other+version, file111....};
+```
 
-1. --soft 改变 HEAD 中的文件, Work Directory + Index 中的没有改变
-2. --mixed 继续改变 Index 中的文件 (默认行为)
-3. --hard 继续改变 Work Directory 中的文件
+- 改变 head 所指commit本身
+- 会改变 branch 的提交
+- 全量覆盖(暴力)
 
-压缩提交
+1. --soft  移动 Head (取出这次提交)
+2. --mixed 取出的提交放入暂存区, 将原有暂存区内容放入工作区
+3. --hard  取出的提交放入工作区, 将原有工作区的内容干掉
+
+取出的提交放入哪棵树, 那棵树就和 Head 保持一致, 没有变更
+
+#### 压缩提交
 
 1. 不能修改 Index + Work Directory 的文件 --soft
 2. 将 HEAD 树的文件向前覆盖 HEAD~2, 或者制定 sha 值
 3. 重新 git add/或者直接 commit, 形成新的提交
 
-取消暂存文件
+#### 取消暂存文件
 
 1. 不改变 HEAD 指向的文件, 参数为即可 HEAD, 当前复制到当前, 即没有改变 默认
 2. 将 HEAD 内容复制到 Index 中, --mixed 默认值
@@ -59,18 +80,22 @@ git reset/git checkout 根据不同参数有不同的工作范围
 
 ### checkout
 
-改变 head 本身指向, 改变 指针的指向, 指向其他节点
+`git checkout [filename]`
 
-工作区 --> 取消 git checkout -- file
+```
+const commitObj = { v: some+version, file1....};
+const head = commitObj;
+// git checkout
+hard = { v: other+version, file111....};
+```
 
-不带文件路径
+- 移动 head 指针
 
-和 `git reset --hard` 相同, 保持三棵树一致,
+#### 切换分支(移动 head)
 
-1. 但是对指针的操作不同
-2. 它会在工作目录中先试着简单合并一下，这样所有*还未修改过的*文件都会被更新, 工作区的文件比较安全
+保持三棵树一致
 
-带文件路径
+- 工作目录中先试着简单合并一下，这样所有*还未修改过的*文件都会被更新, 工作区的文件比较安全
 
 ## commit 技巧
 
