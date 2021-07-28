@@ -49,10 +49,10 @@ git reset/git checkout 根据不同参数有不同的工作范围
 `git reset --soft HEAD~ [filename]`
 
 ```
-const commitObj = { v: some+version, file1....};
+const commitObj = { hash: 123231, v: some+version, file1....};
 const head = commitObj;
 // git reset
-commitObj = { v: other+version, file111....};
+commitObj = { hash: 823947, v: other+version, file111....};
 ```
 
 - 改变 head 所指commit本身

@@ -1,44 +1,42 @@
 # revert 回滚
 
-没有文件层面的操作
+- 工作区/暂存区干净
+- 生成一个**新的**提交(反向操作), 不会改变历史 
 
-还原某一个指定提交至**前面一个提交**, 并产生一个新的提交记录这个提交, **逆向操作的一次提交**, 是一次 commit
+## reset/revert
 
-"revert" 不是 "undo"
+1. reset 只能重置到某个位置, 其他的代码都会丢失
+2. revert 可以选择某个 commit 进行反向提交, 其他提交不会丢失
+3. 多人开发 revert 回滚代码更加适合
 
-- undo the data
-- it doesn't undo history
+## 场景
 
-## 意义
+### 单分支
 
-在不想重写 reset 历史的基础上  
-回滚操作去需要记录到一个 commit
-
-## 写法
+dev 分支开发, 发现历史提交有个 bug
 
 ```bash
+git revert commitId       # 某次提交
 git revert HEAD~2..HEAD    # 最后两个
 git revert 0060370..73cb0d1 # 0060370 到 73cb0d1 区间
 
-# 手动提交
-git revert --no-commit 0766c053..HEAD
-git commit
+# 还原还原提交
+git revert revertCommitId
 
-# mainline merge 的代码必须要指定主线, 因为前面一个提交有两条线, 所以必须指定一条
-git revert -m 1 0766c053
+# 代码修改
+git commit
 ```
 
-## 常见问题
+### 多分支
 
-- [revert-a-faulty-merge](https://github.com/git/git/blob/master/Documentation/howto/revert-a-faulty-merge.txt)
-revert merge 过来的代码, 在次 merge 时候, 会丢失代码, 因为 revert 产生的提交(逆向) 比需要合并的分支要新
+```bash
+git revert -m 1 mergeCommitId
 
-1. git revert 使代码复原
-2. 需要合并的分支正常后, git revert 上次的 revert, revert of revert 抵消掉 revert 的对代码的影响
+# 还原还原提交(重要)
+git revert mergeCommitId
 
-code
-code
-code
-code
-code
-code
+# 修改完成后再次合并代码
+git merge dev-opt
+```
+
+还原后不能直接合并, 因为还原生成一个新的提交(删除提交), 这个提交已经在 dev-opt 的前面, 直接合并导致 dev-opt 的代码不存在
