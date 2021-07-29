@@ -28,3 +28,14 @@
 ## SCSS 编码规范
 
 代码足够多, 大到难以保持 DRY 了, 再切换到 SCSS
+
+## BEM
+
+CSS Class 命名方法
+
+- block-name_modifier-name
+- block-name__element-name_modifier-name
+
+1. Block   模块
+2. Element 模块中的元素
+3. Modifier 模块/元素状态
