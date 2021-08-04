@@ -1,0 +1,14 @@
+// webpack 提供的高级解析模块能力
+// 1. ~ 指向 node_modules
+// 2. package.json 中 sass 字段指向引用的模块 
+//    "sass": "scss/bootstrap.scss",
+// @import '~bootstrap';
+
+
+// sass-loader 全局注入
+// @import './scss/variable.scss';
+
+h2 {
+  font-size: 12px;
+  color: $primaryColor;
+}
