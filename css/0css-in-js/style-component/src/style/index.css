@@ -1,0 +1,22 @@
+.btn {
+  color: palevioletred;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+}
+
+.btn-tomato {
+  color: tomato;
+  border-color: tomato;
+}
+
+.text {
+  font-size: 20px;
+  background-color: gray;
+}
+
+.text-active {
+  background-color: red;
+}

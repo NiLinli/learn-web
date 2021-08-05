@@ -1,21 +1,22 @@
-# css in js
+# css & js
 
 ## webpack
 
-将 css 写在 js 之中, 经过处理后放入 style 标签或者导出为文件, 放入 link 标签, 本质还是 css
-
 ### webpack css
 
-- style-loader + css-loader  => style 标签
-- style-loader + file-loader  => link 标签
+webpack loader 处理 css  
+只是文件的处理, 写在 js 当中, 但是和 js 没有什么关系
+
+- style-loader + css-loader => style 标签
+- style-loader + file-loader => link 标签
 - mini-css-extract-plugin/extract-text-webpack-plugin + css-loader => link 标签
 
 ### css preprocessor
 
+预处理器阶段
+
 - scss-loader
 - less-loader
-
-#### 全局导入 $variable
 
 ### postcss
 
@@ -26,7 +27,8 @@
 
 ### css module
 
-css 与 js 进行文本交互
+- 模块化
+- css 与 js 进行文本交互能力
 
 ```js
 import $style from './index.css';
@@ -86,6 +88,22 @@ $pColor: darksalmon;
 }
 ```
 
-### styleComponent
+### css in js
 
-这个阶段才是 css in js
+css in js 阶段  
+
+不是通过 webpack + loader 处理 js 中的 css, 通过写组件
+
+#### 组件化 css
+
+1. 写组件
+2. 计算组件中的样式
+3. 将样式插入到 head 中 style 标签里面
+
+所以是吧 css 写在 js 里面通过计算得出和拆分样式
+
+#### 优点
+
+- 组件化思考 css
+- js => css 传值
+- 适合没有 css 概念的平台, 比如 RN
