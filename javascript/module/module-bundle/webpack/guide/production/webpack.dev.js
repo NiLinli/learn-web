@@ -1,8 +1,8 @@
 const path = require('path');
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
+const chainConfig = require('./webpack.common.js');
 
-module.exports = merge(common, {
+// 可以先在这里改一波 chainConfig
+module.exports = merge(chainConfig.toConfig(), {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
