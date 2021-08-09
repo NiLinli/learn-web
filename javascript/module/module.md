@@ -1,6 +1,6 @@
 # module
 
-## JS 代码发展
+## JS 模块化发展
 
 1. 全局变量
     - 污染了全局变量，可能发生命名冲突
@@ -11,6 +11,8 @@
 3. closure 解决了 2 的问题
     - 参数可以传递其他模块
     - moduleObject 作为返回值
+4. AMD/CMD/UMD 方案
+5. ES module/CommonJS module 规范
 
 ## 模块模式 module pattern
 

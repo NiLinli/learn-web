@@ -6,12 +6,13 @@ function resolvePath(dir) {
 }
 
 // 两种方案
-// 1
+// 1 path
+// 不存在的模块也可以计算出路径
 // const filePath = resolvePath('./files/config.json');
 
-// 2 使用 require 的方式
-// 不引入模块
-// 只是 resolve 模块的 path
+// 2 require
+// 不引入模块, 只是 resolve 模块的 path
+// **不存在的模块无法 resolve**
 const filePath = require.resolve('./files/config.json');
 
 const fileConfig = fs.readFileSync(filePath, {

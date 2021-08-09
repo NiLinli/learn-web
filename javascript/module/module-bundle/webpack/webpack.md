@@ -22,6 +22,11 @@
 - output
   - 输出文件
 
+### 其他概念
+
+- chunk
+- bundle
+
 ## config
 
 - webpack-chain 创建 config 并且通过链式修改
