@@ -1,11 +1,11 @@
 {
   "name": "guide",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "webpack-guide",
   "scripts": {
     "hello-webpack": "webpack --config ./hello-webpack/webpack.config.js",
-    "output-management": "webpack --config ./output-management/webpack.config.js",
+    "entry": "webpack --config ./entry/webpack.config.js",
+    "output": "webpack --config ./output/webpack.config.js",
     "tree-shaking": "webpack --config ./tree-shaking/webpack.config.js",
     "code-splitting": "webpack --config ./code-splitting/webpack.config.js",
     "caching": "webpack --config ./caching/webpack.config.js",
@@ -20,8 +20,7 @@
     "loader-and-plugin": "webpack --config ./loader-and-plugin/webpack.config.js",
     "node-interface-run": "node ./node-interface/build/index.js",
     "node-interface-watch": "node ./node-interface/build/watching.js",
-    "require-context": "webpack --config ./require-context/webpack.config.js",
-    "entry": "webpack --config ./entry/webpack.config.js"
+    "require-context": "webpack --config ./require-context/webpack.config.js"
   },
   "keywords": [],
   "author": "",
@@ -32,7 +31,7 @@
     "exports-loader": "^2.0.0",
     "express": "^4.17.1",
     "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.0.0",
+    "html-webpack-plugin": "^5.3.2",
     "imports-loader": "^2.0.0",
     "raw-loader": "^4.0.2",
     "style-loader": "^2.0.0",

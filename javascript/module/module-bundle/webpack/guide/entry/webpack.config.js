@@ -1,3 +1,4 @@
+// 输出无法使用
 const resolve = require.resolve;
 const path = require('path');
 
