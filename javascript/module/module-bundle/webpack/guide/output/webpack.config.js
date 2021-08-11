@@ -40,14 +40,15 @@ const { entry, HtmlWebpackPluginInstances } = resolveEntry();
 
 module.exports = {
   mode: 'development',
+  cache: false,
   entry,
   plugins: [
     // 生成版本管理
     new WebpackManifestPlugin(),
-    // 清理文件夹
-    new CleanWebpackPlugin({
-      cleanAfterEveryBuildPatterns: ['dist'],
-    }),
+    // 清理文件夹 v5.20 废弃
+    // new CleanWebpackPlugin({
+    //   cleanAfterEveryBuildPatterns: ['dist'],
+    // }),
     // 生成新的 HTML 文件
     // 引入 js
     // 使用 MiniCssExtractPlugin 提取的 CSS
@@ -56,6 +57,15 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    // [name] chunkName
+    // [id] chunkId
+    // [hash]/[fullhash] 每次编译产生的hash, 只要有任何文件改动, 都会改变
+    // [chunkhash]       同一个 chunk 所产生的 bundle 的 hash
+    // [contenthash]     每个 bundle 自身的 hash
+    filename: '[name].[contenthash].bundle.js',
+    // v5.20
+    clean: true,    
+    // 设置 baseUrl 
+    // publicPath: '/web/', 
   },
 };

@@ -22,10 +22,12 @@
 - output
   - 输出文件
 
-### 其他概念
+### chunk
 
-- chunk
-- bundle
+webpack 处理 module 时候称为 chunk  
+最后 output 输入的为 bundle, 一个 chunk 可以输出多个 bundle(js bundle + css bundle)
+
+优化都是从 chunk 着手
 
 ## config
 
