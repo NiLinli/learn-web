@@ -4,7 +4,7 @@ function component() {
     var element = document.createElement('pre');
     element.innerHTML = [
         'Hello webpack!',
-        '5 cubed is equal to ' + cube(5)
+        'Math.random() cubed is equal to ' + cube(Math.random())
     ].join('\n\n');
     return element;
 }
