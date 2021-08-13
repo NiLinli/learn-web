@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const pages = {
   crm: {
@@ -39,20 +38,12 @@ function resolveEntry() {
 const { entry, HtmlWebpackPluginInstances } = resolveEntry();
 
 module.exports = {
-  mode: 'development',
+  mode: 'none',
   cache: false,
   entry,
   plugins: [
     // 生成版本管理
     new WebpackManifestPlugin(),
-    // 清理文件夹 v5.20 废弃
-    // new CleanWebpackPlugin({
-    //   cleanAfterEveryBuildPatterns: ['dist'],
-    // }),
-    // 生成新的 HTML 文件
-    // 引入 js
-    // 使用 MiniCssExtractPlugin 提取的 CSS
-    // ...
     ...HtmlWebpackPluginInstances,
   ],
   output: {
@@ -63,7 +54,7 @@ module.exports = {
     // [chunkhash]       同一个 chunk 所产生的 bundle 的 hash
     // [contenthash]     每个 bundle 自身的 hash
     filename: '[name].[contenthash].bundle.js',
-    // v5.20
+    // v5.20 替代 CleanWebpackPlugin
     clean: true,    
     // 设置 baseUrl 
     // publicPath: '/web/', 

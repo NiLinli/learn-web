@@ -21,8 +21,6 @@ module.exports = {
     usedExports: true,
   },
   plugins: [
-    // 废弃
-    // new UglifyJSPlugin(),
     new HtmlWebpackPlugin({
       title: 'Tree Shaking',
     }),

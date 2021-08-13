@@ -25,16 +25,7 @@ module.exports = {
 		// moduleIds: 'hashed',
 		runtimeChunk: 'single',		// 将 runtime + manifest 分离到 runtime.js 中
 		splitChunks: {
-			cacheGroups: {
-				// vendor bundle 会随着自身的 module.id 的变化，而发生变化, 需要 fix
-				// production 采用数字作为 moduleId, 会变化
-				// development 是字符串作为 key , 不会有这个问题
-				vendor: {
-					test: /[\\/]node_modules[\\/]/,
-					name: 'vendors',
-					chunks: 'all'
-				}
-			}
+			
 		}
 	},
 	output: {

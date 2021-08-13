@@ -12,19 +12,7 @@ module.exports = {
   },
   devtool: false,
   module: {
-    rules: [
-      {
-        test: /\.txt$/,
-        use: [
-          'raw-loader',
-          resolvePath('./loaders/uppercase-loader.js'),
-          resolvePath('./loaders/reverse-loader.js'),
-          resolvePath('./loaders/sync-loader.js'),
-          resolvePath('./loaders/async-loader.js'),
-          resolvePath('./loaders/buffer-loader.js'),
-        ],
-      },
-    ],
+    rules: [],
   },
   plugins: [new MyPlugin({ param: 'xxx' })],
   output: {
