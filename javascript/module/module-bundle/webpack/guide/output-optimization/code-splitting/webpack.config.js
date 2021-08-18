@@ -1,10 +1,5 @@
 const path = require('path');
-
-// 拆分变化的部分
-// 不变的部分就可以缓存
-
-// 单页面通过 common-chunk 分离不怎么变化的 module 达到缓存的目的
-// 多页面通过 common-chunk 共享相同的模块
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'none',
@@ -13,32 +8,67 @@ module.exports = {
     index: path.resolve(__dirname, './src/index.js'),
     'index-another': path.resolve(__dirname, './src/index-another.js'),
   },
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'index',
+      filename: `index.html`,
+      chunks: ['index'],
+      minify: false,
+    }),
+    new HtmlWebpackPlugin({
+      title: 'index-another',
+      filename: `index-another.html`,
+      chunks: ['index-another'],
+      minify: false,
+    }),
+  ],
   optimization: {
+    minimize: true,
+    usedExports: true,
+
     // 分离 runtime + manifest chunk
+    // manifest 打包后有可能会改变, 导致 runtime bundle 改变
+    // 优化点: 提取出 manifest 部分
     runtimeChunk: 'single',
-    // CommonsChunkPlugin => SplitChunksPlugin (提出公共依赖的部分 chunk)
+
+    // production 提出的 chunk 生成的 bundle name = moduleId
+    // moduleId 在代码中存在, 会影响代码的 content, 导致 contenthash 改变 => 无法缓存
+    // deterministic 确定的
+    moduleIds: 'deterministic',
+
+    // Plugin: CommonsChunkPlugin => SplitChunksPlugin
+    // 作用: 提出公共依赖的部分 chunk
+    // webpack 有 splitChunks 默认配置
     splitChunks: {
       // 设置哪些 chunk 会被优化
+      // async   异步模块(默认值)
+      // all 同步 + 异步模块
+      // initial 行为在改变, webpack 5 和 all 一致
       chunks: 'all',
+      // 最小的块的文件 size
+      minSize: 0,
 
-      // production 提出的 chunk 生成的 bundle name = moduleId
-      // 无法缓存
+      // 满足条件的 chunk 聚合在一起, 形成 group bundle
+      // 默认有 defaultVendors default 两个 group
       cacheGroups: {
-        // vendor bundle 会随着自身的 module.id 的变化，而发生变化, 需要 fix
-        // production 采用数字作为 moduleId, 会变化
-        // development 是字符串作为 key , 不会有这个问题
-        vendor: {
+        defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true,
           name: 'vendors',
-          chunks: 'all',
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+          name: 'common',
         },
       },
     },
   },
   output: {
     filename: '[name].[contenthash].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
+    path: path.resolve(__dirname, `dist/${new Date().valueOf()}`),
+    // clean: true,
   },
 };

@@ -1,5 +1,5 @@
-import _ from 'lodash';
+import { bar } from './lib/utils';
+import { barDate } from './lib/date';
 
-console.log(
-    _.join(['Another', 'module', 'loaded!'], ' ')
-);
+bar(1, 2, 4);
+barDate(1, 2, 4);
