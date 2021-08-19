@@ -1,13 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: 'none',
   entry: path.resolve(__dirname, './src/index.js'),
   devtool: false,
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-  },
   module: {
     rules: [
       // css
@@ -36,5 +32,9 @@ module.exports = {
         use: ['xml-loader'],
       },
     ],
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].bundle.js',
   },
 };

@@ -1,8 +1,12 @@
-import { file, parse } from './global.js';
+import './polyfill';
+import { file, helpers } from './global';
+import { sayHello } from 'exports-loader?exports=sayHello!./global2';
+
+sayHello();
 
 function component() {
   var element = document.createElement('div');
- // Lodash, now imported by this script
+  // Lodash, now imported by this script
   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
   // 处在 window 上下文
@@ -10,7 +14,7 @@ function component() {
   // this.alert('Hmmm, this probably isn\'t a great idea...');
 
   console.log(file);
-  parse();
+  helpers.parse();
 
   return element;
 }

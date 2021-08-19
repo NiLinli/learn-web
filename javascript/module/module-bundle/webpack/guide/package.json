@@ -6,19 +6,21 @@
     "api-cli": "node ./api-cli/build/index.js",
     "api-cli-watch": "node ./api-cli/build/watching.js",
     "entry": "webpack --config ./entry/webpack.config.js",
+    "module": "webpack --config ./module/not-js-module/webpack.config.js",
+    "module-custom-loader": "webpack --config ./module/custom-loader/webpack.config.js",
+    "module-require-context": "webpack --config ./module/require-context/webpack.config.js",
+    "module-shimming": "webpack --config ./module/shimming-module/webpack.config.js",
+    "module-external": "webpack --config ./module/external/webpack.config.js",
+    "plugin": "webpack --config ./plugin/custom-plugin/webpack.config.js",
     "output": "webpack --config ./output/webpack.config.js",
     "output-tree-shaking": "webpack --config ./output-optimization/tree-shaking/webpack.config.js",
     "output-code-splitting": "webpack --config ./output-optimization/code-splitting/webpack.config.js",
-    "shimming-module": "webpack --config ./shimming-module/webpack.config.js",
-    "asset-management": "webpack --config ./asset-management/webpack.config.js",
     "hot-module-replacement": "webpack-dev-server --open  --config ./hot-module-replacement/webpack.config.js",
     "development": "webpack serve --config ./development/webpack.config.js",
     "development-server": "webpack-dev-server --open --config ./development/webpack.config.js",
     "development-server-node": "node ./3-development/server.js",
     "production-serve": "webpack-dev-server --open --config ./production/webpack.dev.js",
-    "production": "webpack --config ./production/webpack.prod.js",
-    "loader-and-plugin": "webpack --config ./loader-and-plugin/webpack.config.js",
-    "require-context": "webpack --config ./require-context/webpack.config.js"
+    "production": "webpack --config ./production/webpack.prod.js"
   },
   "keywords": [],
   "author": "",
@@ -44,6 +46,7 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "core-js": "^3.16.2",
     "lodash": "^4.17.15"
   }
 }
