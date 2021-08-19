@@ -25,6 +25,7 @@ function resolveEntry() {
           template: require.resolve('./public/index.html'),
           filename: `${name}.html`,
           // chunks : ['chunk-vendors', 'chunk-common', name],
+          // 入口 chunk
           chunks: [name],
           minify: false,
         })

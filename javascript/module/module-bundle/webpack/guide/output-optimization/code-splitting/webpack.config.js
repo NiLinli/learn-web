@@ -48,9 +48,14 @@ module.exports = {
       // 最小的块的文件 size
       minSize: 0,
 
+      // 默认值, 只要有一个被引用, 就会被拆出来
+      minChunks: 1,
+
       // 满足条件的 chunk 聚合在一起, 形成 group bundle
       // 默认有 defaultVendors default 两个 group
+      // 如果所有 group 都匹配不上, 就会走父级配置
       cacheGroups: {
+        // 可以拆分一些不会改变的 npm package 出来
         defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
           priority: -10,
@@ -58,8 +63,11 @@ module.exports = {
           name: 'vendors',
         },
         default: {
+          // 设置为 2 以上比较合理
           minChunks: 2,
+          // 优先级不设置的话为 0
           priority: -20,
+          // 当前 chunk 包含已从主 bundle 中拆分出的模块，则它将被重用
           reuseExistingChunk: true,
           name: 'common',
         },
