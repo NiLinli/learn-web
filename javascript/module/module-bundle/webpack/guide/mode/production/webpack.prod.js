@@ -2,14 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const chainConfig = require('./webpack.common.js');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = merge(chainConfig.toConfig(), {
   mode: 'production',
+  // 生成独立的 source map 文件, 限制普通用户访问
+  // 默认选择为 none, 不生成任何 source map 文件
+  devtool: 'source-map',
   plugins: [
-    new UglifyJSPlugin({
-      sourceMap: true,
-    }),
     // 编译时 (macro)
     // 将变量替换成表达式
     // 或者值

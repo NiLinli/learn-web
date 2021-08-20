@@ -15,12 +15,10 @@
     "output": "webpack --config ./output/webpack.config.js",
     "output-tree-shaking": "webpack --config ./output-optimization/tree-shaking/webpack.config.js",
     "output-code-splitting": "webpack --config ./output-optimization/code-splitting/webpack.config.js",
-    "hot-module-replacement": "webpack-dev-server --open  --config ./hot-module-replacement/webpack.config.js",
-    "development": "webpack serve --config ./development/webpack.config.js",
-    "development-server": "webpack-dev-server --open --config ./development/webpack.config.js",
-    "development-server-node": "node ./3-development/server.js",
-    "production-serve": "webpack-dev-server --open --config ./production/webpack.dev.js",
-    "production": "webpack --config ./production/webpack.prod.js"
+    "development": "webpack serve --config ./mode/development/webpack.config.js --env goal=local",
+    "development-server": "node ./mode/development/server.js",
+    "serve": "webpack serve --open --port 8085 --config ./mode/production/webpack.dev.js",
+    "build": "webpack --config ./mode/production/webpack.prod.js"
   },
   "keywords": [],
   "author": "",

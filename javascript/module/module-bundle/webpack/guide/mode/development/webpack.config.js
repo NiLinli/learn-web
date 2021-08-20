@@ -1,36 +1,52 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
-module.exports = {
+// mode:
+//  none
+//  development
+//  production(webpack5 默认值)
+//  1. 如果没有再 config 中指定 mode,  cli 将使用可能有效的 NODE_ENV 值作为 mode
+//  2. DefinePlugin 中 process.env.NODE_ENV 对应设置为 development/production
+
+// webpack-cli 支持：
+//  --env       webpack 的 env, 与 shell ENV 不同
+//  --node-env  shell ENV, 意义不大
+const config = {
   mode: 'development',
   entry: {
-    index: path.resolve(__dirname, './src/index.js'),
-    print: path.resolve(__dirname, './src/print.js'),
+    app: path.resolve(__dirname, './src/index.js'),
   },
-  devtool: 'eval-source-map',
-  // webpack-dev-server
-  // 在 localhost:8080 下建立服务, 将 dist 目录下的文件, 作为可访问文件
+  // devtool: false,
   devServer: {
-		contentBase: './dist',
-		port: 8082
+    contentBase: './dist',
+    hot: true, // 启用模块HMR
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
   plugins: [
-    // 生成版本管理
-    // new WebpackManifestPlugin(),
-    // 清理文件夹
-    new CleanWebpackPlugin({
-      cleanAfterEveryBuildPatterns: ['dist'],
-    }),
-    // 生成新的 HTML 文件
     new HtmlWebpackPlugin({
-      title: 'Development',
+      title: 'Hot Module Replacement',
     }),
+    // new webpack.NamedChunksPlugin(), // 以便更容易查看要修补(patch)的依赖
+    new webpack.HotModuleReplacementPlugin(),
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    publicPath: '/',
+    clean: true,
   },
+};
+
+module.exports = (env) => {
+  console.log('Goal: ', env.goal); // 'local'
+  console.log('Production: ', env.production); // true
+
+  return config;
 };

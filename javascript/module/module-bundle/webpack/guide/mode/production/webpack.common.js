@@ -24,14 +24,4 @@ config
     }]);
 
 module.exports = config;
-// {
-//   entry: path.resolve(__dirname, './src/index.js'),
-//   plugins: [
-//     new CleanWebpackPlugin({
-//       cleanAfterEveryBuildPatterns: ['dist'],
-//     }),
-//     new HtmlWebpackPlugin({
-//       title: 'Production',
-//     }),
-//   ],
-// };
+

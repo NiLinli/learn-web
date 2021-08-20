@@ -18,8 +18,6 @@ if (process.env.NODE_ENV === 'prod') {
 // 编译2 移除无用代码
 // console.log('production');
 
-
-
 function component() {
   var element = document.createElement('pre');
   element.innerHTML = ['Hello webpack!', '5 cubed is equal to ' + cube(6)].join('\n\n');
@@ -28,5 +26,11 @@ function component() {
 
 document.body.appendChild(component());
 
-console.log(process);
-console.log(process.env.NODE_ENV);
+
+// 整体 macro 替换, 而不是在 js 中注入对象
+try {
+  console.log(process);
+  console.log(process.env.NODE_ENV);
+} catch (e) {
+  console.log(e);
+}
