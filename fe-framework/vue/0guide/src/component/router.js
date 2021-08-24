@@ -13,6 +13,7 @@ import RenderExp from './render-exp';
 import AsyncExp from './async-exp';
 import DynamicExp from './dynamic-exp';
 import TransitionExp from './transition-exp';
+import ProvideExp from './provide-exp';
 
 import FormExp from './form-exp';
 
@@ -32,6 +33,7 @@ const routes = [
   { path: '/dynamic', component: DynamicExp },
   { path: '/transition', component: TransitionExp },
   { path: '/form', component: FormExp },
+  { path: '/provide', component: ProvideExp },
 ];
 
 Vue.use(VueRouter);

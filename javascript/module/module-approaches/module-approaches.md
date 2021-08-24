@@ -24,11 +24,14 @@ import
 export
 export default
 
-**静态分析**
+**静态分析**  
+**导出的 immutable 变量是 reference**
 
-**导出的 immutable 变量是 ref**
+### TS module
+
+和 ES module 相比增加了一些特性
 
 ## CommonJs
 
+**动态引用, 无法静态分析**  
 **导出的 immutable 变量是 拷贝值**
-

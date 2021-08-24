@@ -1,11 +1,9 @@
 <template>
-  <div id="app">
-    <div v-for="route of indexRoutes" :key="route.name">
-      <h1>{{ route.name }}</h1>
-      <a class="el-button el-button--primary" :href="route.href">
-        Go to {{ route.name }}
-      </a>
-    </div>
+  <div>
+    <span v-for="(route, index) of indexRoutes" :key="route.name">
+      <a :href="route.href">{{ route.name }} </a>
+      <el-divider direction="vertical" v-if="index < indexRoutes.length - 1" />
+    </span>
   </div>
 </template>
 
