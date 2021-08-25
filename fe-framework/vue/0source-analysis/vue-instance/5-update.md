@@ -1,5 +1,7 @@
 # update
 
+VNode 进行 patch
+
 patch 是 对比新旧 vNode, 找出 diff, 打上 patch, 最小限度的修改真实 DOM
 
 ```js
