@@ -1,91 +1,48 @@
-var url = require('url');
+const { a, b, c, aa, ab, ac, end } = require('./middleware');
 
-const querystring = function (req, res, next) {
-  // TODOS
-  req.query = url.parse(req.url, true).query;
-  next();
-};
+// 前置中间件是按照顺序执行的
+// 后置中间件 sync code 时候也是按照洋葱模型, async code 时候不遵循, 没有特定规律
 
-const cookie = function (req, res, next) {
-  const cookie = req.headers.cookie;
-  const cookies = {};
+function getApp() {
+  const app = {};
 
-  if (cookie) {
-    const list = cookie.split(';');
-    for (let i = 0; i < list.length; i++) {
-      const pair = list[i].split('=');
-      cookies[pair[0].trim()] = pair[1];
-    } 
-  }
+  app.stacks = [];
 
-  req.cookies = cookies;
-}
+  // 注册
+  app.use = function (middleware) {
+    this.stacks.push(middleware);
+  };
 
-// 业务处理单元
-// 1. 中间件
-// 2. 具体业务逻辑
-
-// 中间件与具体业务逻辑等价
-// 具体业务逻辑 结合 路由
-// 中间件也可以结合路由
-// app.use(querystring);      // 中间件
-// app.use(cookie);
-// app.use(session);
-// app.get('/user/:username', getUser); // 业务逻辑
-// app.put('/user/:username', authorize, updateUser); // 中间件 + 业务逻辑
-
-
-// 中间件的注册
-app.use = function (path) {
-  let handle;
-
-  if (typeof path === 'string') {
-    handle = {
-      path: pathRegexp(path), // 路径
-      stack: Array.prototype.slice.call(arguments, 1) // 处理单元
+  // 调用
+  // 调用中间件的时候, 传递 next 函数
+  // next 函数去执行下一个中间件, 达到组合链式调用的方式
+  app.handle = function (context) {
+    const next = () => {
+      const middleware = this.stacks.shift();
+      if (middleware) {
+        return middleware(context, next);
+      }
     };
-  } else {
-    handle = {
-      path: pathRegexp('/'),
-      stack: Array.prototype.slice.call(arguments, 0) // 处理单元
-    }
-  }
-  
-  routes.all.push(handle);
+    next();
+  };
+
+  return app;
 }
 
-// 中间件的调用
-const handle = function(req, res, stack) {
-  const next = function () {
-    // 从 stack 中抽出 middleware 并执行
-    var middleware = stack.unshift();
-    if (middleware) {
-      // 递归执行 next
-      middleware(req, res, next);
-    }
-  }
-  // 启动执行
-  next();
-}
+const app = getApp();
+app.use(a);
+app.use(b);
+app.use(c);
+app.use(end);
+// 模拟监听回调执行
+app.handle({});
 
-const match = function (pathname, routes) {
 
-  const stacks = [];
-  for (let i = 0; i < routes.length; i++) {
-    const route = routes[i];
-    // reg 匹配
-    const reg = route.path.regexp;
-    const matched = reg.exec(pathname);
-    if (matched) {
-      // 执行中间件
-      // handle(req, res, route.stack);
-      // return true
+const appAsync = getApp();
+appAsync.use(aa);
+appAsync.use(ab);
+appAsync.use(ac);
+appAsync.use(end);
 
-      stacks = stacks.concat(route.stack);
-    }
-  }
-  
-  // return false;
-
-  return stacks;
-}
+// 模拟监听回调执行
+appAsync.handle({});
