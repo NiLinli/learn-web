@@ -29,7 +29,14 @@ var middleware = function (context, next) {
 
 ### 注册中间件
 
+将需要执行的中间件放入数组中
+
 ### 执行
 
-- 尾调用  express
-- compose  koa
+选择一种方式从左向右调用
+
+- trail call: 固定 next 方法取出下一个 middleware 执行
+  - express
+- compose dispatch: next 赋值为下一个 middleware, 等待上一个 middleware 调用
+  - koa
+  - redux

@@ -30,6 +30,10 @@
 
 ## 应用
 
+1. 参数中有 function
+2. 返回一个新的 function, 新的 function 中调用参数里面存在的 function
+
+
 1. Higher-order function (HOF高阶函数)
     - 作为参数传递
     - 作为返回值

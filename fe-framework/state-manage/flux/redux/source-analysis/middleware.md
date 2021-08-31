@@ -1,8 +1,6 @@
 # middleware
 
-Middleware lets you **wrap the store's dispatch method** for fun and profit.
-
-a single standard way to extend dispatch in the ecosystem.
+通过 wrap dispatch 方法, 达到一个标准的扩展生态
 
 ## 思路
 
@@ -11,35 +9,13 @@ a single standard way to extend dispatch in the ecosystem.
 
 ## applyMiddleware
 
-```js
-function createStore(reducer, preloadedState, enhancer) {
-
-
-  if (typeof enhancer !== 'undefined') {
-    if (typeof enhancer !== 'function') {
-      throw new Error('Expected the enhancer to be a function.');
-    }
-    // 递归调用了自己
-    return enhancer(createStore)(reducer, preloadedState);
-  }
-
-  // 初始化 Store
-  dispatch({
-    type: ActionTypes.INIT
-  });
-
-  return _ref2 = {
-    dispatch: dispatch,
-    subscribe: subscribe,
-    getState: getState,
-    replaceReducer: replaceReducer
-  }, _ref2[result] = observable, _ref2;
-}
-```
-
+1. 注册中间件 从左到右
+2. 改写 dispatch 从右像左
+3. 调用 dispatch 从左到右
 
 ```js
 function applyMiddleware() {
+
   for (var _len = arguments.length, middlewares = new Array(_len), _key = 0; _key < _len; _key++) {
     middlewares[_key] = arguments[_key];
   }
@@ -55,7 +31,9 @@ function applyMiddleware() {
       };
 
       var middlewareAPI = {
+        // context
         getState: store.getState,
+        // next   
         dispatch: function dispatch() {
           return _dispatch.apply(void 0, arguments);
         }
@@ -75,3 +53,5 @@ function applyMiddleware() {
 }
 
 ```
+
+
