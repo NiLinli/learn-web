@@ -29,13 +29,13 @@ function getApp() {
   return app;
 }
 
-const app = getApp();
-app.use(a);
-app.use(b);
-app.use(c);
-app.use(end);
-// 模拟监听回调执行
-app.handle({});
+// const app = getApp();
+// app.use(a);
+// app.use(b);
+// app.use(c);
+// app.use(end);
+// // 模拟监听回调执行
+// app.handle({});
 
 
 const appAsync = getApp();
