@@ -1,18 +1,11 @@
 const connect = require('connect');
 
-const app = connect();      // app 为 requestListener callback
+const app = connect(); // app 为 requestListener callback
 
-app.use((req, res, next)=> {
-  req.abc = 'hello connect';
-  next();
-})
-
-app.use('/test', (req, res, next) => {
-
-  res.write(req.abc);
+app.use('/', (req, res, next) => {
+  app;
+  res.write('Hello connect');
   res.end();
-})
+});
 
-app.listen(3003);
-
-
+app.listen(8071);

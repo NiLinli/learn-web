@@ -2,8 +2,9 @@ const express = require('express');
 
 const app = express();
 
-app.get('/', function (req, res) {
-    res.send('Hello express');
+app.use('/', function (req, res) {
+  app;
+  res.send('Hello express');
 });
 
-app.listen(8081);
+app.listen(8072);

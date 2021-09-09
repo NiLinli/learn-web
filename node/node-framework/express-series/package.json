@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "connect": "nodemon --inspect=9229 ./connect-index.js",
+    "express": "nodemon --inspect=9229 ./express-index.js",
+    "koa": "nodemon --inspect=9229 ./koa-index.js"
   },
   "keywords": [],
   "author": "",
