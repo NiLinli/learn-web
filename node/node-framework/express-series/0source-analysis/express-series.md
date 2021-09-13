@@ -31,5 +31,6 @@ original author: TJ
 
 original author: express 后续维护者
 
-- 更改 middleware 实现方式
+- 更改 middleware 实现方式 compose
 - req, res 方法魔改
+- ...

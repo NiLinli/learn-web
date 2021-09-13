@@ -1,18 +1,12 @@
-# functional programming lib
+# rxjs
 
-## lodash
+## Observable
 
-## ramda
+## Subject
 
-## rxjs
+## operator
 
-### Observable
-
-### Subject
-
-### operator
-
-#### 创建
+### 创建
 
 - create
 - empty/never/throwError
@@ -24,12 +18,12 @@
 - repeat/repeatWhen
 - bindCallback/bindNodeCallback
 
-#### 错误处理
+### 错误处理
 
 - catch
 - retry/retryWhen
 
-#### 过滤
+### 过滤
 
 1. filter
 2. take 类型 **截取发送值的一部分**
@@ -44,7 +38,7 @@
 4. throttle **节流**
 5. debounce
 
-#### 组合(同时操作多个 Observable)
+### 组合(同时操作多个 Observable)
 
 1. merge 类型 **同时执行 Observable**
     - merge (v6更新为创建操作符)
@@ -62,7 +56,7 @@
     - startWith
     - exhaust
   
-#### 转换
+### 转换
 
 1. map 类型 **运算发出的每个值**
     - map
@@ -76,24 +70,24 @@
 4. buffer 类型 **缓存, 缓存数据**
     - buffer
 
-#### 数学和聚合
+### 数学和聚合
 
 1. reduce
 2. count
 3. max/min
 
-#### 条件和布尔
+### 条件和布尔
 
 1. defaultIfEmpty/isEmpty
 2. every
 3. find/findIndex
 
-#### 工具
+### 工具
 
 1. tap(do)
 2. delay/delayWhen
 
-#### operator 总结
+### operator 总结
 
 1. xxxWhen 另外一个 Observable 决定当前的 Observable 的发送情况
 2. xxxUtil 传入 callback 决定当前 Observable 的发送情况

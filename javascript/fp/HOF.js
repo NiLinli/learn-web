@@ -1,6 +1,3 @@
-// higher order function
-// 满足函数作为参数 或者 返回值即可
-
 // 函数作为参数
 const filter = (predicate, xs) => xs.filter(predicate);
 

@@ -1,8 +1,8 @@
 {
-  "name": "R",
+  "name": "fp",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "HOF.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ramda": "^0.26.1"
+    "lodash": "^4.17.21",
+    "ramda": "^0.27.1",
+    "rxjs": "^7.3.0",
+    "underscore": "^1.13.1"
   }
 }
