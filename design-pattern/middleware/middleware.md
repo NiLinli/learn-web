@@ -17,9 +17,9 @@ var middleware = function (req, res, next) {
 };
 
 // OR
-var middleware = function (context, next) {
+var middleware = async function (context, next) {
   // TODO
-  next();
+  await next();
 };
 ```
 
@@ -31,7 +31,11 @@ var middleware = function (context, next) {
 
 将需要执行的中间件放入数组中
 
-### 执行
+### 根据中间件生成 callback
+
+根据 middlewares 生成回调 callback
+
+### 执行 callback
 
 选择一种方式从左向右调用
 

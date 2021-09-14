@@ -30,8 +30,7 @@ async function aa(context, next) {
   log('aa before');
   await waitExec();
   context.aa = true;
-  await next();
-  // await waitExec();
+  next();
   log('aa after');
 }
 
@@ -39,13 +38,12 @@ async function ab(context, next) {
   log('ab before');
   await waitExec();
   context.ab = true;
-  await next();
-  // await waitExec();
+  next();
   await new Promise((resolve, reject) => {
     setTimeout(() => {
-      console.log('wait 1000 ms end');
+      console.log('wait 5000 ms end');
       resolve();
-    }, 100);
+    }, 5000);
   });
   log('ab after');
 }
@@ -54,8 +52,7 @@ async function ac(context, next) {
   log('ac before');
   await waitExec();
   context.ac = true;
-  await next();
-  // await waitExec();
+  next();
   log('ac after');
 }
 
