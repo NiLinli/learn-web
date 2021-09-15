@@ -42,7 +42,8 @@ View  -直接修改-> Model
 - 接受 action, 更新 state **具体框架具体实现**
 - 对外发送 state(store) change 事件
 
-state(store) 只能通过 action 来改变, 没有 setter API
+state(store) 只能通过 action 来改变, 没有 setter API  
+一个 store 只有一个 state, 但是一个 APP 可以创建多个 store
 
 ### view
 
@@ -51,15 +52,19 @@ state(store) 只能通过 action 来改变, 没有 setter API
 
 ## 具体实现
 
+实现和传统的 FLUX 定义有所出入
+
 ### redux
 
 单一数据源
 
 store 组织
 
-- state
-- reducer: pure function 改变 state
-- dispatch(): 调用 dispatcher 分发 action
+- action
+- dispatch
+- store = reducer + state
+
+dispatch 挂载在 store 上面
 
 ### vuex
 
@@ -67,7 +72,8 @@ store 组织
 
 store 组织
 
-- state
-- mutation: commit 改变 state
-- dispatch(): 调用 dispatcher 分发 action
-  - action 也注册在 store 中方便引用分发
+- action(action thunk)
+- dispatch
+- store = mutation + state
+
+action & dispatch 挂载在 store 上面

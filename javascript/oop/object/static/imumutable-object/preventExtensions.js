@@ -1,7 +1,5 @@
 // 对象层面
-// 无法添加新的属性
-// 和 configurable property 操作一样, 不可逆
-
+// 无法添加新的属性 不可逆
 'use strict';
 
 const obj = {

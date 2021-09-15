@@ -3,15 +3,33 @@
 ## createStore
 
 closure 维护状态和观察者 observer  
-暴露一些方法  
+暴露一些方法
 
 ```js
 export default function createStore(reducer, preloadedState, enhancer) {
-  let currentReducer = reducer
-  let currentState = preloadedState
-  let currentListeners = []
-  let nextListeners = currentListeners
-  let isDispatching = false
+
+  // reducer enhancer => reducer, preloadedState = undefined, enhancer
+  // enhancer 只有唯一的 applyMiddleware
+  if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
+    enhancer = preloadedState;
+    preloadedState = undefined;
+  }
+
+  if (typeof enhancer !== 'undefined') {
+    if (typeof enhancer !== 'function') {
+      throw new Error(`Expected the enhancer to be a function. Instead, received: '${kindOf(enhancer)}'`);
+    }
+
+    return enhancer(createStore)(reducer, preloadedState);
+  }
+
+
+
+  let currentReducer = reducer;
+  let currentState = preloadedState;
+  let currentListeners = [];
+  let nextListeners = currentListeners;
+  let isDispatching = false;
 
   function getState() {}
 
@@ -23,7 +41,8 @@ export default function createStore(reducer, preloadedState, enhancer) {
 
   function observable() {}
 
-  dispatch({ type: ActionTypes.INIT })
+  // 初次调用 rootReducer 生成 currentState
+  dispatch({ type: ActionTypes.INIT });
 
   return {
     dispatch,
@@ -31,49 +50,52 @@ export default function createStore(reducer, preloadedState, enhancer) {
     getState,
     replaceReducer,
     [$$observable]: observable,
-  }
+  };
 }
-
 ```
 
 ## state
 
+一个 store 只有一个 state
+
 ```js
 function getState() {
   if (isDispatching) {
-    throw new Error(
-      'You may not call store.getState() while the reducer is executing. ' +
-        'The reducer has already received the state as an argument. ' +
-        'Pass it down from the top reducer instead of reading it from the store.'
-    )
+    // reducer 里面不要使用 store.getState()
+    throw new Error('...');
   }
   // 保存的单一数据源
-  return currentState
+  return currentState;
 }
 ```
 
 ## reducer
 
-归并思想
+一个 store 只有一个 rootReducer
 
-- reducer 相当于 arr.reduce(reducer) 中的 callback
-- 多个小的对 state 的更新多次合并到 state 中
+### 归并
+
+- 一次 reducer 调用相对于 arr.reduce(reducer) 一次 callback 调用
+- 程序执行中所有的 reducer 调用合并到 state 中, 等同于 arr.reduce 完成
+
+### reducer function
+
+pure function: (previousState, actionObject) => new State
 
 ```js
-// 传入 state 和 actionObject
-function todos(state = [], action) {
+function user(state = {}, action) {
   // ... other handle
   default:
     return state;
 }
 ```
 
-dispatch 调用 root reducer 返回 state => 更新 state
-
 ### combineReducers
 
-1. 传递子 reducers
-2. 返回一个新的 combine reducer function, combine function 中调用子 reducers
+HOF
+
+- argument: 子 reducers
+- return value: combine reducer function(new rootReducer function)
 
 ```js
 function combineReducers(reducers) {

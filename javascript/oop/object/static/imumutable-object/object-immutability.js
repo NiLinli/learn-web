@@ -1,8 +1,12 @@
-// 1. 对象层面: 不许新加属性
-// 2. 属性层面: 已有属性
-//    2.1 seal -> configurable: false
-//    2.2 freeze -> writable: false
+// 1. 已有属性不可写   writable: false
+// 2. 已有属性不可配置 configurable: false
+// 3. 不许扩展添加属性 (对象层面)
 
+// ie9+ support
+// polyfill 不支持实现, 只能不报错, 不处理对象
+// Object.preventExtensions => 3
+// Object.seal              => 2 + 3
+// Object.freeze            => 1 + (2 + 3)
 
 // 新建对象
 const obj = {};
@@ -10,8 +14,8 @@ const obj = {};
 // Object Constant
 Object.defineProperty(obj, 'NAME', {
   value: 'nixixi',
-  writable: false,      // freeze
-  configurable: false   // seal
+  writable: false,
+  configurable: false,
 });
 
 // Prevent extensions
@@ -19,16 +23,3 @@ Object.preventExtensions(obj);
 
 obj.b = 3;
 console.log(obj.b); // undefined
-
-
-// 已知对象
-// Object.seal
-// Object.freeze
-
-
-// 操作层级
-// 1. 不允许添加新的属性 Object.preventExtensions - 不能扩展属性
-// 2. 不允许修改属性描述符 Object.seal - 密封属性描述符
-// 3. 不允许修改属性所对应的值 Object.freeze - 冰冻值, 不让修改
-
-// ie9+ suport, polyfill 不支持实现, 只能不报错, 不处理对象

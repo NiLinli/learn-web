@@ -1,9 +1,9 @@
-// 1. writable: false 所有对象都不可以改写
-// 2. seal 操作
+// writable: false  + seal
 const obj = {
   name: 'nixixi',
 };
 
+// 返回的对象于原对象相同
 const returnObj = Object.freeze(obj);
 console.log(returnObj === obj);
 

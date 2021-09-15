@@ -1,6 +1,9 @@
 const { ADD_TODO, TOGGLE_TODO } = require('../actions/todos');
+const { RESET_STATE } = require('../actions/index');
 
-const todos = (state = [], action) => {
+const getInitState = () => Object.freeze([]);
+
+const todos = (state = getInitState(), action) => {
   switch (action.type) {
     case ADD_TODO:
       // 添加一个 Todo
@@ -22,6 +25,8 @@ const todos = (state = [], action) => {
         }
         return todo;
       });
+    case RESET_STATE:
+      return getInitState();
     default:
       return state;
   }

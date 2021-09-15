@@ -1,8 +1,11 @@
 # dispatch
 
-方法实现挂载在 `store.dispatch` 上
+挂载在 `store.dispatch` 上
 
 ## store.dispatch
+
+1. dispatch 调用 rootReducer
+2. notify listeners
 
 ```js
   function dispatch(action) {

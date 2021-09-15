@@ -1,18 +1,25 @@
 const { createStore, applyMiddleware } = require('redux');
-const rootReducer = require('./reducers/index');
+const createReducer = require('./reducers/index');
 const thunkMiddleware = require('redux-thunk').default;
-const { loggerMiddleware, crashReporter }= require('./middleware/index');
+const { loggerMiddleware, crashReporter } = require('./middleware/index');
 
 module.exports = (preloadedState) => {
   const store = createStore(
-    rootReducer,
-    preloadedState,
-    applyMiddleware(
-      thunkMiddleware,
-      loggerMiddleware,
-      crashReporter
-    )
+    createReducer({}),
+    preloadedState
+    // applyMiddleware(
+    //   thunkMiddleware,
+    //   loggerMiddleware,
+    //   crashReporter
+    // )
   );
+
+  store.injectReducer = (key, asyncReducer) => {
+    store.asyncReducers[key] = asyncReducer;
+
+    // code splitting
+    store.replaceReducer(createReducer(this.asyncReducers));
+  };
 
   return { store };
 };
