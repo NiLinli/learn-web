@@ -3,6 +3,12 @@ const { bindActionCreators } = require('redux');
 const configureStore = require('./configureStore');
 const { store } = configureStore();
 
+// subscribe
+const unsubscribe = store.subscribe(() => {
+  const state = store.getState();
+  // ...
+});
+
 // action
 const { addTodo } = require('./actions/todos');
 const { resetState } = require('./actions/index');
@@ -25,3 +31,5 @@ console.log(upperCaseUseNameSelector(store.getState()));
 
 boundResetState();
 console.log(store.getState());
+
+unsubscribe();
