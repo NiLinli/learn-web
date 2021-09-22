@@ -17,7 +17,7 @@ function codePointAt(string, position) {
   }
 
   var length = string.length;
-  
+
   // 变成整数
   var index = position ? Number(position) : 0;
   if (index != index) {
