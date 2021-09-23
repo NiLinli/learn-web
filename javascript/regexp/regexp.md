@@ -6,11 +6,34 @@ String extend
 
 - 简单字符
 - 元字符
-- 逃逸字符
 
-## Assertions
+## 元字符
+
+### Assertions
 
 断言, 明确表示
+
+- 边界
+  - 行边界
+  - 单词边界
+- 判断(跟随或者不跟随什么才能匹配成功)
+  - 向前判断
+  - 向后判断
+
+### Character Classes
+
+描述各种字符
+
+### Quantifiers
+
+量词表达数量, 默认是贪婪匹配
+
+- 具体数量
+- 范围
+
+### Range
+
+### Group
 
 ## regexp in js
 

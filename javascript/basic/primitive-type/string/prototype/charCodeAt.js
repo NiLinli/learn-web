@@ -1,15 +1,14 @@
-// chatCodeAt()  -> 给定位置的那个字符对应的字符编码
-// es6 扩展 codePointAt() -> 识别超过连个字节的字符 32
+// chatCodeAt()  -> bmp
+// codePointAt() -> bmp + ubmp
 
 let stringObj = '𠮷abckefg';
 
 console.log(stringObj.charCodeAt(0));
 console.log(stringObj.charCodeAt(1));
 
-console.log(codePointAt(stringObj, 0));
-console.log(codePointAt(stringObj, 1));
-console.log(stringObj.codePointAt(0));
-console.log(stringObj.codePointAt(1)); // 通过索引只能正确识别第一个字节
+console.log(codePointAt(stringObj, 0), stringObj.codePointAt(0));
+// 通过 index 必须要是代理对开始的位置才能正确获取 code point
+console.log(codePointAt(stringObj, 1), stringObj.codePointAt(1));
 
 function codePointAt(string, position) {
   if (this == null) {
