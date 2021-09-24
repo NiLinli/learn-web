@@ -13,11 +13,9 @@ class Application {
   callback() {
     // 组合 middleware
     const fn = compose(this.middleware);
-
     const handleRequest = (ctx) => {
       return fn(ctx);
     };
-
     return handleRequest;
   }
 }
@@ -30,7 +28,6 @@ const handle = app.callback();
 
 // 事件触发 callback
 handle({});
-
 
 // koa-compose
 function compose(middleware) {
@@ -46,15 +43,13 @@ function compose(middleware) {
       if (i === middleware.length) fn = next;
       if (!fn) return Promise.resolve();
       try {
+        // Promise.resolve(promise) => promise
+        // fn  当前 middleware
+        // dispatch(i+1) 作为 next 传入
         return Promise.resolve(fn(context, dispatch.bind(null, i + 1)));
-
-        // return new Promise((resolve) => {
-        //   return resolve(fn(context, dispatch.bind(null, i + 1)))
-        // });
       } catch (err) {
         return Promise.reject(err);
       }
     }
   };
 }
-

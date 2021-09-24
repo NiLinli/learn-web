@@ -27,6 +27,11 @@ original author: TJ
 - 提供 static(serve-static package) 加载静态文件
 - 提供 render 方法加载 html
 
+### middleware
+
+- next 同步调用
+- 导致中间件中的异常无法全局捕获
+
 ## koa
 
 original author: express 后续维护者
@@ -34,3 +39,8 @@ original author: express 后续维护者
 - 更改 middleware 实现方式 compose
 - req, res 方法魔改
 - ...
+
+### middleware
+
+- next Promise 调用
+- 中间件中的异常可以全局捕获
