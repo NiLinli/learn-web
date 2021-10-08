@@ -33,7 +33,44 @@ String extend
 
 ### Range
 
+- 字符组
+- 选择
+
 ### Group
+
+正则表达式组
+
+## flags
+
+gimuys
+
+- global 匹配全局所有的, 而不是仅仅匹配一个
+- ignoreCase 忽略大小写
+- multiline 是否进行多行搜索
+- unicode 开启 unicode 相关功能扩展
+- sticky 从源字符串的 lastIndex 匹配开始, 不从后续匹配
+
+## 子表达式
+
+```js
+/(abc+|de[0-9])/;
+```
+
+- | => 分拆子表达式 () 为界限
+  - abc
+    - a
+    - b
+    - c => + 号作用域 c 这个子表达式
+  - de[0-9]
+    - d
+    - e
+    - [0-9]
+
+量词/范围元字符作用范围都是子表达式, 子表达式范围有差异
+
+### 特性
+
+- gy 同时存在等同于 y
 
 ## regexp in js
 
@@ -42,23 +79,9 @@ Perl 是 JavaScript 为其正则表达式建模的编程语言
 - 字面量
 - 对象
 
-### flags
-
-gimuys
-
-- global 匹配全局所有的, 而不是仅仅匹配一个
-- ignoreCase 忽略大小写
-- multiline  是否进行多行搜索
-- unicode    开启 unicode 相关功能扩展
-- sticky    从源字符串的 lastIndex 匹配开始, 不从后续匹配
-
-#### 特性
-
-- gy 同时存在等同于 y
-
 ### lastIndex
 
-sticky or global,  RegExpObject 是有状态的
+sticky or global, RegExpObject 是有状态的
 
 会记录, 修改方式
 

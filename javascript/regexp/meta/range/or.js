@@ -1,5 +1,5 @@
-// x|y 匹配 x or y  xy 指一个整体, 并不是特指一个字符
-// 支持多个字符
+// x|y 匹配 
+// x y 指一个子正则表达式, () 表达式界限
 const regexp = /green|red/;
 
 console.log('green apple'.match(regexp));

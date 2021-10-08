@@ -1,65 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        #spa {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            overflow: scroll;
-            border: 2px dashed salmon;
-        }
+      #spa {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        overflow: scroll;
+        border: 2px dashed salmon;
+      }
 
-        #mainContainer {
-            height: 700px;
-            background-color: skyblue;
-        }
+      #mainContainer {
+        height: 700px;
+        background-color: skyblue;
+      }
 
-        #txtInput {
-            height: 50px;
-        }
+      #txtInput {
+        height: 50px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="spa">
-        <div id="mainContainer">
+      <div id="mainContainer"></div>
 
-        </div>
-
-        <input type="text" id="txtInput">
+      <input type="text" id="txtInput" />
     </div>
+  </body>
 
-</body>
-
-<script>
+  <script>
     var txtInput = document.getElementById('txtInput');
 
     txtInput.addEventListener('focus', function () {
-        // alert('focus');
+      // alert('focus');
 
-        setTimeout(() => {
-            txtInput.scrollIntoView(false);
-            txtInput.scrollIntoViewIfNeeded();
-        }, 300);
+      setTimeout(() => {
+        txtInput.scrollIntoView(false);
+        txtInput.scrollIntoViewIfNeeded();
+      }, 300);
     });
-
-
-
-</script>
-
+  </script>
 </html>
