@@ -1,1 +1,17 @@
 # vue3
+
+## ts 支持
+
+defineComponent(options) 定义组件可支持 options 里面类型推断
+
+## composition 组合
+
+### 组件 options
+
+以 data/computed/watch/method/lifecycle 等配置区分代码, 组织逻辑, 关注点在这些 options 上面  
+缺点：状态和状态有关的操作分离在各个配置中，业务代码大了之后难以维护
+
+### 组合式 API
+
+以状态出发, 将每个状态相关的 data/computed/watch... 组织在一起, 关注点在状态上面  
+解决上面的缺点

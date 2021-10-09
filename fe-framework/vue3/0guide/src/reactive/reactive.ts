@@ -31,7 +31,7 @@ import { reactive, ref, Ref, toRefs, readonly, watch } from 'vue';
   console.log(`state2.count2 = ${state2.count2}`);
 
   const otherCount2 = ref(3);
-  (state2.count2 as unknown as Ref<number>) = otherCount2;
+  (state2.count2  as unknown as Ref<number>) = otherCount2;
   console.log(`state2.count2 = ${state2.count2}`);
 })();
 
