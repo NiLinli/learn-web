@@ -1,5 +1,13 @@
 # vue3
 
+## 不兼容更新
+
+- Vue 全局 Vue2.0 配置, 测试/多实例不能区分配置等, Vue3.0废弃
+- app Vue3.0 配置
+- component
+
+全局 API 引用方式改变, 符合 tree shaking 规范
+
 ## ts 支持
 
 defineComponent(options) 定义组件可支持 options 里面类型推断

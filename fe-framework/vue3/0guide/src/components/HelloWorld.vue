@@ -1,25 +1,4 @@
-<script lang="ts">
-import MyBook from "./setup/MyBook.vue";
-import MyBook2 from "./setup/MyBook2.vue";
-import ModalButton from "./teleport/ModalButton.vue";
-import Layout from "./fragment/Layout.vue";
-import CustomEvent from "./custom-event/Index.vue";
 
-export default {
-  components: {
-    MyBook,
-    MyBook2,
-    ModalButton,
-    Layout,
-    CustomEvent,
-  },
-  data() {
-    return {
-      activeName: "first",
-    };
-  },
-};
-</script>
 
 <template>
   <el-tabs type="card">
@@ -39,8 +18,25 @@ export default {
     <el-tab-pane label="Custom Event" lazy>
       <custom-event></custom-event>
     </el-tab-pane>
+    <el-tab-pane label="Css in Js" lazy>
+      <css-in-js></css-in-js>
+    </el-tab-pane>
+    <el-tab-pane label="Key Attribute" lazy>
+      <key-attribute></key-attribute>
+    </el-tab-pane>
+    <el-tab-pane label="v-bind" lazy>
+      <v-bind></v-bind>
+    </el-tab-pane>
   </el-tabs>
 </template>
 
-<style scoped>
-</style>
+<script lang="ts" setup>
+import MyBook from "./setup/MyBook.vue";
+import MyBook2 from "./setup/MyBook2.vue";
+import ModalButton from "./teleport/ModalButton.vue";
+import Layout from "./fragment/Layout.vue";
+import CustomEvent from "./custom-event/Index.vue";
+import CssInJs from "./css-in-js/Index.vue";
+import KeyAttribute from "./key-attribute/Index.vue";
+import VBind from "./v-bind/Index.vue";
+</script>
