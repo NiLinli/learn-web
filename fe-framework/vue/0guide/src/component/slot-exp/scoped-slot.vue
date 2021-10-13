@@ -3,12 +3,14 @@
 <script>
 // <template>
 //   <span>
-//     <!-- slot 上面定义的 props 称为 slotProps -->
 //     <slot :user="user">{{ user.lastName }}</slot>
+//     <slot name="addon"></slot>
 //   </span>
 // </template>
 
+
 export default {
+  functional: true,
   data() {
     return {
       user: {
@@ -17,15 +19,33 @@ export default {
       },
     };
   },
-  mounted() {
-    // 存储 render function, 并在子组件内调用
-    console.log(this.$scopedSlots);
+  // mounted() {
+  //   console.log('scoped this.$scopedSlots', this.$scopedSlots);
+  //   console.log('scoped this.$slots', this.$slots);
+  // },
+
+  render(h, { scopedSlots, slots, children }) {
+
+    const user = {
+      firstName: 'Linli',
+      lastName: 'Ni',
+    };
+
+    console.log('scoped scopedSlots', scopedSlots);
+    console.log('scoped slots', slots());
+    console.log('scoped children', children);
+    return h('span', [
+      scopedSlots.default(({ user }) || user.lastName),
+      slots().addon
+    ]);
   },
 
-  render(h) {
-    return h('span', {}, this.$scopedSlots.default({ user: this.user }) || this.user.lastName );
-  },
+  // render(h) {
+
+  //   return h('span', [
+  //     this.$scopedSlots.default(({ user: this.user }) || this.user.lastName),
+  //     this.$scopedSlots.addon()
+  //   ]);
+  // },
 };
 </script>
-
-<style></style>
