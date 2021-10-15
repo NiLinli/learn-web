@@ -30,8 +30,11 @@
     <el-tab-pane label="functional" lazy>
       <functional></functional>
     </el-tab-pane>
-    <el-tab-pane label="functional" lazy>
+    <el-tab-pane label="async component" lazy>
       <async-component></async-component>
+    </el-tab-pane>
+    <el-tab-pane label="h" lazy>
+      <render></render>
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -47,4 +50,5 @@ import KeyAttribute from "./key-attribute/Index.vue";
 import VBind from "./v-bind/Index.vue";
 import Functional from "./functional/Index.vue";
 import AsyncComponent from "./async/Index.vue";
+import Render from './render/Index.vue'
 </script>

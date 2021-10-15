@@ -2,6 +2,7 @@ import { createApp, Component } from 'vue';
 import App from './App.vue';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
+import ButtonCounter from './components/global/ButtonCounter.vue';
 
 // import './reactive/index';
 
@@ -9,6 +10,8 @@ const app = createApp(App);
 
 // 配置都是 app 层面的
 app.use(ElementPlus);
+app.component('button-counter', ButtonCounter);
+
 app.mount('#app');
 
 // 如果想实现 Vue2.0 全局配置的方式, 可以使用工厂函数

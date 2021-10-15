@@ -5,6 +5,7 @@
 ### 应用层级
 
 - Vue 全局 Vue2.0 配置, 测试/多实例不能区分配置等, Vue3.0废弃
+  - 去掉了类 EventEmitter 实现
 - app Vue3.0 配置
 - component
 
@@ -20,6 +21,20 @@ Vue3.0 规范
 - context 都不包括 $
   - setup
   - 函数式组件
+
+- 去掉了 $children, 用 $ref 代替
+- 去掉了 $destroy()
+- 去掉了 $set $delete
+
+### 生命周期更改
+
+- beforeDestroy => beforeUnmounted
+- destroyed => unmounted
+
+### filter 移除
+
+- component 范围内通过 method/computed
+- global 通过在 app.config.globalProperties.$filters 挂载方法
 
 ## ts 支持
 

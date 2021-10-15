@@ -1,5 +1,7 @@
 <template>
-  <duck sex="female" v-bind="$attrs"  />
+  <div>
+    <duck sex="female" v-bind="$attrs" />
+  </div>
 </template>
 
 
@@ -29,7 +31,13 @@ import Duck from './duck';
 //   delete hash[key]
 // }
 // return true
+
+
+// 未定义的 prop 被认作普通 dom attr 放入 $attrs
+// 并且继承到根 dom 元素上面 => inheritAttrs 改变这一行为
+// class/style 不受上面两条影响
 export default {
+  inheritAttrs: false,
   props: ['age'],
   components: {
     Duck,
