@@ -1,17 +1,25 @@
 # 前端框架
 
-## 视图更新
+## 响应式原理
 
-1. state
+分为两个部分考虑
 
-react 收集更新 state, setState 只是请求更新 **nextTick**
-vue 不收集更新 state, 直接通过 setter 更新
+### 组件更新
 
-2. state -> vdom
+render 函数执行
 
-react 直接更新
-vue 在该阶段收集 watcher vdom update **nextTick**
+Component => vdom
 
-3. vdom -> dom
+优化点
 
-一个 tick 只会导致 dom 只有一次更新
+- render 函数执行时机
+  - state 变更合并
+- render vdom 过程
+
+### 视图更新
+
+vdom => 真实 DOM
+
+优化点
+
+差量更新 vdom 到 真实 DOM
