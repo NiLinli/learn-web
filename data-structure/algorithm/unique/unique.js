@@ -15,17 +15,6 @@ function unique0(arr) {
   return tmpArr;
 }
 
-function unique1(arr) {
-  let tmpArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    let item = arr[i];
-    if (tmpArr.indexOf(item) === -1) {
-      tmpArr.push(item);
-    }
-  }
-  return tmpArr;
-}
-
 function unique2(arr) {
   return arr.filter((v, i, arr) => i === arr.indexOf(v));
 }
