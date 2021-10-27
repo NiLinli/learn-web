@@ -73,3 +73,12 @@ defs 不会显示
 ### animate 等
 
 产生动画效果
+
+## Svg PathData
+
+非 xml 数据模式
+
+```text
+path://....
+```
+
