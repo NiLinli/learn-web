@@ -9,7 +9,7 @@ export class PizzaStore {
   }
 
   orderPizza(type: string): Pizza {
-    let pizza: Pizza = null;
+    let pizza: Pizza;
 
     pizza = this.factory.createPizza(type);        // 该方法创建所需对象
 
