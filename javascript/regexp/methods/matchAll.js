@@ -6,7 +6,9 @@ const regexp = /b/;
 const result = regexp[Symbol.matchAll](str);
 console.log([...result]);
 
-console.log([...str.matchAll(regexp)]);
+// String.prototype.matchAll called with a non-global RegExp argument
+// 使用 String.prototype.matchAll 的方式必须要是 global 匹配的
+// console.log([...str.matchAll(regexp)]);
 
 const regexp1 = /b/g;
 const result1 = regexp1[Symbol.matchAll](str);

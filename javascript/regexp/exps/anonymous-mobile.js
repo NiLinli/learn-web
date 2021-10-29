@@ -3,7 +3,7 @@
 // 0712-8273718 => 0712-****718
 
 function anonymousMobile(string) {
-  const regexp = /((?:\d\d\d)|-)\d\d\d\d/;
+  const regexp = /((?:\d{3})|-)\d{4}/;
   // console.log(regexp.exec(string))
   return string.replace(regexp, '$1****');
 }

@@ -119,9 +119,16 @@ sticky or global, RegExpObject 是有状态的
 - test
 - search
 - exec
-- match
-- matchAll
+- match     exec 单个数组/ 或者 global 结果集数据
+- matchAll  二维数组
 - replace
 - split
 
 String.prototype 上面的方法内部调用正则表达式的方法
+
+## 原理
+
+**NFA 表达式主导** 拿出表达式中的元素 去和文本去尝试匹配
+DFA 文本主导
+
+1. 优先选择最左端的匹配结果
