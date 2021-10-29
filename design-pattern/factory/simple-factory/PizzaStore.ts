@@ -1,5 +1,5 @@
-import { Pizza } from "./pizza";
-import { SimplePizzaFactory } from "./simple-pizza-factory";
+import { Pizza } from "./Pizza";
+import { SimplePizzaFactory } from "./SimplePizzaFactory";
 
 export class PizzaStore {
 

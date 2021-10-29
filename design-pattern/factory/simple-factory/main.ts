@@ -1,5 +1,5 @@
-import { PizzaStore } from "./pizza-store";
-import { SimplePizzaFactory } from "./simple-pizza-factory";
+import { PizzaStore } from "./PizzaStore";
+import { SimplePizzaFactory } from "./SimplePizzaFactory";
 
 const store = new PizzaStore(new SimplePizzaFactory());
 

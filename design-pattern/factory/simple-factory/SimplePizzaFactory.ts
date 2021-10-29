@@ -1,4 +1,4 @@
-import { Pizza, CheesePizza, ClamPizza, VeggiePizza } from "./pizza";
+import { Pizza, CheesePizza, ClamPizza, VeggiePizza } from "./Pizza";
 
 export class SimplePizzaFactory {
 
