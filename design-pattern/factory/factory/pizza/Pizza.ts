@@ -19,18 +19,22 @@ class Pizza {
 
 class CheesePizza extends Pizza {
 
-  prepare() {
-    console.log('Cheese prepare!');
+  box() {
+    console.log('CheesePizza box!');
   }
 
 }
 
 class ClamPizza extends Pizza {
-
+  box() {
+    console.log('ClamPizza box!');
+  }
 }
 
 class VeggiePizza extends Pizza {
-
+  box() {
+    console.log('VeggiePizza box!');
+  }
 }
 
 export { Pizza, CheesePizza, ClamPizza, VeggiePizza };
