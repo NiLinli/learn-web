@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gradient text</title>
+    <style>
+      .gradient-text-one {
+        background-image: linear-gradient(to bottom, #d8ecfb 0%, #83bfea 57.28%, #5ba8e0 57.29%, #2388d1 100%);
+        -webkit-background-clip: text;
+        color: red;
+        -webkit-text-fill-color: transparent;
+        font-size: 40px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="gradient-text-one">
+      <ol>
+        <li>背景渐变</li>
+        <li>背景以文字切割显示</li>
+        <li>把字的颜色设置为透明</li>
+        <li>兼容性堪忧, 回退方案麻烦</li>
+      </ol>
+    </div>
+  </body>
+</html>

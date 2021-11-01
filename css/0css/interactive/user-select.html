@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>user-select</title>
+
+  <style>
+    .unselectable {
+      user-select: none;
+    }
+
+    .selectable {
+      user-select: text;
+    }
+
+    .select-all {
+      user-select: all;
+    }
+
+  </style>
+</head>
+<body>
+  <h3>控制用户能否选中文本, 默认值 auto</h3>
+
+  <h4>不能选中的文本, 即不能复制 (子元素也不可以选中)</h4>
+  <p class="unselectable">这段文字不能复制</p>
+
+  <h4>用户可以选中文本</h4>
+  <p class="selectable">可以选中被复制</p>
+
+  <h4>用户单击可以选中所有文本</h4>
+  <p class="select-all">单点击选中整行文本</p>
+  <p class="select-all">
+    单点击选中所有文本 <br>
+    单点击选中所有文本 <br>
+    单点击选中所有文本 <br>
+  </p>
+
+  <h4>继承 chrome 表现, 不符合规范</h4>
+  <div class="unselectable">
+    父级别设置为不可以选中
+    <p class="selectable">
+      子节点设置为可以选中
+    </p>
+    <p>``子元素不设置, 会继承父元素的 none``</p>
+  </div>
+
+  <h4>auto 与继承效果比较相似</h4>
+  <ol>
+    <li>::before & ::after 上面都是 none</li>
+    <li>父元素为 all/none, 子元素为 all/none</li>
+    <li>都不设置为 text</li>
+  </ol>
+
+  <div>
+    小程序 text user-select 默认设置为 false
+  </div>
+  
+</body>
+</html>
