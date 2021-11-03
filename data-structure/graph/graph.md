@@ -1,26 +1,38 @@
 # graph 图
 
-组成: node(节点) + edge(边)
-目的: 模拟一组连接(不同的东西是如何连接的)
+模拟一组连接(不同的东西是如何连接的)
 
-邻居: 与一个节点相邻的节点成为
+非线性 链式结构  
 
-有向图: 关系是有方向的
-无向图: 关系是双向的
+- node 节点
+- edge 边
 
-环: 从一个节点触发, 走一圈后又回到这个节点
+记录每个节点与其相邻节点的表  HashTable + Array  
 
-加权图 weight graph: edge 上面添加了权重(weight)
+## 定义
+
+- 邻居: 与一个节点相邻的节点成为
+- degree 度: 节点相邻的 edge 数
+
+- directed graph 有向图: 关系是单项的
+- undirected graph 无向图: 没有特定指向, 关系是双向的
+- cycle 环: 从一个节点触发, 走一圈后又回到这个节点(包括自环)
+  - acyclic graph 无环图
+- weight graph 加权图: edge 上面添加了权重(weight)
+- connected graph 连通图: 任一节点都可以访问其他节点
+- complete graph 完全图: 每两个节点都有一条边
 
 ## 查找
 
-### 广度优先搜索 breadth-first search BFS
+从最初的顶点 优先访问所有相邻顶点的方法
 
 - 节点 A 是否存在路径到节点 B？
 - 节点 A 到节点 B 的最短路径
 
 遍历整个图, 直到达到什么目的
 最短路径
+
+### 广度优先搜索 breadth-first search
 
 搜索范围从起点开始逐渐向外延伸
 
@@ -30,6 +42,10 @@
 
 将一度关系先加入名单, 然后再将二度关系加入名单...  
 根据名单先后顺序检查遍历名单 queue
+
+### 深度优先搜索 Depth-first Search
+
+
 
 ### 狄克斯特拉
 
