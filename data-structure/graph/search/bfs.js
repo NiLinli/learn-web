@@ -1,22 +1,7 @@
-// 通过散列表记录图
-// 记录当前节点与其邻居的关系
+const { graph, graph2 } = require('./graph')
 
-const graph = {};
-
-graph['you'] = ['alice', 'bob', 'claire'];
-graph['bob'] = ['anuj', 'peggy'];
-graph['alice'] = ['peggy'];
-graph['claire'] = ['thom', 'jonny'];
-graph['anuj'] = [];
-graph['peggy'] = [];
-graph['thom'] = [];
-graph['jonny'] = [];
-
-const graph2 = {};
-graph2['you'] = ['mike'];
-graph2['mike'] = ['you'];
-
-function bfsSearch(graph) {
+// 添加到队列 保证顺序
+function bfsSearch(topNode) {
   let queue = [];
   let processed = [];
 
@@ -45,4 +30,5 @@ function isMongoDms(name) {
 }
 
 console.log(bfsSearch(graph));
+
 console.log(bfsSearch(graph2));
