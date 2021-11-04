@@ -22,46 +22,12 @@ function createSomeTree() {
   return tree;
 }
 
-function bfs(node, cb) {
-  const queue = [];
-  queue.push(node);
-
-  while (queue.length > 0) {
-    const node = queue.shift();
-    cb(node.value);
-
-    if (node.children.length > 0) {
-      queue.push.apply(queue, node.children);
-    }
-  }
-}
-
-function dfs(node, cb) {
-  cb(node.value);
-  if (node.children.length > 0) {
-    node.children.forEach((node) => {
-      dfs(node, cb);
-    });
-  }
-}
-
-function dfs2(node, cb) {
-  const stack = [];
-  stack.push(node);
-
-  while (stack.length > 0) {
-    const node = stack.pop();
-    cb(node.value);
-    stack.push.apply(stack, node.children.reverse())
-  }
-}
-
 const tree = createSomeTree();
 
-const logNodeVal = (val) => {
-  console.log(val);
+const logNodeVal = (node) => {
+  console.log(node.value);
 };
 
-// bfs(tree.root, logNodeVal);
-// dfs(tree.root, logNodeVal);
-dfs2(tree.root, logNodeVal);
+// tree.bfs(logNodeVal);
+// tree.dfs(logNodeVal);
+tree.dfs2(logNodeVal);
