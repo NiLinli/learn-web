@@ -1,0 +1,1 @@
+docker image build ./ -t load-balance:1.0.0
