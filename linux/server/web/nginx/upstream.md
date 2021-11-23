@@ -22,9 +22,11 @@ load balance
 ## 前端
 
 前端负载均衡服务器, 防止单点故障  
-缺点：导致访问变慢
+静态资源没有逻辑处理等待, 多加一层只会导致变慢  
 
 ## 服务端
+
+服务端有逻辑处理等待, 流量分发可以达到服务器资源占用平衡
 
 ### session
 
@@ -32,3 +34,10 @@ load balance
 
 - IP hash
 - Sticky session
+
+## config
+
+http -> upstream
+
+- 地址(端口号)
+- weight 权重

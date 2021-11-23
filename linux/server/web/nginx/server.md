@@ -31,7 +31,3 @@ http -> server -> location
 然后 443 中指向对应的应用服务器, 应用服务器只需监听 80 端口即可
 
 ## 缓存
-
-## rewrite
-
-rewrite & return 301
