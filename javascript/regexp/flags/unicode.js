@@ -13,6 +13,7 @@ console.log(/^\uD842/.test(char2));
 // false
 // char2 会作为一个整体
 console.log(/^\uD842/u.test(char2));
+// /^(?:\uD842(?![\uDC00-\uDFFF]))/
 
 // true
 console.log(/^\u{20bb7}/u.test(char2));
@@ -26,3 +27,7 @@ const moods = 'happy 🙂, confused 😕, sad 😢';
 console.log(moods.match(regexpEmoticons));
 console.log(moods.match(regexpBmp));
 console.log(moods.match(regexpBmp_es3));
+
+// u es3 回退方案
+// bmp 平面的 限定后面不能是哪些范围, 确定一个单位是作为整体而不是一部分匹配
+// 非 bmp 平面的 换算出对应的两个单位的范围或者具体值
