@@ -1,0 +1,1 @@
+docker image build ./ -t web-demo:1.0.0

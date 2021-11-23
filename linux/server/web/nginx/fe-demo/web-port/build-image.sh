@@ -1,0 +1,1 @@
+docker image build ./ -t web-port-demo:1.0.0
