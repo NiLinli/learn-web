@@ -1,0 +1,1 @@
+docker image build ./ -t h5-port-demo:1.0.0
