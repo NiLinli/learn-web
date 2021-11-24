@@ -10,9 +10,9 @@
 - 站点维护, 临时重定向
 - 永久重定向
 
-1. Client -> Server return 301  
-2. Client receive 301 code
-3. Client -> Redirect Server
+1. Client -> Server return 301(code) & Location(Response Header)
+2. Client receive 301(code) & Location(Response Header)
+3. Client -> Redirect Location
 
 ## 分类
 
