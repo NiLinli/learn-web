@@ -4,4 +4,5 @@ docker run \
   -p 7443:443 \
   --rm \
   --name  load-balance-server \
-  load-balance:1.0.0
+  load-balance:1.0.0 \
+  nginx-debug -g 'daemon off;' 

@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx:latest
 
 # 拷贝静态文件
 COPY ./static/ /usr/share/nginx/html/

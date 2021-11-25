@@ -16,9 +16,15 @@
 ./nginx -s stop   # 停止 nginx
 ```
 
+## nginx 日志
+
+安装配置时可以选择打开 debug 级别的日志便于调试
+
 ## nginx 配置
 
 `config/nginx.conf` 配置文件
+
+配置项称为 指令
 
 ## Master worker
 
@@ -77,3 +83,22 @@ netstat -tnlup | grep nginx
 # 查看网络端口占用情况
 tcp  0  0 0.0.0.0:80  0.0.0.0:*  LISTEN  10400/nginx: master
 ```
+
+## install
+
+需要前提工具
+
+- gcc
+- pcre pcre-devel
+- zlib zlib-devel
+- openssl openssl-devel
+
+1. 下载依赖 `yum install -y gcc pcre pcre-devel zlib zlib-devel openssl openssl-devel`
+2. 下载 nginx 安装包
+    1. cd /usr/local/nginx
+    2. wget https://nginx.org/download/nginx-1.15.7.tar.gz
+    3. tar -zxvf nginx-1.15.7.tar.gz
+3. 配置 `./configure`
+4. 编译 `make && make install`
+
+### docker 镜像安装

@@ -1,24 +1,26 @@
 # location
 
-`$request_uri`
+1. test location
+2. using configuration "/admin"
+3. try files handler
+4. open index
+5. ...
 
 ## 匹配
 
 - 完全匹配 `=`
 - 正则匹配
-  - ^~
+  - ^~   包括正则 ~  ^/admin
   - ~\* ~ 按照文件中的顺序
-- 不带任何修饰符的前缀匹配
+- 不带任何修饰符的前缀匹配(最长匹配)
 
-按照优先级执行返回
-
-## index
-
-```text
-index index.html
+```log
+2021/11/25 08:30:09 [debug] 31#31: *2 test location: "/"
+2021/11/25 08:30:09 [debug] 31#31: *2 test location: "admin"
+2021/11/25 08:30:09 [debug] 31#31: *2 using configuration "/admin"
 ```
 
-默认索引文件
+一次匹配一个就结束了
 
 ## root & alias
 
@@ -47,19 +49,72 @@ location  /i/ {
 
 `$request_uri` 改变后, 不通知浏览器, 内部重新使用新的 `$request_uri` 去响应
 
+- try_files
+- index
+- rewrite
+
 ### http redirect
 
 301 302 浏览器重新发送请求
 
+## index
+
+```text
+index index.html
+```
+
+默认索引文件, index 会导致内部重定向
+
 ## try_files
 
-一般作用于静态动态 html
+try_files file ... uri;  
+try_files file ... =code;
+
+1. file:  $request_filename(file + root/alias) 判断是否满足条件
+2. uri/code
+
+满足 1 继续执行下面语句 uri 不会改变, 意义是通过校验  
+不满足 1 就内部重定向到新的 uri 上面去  
+判断 uri 是否满足某种条件, 不满足就是用 fallback uri 去重定向
 
 try_files $uri $uri/ /admin/index.html;
 
-- 正常访问: /admin/ =>  /admin/index.html
-- 路径不全访问: /admin  => 301  server_name + port + /admin/
-- history 模式访问: /admin/permission/list => /admin/index.html
+1. $uri:  是不是一个文件
+2. $uri/: 是不是一个文件夹(特殊意义, 其他的形式都是判断是不是一个文件)
+3. /admin/index.html: fallback uri
+
+/admin/
+
+```log
+2021/11/25 07:54:02 [debug] 31#31: *15 try files handler
+2021/11/25 07:54:02 [debug] 31#31: *15 http script var: "/admin/"
+2021/11/25 07:54:02 [debug] 31#31: *15 trying to use file: "/admin/" "/usr/share/nginx/html/admin/"
+2021/11/25 07:54:02 [debug] 31#31: *15 http script var: "/admin/"
+2021/11/25 07:54:02 [debug] 31#31: *15 trying to use dir: "/admin/" "/usr/share/nginx/html/admin/"     校验通过
+2021/11/25 07:54:02 [debug] 31#31: *15 try file uri: "/admin/"
+```
+
+/admin
+
+```log
+2021/11/25 07:56:22 [debug] 31#31: *17 try files handler
+2021/11/25 07:56:22 [debug] 31#31: *17 http script var: "/admin"
+2021/11/25 07:56:22 [debug] 31#31: *17 trying to use file: "/admin" "/usr/share/nginx/html/admin"
+2021/11/25 07:56:22 [debug] 31#31: *17 http script var: "/admin"
+2021/11/25 07:56:22 [debug] 31#31: *17 trying to use dir: "/admin" "/usr/share/nginx/html/admin"    校验通过
+2021/11/25 07:56:22 [debug] 31#31: *17 try file uri: "/admin"
+```
+
+/admin/dfalksfjlaf/dlfsjaf
+
+```log
+2021/11/25 08:03:13 [debug] 31#31: *24 http script var: "/admin/dfalksfjlaf/dlfsjaf"
+2021/11/25 08:03:13 [debug] 31#31: *24 trying to use file: "/admin/dfalksfjlaf/dlfsjaf" "/usr/share/nginx/html/admin/dfalksfjlaf/dlfsjaf"
+2021/11/25 08:03:13 [debug] 31#31: *24 http script var: "/admin/dfalksfjlaf/dlfsjaf"
+2021/11/25 08:03:13 [debug] 31#31: *24 trying to use dir: "/admin/dfalksfjlaf/dlfsjaf" "/usr/share/nginx/html/admin/dfalksfjlaf/dlfsjaf" 校验未通过
+2021/11/25 08:03:13 [debug] 31#31: *24 trying to use file: "/admin/index.html" "/usr/share/nginx/html/admin/index.html"  内部重定向
+2021/11/25 08:03:13 [debug] 31#31: *24 internal redirect: "/admin/index.html?"
+```
 
 ## rewrite
 
@@ -73,7 +128,7 @@ server & location & if
 
 停止处理
 
-```
+```nginx
 return code [text];
 return code URL;
 return URL;
@@ -93,8 +148,7 @@ rewrite regex replacement [flag];
 
 没有终止条件的话， location rewrite 之后会内部跳转
 
-
-```
+```nginx
 location / {
     rewrite ^/test1 /test2;
     rewrite ^/test2 /test3 last;  # 此处发起新一轮 location 匹配

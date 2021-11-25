@@ -4,4 +4,5 @@ docker run \
   -p 8012:8002 \
   --rm \
   --name  web-port-server-2 \
-  web-port-demo:1.0.0
+  web-port-demo:1.0.0 \
+  nginx-debug -g 'daemon off;' 
