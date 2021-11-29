@@ -1,36 +1,48 @@
-class EventEmitter {
+type Events = {
+  [key: string]: Function | Function[];
+};
 
-  private events;
+
+export class EventEmitter {
+
+  public events: Events = {};
 
   constructor() {
     this.events = {};
   }
 
-  on(type, handler) {
+  on(type: string, handler: Function): Function {
 
     const existing = this.events[type];
 
-    if (existing === null) {
+    if (!existing) {
       this.events[type] = handler;
-    }
 
-    if (typeof existing === 'function') {
+    } else if (typeof existing === 'function') {
       this.events[type] = [existing, handler];
     } else {
-      this.events[type].push(handler);
+      (this.events[type] as Function[]).push(handler);
+    }
+
+
+    return () => {
+      this.off(type, handler);
     }
 
   }
 
-  once(type, handler) {
-    this.on(type, (...args) => {
-      handler.apply(this, ...args);
+  once(type: string, handler: Function) {
+
+    const _self = this;
+    this.on(type, function wrapperHandler(...args: any) {
+      handler.apply(_self, args);
+
       // 解除绑定
-      this.off(type, handler);
+      _self.off(type, wrapperHandler);
     });
   }
 
-  off(type, handler) {
+  off(type: string, handler: Function) {
 
     const list = this.events[type];
 
@@ -46,14 +58,16 @@ class EventEmitter {
     return this;
   }
 
-  emit(type, ...args) {
+  emit(type: string, ...args: any) {
     const handler = this.events[type];
     if (handler === undefined) return;
 
     if (typeof handler === 'function') {
       handler.apply(this, args);
     } else {
-      handler.forEach(func => {
+      // once 会改变数组
+      const cloneHandler = handler.slice(0, handler.length);
+      cloneHandler.forEach(func => {
         func.apply(this, args);
       });
     }
