@@ -1,0 +1,19 @@
+{
+  "name": "cypress-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "cypress": "^9.1.1"
+  },
+  "scripts": {
+    "test": "cypress run",
+    "test:open": "cypress open",
+    "test:info": "cypress info",
+    "test:sample": "npm run test -- --headed --no-exit --spec 'cypress/integration/0-sample/sample.spec.js'",
+    "test:todo": "npm run test -- --headed --spec 'cypress/integration/1-getting-started/todo.spec.js'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

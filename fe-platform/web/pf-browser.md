@@ -1,15 +1,44 @@
 # Browser
 
+## Browser Core
+
+### Engine
+
+- Rendering Engine: 渲染引擎, html等解析并渲染网页
+- JS Engine: 执行 JS
+
+### Core
+
+一般指 Rendering Engine + JS Engine
+
+- Trident: IE
+- Gecko: Firefox  
+- Webkit: Safari
+- Chromium/Blink: Chrome, Opera, MSEdge
+
+Chromium/Blink 为 Webkit 子核：
+
+- Webkit = Webcore(Rendering Engine) + Jscore
+- Chromium/Blink = Webcore(Blink) + V8
+
+### Thread
+
 - Javascript 的执行是单线程的
 - 浏览器是多线程的
 
 单线程 + 事件循环 + 观察者 + I/O 线程池
 
-## 浏览器兼容问题
+## 其他部分
 
-不考虑 ie 678+
+内核 -> 中间层 -> 网卡/硬盘/显卡驱动
 
-ie9/10 在 css 层面上面对 flexbox 支持不友好
+## 兼容性
+
+依次向下考虑
+
+1. ie 11
+2. ie 9/10
+3. ie 6/7/8
 
 ## 调试
 
@@ -22,21 +51,6 @@ ie9/10 在 css 层面上面对 flexbox 支持不友好
     1. 手机端 Safari -> 高级 -> Web 检查器
     2. 电脑端 Safari -> 偏好设置 -> 高级 -> Show develop menu in menu bar
     3. 电脑端 Safari 开发菜单中选择相应的设备
-
-## 内核
-
-- KTHML, Opera -> Webkit -> Blink (Chrome, Opera, Safari)
-- Netscape -> Firefox
-- Trident or whatever -> IE
-
-## 浏览器构成
-
-内核 -> 中间层 -> 网卡/硬盘/显卡驱动
-
-浏览器引擎(内核) = 渲染引擎 + Js 引擎(浏览器一般是组合使用内核的不同部分)
-
-Chrome = webkit + v8
-Safari = webkit + JSCore
 
 ## DOM 渲染
 

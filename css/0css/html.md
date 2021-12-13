@@ -1,12 +1,4 @@
-# 浏览器内核
-
-定义：Rendering Engine  渲染引擎，负责对网页语法的解释并渲染（显示）网页。     
-内核分类：
-
-- Trident: ie  
-- Gecko: firefox  
-- Webkit: Safari    
-- Blink: Chrome, Opera
+# html
 
 ## html
 
