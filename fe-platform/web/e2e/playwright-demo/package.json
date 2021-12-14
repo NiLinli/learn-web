@@ -7,7 +7,15 @@
     "test:update:browsers": "playwright install", 
     "test": "playwright test",
     "test:headed": "playwright test --headed",
-    "test:headed:firefox": "playwright test --headed --project=firefox"
+    "test:headed:firefox": "playwright test --headed --project=firefox",
+    "test:debug": "PWDEBUG=1 playwright test --headed",
+    "test:show:trace": "playwright show-trace ./test-results/tests-hello-playwright-basic-test-chromium/trace.zip",
+    "test:codegen": "playwright codegen --save-storage=auth.json baidu.com",
+    "test:codegen:second":"playwright codegen --load-storage=auth.json baidu.com",
+    "test:tag": "playwright test --grep @fast",
+    "test:tag:invert": "playwright test --grep-invert @fast",
+    "test:api": "API_TOKEN=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 playwright test ./tests/api-test.spec.ts",
+    "test:api:ui": "API_TOKEN=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 playwright test ./tests/api-ui-test.spec.ts --headed"
   },
   "keywords": [],
   "author": "",
