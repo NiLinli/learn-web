@@ -110,3 +110,17 @@ playwright 更新, 支持的浏览器也会更新, 每次 playwright 更新, 需
 - 辅助 web 测试流程
   - 前: 通过 API 走一些流程, 准备一些状态
   - 后: 通过 API 验证是否正确
+
+### Authentication
+
+范围依次扩大
+
+- beforeEach 每个测试走完登陆流程
+- beforeAll  创建一个 page 实例, 每个 test 都用一个 page 实例
+- config globalSetup 登陆一次保存登陆信息 测试读取
+
+可以保存浏览器状态的
+
+- requestContext
+- pageContext
+- codegen/open

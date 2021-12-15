@@ -1,10 +1,13 @@
 import { test, expect } from '@playwright/test';
+import path from 'path';
+import { DIR } from './global-setup';
 
 const REPO = 'learn-web';
 const USER = 'NiLinli';
 
 
 let apiContext;
+// let page;
 
 test.beforeAll(async ({ playwright }) => {
   apiContext = await playwright.request.newContext({
@@ -21,12 +24,14 @@ test.afterAll(async ({ }) => {
 });
 
 
-test.beforeEach(async ({ playwright, page }) => {
-  await page.goto('https://github.com/login');
-  await page.fill('input[name="login"]', 'nilinli1994@gmail.com');
-  await page.fill('input[name="password"]', '****');
-  await page.click('input:has-text("Sign in")');
-});
+// test.beforeEach(async ({ playwright, page }) => {
+//   await page.goto('https://github.com/login');
+//   await page.fill('input[name="login"]', 'nilinli1994@gmail.com');
+//   await page.fill('input[name="password"]', '****');
+//   await page.click('input:has-text("Sign in")');
+// });
+
+test.use({ storageState: path.join(DIR, 'githubStorageState.json') });
 
 test.skip('last created issue should be first in the list', async ({ page }) => {
 
