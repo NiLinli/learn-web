@@ -8,41 +8,56 @@
 
 ## 测试风格
 
+- 语言描述风格
+- 测试流程侧重点
+
 ### TDD
 
 Test-Driven Development 测试驱动开发
 
-测试描述: 关注结果对比, 白盒测试
+测试描述: 关注结果对比
 
 ### BDD
 
 Behavior-Driven Development  行为驱动开发
 
-BDD 致力于排除 TDD 可能会造成的问题, TDD 的补充
+BDD 致力于排除 TDD 可能会造成的问题, TDD 开发流程的补充
 
-测试描述:
-
-使用动词使得描述看起来像句子, 关注行为 特性
-帮助软件开发
-
-一般是根据行为去驱动测试用例, 黑盒测试
+测试描述: 使用动词使得描述看起来像句子, 关注行为特性, 帮助软件开发
 
 ## 测试组件
 
-- test runner
-- assert lib
-- e2e test lib
+测试框架会预组合一套, 也可以自由组合
 
-一般一个库都是提供一整套, 也可以自由组合
+### test runner
+
+测试执行器
+
+- Jest testRunner
+- Mocha
+- @playwright/test
+
+### assert
+
+断言: 条件为 false 就抛出错误/给出提示, true 通过
+
+- expect
+- assert
+- ...
+
+### e2e
+
+自动化测试库
 
 ## 单元测试
 
-白盒测试 知道内部运行情况  
-一般 component 为 function  
-结合实际情况需要引用前端框架测试 lib & 浏览器环境 lib  
+白盒测试 代码时自己写的, 知道内部运行情况  
 
-- **Jest**
-- Mocha
+- function
+- fe component(render function) fe-framework/*
+- ...
+
+Node/Browser 环境运行
 
 ### jest
 
@@ -55,19 +70,10 @@ BDD 致力于排除 TDD 可能会造成的问题, TDD 的补充
 - mock function
 - mock module 引入
 
-### 前端框架
-
-fe-framework/*
-
-### 浏览器环境
-
-fe-platfrom/*  
-借助 e2e 测试 lib  
-
 ## e2e 测试
 
-黑盒测试
-end-to-end 端到端自动化测试  
+黑盒测试  
+end-to-end 端到端自动化测试, 基于不同平台测试  
 fe-platfrom/* 各个平台不同
 
 ## 性能测试
