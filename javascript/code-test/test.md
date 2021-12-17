@@ -54,7 +54,7 @@ BDD 致力于排除 TDD 可能会造成的问题, TDD 开发流程的补充
 白盒测试 代码时自己写的, 知道内部运行情况  
 
 - function
-- fe component(render function) fe-framework/*
+- component(render function) fe-framework/*
 - ...
 
 Node/Browser 环境运行
