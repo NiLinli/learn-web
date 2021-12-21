@@ -57,7 +57,11 @@ BDD 致力于排除 TDD 可能会造成的问题, TDD 开发流程的补充
 - component(render function) fe-framework/*
 - ...
 
-Node/Browser 环境运行
+test runner 需要提供一个 context 供测试代码执行:
+
+- Node(vm.createContext)
+- Browser(jsdom)
+- ...
 
 ### jest
 

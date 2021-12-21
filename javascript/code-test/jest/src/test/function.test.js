@@ -1,7 +1,7 @@
 // 只能 mock module, 不能 mock 模块中的一部分
 // jest.mock('../src/function');
 
-const { forEach, foo } = require('../src/function');
+const { forEach, foo } = require('../function');
 const mockCallback = jest.fn((x) => 42 + x);
 
 forEach([0, 1], mockCallback);

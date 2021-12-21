@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>trigger event method</title>
+</head>
+
+<body>
+
+    <div id="div">div tag</div>
+    <button id="btn1">div click</button>
+
+
+    <div>
+        <input type="text" id="txt">
+        <button id="btn2">input click</button>
+        <button id="btn3">input focus</button>
+        <button id="btn4">input blur</button>
+    </div>
+
+</body>
+
+<script>
+    var div = document.getElementById('div'),
+        txt = document.getElementById('txt'),
+        button = document.getElementById('button'),
+        btn1 = document.getElementById('btn1'),
+        btn2 = document.getElementById('btn2'),
+        btn3 = document.getElementById('btn3'),
+        btn4 = document.getElementById('btn4'),
+        btn5 = document.getElementById('btn5');
+
+
+    div.addEventListener('click', function () {
+        console.log('div click');
+    });
+
+    // method
+    btn1.addEventListener('click', function () {
+        div.click();
+    });
+
+
+    txt.addEventListener('click', function (params) {
+        console.log('click');
+    });
+
+    txt.addEventListener('blur', function (params) {
+        console.log('blur');
+    });
+
+    txt.addEventListener('focus', function () {
+        console.log('focus')
+    });
+
+    // method
+    btn2.addEventListener('click', function () {
+        // input[type='text'] click 并不会 focus
+        txt.click();
+    });
+
+    btn3.addEventListener('click', function () {
+        // 如果处于 focus 状态, 先 blur 后 focus
+        txt.focus();
+    });
+
+    btn4.addEventListener('click', function () {
+        txt.blur();
+    });
+
+</script>
+
+</html>

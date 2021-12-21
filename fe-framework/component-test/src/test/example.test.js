@@ -7,7 +7,6 @@ const {
   waitFor,
 } = require('@testing-library/dom')
 const getExampleDOM = require('../getExampleDOM');
-// require('@testing-library/jest-dom');
 
 test('examples of some things', async () => {
   const famousProgrammerInHistory = 'Ada Lovelace'
