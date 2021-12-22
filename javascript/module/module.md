@@ -1,8 +1,10 @@
 # module
 
+一个挂在了方法和属性的对象 抽象为 `exports`
+
 ## JS 模块化发展
 
-1. 全局变量
+1. globalObject
     - 污染了全局变量，可能发生命名冲突
     - 模块成员看不出直接关系
 2. moduleObject (解决了全局变量, 同时带来两个新的问题)
@@ -12,74 +14,89 @@
     - 参数可以传递其他模块
     - moduleObject 作为返回值
 4. AMD/CMD/UMD 方案
-5. ES module/CommonJS module 规范
+5. CommonJS module 规范
+6. UMD = AMD + CMD + CommonJs
+7. ES module
 
-## 模块模式 module pattern
+每种模块话方案都有其特性, 如果互相转换需要保留特性
 
-匿名闭包函数
+## 模块转换
 
-- pattern0 模块化发展历史
-- pattern1 模块模式
+esmodule 和 cjsmodule 不是完全兼容的
+以 `exports` 为标准, 导出对象在上面挂载  
 
-## 模块规范 module approaches
+### export
 
-模块的形式确定了其运行机制, 即特性
-
-1. 转换也会保留其特性
-2. webpack 不同模块类型互相引用也会保留其特性
-
-特性保留, 形式可以相互转换, 形式转换的方式不同 loader 和 bundle 不同
-
-js
-一般处理 (cjs 和 esm)
+普通
 
 ```js
 const a = 1;
 const b = 2;
-module.exports = { a, b };
-// 等同与
+
+// cjs
+exports.a = a;
+exports.b = b;
+
+// esm
 export { a, b }
 ```
 
+esm default 行为
+
 ```js
-import { a, b } from './foo';
+const bar = {};
+
+// cjs
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = bar;
+
+// esm
+export default bar;
+```
+
+### import
+
+普通
+
+```js
+// cjs
+const { a, b } = require('./foo');
 const foo = require('./foo');
-foo.a;
-foo.b;
+
+// esm
+import { a, b } from './foo';
+import * as foo from './foo';
 ```
 
-ts 特殊处理 import cjs
+esm default 行为
 
 ```js
-import a from './a';
-import * as a from './a'  // 这里 a 只能被认为是一个对象, 所以无法当作函数调用
-import a = require('./a')
+// cjs
+const { default: bar } = _interopRequireDefault(require('./bar'));
+function _interopRequireDefault(obj) { 
+    // 非 __esModule 也会被解构, 所以需要 wrapper obj
+    return obj && obj.__esModule ? obj : { default: obj };
+}
+
+// esm
+import bar from './bar';
 ```
 
-ts 中如何 import 取决于 d.ts 的定义
+### ts module
 
-- 有可能定义为 exports =
-- 有可能定义未 export default =
-- 有可能定义为 export { ... ... }
+扩展 esmodule, ts 中如何 import 取决于 d.ts 的定义  
+转换关系
 
-## d.ts 的书写
-
-1. 输出成 js 时候类型丢失, 需要 d.ts 存储
-2. 定义该如何导出
-
-## 代码书写
-
-前端代码
-
-全部写 ES module 代码
-
-导入 cjs
+export = 和 import = require()
 
 ```js
-import { } from '';
-import * as xxx from '';
+import a = require('./a');
+const a = require('./a');
+
+export = {};
+module.exports = {};
 ```
-  
+
 ## 代码发布
 
 源码使用 TS 书写
@@ -87,3 +104,10 @@ import * as xxx from '';
 - dist 文件文件夹边写 UMD
 - 前端项目发布一份 ES 2015+ 的代码
 - 前后端公用项目 cjs 代码
+
+1. 创建一个文件夹存放模块内容, 生成 `package.json` 文件 , `Readme.me` 说明文件
+2. 符合 commonjs 包规范的目录
+    - bin
+    - lib
+    - doc
+    - test
