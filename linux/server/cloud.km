@@ -1,0 +1,683 @@
+{
+    "root": {
+        "data": {
+            "id": "cgmitodmdxc0",
+            "created": 1640246405800,
+            "text": "云"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "cgmiu4yu17c0",
+                    "created": 1640246441911,
+                    "text": "云基础",
+                    "layout_mind_offset": {
+                        "x": -236,
+                        "y": -93.00000247107516
+                    },
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgmiuceq68w0",
+                            "created": 1640246458110,
+                            "text": "历史"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgmiuebkmew0",
+                            "created": 1640246462272,
+                            "text": "产品"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cgn6995rn0w0",
+                    "created": 1640312512028,
+                    "text": "架构基础",
+                    "layout_mind_offset": {
+                        "x": 7,
+                        "y": -97
+                    },
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgn6babcgf40",
+                            "created": 1640312671270,
+                            "text": "设计原则",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgn6o1k5z6o0",
+                                    "created": 1640313670947,
+                                    "text": "目的：合理成本 & 可用性，可扩展，安全性 的权衡"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn717ugvc00",
+                                    "created": 1640314703364,
+                                    "text": "高可用"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn719mpjmo0",
+                                    "created": 1640314707249,
+                                    "text": "高可扩展"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn71ibprko0",
+                                    "created": 1640314726175,
+                                    "text": "高安全"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn71lb6tc80",
+                                    "created": 1640314732674,
+                                    "text": "低成本"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cgn6bdwfhs80",
+                            "created": 1640312679075,
+                            "text": "合理设计方案",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgn6biiu9i80",
+                                    "created": 1640312689138,
+                                    "text": "部署区域选择"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn6bnild8g0",
+                                    "created": 1640312700007,
+                                    "text": "服务性能选择"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn6bvvsuzc0",
+                                    "created": 1640312718220,
+                                    "text": "网络环境"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn6bxyzkyo0",
+                                    "created": 1640312722766,
+                                    "text": "数据存储"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cgn7l98ldqo0",
+                            "created": 1640316273679,
+                            "text": "设计基础",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgn7laolls80",
+                                    "created": 1640316276823,
+                                    "text": "云产品/方案熟悉"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn7li5xue00",
+                                    "created": 1640316293109,
+                                    "text": "业务熟悉"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cgn69oqzyqo0",
+                    "created": 1640312545963,
+                    "text": "高可扩展（软件）",
+                    "layout_mind_offset": {
+                        "x": -50,
+                        "y": 72.00000000000003
+                    },
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgn6cn3cb9s0",
+                            "created": 1640312777449,
+                            "text": "分层解耦",
+                            "expandState": "expand"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgn72rbjl0w0",
+                                    "created": 1640314824120,
+                                    "text": "前端"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn72szdyco0",
+                                    "created": 1640314827738,
+                                    "text": "服务端"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn72v89vmw0",
+                                    "created": 1640314832629,
+                                    "text": "数据"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cgn7ha4xitc0",
+                            "created": 1640315962177,
+                            "text": "服务扩展（组件水平扩展）",
+                            "expandState": "expand"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgn7henp7jk0",
+                                    "created": 1640315972019,
+                                    "text": "水平扩展（拆服务，分布式服务）"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn7hizuupk0",
+                                    "created": 1640315981461,
+                                    "text": "垂直扩展（单个服务，集群，高可用）"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cgn6cuhi50g0",
+                            "created": 1640312793542,
+                            "text": "组件间通信"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgnbtcro7gg0",
+                                    "created": 1640328192715,
+                                    "text": "消息队列"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cgn6d6o6ag80",
+                            "created": 1640312820067,
+                            "text": "API gateway",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgnc6e7i1hk0",
+                                    "created": 1640329214583,
+                                    "text": "前端无关"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgnc6g1ey4g0",
+                                    "created": 1640329218569,
+                                    "text": "前后端耦合"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgnc77ehh800",
+                                    "created": 1640329278132,
+                                    "text": "鉴权 限流"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgnc7l36h940",
+                                    "created": 1640329307924,
+                                    "text": "多类型后端打通"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgnc7vyfg1s0",
+                                    "created": 1640329331581,
+                                    "text": "协议转换"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgnc807nkbk0",
+                                    "created": 1640329340846,
+                                    "text": "参数配置"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgnc84plfog0",
+                                    "created": 1640329350638,
+                                    "text": "..."
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cgn69eb786o0",
+                    "created": 1640312523240,
+                    "text": "高可用",
+                    "layout_mind_offset": {
+                        "x": 100,
+                        "y": -349
+                    },
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgn6c9skq1c0",
+                            "created": 1640312748499,
+                            "text": "概念",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgn6q68qtds0",
+                                    "created": 1640313837868,
+                                    "text": "取决于业务可以停机的时间"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn6prrldf40",
+                                    "created": 1640313806356,
+                                    "text": "可用性分级",
+                                    "expandState": "collapse"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cgn6rn6seu00",
+                                            "created": 1640313953119,
+                                            "text": "基本99"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgn6rqa8h800",
+                                            "created": 1640313959858,
+                                            "text": "较高99.9"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgn6s06r0ps0",
+                                            "created": 1640313981415,
+                                            "text": "故障恢复能力99.99"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgn6sb8i3tk0",
+                                            "created": 1640314005466,
+                                            "text": "极高 99.999"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn6r50dfmw0",
+                                    "created": 1640313913549,
+                                    "text": "RTO 丢失数据停机时间"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn6si6dhb40",
+                                    "created": 1640314020575,
+                                    "text": "RPO 恢复数据"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn6cbwv1bs0",
+                                    "created": 1640312753112,
+                                    "text": "弹性扩展-伸缩（CVM/组件扩展）",
+                                    "expandState": "collapse"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cgn7i60ow2o0",
+                                            "created": 1640316031578,
+                                            "text": "水平扩展（添加机器）"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgn7ia27ktk0",
+                                            "created": 1640316040377,
+                                            "text": "垂直扩展（提升配置）"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn6wz0zanc0",
+                                    "created": 1640314370710,
+                                    "text": "高可用服务组件比自己搭建弹性"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn6cf5c7ko0",
+                                    "created": 1640312760155,
+                                    "text": "Serverless"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cgn6tibxjmw0",
+                            "created": 1640314099275,
+                            "text": "设计原则：冗余设计",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgn6u1jnn9k0",
+                                    "created": 1640314141101,
+                                    "text": "主备（从）（浪费备用服务器）"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn6u4vbzuo0",
+                                    "created": 1640314148337,
+                                    "text": "双机双工"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn6uwz88400",
+                                    "created": 1640314209523,
+                                    "text": "集群（一般多于两个）",
+                                    "expandState": "collapse"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cgn6vc5n27s0",
+                                            "created": 1640314242562,
+                                            "text": "主备"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgn6vem0ja00",
+                                            "created": 1640314247906,
+                                            "text": "多机多工"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cgn6zio7jyo0",
+                            "created": 1640314570202,
+                            "text": "架构设计方案",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgn6zlwv0w00",
+                                    "created": 1640314577256,
+                                    "text": "两地（区域）三中心（区）"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn701xi23k0",
+                                    "created": 1640314612123,
+                                    "text": "CLB"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "cgn704jkm540",
+                                    "created": 1640314617811,
+                                    "text": "弹性伸缩"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cgn6ag97thc0",
+                    "created": 1640312605838,
+                    "text": "高性能",
+                    "layout_mind_offset": {
+                        "x": 1001,
+                        "y": 517
+                    },
+                    "expandState": "expand"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgn6djlhh540",
+                            "created": 1640312848203,
+                            "text": "数据加速（缓存）",
+                            "expandState": "collapse"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgncp3d63xc0",
+                                    "created": 1640330679901,
+                                    "text": "缓存数据库 Redis"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "cgn6dnn0bko0",
+                            "created": 1640312857002,
+                            "text": "网络加速"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgncq3loiiw0",
+                                    "created": 1640330758780,
+                                    "text": "CDN静态（缓存）",
+                                    "expandState": "expand"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cgncov4prio0",
+                                            "created": 1640330661975,
+                                            "text": "GCD 海外加速"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgncofcq94o0",
+                                            "created": 1640330627631,
+                                            "text": "SCD 静态"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgncojaj6ow0",
+                                            "created": 1640330636206,
+                                            "text": "VCD 音视频点播直播"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgncoqe58yg0",
+                                            "created": 1640330651662,
+                                            "text": "DD下载分发加速"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cgncq9vkcag0",
+                                    "created": 1640330772438,
+                                    "text": "动态加速（优化网络链路）"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cgncqhxcas00",
+                                            "created": 1640330789960,
+                                            "text": "DSA 动态网络加速"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgncqqy6un40",
+                                            "created": 1640330809602,
+                                            "text": "Anycast 公网加速（IP）"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cgn6e23v2cw0",
+                    "created": 1640312888496,
+                    "text": "架构设计优化方案",
+                    "layout_mind_offset": {
+                        "x": 61,
+                        "y": 81
+                    }
+                },
+                "children": []
+            },
+            {
+                "data": {
+                    "id": "cgn76k4es5s0",
+                    "created": 1640315121908,
+                    "text": "高安全",
+                    "layout_mind_offset": {
+                        "x": -90,
+                        "y": -161
+                    }
+                },
+                "children": []
+            }
+        ]
+    },
+    "template": "default",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}
