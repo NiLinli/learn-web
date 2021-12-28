@@ -1,0 +1,327 @@
+{
+    "root": {
+        "data": {
+            "id": "cgpwd1flpcw0",
+            "created": 1640589277436,
+            "text": "模块化"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "cgpwdahqsb40",
+                    "created": 1640589297157,
+                    "text": "定义",
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgpx96sar3c0",
+                            "created": 1640591796741,
+                            "text": "一般模块系统, 每个独立的文件都被视为模块"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgpwdd9hoqo0",
+                            "created": 1640589303188,
+                            "text": "发展"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "cgpxa7svvao0",
+                                    "created": 1640591877317,
+                                    "text": "globalObject"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cgpxa8vv9e80",
+                                            "created": 1640591879674,
+                                            "text": "污染了全局变量，可能发生命名冲突"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgpxa8vuwrk0",
+                                            "created": 1640591879674,
+                                            "text": "模块成员看不出直接关系"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cgpxaew1rkw0",
+                                    "created": 1640591892746,
+                                    "text": "moduleObject "
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cgpxand3c800",
+                                            "created": 1640591911191,
+                                            "text": "暴露所有的模块成员"
+                                        },
+                                        "children": []
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgpxand4ht40",
+                                            "created": 1640591911193,
+                                            "text": "内部状态可以被外部改写"
+                                        },
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cgpxarhnn4w0",
+                                    "created": 1640591920174,
+                                    "text": "closure"
+                                },
+                                "children": [
+                                    {
+                                        "data": {
+                                            "id": "cgpxbaorv2g0",
+                                            "created": 1640591961963,
+                                            "text": "优点",
+                                            "expandState": "expand"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "cgpxasfwn0g0",
+                                                    "created": 1640591922245,
+                                                    "text": "参数可以传递其他模块 => import"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "cgpxasfx0o00",
+                                                    "created": 1640591922245,
+                                                    "text": "moduleObject 作为返回值 => export"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "data": {
+                                            "id": "cgpxbs2d1ps0",
+                                            "created": 1640591999790,
+                                            "text": "UMD"
+                                        },
+                                        "children": [
+                                            {
+                                                "data": {
+                                                    "id": "cgpxc01pdzs0",
+                                                    "created": 1640592017164,
+                                                    "text": "AMD"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "cgpxc4ejerk0",
+                                                    "created": 1640592026648,
+                                                    "text": "CMD"
+                                                },
+                                                "children": []
+                                            },
+                                            {
+                                                "data": {
+                                                    "id": "cgpxcamzxyw0",
+                                                    "created": 1640592040220,
+                                                    "text": "CommonJs"
+                                                },
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "data": {
+                                    "id": "cgpxcf048i80",
+                                    "created": 1640592049720,
+                                    "text": "ESM"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cgpwdhwdijs0",
+                    "created": 1640589313279,
+                    "text": "模块化特性",
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgpwdpi1rqw0",
+                            "created": 1640589329827,
+                            "text": "缓存"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgpwdshad0w0",
+                            "created": 1640589336311,
+                            "text": "循环引用"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgpwrgnozco0",
+                            "created": 1640590407675,
+                            "text": "动态引用/静态分析"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cgpwe48sk4g0",
+                    "created": 1640589361919,
+                    "text": "模块转换",
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgpwe8gqhog0",
+                            "created": 1640589371106,
+                            "text": "exports 对象为载体"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgpwfj4ouu80",
+                            "created": 1640589472686,
+                            "text": "babel/ts"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgpwfnsqa940",
+                            "created": 1640589482847,
+                            "text": "webpack"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgpwfr67z9k0",
+                            "created": 1640589490193,
+                            "text": "..."
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cgpwej6le1c0",
+                    "created": 1640589394437,
+                    "text": "运行",
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgpx9f21wqw0",
+                            "created": 1640591814745,
+                            "text": "隔离模块作用域"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgpweranh7s0",
+                            "created": 1640589412097,
+                            "text": "Node"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgpwexf2onk0",
+                            "created": 1640589425425,
+                            "text": "webpack"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgpwf0uu7v40",
+                            "created": 1640589432909,
+                            "text": "Es type=\"module\""
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "cgpxemsdmvs0",
+                    "created": 1640592223395,
+                    "text": "npm代码发布",
+                    "expandState": "collapse"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "cgpxetne4xk0",
+                            "created": 1640592238331,
+                            "text": "源码使用 TS 书写"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgpxf6v1b5s0",
+                            "created": 1640592267091,
+                            "text": "dist 文件文件夹边写 UMD"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgpxfcycr2o0",
+                            "created": 1640592280352,
+                            "text": "module: 前端项目发布一份 ES 2015+ 的代码"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "cgpxfj3mj4g0",
+                            "created": 1640592293732,
+                            "text": "main: 前后端公用项目 cjs 代码"
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "default",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}

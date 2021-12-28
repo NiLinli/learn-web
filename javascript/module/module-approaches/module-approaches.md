@@ -12,13 +12,56 @@ Universal Module Definition = AMD + CommonJS + Global
 
 [umd](https://github.com/umdjs/umd)
 
-### CommonJs
+## CommonJs
 
 - require
 - module.exports/exports(快捷方式)
 
 **动态引用, 无法静态分析**  
 **导出的都是拷贝值，所以 immutable 变量是也拷贝值**
+
+### module 包装
+
+模块内的变量是私有的, 模块被 Node 封装在一个函数中(函数作用域)
+
+```javascript
+(function(exports, require, module, __filename, __dirname) {
+    // 模块的代码实际上在这里
+});
+```
+
+- exports
+  - `module.exports` alias
+- require
+  - 模块引入相关特性
+  - `require()`
+  - `require.main === module` 记录是不是主模块, 运行入口模块
+  - `require.cache`
+  - `require.extensions`
+      1. 提示怎样处理扩展名( function handler)
+      2. 可以使用, 但是已经被废弃
+      3. 应该把其他语言编译成 js 再去加载
+  - `require.resolve()`
+  - `require.resolve.paths()`
+- module
+  - 当前模块的相关信息
+  - `module.exports`
+  - `module.children` 引用的子模块
+  - `module.paths` 此模块搜索其他模块的路径
+- __filename
+- __dirname
+
+### 缓存
+
+1. 第一次加载后会被缓存
+2. 多次引用也不会重新执行, 只是会返回 exports 对象(完成/未完成)
+
+### 循环引用
+
+a->b->a
+
+1. 模块已经被引用过, 缓存, 不会重新执行
+2. 循环引用, 返回未完成的 exports 对象副本
 
 ## ES/TS module
 
