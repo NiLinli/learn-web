@@ -1,0 +1,164 @@
+{
+    "root": {
+        "data": {
+            "id": "ch8gdernlso0",
+            "created": 1642473807881,
+            "text": "npm"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "ch8gdiwcii00",
+                    "created": 1642473816872,
+                    "text": "嵌套"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "ch8gf4f54fk0",
+                            "created": 1642473942085,
+                            "text": "特点",
+                            "expandState": "expand"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "ch8gfzf3h080",
+                                    "created": 1642474009562,
+                                    "text": "嵌套关系明确表述依赖关系"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ch8ggepp57k0",
+                                    "created": 1642474042855,
+                                    "text": "相同版本的包会重复安装"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "ch8gdsuq1uo0",
+                            "created": 1642473838541,
+                            "text": "npm v1&v2 嵌套无优化"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "ch8gdysou1k0",
+                            "created": 1642473851479,
+                            "text": "pnpm 回归嵌套"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "ch8girf8bh40",
+                                    "created": 1642474227249,
+                                    "text": "topic"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ch8gis08yiw0",
+                                    "created": 1642474228520,
+                                    "text": "topic"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ch8gisgd4y00",
+                                    "created": 1642474229494,
+                                    "text": "topic"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "ch8gdq66dcg0",
+                    "created": 1642473832704,
+                    "text": "扁平"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "ch8gf9s9pdc0",
+                            "created": 1642473953762,
+                            "text": "特点"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "ch8gxzyusa00",
+                                    "created": 1642475421312,
+                                    "text": "相同的包不会重复安装"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ch8ggx147so0",
+                                    "created": 1642474082728,
+                                    "text": "依赖不确定性"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "ch8gh7qhaio0",
+                                    "created": 1642474106029,
+                                    "text": "可以非法访问未声明的包（暂未解决）"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "ch8ge859no80",
+                            "created": 1642473871831,
+                            "text": "yarn 扁平 & lock"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "ch8ge3bx8k00",
+                            "created": 1642473861350,
+                            "text": "npm v3+ 开始扁平"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "ch8ghnrvic80",
+                            "created": 1642474140942,
+                            "text": "npm v5 引入 lock 确定依赖性"
+                        },
+                        "children": []
+                    },
+                    {
+                        "data": {
+                            "id": "ch8gkxza4000",
+                            "created": 1642474398250,
+                            "text": "npm v5.6+ 明确 lock 和 package.json 的安装逻辑"
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "default",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}
