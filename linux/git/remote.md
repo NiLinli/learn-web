@@ -1,4 +1,4 @@
-# remote 远程服务器
+# remote
 
 Retrieve(常用)
 
