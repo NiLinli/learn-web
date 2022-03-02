@@ -23,6 +23,11 @@
       text-align: justify;
     }
 
+    .last {
+      text-align: justify;
+      text-align-last: right;
+    }
+
     /* 基本不可用 */
     .hyphens {
       hyphens: none;
@@ -30,15 +35,60 @@
       -ms-hyphens: none;
     }
 
+
+    .single-justify {
+      text-align: justify;
+      border: 1px solid #000;
+      vertical-align: top;
+      line-height: 22px;
+    }
+
+    .single-justify:after {
+      display: inline-block;
+      width: 100%;
+      content: "";
+    }
+
+    .single-justify-last {
+      text-align-last: justify;
+      border: 1px solid #000;
+      line-height: 22px;
+    }
+
   </style>
 </head>
 <body>
 
+  <h3>left</h3>
   <p class="left">Babel、TypeScript、ESLint、PostCSS、PWA、 End-to-end</p>
+  <h3>right</h3>
   <p class="right">Babel、TypeScript、ESLint、PostCSS、PWA、 End-to-end</p>
-  <p class="justify">Babel、TypeScript、ESLint、PostCSS、PWA、 End-to-end 英文用 justify 会显得很糟糕</p>
-
+  <h3>justify</h3>
+  <p class="justify">
+    Babel、TypeScript、ESLint、PostCSS、PWA、 <br>
+    End-to-end 英文用 justify 会显得很糟糕 <br>
+    最后一行内容显示不是 justify, 而是 left <br>
+    text-align-last 可以指定最后一行, 修正 justify
+  </p>
+  <h3>text-align-last</h3>
+  <p class="last">Babel、TypeScript、ESLint、PostCSS、PWA、 End-to-end</p>
+  <h3>hyphens</h3>
   <p class="hyphens" lang="en">Babel、TypeScript、ESLint、PostCSS、PWA、 End-to-end</p>
+
+
+  <div>
+    <h3>单行justify</h3>
+    <h5>通过 after 伪元素新增一行作为最后一行, 但是会把内容撑开</h5>
+    <div class="single-justify" style="width:200px;">
+      姓名
+    </div>
+
+    <h3>单行justify</h3>
+    <h5>直接使用 text-align-last</h5>
+    <div class="single-justify-last" style="width:200px;">
+      姓名
+    </div>
+  </div>
 
 
   
