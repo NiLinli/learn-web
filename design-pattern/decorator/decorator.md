@@ -1,13 +1,12 @@
 # decorator pattern
 
 组合 decorator 的逻辑, **复用特性**  
-组合(composition) 和 委托(delegation) 运行时达到继承的效果
-
-## 装饰
+组合(composition) 和 委托(delegation) 运行时达到继承的效果  
+动态将责任附加在对象上, 比静态继承更有弹性
 
 ## 装饰者模式
 
-动态将责任附加在对象上, 比静态继承更有弹性
+wrap object
 
 方法
 
@@ -22,7 +21,7 @@
 
 ## ts 装饰器 @
 
-类 方法 ...
+wrap class
 
 - origin class
 - decorator
@@ -32,7 +31,7 @@
 - **组合 decorator 逻辑**
 - compile 生成 HOF
 - runtime 执行 HOF 生成新的 class
-- 会改变原始类, 所以不能防止类💥
+- 会生成新的 class, 可以使用匿名 class 防止类💥
 
 ## 注解
 
