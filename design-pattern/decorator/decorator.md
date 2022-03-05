@@ -1,10 +1,13 @@
 # decorator pattern
 
+组合 decorator 的逻辑, **复用特性**  
+组合(composition) 和 委托(delegation) 运行时达到继承的效果
+
 ## 装饰
 
-组合 decorator 的逻辑, **复用特性**, 达到改写方法
+## 装饰者模式
 
-### 装饰者模式
+动态将责任附加在对象上, 比静态继承更有弹性
 
 方法
 
@@ -13,11 +16,11 @@
 
 过程: origin class + decorator class(复用) = 套娃执行 origin class
 
-- 组合 decorator class 逻辑
-- runtime 执行
+- 新建时候组合 decorator class 逻辑
+- runtime 执行(委托)
 - 灵活, 防止类💥
 
-### ts 装饰器 @
+## ts 装饰器 @
 
 类 方法 ...
 
@@ -26,7 +29,7 @@
 
 过程: origin class + decorator(复用) = new class
 
-- 组合 decorator 逻辑
+- **组合 decorator 逻辑**
 - compile 生成 HOF
 - runtime 执行 HOF 生成新的 class
 - 会改变原始类, 所以不能防止类💥
