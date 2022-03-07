@@ -31,11 +31,11 @@
         + 不要覆盖基类中已经实现的方法 (如果必须要覆盖, 应该思考基类是否合适被 extends)
 
 
-## 设计模式类别
+## OO 设计模式
 
 ### 创建型
 
-创建对象
+解耦对象的创建和使用, 使之分离 
 
 - Factory Method (工厂方法)
 - Abstract Factory (抽象工厂)
@@ -45,16 +45,35 @@
 
 ### 结构型
 
+类/对象按照某种布局形成更大的结构
+
+类结构型: 继承  
+对象结构性: 组合(灵活)  
+
 - Decorator (装饰器)
-- Mixin (混入)
+- Composite (组合)
+- Bridge (桥接)
 - Facade (外观)
 - Flyweight (享元)
-- Adapter (适配器)
+- Adapter (适配)
 - Proxy (代理)
 
-### 行为设计模式
+### 行为型
 
-- Iterator
-- Mediator
+程序运行**流程控制**  
+多个 class/object 之间协同完成单个对象无法完成的任务  
+算法 + 职责分配  
+类结构型: 继承  
+对象结构性: 组合(灵活)  
+
+- Template Method (模板方法)
+- Strategy (策略)
+- Command (命令)
+- Chain of Responsibility (职责链)
+- State (状态)
+- Memento (备忘录)
+- Interpreter (解释器)
+- Iterator (迭代器)
+- Mediator (中介者)
 - Observer (观察者)
 - Visitor (访问者)

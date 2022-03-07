@@ -1,8 +1,8 @@
-function classDecorator<T extends { new(...args: any[]): {} }>(constructor: T) {
+function classDecorator(constructor: any): any {
   return class extends constructor {
     newProperty = 'new property';
     hello = 'override';
-  }
+  };
 }
 
 @classDecorator
