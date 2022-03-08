@@ -10,7 +10,16 @@
 
 ## 设计原则
 
-### 开闭原则
+找出应用中可能需要的变化之处, 独立出来
+
+### CARP 组合/聚合复用原则
+
+Composite/Aggregate Reuse Principle
+多用对象组合, 少用类继承
+
+### SRP 单一职责
+
+### OCP 开闭原则
 
 对扩展开放, 对修改关闭
 
@@ -30,8 +39,21 @@
         + 不要让类 extends 具体类 (这样会依赖具体类, 应该 extends 抽象类和接口)
         + 不要覆盖基类中已经实现的方法 (如果必须要覆盖, 应该思考基类是否合适被 extends)
 
+### LSP 里氏替换
+
+### ISP 接口隔离
+
+### DIP 依赖反转
+
+针对接口编程，而不是针对实现编程 
+
+### Law Of Demeter 迪米特法则
+
+Last Knowledge 最少知识
 
 ## OO 设计模式
+
+[design-patterns](https://refactoringguru.cn/design-patterns#intro-patterns)
 
 ### 创建型
 
@@ -47,15 +69,17 @@
 
 类/对象按照某种布局形成更大的结构
 
-类结构型: 继承  
+类结构型: 继承 (Adapter)
 对象结构性: 组合(灵活)  
+
+加一层, 解除耦合
 
 - Decorator (装饰器) ✅
 - Composite (组合)
 - Bridge (桥接)
-- Facade (外观)
+- Facade (外观) ✅
 - Flyweight (享元)
-- Adapter (适配)
+- Adapter (适配) ✅
 - Proxy (代理)
 
 ### 行为型
@@ -77,3 +101,9 @@
 - Mediator (中介者)
 - Observer (观察者) ✅
 - Visitor (访问者)
+
+## 其他设计模式
+
+- Mixin (混入)
+- Monkey Patch (猴子补丁)
+- Middleware (中间件)
