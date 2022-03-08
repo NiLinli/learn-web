@@ -37,11 +37,11 @@
 
 解耦对象的创建和使用, 使之分离 
 
-- Factory Method (工厂方法)
-- Abstract Factory (抽象工厂)
-- Prototype (原型)
-- Singleton (单例)
-- Builder (生成器/建造器)
+- Factory Method (工厂方法) ✅
+- Abstract Factory (抽象工厂) ✅
+- Prototype (原型) ✅
+- Singleton (单例) ✅
+- Builder (生成器/建造器) ✅
 
 ### 结构型
 
@@ -50,7 +50,7 @@
 类结构型: 继承  
 对象结构性: 组合(灵活)  
 
-- Decorator (装饰器)
+- Decorator (装饰器) ✅
 - Composite (组合)
 - Bridge (桥接)
 - Facade (外观)
@@ -75,5 +75,5 @@
 - Interpreter (解释器)
 - Iterator (迭代器)
 - Mediator (中介者)
-- Observer (观察者)
+- Observer (观察者) ✅
 - Visitor (访问者)
