@@ -91,7 +91,7 @@ Last Knowledge 最少知识
 对象结构性: 组合(灵活)  
 
 - Template Method (模板方法)
-- Strategy (策略)
+- Strategy (策略) ✅
 - Command (命令)
 - Chain of Responsibility (职责链)
 - State (状态)
