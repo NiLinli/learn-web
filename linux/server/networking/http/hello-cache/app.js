@@ -4,9 +4,14 @@ var path = require('path');
 
 var app = express();
 
-app.use(express.static(path.join(__dirname, 'public'), {
-  maxAge: '60s'
-}));
+// serve-static
+app.use(
+  express.static(path.join(__dirname, 'public'), {
+    maxAge: '60s',
+    lastModified: false,
+    etag: false,
+  })
+);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

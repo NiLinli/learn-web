@@ -5,18 +5,18 @@ function testProperty(property) {
   if (property in root.style) {
     root.classList.add(property.toLowerCase());
     return true;
-  } 
+  }
 
   root.classList.add('no-' + property.toLowerCase());
   return false;
 }
 
-
+// 浏览器可以识别(解析) 不代表实现(正确实现) 这个 value
 function testValue(id, value, property) {
   var dummy = document.createElement('p');
   dummy.style[property] = value;
 
-  // 检查浏览器是不是还保存 value
+  // 检查浏览器是不是还保存 value 浏览器会丢弃无法识别的 value
   if (dummy.style[property]) {
     root.classList.add(id);
     return true;
@@ -25,10 +25,3 @@ function testValue(id, value, property) {
   root.classList.add('no-' + id);
   return false;
 }
-
-// 注： 
-// 1. 原理： 浏览器会丢弃无法识别的 value
-// 2. 缺点： 浏览器可以识别(解析) 不代表实现(正确实现) 这个 value 
-
-
-testProperty('textShadow');

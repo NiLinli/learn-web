@@ -107,3 +107,4 @@ Last Knowledge 最少知识
 - Mixin (混入)
 - Monkey Patch (猴子补丁)
 - Middleware (中间件)
+- Inversion Of Control (控制反转)

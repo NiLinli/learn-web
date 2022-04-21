@@ -1,3 +1,0 @@
-# CSS
-
-Cascading Style Sheet

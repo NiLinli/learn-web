@@ -32,3 +32,13 @@ console.log(moods.match(regexpBmp_es3));
 // bmp 平面的 限定后面不能是哪些范围, 确定一个单位是作为整体而不是一部分匹配
 // ubmp 平面的 换算出对应的两个单位的范围或者具体值
 // 不同系统显示的 ubpm 字符范围不同
+
+const regexp2 = /[^\u0000-\uffff]/gu;
+const str2 = '123😘😘😘😘❎❎1😘312✅✅✅';
+
+console.log(str2.match(regexpBmp));
+console.log(regexp2[Symbol.replace](str2, ''), 123);
+
+
+console.log('✅'.codePointAt(0).toString(16))
+console.log('✅'.charCodeAt(0))

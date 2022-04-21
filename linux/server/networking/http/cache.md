@@ -46,7 +46,7 @@ max-age=0 与 no-cache 对比
 
 ## 客户端读取缓存
 
-1. 直接缓存命中, 不经过服务器 200 (from memory cache)
+1. 直接缓存命中, 不经过服务器 200 (from memory cache) 强缓存
 2. 协商缓存(文档过期)
 
 ps: 浏览器请求的时候有时候会在请求头中带 Cache-Control: no-cache 或者 Cache-Control: max-age: 0
