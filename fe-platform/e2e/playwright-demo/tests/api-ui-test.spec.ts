@@ -1,10 +1,9 @@
 import { test, expect } from '@playwright/test';
 import path from 'path';
-import { DIR } from './global-setup';
+import { DIR } from '../global-setup';
 
 const REPO = 'learn-web';
 const USER = 'NiLinli';
-
 
 let apiContext;
 // let page;
@@ -13,16 +12,15 @@ test.beforeAll(async ({ playwright }) => {
   apiContext = await playwright.request.newContext({
     baseURL: 'https://api.github.com',
     extraHTTPHeaders: {
-      'Accept': 'application/vnd.github.v3+json',
-      'Authorization': `token ${process.env.API_TOKEN}`,
+      Accept: 'application/vnd.github.v3+json',
+      Authorization: `token ${process.env.API_TOKEN}`,
     },
   });
 });
 
-test.afterAll(async ({ }) => {
+test.afterAll(async ({}) => {
   await apiContext.dispose();
 });
-
 
 // test.beforeEach(async ({ playwright, page }) => {
 //   await page.goto('https://github.com/login');
@@ -34,13 +32,12 @@ test.afterAll(async ({ }) => {
 test.use({ storageState: path.join(DIR, 'githubStorageState.json') });
 
 test.skip('last created issue should be first in the list', async ({ page }) => {
-
   const now = Date.now();
 
   const newIssue = await apiContext.post(`/repos/${USER}/${REPO}/issues`, {
     data: {
       title: `[Feature] pw api & ui test ${now}`,
-    }
+    },
   });
   expect(newIssue.ok()).toBeTruthy();
 
@@ -51,7 +48,6 @@ test.skip('last created issue should be first in the list', async ({ page }) => 
 });
 
 test('last created issue should be on the server', async ({ page, request }) => {
-
   const now = Date.now();
 
   await page.goto(`https://github.com/${USER}/${REPO}/issues`);
@@ -63,7 +59,9 @@ test('last created issue should be on the server', async ({ page, request }) => 
 
   const newIssue = await request.get(`https://api.github.com/repos/${USER}/${REPO}/issues/${issueId}`);
   expect(newIssue.ok()).toBeTruthy();
-  expect(await newIssue.json()).toEqual(expect.objectContaining({
-    title: `Bug report 1 ${now}`
-  }));
+  expect(await newIssue.json()).toEqual(
+    expect.objectContaining({
+      title: `Bug report 1 ${now}`,
+    })
+  );
 });
