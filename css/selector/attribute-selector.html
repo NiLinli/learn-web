@@ -35,32 +35,55 @@
         border: 2px solid #000;
       }
 
-      div[class|='a'] {
-        margin-top: 10px;
-        border: 2px solid #000;
+      div[class|='h'] {
+        background-color: darksalmon;
+      }
+
+      div[abcedfg] {
+        font-size: 25px;
+        color: darksalmon;
+      }
+
+      div[abcedfg='nixixi'] {
+        font-weight: bold;
+        font-style: italic;
       }
     </style>
   </head>
 
   <body>
-    <input type="text" name="" id="" />
-    <input type="text" disabled name="" id="" value="gray" />
-
-    <a href>......</a>
-    <a href="https://www.nixixi.xyz">nixixi.xyz</a>
-    <a href="http://www.nixixi.com">nixixi.com</a>
+    <div>
+      <h3>input attribute</h3>
+      <input type="text" name="" id="" />
+      <input type="text" disabled name="" id="" value="gray" />
+    </div>
 
     <div>
+      <h3>a attribute</h3>
+      <a href>......</a>
+      <a href="https://www.nixixi.xyz">nixixi.xyz</a>
+      <a href="http://www.nixixi.com">nixixi.com</a>
+    </div>
+
+    <div>
+      <h4>~= 空格 split 匹配其中的单个</h4>
       <div class="a">1 ok</div>
       <div class="ab">2</div>
       <div class="a b">3 ok</div>
     </div>
 
     <div>
-      <div class="a">0 ok</div>
-      <div class="a-test">1 ok</div>
-      <div class="b a-test">2</div>
-      <div class="c-test">3</div>
+      <h4>|= val/val- 开头的 </h4>
+      <div class="h">0 ok</div>
+      <div class="h-test">1 ok</div>
+      <div class="g h-test">2</div>
+      <div class="f-test">3</div>
+    </div>
+
+    <div>
+      <h3>自定义属性</h3>
+      <div abcedfg>omg abcedfg</div>
+      <div abcedfg="nixixi">omg abcedfg</div>
     </div>
   </body>
 </html>
