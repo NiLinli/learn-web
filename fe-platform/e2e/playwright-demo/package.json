@@ -17,7 +17,9 @@
     "test:tag:invert": "playwright test --grep-invert @fast",
     "test:api": "API_TOKEN=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 playwright test tests/api-test.spec.ts",
     "test:api:ui": "API_TOKEN=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 playwright test tests/api-ui-test.spec.ts --headed",
-    "test:locator": "PWDEBUG=console playwright test tests/page-locator-selector.spec.ts"
+    "test:locator": "PWDEBUG=console playwright test tests/page-locator-selector.spec.ts",
+    "test:jshandle": "playwright test tests/page-jshandle.spec.ts",
+    "test:page-object-model": "PWDEBUG=console playwright test tests/page-object-model.spec.ts"
   },
   "keywords": [],
   "author": "",
