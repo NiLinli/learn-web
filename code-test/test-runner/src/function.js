@@ -4,8 +4,8 @@ function forEach(items, callback) {
   }
 }
 
-function foo() {
-  // some implemention
+function foo(cb) {
+  return cb(null, true);
 }
 
 module.exports = {

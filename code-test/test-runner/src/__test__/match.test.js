@@ -1,4 +1,4 @@
-import { promiseSuccess, promiseFailed, name, can, can1, can2, some, houseForSale, num } from '../src/match';
+import { promiseSuccess, promiseFailed, name, can, can1, can2, some, houseForSale, num } from '../match';
 
 describe('match property', () => {
   test('my name is not nilinlin', () => {
@@ -155,7 +155,3 @@ describe('match regexp', () => {
 
   expect(houseForSale).toMatchObject(desiredHouse);
 });
-
-
-// toThrowError
-// 

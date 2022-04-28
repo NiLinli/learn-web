@@ -1,13 +1,11 @@
-// 只能 mock module, 不能 mock 模块中的一部分
-// jest.mock('../src/function');
-
 const { forEach, foo } = require('../function');
-const mockCallback = jest.fn((x) => 42 + x);
 
-forEach([0, 1], mockCallback);
-
-// .mock 记录函数调用的信息
+// 捕获 callback 的调用
 test("mockCallback's mock property", () => {
+  const mockCallback = jest.fn((x) => 42 + x);
+
+  forEach([0, 1], mockCallback);
+
   // 调用次数
   expect(mockCallback.mock.calls.length).toBe(2);
 
@@ -35,19 +33,18 @@ test('mock return values', () => {
 // 具体实现
 test('implememt function', () => {
   // mock function 可以指定一个具体的实现
+  const mockFoo = jest.fn(foo);
+  mockFoo((err, val) => console.log(val));
+
   // 这个实现可以修改
-  const myMockFn = jest.fn((cb) => cb(null, true));
-
-  myMockFn((err, val) => console.log(val));
-
-  myMockFn
+  mockFoo
     .mockImplementationOnce((x) => 40 + x)
     .mockImplementationOnce((x) => 41 + x)
     .mockImplementation((x) => 42 + x);
 
-  expect(myMockFn(2)).toBe(42);
-  expect(myMockFn(2)).toBe(43);
-  expect(myMockFn(2)).toBe(44);
+  expect(mockFoo(2)).toBe(42);
+  expect(mockFoo(2)).toBe(43);
+  expect(mockFoo(2)).toBe(44);
 
   // 已有函数的具体实现也可以修改为 mock function, 首先得 mock module
   // foo
@@ -60,4 +57,3 @@ test('implememt function', () => {
   // expect(foo(2)).toBe(44);
 });
 
-// 函数名

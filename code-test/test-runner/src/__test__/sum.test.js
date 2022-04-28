@@ -1,4 +1,4 @@
-const sum = require('../src/sum');
+const sum = require('../sum');
 
 // hello jest
 test('adds 1 + 2 to equal 3', () => {
@@ -17,16 +17,16 @@ test('object assiginment', () => {
     one: 1,
     two: 2,
     obj: {
-      name: 123
-    }
-  }
+      name: 123,
+    },
+  };
 
   expect(data).toEqual({
     one: 1,
     two: 2,
     obj: {
-      name: 123
-    }
+      name: 123,
+    },
   });
 });
 
