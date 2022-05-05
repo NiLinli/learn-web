@@ -18,11 +18,12 @@ describe('Counter', () => {
     expect(wrapper.vm.count).toBe(0);
     const button = wrapper.find('button');
 
+    // 改变状态等待视图刷新 await 
     await button.trigger('click');
     expect(wrapper.vm.count).toBe(1);
   });
 
-  it('will catch the error using async/await', async () => {
+  test('will catch the error using async/await', async () => {
     await Vue.nextTick();
     expect(true).toBe(false);
   });
