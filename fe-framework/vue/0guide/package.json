@@ -21,6 +21,8 @@
     "vuex-persistedstate": "^2.7.0"
   },
   "devDependencies": {
+    "@testing-library/user-event": "^14.1.1",
+    "@testing-library/vue": "^5.8.2",
     "@vue/cli-plugin-babel": "^3.9.0",
     "@vue/cli-plugin-eslint": "^3.9.0",
     "@vue/cli-service": "^3.9.0",
