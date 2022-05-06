@@ -1,4 +1,4 @@
-const expect = require('expect');
+const { expect } = require('expect');
 
 const name = 123;
 // JestAssertionError: expect(received).toBeFalsy()
