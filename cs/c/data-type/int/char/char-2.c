@@ -14,3 +14,8 @@ int main(int argc, char const *argv[])
 
   return 0;
 }
+
+// 3. 空字符表示 `'\0'` 非`''`
+//    - 等于整数 0
+//    - char a = 0 一个字节
+//    - 不是 int a = 0 四个字节
