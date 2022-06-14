@@ -1,6 +1,6 @@
 # Java
 
-1995 年 5 月 23 日 -- Java 语言诞生
+1995/5/23 Java 语言诞生
 
 ## JRE
 
@@ -19,8 +19,6 @@ Java Development Kit (程序员使用)
 
 ## 编译与执行
 
-javac: java 源文件编译为 class 二进制文件
-java: 后面跟着 class name(不要带 class 后缀)
 
 ## 文件结构
 
@@ -96,8 +94,18 @@ jar -cvmf manifest.txt App.jar *.class
 2. 在源文件加入说明语句，必须为第一个且靠上 `pakage com.headfirstjava;`
 3. 在 source 设定相应的目录结构，且必须把类放在与包层次相对应的目录结构下
 
-## compile
+## compile(AOT)
 
-## ache
+`javac HelloWorld.java`
+
+java(代码) => class(二进制文件)
+
+### run(JIT)
+
+`java HelloWorld`
+
+不要带 class 后缀
+
+## archive
 
 

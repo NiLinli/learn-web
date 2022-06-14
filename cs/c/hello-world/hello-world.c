@@ -3,5 +3,5 @@
 
 int main()
 {
-    printfString("hello world");
+    prt_string("hello world");
 }

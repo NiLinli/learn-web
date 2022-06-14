@@ -1,1 +1,1 @@
-void printfString(char s[]);
+void prt_string(char s[]);
