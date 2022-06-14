@@ -1,29 +1,43 @@
 # 状态管理
 
+数据流动 + 视图更新组合
+
+## 数据流动管理
+
 - MV\*
 - Flux
-- mobx
 
-1. 共享状态
-    - Flux/Mobx 全局状态
-    - MV\* 全局注册 service + Model
-2. 状态改变清晰
+### MV\*
 
-
-## MV\*
-
-- service
+- Service
 - Model
-- controller
+- Controller/ViewModel/...
 
-## Flux
+规避
 
-## Mobx
+- 合理拆分控制 Service + Model 作用范围
+- 通过编码规范使得 数据流动清晰
+
+### Flux
+
+强调的是单一 store 对应多个 view  
+并且变更 store 方式单一可记录
+
+## 视图更新管理
+
+数据变化 => 视图变化
+
+### Reactive 响应式
+
+- Mobx
+- Vue State
 
 透明的函数式响应编程 TFRP  
 Transparent Functional Reactive Programming
 
-## immutable
+### Immutable 不可变
+
+- Redux
 
 状态 函数式编程思想
 

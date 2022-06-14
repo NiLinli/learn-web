@@ -2,19 +2,11 @@
 
 managing data flow pattern, 不是具体的 framework
 
+## 组成部分
+
 ADSV  
 Action --> Dispatcher --> Store --> View
 数据和逻辑永远单向流动
-
-## MV*
-
-Model --> View
-View  -直接修改-> Model
-
-多个 Model View 互相修改, 导致数据流很乱  
-通过限制 View 直接修改 Model, 而是通过全局的 dispatcher 分发 action 去修改 Model, 让数据流更加清晰
-
-## 组成部分
 
 ### action
 
@@ -52,28 +44,45 @@ state(store) 只能通过 action 来改变, 没有 setter API
 
 ## 具体实现
 
-实现和传统的 FLUX 定义有所出入
+实现和传统的 FLUX 定义有所出入, redux 最接近 Flux 模式
 
 ### redux
 
-单一数据源
+单一数据源 + 不可变
 
 store 组织
 
 - action
 - dispatch
-- store = reducer + state
+- store
+  - reducer 
+  - state
 
 dispatch 挂载在 store 上面
 
 ### vuex
 
-单一数据源
+单一数据源 + 响应式
 
 store 组织
 
 - action(action thunk)
 - dispatch
-- store = mutation + state
+- store 
+  - mutation
+  - state
 
 action & dispatch 挂载在 store 上面
+
+### mobx
+
+store => Observable
+多个 Observable, 不是单一数据源 + 响应式
+
+- Observable
+  - State
+  - Actions
+  - Derivations(派生)
+    - Computed values
+    - Reactions => side effect
+    - ...
