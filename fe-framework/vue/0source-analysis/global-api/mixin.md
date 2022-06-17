@@ -2,12 +2,6 @@
 
 ## Vue.mixin
 
-```js
-Vue.mixin = function (mixin: Object) {
-  this.options = mergeOptions(this.options, mixin)
-  return this
-}
-```
 
 ## VueComponent
 

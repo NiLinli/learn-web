@@ -18,12 +18,12 @@
 </template>
 
 <script>
+// 每个属性都有一个 dep(observation) 去收集 watcher
+// vm.message -> vm._data(vm.$data 公开) -> closure val
+
 export default {
-  // data.call(vm, vm)
   data(vm) {
-    console.log(vm === this);
-    // 每个属性都有一个 dep(observation) 去收集 watcher
-    // vm.message -> vm._data(vm.$data 公开) -> closure val
+    console.log(vm === this);  // data.call(vm, vm)
     return {
       message: 'Hello',
       firstName: 'Foo',

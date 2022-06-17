@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import StateExp from './state-exp';
+import DataExp from './data-exp';
 import PropsExp from './props-exp';
 import EventExp from './event-exp';
 import DirectiveExp from './directive-exp';
@@ -20,7 +20,7 @@ import FormExp from './form-exp';
 const routes = [
   { path: '/', redirect: '/props' },
   { path: '/props', component: PropsExp },
-  { path: '/state', component: StateExp },
+  { path: '/data', component: DataExp },
   { path: '/event', component: EventExp },
   { path: '/directive', component: DirectiveExp },
   { path: '/filter', component: FilterExp },

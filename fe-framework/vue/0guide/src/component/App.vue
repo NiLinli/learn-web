@@ -14,7 +14,7 @@
 <script>
 const menuItem = [
   { title: 'props', path: '/props' },
-  { title: 'state', path: '/state' },
+  { title: 'data', path: '/data' },
   { title: 'event', path: '/event' },
   { title: 'form', path: '/form' },
   { title: 'directive', path: '/directive' },

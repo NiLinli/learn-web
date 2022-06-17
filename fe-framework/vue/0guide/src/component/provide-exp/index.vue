@@ -1,6 +1,7 @@
 <template>
   <el-tabs type="border-card">
     <el-tab-pane label="provide&inject" lazy>
+      依赖注入
       <level-one></level-one>
     </el-tab-pane>
     <el-tab-pane label="mock $parent&$children" lazy>
@@ -28,4 +29,8 @@ export default {
 </script>
 
 <style>
+  .border-box {
+    border: 1px solid black;
+    padding: 10px;
+  }
 </style>
