@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>repaint</title>
+    <title>Document</title>
 
     <style>
       #overview {
@@ -14,9 +14,7 @@
     </style>
   </head>
   <body>
-    <div id="overview">
-      overview
-    </div>
+    <div id="overview"></div>
     <button id="btn">改变 DOM</button>
   </body>
 
@@ -27,10 +25,18 @@
     overview.clientWidth;
 
     btn.addEventListener('click', () => {
-      overview.style.color = 'red';
+      setTimeout(() => {
+        overview.style.width = '500px';
+        overview.clientWidth;
+      }, 0);
 
-      // 没有 force-repaint
-      console.log(overview.style.color)
+      setTimeout(() => {
+        overview.style.height = '500px';
+        overview.clientHeight;
+        alert('');
+      }, 0);
+
+      // paint 在两个任务之后执行
     });
   </script>
 </html>
