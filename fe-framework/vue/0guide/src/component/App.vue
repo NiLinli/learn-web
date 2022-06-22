@@ -14,6 +14,7 @@
 <script>
 const menuItem = [
   { title: 'props', path: '/props' },
+  { title: 'provide', path: '/provide' },
   { title: 'data', path: '/data' },
   { title: 'event', path: '/event' },
   { title: 'form', path: '/form' },
@@ -27,7 +28,7 @@ const menuItem = [
   { title: 'async component', path: '/async' },
   { title: 'dynamic component', path: '/dynamic' },
   { title: 'transition component', path: '/transition' },
-  { title: 'provide', path: '/provide' },
+  
 ];
 
 export default {

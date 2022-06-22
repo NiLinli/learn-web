@@ -15,14 +15,14 @@ B 为 A 的衍生数据/观察者
 - Vue Dep -> Observable    可观察对象
 - Vue Watcher -> Observer  观察者
 
-init
+#### init
 
 1. observe 观察对象
 2. get 数据生成响应式数据并收集依赖
 
-update
+#### update
 
-1. set 之后 observe 新的数据, 保证为响应式数据
+1. set 之后 observe 新的数据, 保证为响应式数据(不是的就新定义为响应式数据)
 2. 通知更新
 3. get 数据生成响应式数据并重新收集依赖
 

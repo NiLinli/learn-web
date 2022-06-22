@@ -1,5 +1,10 @@
 # BOM
 
+## window
+
+- The Window object is the main entry point to all client-side JavaScript features and APIs.
+- It represents a web browser window or frame, and you can refer to it with the identifier window.
+
 ## 无聊的属性
 
 - self/window

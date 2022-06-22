@@ -21,10 +21,14 @@
         <enhance-attrs />
       </el-tab-pane>
       <el-tab-pane label="$attrs" lazy>
-        <female-duck style="background-color: red;" :age="2" :weight="18" />
+        <female-duck style="background-color: red" :age="2" :weight="18" />
       </el-tab-pane>
       <el-tab-pane label="DOM property" lazy>
         <div :text-content.prop="'omg dom property'"></div>
+      </el-tab-pane>
+      <el-tab-pane label="子组件更新" lazy>
+        <update ref="updateComponent" :bar="bar" />
+        <el-button @click="onUpdateComponentClick">change bar prop & foo state</el-button>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -35,6 +39,7 @@ import BlogPost from './blog-post';
 import Counter from './counter';
 import EnhanceAttrs from './enhance-attrs';
 import FemaleDuck from './female-duck';
+import Update from './update';
 
 // v-bind
 export default {
@@ -42,7 +47,8 @@ export default {
     BlogPost,
     Counter,
     EnhanceAttrs,
-    FemaleDuck
+    FemaleDuck,
+    Update,
   },
   data() {
     return {
@@ -56,7 +62,20 @@ export default {
         id2: 1,
         title2: 'My Journey with Vue',
       },
+      bar: 'bar',
     };
+  },
+  beforeUpdate() {
+    console.log('parent component beforeUpdate');
+  },
+  updated() {
+    console.log('parent component updated');
+  },
+  methods: {
+    onUpdateComponentClick() {
+      this.bar += '1';
+      this.$refs.updateComponent.foo = 'omg';
+    },
   },
 };
 </script>

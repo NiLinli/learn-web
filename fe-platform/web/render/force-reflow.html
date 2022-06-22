@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #overview {
+        border: 1px solid #000;
+        width: 100px;
+      }
+
+      .h100 {
+        height: 100px;
+      }
+
+      .h200 {
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="overview"></div>
+    <button id="btn">改变 DOM</button>
+  </body>
+
+  <script>
+    const btn = document.getElementById('btn'),
+      overview = document.getElementById('overview');
+
+    overview.style.width = '200px';
+
+    overview.clientWidth;
+
+    btn.addEventListener('click', () => {
+      for (let i = 0; i < 1000; i++) {
+        overview.style.width = `${i}px`;
+        let a = overview.clientWidth;
+        for (let j = 0; j < 10000000; j++) {}
+      }
+    });
+  </script>
+</html>

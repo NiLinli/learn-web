@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #overview {
+        border: 1px solid #000;
+        width: 100px;
+      }
+
+      .h100 {
+        height: 100px;
+      }
+
+      .h200 {
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="overview"></div>
+    <button id="btn">改变 DOM</button>
+  </body>
+
+  <script>
+    const btn = document.getElementById('btn'),
+      overview = document.getElementById('overview');
+
+    btn.addEventListener('click', () => {
+
+    
+  
+      overview.style.height = '500px';
+      console.log(overview.clientHeight);
+
+      // debugger
+      // 断点会影响实际的渲染效果
+
+      // 可以使用 alert 看阻断效果
+      alert(overview.clientHeight)
+
+      overview.style.width = '300px';
+      console.log(overview.clientWidth);
+    });
+  </script>
+</html>

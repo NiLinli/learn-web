@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>script type="text/html"</title>
+  </head>
+
+  <body>
+    <noscript>
+      <p>This page requires a JavaScript-enabled browser.</p>
+    </noscript>
+
+    <p>type 类型的使用 - 字符串模版信息</p>
+    <div>内部 script: <div id="ph1"></div></div>
+    <div>外部 script: <div id="ph2"></div></div>
+  </body>
+
+  <script type="text/html" id="template1">
+    <p>会被 parse 到 DOM 中, 但是不会被解析</p>
+  </script>
+  <script type="text/html" src="./js/external-template.js" id="template2"></script>
+
+  <script>
+    var template1 = document.getElementById('template1'),
+      template2 = document.getElementById('template2'),
+      ph1 = document.getElementById('ph1'),
+      ph2 = document.getElementById('ph2');
+
+    ph1.innerHTML = template1.innerHTML;
+    ph2.innerHTML = template2.innerHTML || '外部 script text/html 没有被获取';
+  </script>
+</html>
