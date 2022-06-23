@@ -14,9 +14,7 @@
     </style>
   </head>
   <body>
-    <div id="overview">
-      overview
-    </div>
+    <div id="overview">overview</div>
     <button id="btn">改变 DOM</button>
   </body>
 
@@ -24,13 +22,12 @@
     const btn = document.getElementById('btn'),
       overview = document.getElementById('overview');
 
-    overview.clientWidth;
-
     btn.addEventListener('click', () => {
       overview.style.color = 'red';
 
-      // 没有 force-repaint
-      console.log(overview.style.color)
+      // 只有 repaint
+      // 没有 force-repaint, js 执行和 paint 是互斥的
+      console.log(overview.style.color);
     });
   </script>
 </html>

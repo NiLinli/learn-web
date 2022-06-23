@@ -2,6 +2,65 @@
 
 ## Browser Core
 
+
+## JavaScript in Web Browsers
+
+- We now move on to JavaScript as used within web browsers, commonly called client-side JavaScript.
+- This chapter provides that context
+
+- Some pages present static information and can be called documents.
+- Other web pages feel more like applications than documents.
+
+- web documents
+- web applications
+  - ajax
+  - data storage
+  - graphics APIs
+  - geolocation
+  - history management
+  - background threads
+
+- how JavaScript code is embedded and executed within HTML documents
+1. compatibility
+2. accessibility
+3. security
+
+web browsers is simple operating systems.
+OS
+
+1. organize icons (which represent files and applications) on the desktop and in folders
+2. runs multiple applications in separate windows
+3. defines low-level APIs for networking, drawing graphics, and saving files.
+
+Browser
+
+1. organize bookmarks (which represent documents and web applications) in a toolbar and in folders|
+2. displays multiple documents (or applications) in separate tabs
+3. define low-level APIs for networking (Chapter 18), saving data (Chapter 20), and drawing graphics
+
+
+we can define web applications as web pages that use JavaScript to access the more advanced services 
+(such as networking, graphics, and data storage) offered by browsers.
+
+
+
+
+
+
+
+## Single threaded
+
+1. 执行 callback 的时候, 浏览器停止响应用户输入(UI)
+  - callback 不能过于复杂 -> 浏览器不响应(甚至 crash)
+  - HTML5 web worker 解决上述问题
+
+
+
+
+
+
+
+
 ### Engine
 
 - Rendering Engine: 渲染引擎, html等解析并渲染网页
@@ -23,8 +82,10 @@ Chromium/Blink 为 Webkit 子核：
 
 ### Thread
 
-- Javascript 的执行是单线程的
+- Javascript 不开启的执行是单线程的
 - 浏览器是多线程的
+
+浏览器多线程 CPU 
 
 单线程 + 事件循环 + 观察者 + I/O 线程池
 

@@ -4,13 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>force-reflow</title>
+    <title>Document</title>
 
     <style>
       #overview {
         border: 1px solid #000;
         width: 100px;
-        word-break: break-all;
+      }
+
+      .h100 {
+        height: 100px;
+      }
+
+      .h200 {
+        height: 200px;
       }
     </style>
   </head>
@@ -24,13 +31,23 @@
       overview = document.getElementById('overview');
 
     btn.addEventListener('click', () => {
-      overview.style.width = '20px';
-      // force reflow
-      overview.clientWidth;
+      overview.style.height = '500px';
 
-      overview.innerText = 'abcdefghijklmnopqrstuvwxyz';
       // force reflow
       console.log(overview.clientHeight);
+
+      // debugger
+      // 断点不代表实际的渲染效果
+
+      // 可以使用 alert 看阻断效果
+      alert('');
+
+      // force reflow
+      overview.style.width = '300px';
+      console.log(overview.clientWidth);
     });
+
+    // nextTick ... paint
+    
   </script>
 </html>

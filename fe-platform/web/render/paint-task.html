@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>force-reflow</title>
+    <title>Document</title>
 
     <style>
       #overview {
         border: 1px solid #000;
         width: 100px;
-        word-break: break-all;
       }
     </style>
   </head>
@@ -24,13 +23,18 @@
       overview = document.getElementById('overview');
 
     btn.addEventListener('click', () => {
-      overview.style.width = '20px';
-      // force reflow
-      overview.clientWidth;
+      setTimeout(() => {
+        overview.style.width = '500px';
+        overview.clientWidth;
+      }, 0);
 
-      overview.innerText = 'abcdefghijklmnopqrstuvwxyz';
-      // force reflow
-      console.log(overview.clientHeight);
+      setTimeout(() => {
+        overview.style.height = '500px';
+        overview.clientHeight;
+        alert('');
+      }, 0);
+
+      // paint 在两个任务之后执行
     });
   </script>
 </html>

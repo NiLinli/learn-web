@@ -4,33 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>load</title>
     <link rel="stylesheet" href="./css/life.css" />
+    <script src="./js/lifecycle.js"></script>
   </head>
 
   <body>
     <p id="pBlue">blue text</p>
 
-    <script src="./js/load-script.js"></script>
     <script>
       // DOMContentLoaded
-      document.addEventListener('DOMContentLoaded', function () {
-        console.log('DOMContendLoaded');
-      });
+      document.addEventListener('DOMContentLoaded', function () {});
 
       // load
-      window.onload = function () {
-        console.log('load');
-      };
+      window.onload = function () {};
 
-      // 同步引入
-      loadScript('./js/print1.js');
+      // 在 DOMContentLoaded 之后加载完成
+      // load 之前
+      // 同步动态添加
+      Lifecycle.loadScript('./js/print1.js');
 
-      // 异步且时间不为0 引入
-      setTimeout(function () {
-        document.getElementById('pBlue').style.color = 'red';
-        loadScript('./js/print2.js');
-      }, 0);
+      // 异步操作都没法保证加载顺序
     </script>
   </body>
 </html>

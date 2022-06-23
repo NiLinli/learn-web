@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    <img src="./image/angular.jpg" id="img" alt="" />
+    <img src="./img/force-reflow.png" id="img" />
 
     <div id="dv"></div>
 
@@ -27,8 +27,7 @@
   </body>
 
   <script>
-    var img = document.getElementById('img');
-    img.addEventListener('load', function () {
+    document.getElementById('img').addEventListener('load', () => {
       console.log('exsit image load');
     });
 
@@ -36,29 +35,32 @@
       btn2 = document.getElementById('btn2'),
       dv = document.getElementById('dv');
 
-    btn1.addEventListener('click', addNewImage);
+    btn1.addEventListener('click', () => {
+      addNewImage('./img/reflow.png');
+    });
 
-    btn2.addEventListener('click', addNewBgImge);
+    btn2.addEventListener('click', () => {
+      addNewBgImge(dv, './img/paint.png');
+    });
 
-    function addNewImage() {
-      var newImg = document.createElement('img');
-      newImg.addEventListener('load', function () {
+    function addNewImage(url) {
+      var imgElem = document.createElement('img');
+      imgElem.addEventListener('load', function () {
         console.log('new image load');
-        console.log(newImg.width);
-        console.log(newImg.height);
+        console.log(imgElem.width, imgElem.height);
       });
-      document.body.appendChild(newImg);
-      newImg.src = './image/window10.jpg';
+      document.body.appendChild(imgElem);
+      imgElem.src = url;
     }
 
-    function addNewBgImge() {
-      var url = './image/window10.jpg';
-      var newImg = document.createElement('img');
-      newImg.addEventListener('load', function () {
+    function addNewBgImge(elem, url) {
+      var imgElem = document.createElement('img');
+      imgElem.addEventListener('load', function () {
         console.log('new bg load');
-        dv.style.backgroundImage = 'url(' + url + ')';
+        elem.style.backgroundImage = 'url(' + url + ')';
       });
-      newImg.src = url;
+
+      imgElem.src = url;
     }
   </script>
 </html>

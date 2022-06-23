@@ -11,6 +11,14 @@
         border: 1px solid #000;
         width: 100px;
       }
+
+      .h100 {
+        height: 100px;
+      }
+
+      .h200 {
+        height: 200px;
+      }
     </style>
   </head>
   <body>
@@ -22,21 +30,21 @@
     const btn = document.getElementById('btn'),
       overview = document.getElementById('overview');
 
+    overview.style.width = '200px';
+
     overview.clientWidth;
 
     btn.addEventListener('click', () => {
-      setTimeout(() => {
-        overview.style.width = '500px';
+      for (let i = 0; i < 1000; i++) {
+        overview.style.width = `${i}px`;
+        // force-reflow
         overview.clientWidth;
-      }, 0);
 
-      setTimeout(() => {
-        overview.style.height = '500px';
-        overview.clientHeight;
-        alert('');
-      }, 0);
-
-      // paint 在两个任务之后执行
+        // js 执行 block 了 ui paint
+        for (let j = 0; j < 10000000; j++) {}
+      }
     });
+
+    // next tick ... ui paint
   </script>
 </html>

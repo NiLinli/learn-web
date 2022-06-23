@@ -59,5 +59,4 @@ var Lifecycle = {
     }
     document.body.appendChild(script);
   }
-
 }
