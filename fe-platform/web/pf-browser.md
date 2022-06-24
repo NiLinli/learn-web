@@ -1,74 +1,48 @@
 # Browser
 
-## Browser Core
+[inside-browser](https://developer.chrome.com/blog/inside-browser-part1/)
+
+## 架构
+
+multi-process architecture
+
+更多工具 -> 任务管理器 可查看所有进程
+
+### Browser Process
+
+主进程
 
 
-## JavaScript in Web Browsers
+- address bar
+- bookmarks
+- back and forward buttons
+- network requests 
+- file access
+- ...
 
-- We now move on to JavaScript as used within web browsers, commonly called client-side JavaScript.
-- This chapter provides that context
-
-- Some pages present static information and can be called documents.
-- Other web pages feel more like applications than documents.
-
-- web documents
-- web applications
-  - ajax
-  - data storage
-  - graphics APIs
-  - geolocation
-  - history management
-  - background threads
-
-- how JavaScript code is embedded and executed within HTML documents
-1. compatibility
-2. accessibility
-3. security
-
-web browsers is simple operating systems.
-OS
-
-1. organize icons (which represent files and applications) on the desktop and in folders
-2. runs multiple applications in separate windows
-3. defines low-level APIs for networking, drawing graphics, and saving files.
-
-Browser
-
-1. organize bookmarks (which represent documents and web applications) in a toolbar and in folders|
-2. displays multiple documents (or applications) in separate tabs
-3. define low-level APIs for networking (Chapter 18), saving data (Chapter 20), and drawing graphics
+上述部分 Servicification  
+在硬件性能充沛的设备上面会是多个独立的 process  
+在限制资源的设备上(Android)都会汇聚在 browser process, 节约内存  
 
 
-we can define web applications as web pages that use JavaScript to access the more advanced services 
-(such as networking, graphics, and data storage) offered by browsers.
+### Render Process
+
+浏览器内核就是指这个模块
+
+#### 分配情况
+
+一个 tab 页面一个/一个 iframe 也会分配一个(site isolation)
+
+- 避免单个 Render Process 挂了之后所有的都挂了
+- 访问内存 sandbox, 两个页面的内存数据&访问通过 process 之间的保护策略进行保护
 
 
-
-
-
-
-
-## Single threaded
-
-1. 执行 callback 的时候, 浏览器停止响应用户输入(UI)
-  - callback 不能过于复杂 -> 浏览器不响应(甚至 crash)
-  - HTML5 web worker 解决上述问题
-
-
-
-
-
-
-
-
-### Engine
+#### 组成
 
 - Rendering Engine: 渲染引擎, html等解析并渲染网页
 - JS Engine: 执行 JS
 
-### Core
-
-一般指 Rendering Engine + JS Engine
+常见内核
 
 - Trident: IE
 - Gecko: Firefox  
@@ -80,7 +54,11 @@ Chromium/Blink 为 Webkit 子核：
 - Webkit = Webcore(Rendering Engine) + Jscore
 - Chromium/Blink = Webcore(Blink) + V8
 
-### Thread
+#### Rendering Engine
+
+#### Js Engine
+
+Thread
 
 - Javascript 不开启的执行是单线程的
 - 浏览器是多线程的
@@ -89,7 +67,40 @@ Chromium/Blink 为 Webkit 子核：
 
 单线程 + 事件循环 + 观察者 + I/O 线程池
 
-## 其他部分
+1. 执行 callback 的时候, 浏览器停止响应用户输入(UI)
+  - callback 不能过于复杂 -> 浏览器不响应(甚至 crash)
+  - HTML5 web worker 解决上述问题
+
+
+### Plugin Process
+
+管理浏览器页面中的中的插件, 
+eg: flash
+
+### Extension Process
+
+浏览器扩展
+eg: Axure RP Extension for Chrome
+
+### GPU Process
+
+
+Handles GPU tasks in isolation from other processes. It is separated into different process because GPUs handles requests from multiple apps and draw them in the same surface.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 其他部分
 
 内核 -> 中间层 -> 网卡/硬盘/显卡驱动
 
@@ -97,9 +108,10 @@ Chromium/Blink 为 Webkit 子核：
 
 依次向下考虑
 
-1. ie 11
-2. ie 9/10
-3. ie 6/7/8
+1. 非 IE
+2. ie 11
+3. ie 9/10
+4. ie 6/7/8
 
 ## 调试
 
@@ -112,27 +124,3 @@ Chromium/Blink 为 Webkit 子核：
     1. 手机端 Safari -> 高级 -> Web 检查器
     2. 电脑端 Safari -> 偏好设置 -> 高级 -> Show develop menu in menu bar
     3. 电脑端 Safari 开发菜单中选择相应的设备
-
-## DOM 渲染
-
-JS 线程和 GUI 线程互斥, js 操作 DOM, GUI 线程会抢执行权
-
-1. 解析 HTML 为 DOM tree
-2. 待 CSS 加载完成 构建 CSS OM tree
-3. DOM tree + CSS OM tree = render tree
-4. render tree --> layout
-
-### 渲染优化
-
-- repaint 改变 css (不影响布局的 CSS background-color, border-color,visibility)
-- reflow 元素的布局和几何属性改变时就会触发
-
-#### 减少 dom 操作次数
-
-理论上: 一个 function 中修改 n 次 能够引发 render 的 dom 属性, 就会引起 n 次 render
-现实: 是浏览器一般会做优化, 会缓存起来一次性 render
-
-#### CSS 角度
-
-- 例如一个 position 设置为 absolute/fixed 的元素的更改只会影响其本身和其子元素，而 static 的元素变化则会影响其之后的所有页面元素
-- 更改多个 style 的时候, 通过添加 class 而不是直接修改每一个样式来操作

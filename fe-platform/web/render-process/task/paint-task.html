@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>paint</title>
 
     <style>
       #overview {
@@ -23,18 +23,27 @@
       overview = document.getElementById('overview');
 
     btn.addEventListener('click', () => {
+
+      // task1
       setTimeout(() => {
         overview.style.width = '500px';
         overview.clientWidth;
       }, 0);
 
+      // task2
       setTimeout(() => {
         overview.style.height = '500px';
         overview.clientHeight;
         alert('');
       }, 0);
 
-      // paint 在两个任务之后执行
+      // paint second 在 task1 & task2 完成之后
+
+
+
+      // paint first
+      overview.innerText = 'abc';
+      
     });
   </script>
 </html>

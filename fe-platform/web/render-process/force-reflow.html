@@ -24,13 +24,18 @@
       overview = document.getElementById('overview');
 
     btn.addEventListener('click', () => {
-      overview.style.width = '20px';
-      // force reflow
-      overview.clientWidth;
+      // overview.style.width = '20px';
+      // // force reflow
+      // overview.clientWidth;
 
       overview.innerText = 'abcdefghijklmnopqrstuvwxyz';
-      // force reflow
-      console.log(overview.clientHeight);
+      // // force reflow
+      // console.log(overview.clientHeight);
+
+      // raf
+      requestAnimationFrame(() => {
+        console.log(overview.clientHeight);
+      });
     });
   </script>
 </html>
