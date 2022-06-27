@@ -4,38 +4,51 @@
 
 ## 架构
 
-multi-process architecture
-
-更多工具 -> 任务管理器 可查看所有进程
+multi-process architecture  
+chrome: 更多工具 -> 任务管理器 可查看所有进程
 
 ### Browser Process
 
 主进程
 
+- ui thread  浏览器除了网页部分的 ui 变化
+  - address bar
+  - bookmarks
+  - back and forward buttons
+- network thread
+- storage thread
+  - file access
 
-- address bar
-- bookmarks
-- back and forward buttons
-- network requests 
-- file access
-- ...
+上述部分 Servicification 机制  
+硬件性能好: thread 分拆为多个独立的 process  eg: Desktop chrome
+资源限制: process 汇聚到 browser process 中变成 thread, 节约内存  eg: Android webview
 
-上述部分 Servicification  
-在硬件性能充沛的设备上面会是多个独立的 process  
-在限制资源的设备上(Android)都会汇聚在 browser process, 节约内存  
+#### 输入网址浏览器工作流程
+
+Browser Process <-IPC-> Renderer Process 
+
+1. UI Thread 判断 input 输入的是 url 还是搜索内容
+2. UI thread 告知 Network thread 要导航到到 url
+3. Network thread 通过 Content-Type 判断响应类型是 HTML 并且是安全的站点
+4. Network thread 告知 UI Thread 去寻找 Renderer Process
+5. Browser Process 通过 IPC 通知 Renderer Process, 请求 Render
+6. Renderer Process 通过 IPC 通知 Browser Process 页面 loaded, Browser Process 中 UI Thread 会停止 loading...
 
 
-### Render Process
+### Renderer Process
 
-浏览器内核就是指这个模块
+浏览器内核就是指这个模块  
+**页面性能优化点**
 
-#### 分配情况
+开销
 
-一个 tab 页面一个/一个 iframe 也会分配一个(site isolation)
+- 不同的 tab 拥有单独的 Process
+- 同一 tab 中, 不同 frame(iframe) 也拥有单独的 Process (site isolation)
+
+优点
 
 - 避免单个 Render Process 挂了之后所有的都挂了
 - 访问内存 sandbox, 两个页面的内存数据&访问通过 process 之间的保护策略进行保护
-
 
 #### 组成
 
@@ -72,6 +85,28 @@ Thread
   - HTML5 web worker 解决上述问题
 
 
+Main Thread
+parse the text string (HTML) and turn it into a Document Object Model (DOM).
+The DOM is a browser's internal representation of the page as well as the data structure and API that web developer can interact with via JavaScript.
+
+Subresource loading
+sends requests to the network thread in the browser process.
+
+At this paint step, the main thread walks the layout tree to create paint records.
+
+Worker Thread
+
+Compositor Thread
+  - Raster Thread
+
+Turning this information into pixels on the screen is called rasterizing.
+
+
+
+
+
+
+
 ### Plugin Process
 
 管理浏览器页面中的中的插件, 
@@ -84,8 +119,10 @@ eg: Axure RP Extension for Chrome
 
 ### GPU Process
 
-
 Handles GPU tasks in isolation from other processes. It is separated into different process because GPUs handles requests from multiple apps and draw them in the same surface.
+
+
+
 
 
 

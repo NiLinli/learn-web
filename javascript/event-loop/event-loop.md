@@ -46,9 +46,10 @@ callstack
 
 ## Macro/Micro task
 
-1. 宏任务/微任务都按各自顺序执行
-2. 宏任务就是正常的 callback queue
-3. 微任务会在进入 event loop 前清空
+宏任务/微任务都按各自顺序执行
+
+宏任务: 在每次迭代开始之后加入到队列中的任务需要在下一次迭代开始之后才会被执行.
+微任务: 宏任务执行完成, 本次事件循环完成之前执行完微任务
    - Promise
    - process.nextTick
 
