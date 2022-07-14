@@ -11,13 +11,10 @@ critical	英[ˈkrɪtɪkl] 关键的 批判的
 
 ### CSSOM tree
 
-
-
 Painting 之前: 防止 FOUC
 JS 执行之前
 
 Render blocking resource
-
 
 ### script
 
@@ -58,16 +55,48 @@ js 可能会操作 DOM, 依赖于 css render, js 加载依赖于 css 加载完�
 
 ### Render tree
 
+layout tree
+
 js 更新 DOM 只会更新 Render Tree, 可以读取到 DOM 正常的值 ,但是不会 paint
 
 会在 js 执行的 task 中的
 也有可能在 paint 的task 中
 
-## Paint & Composite
+## Paint 
 
-Render tree 绘制到页面上面  
-Paint 和 js 执行互斥  
-UI block 一般是因为没有办法执行, 未执行 paint, Render tree 不一定没有更新
+Main thread 遍历 layout tree 去创建 paint records
+
+Paint & Composite 就是 render 操作
+render 操作和 js 执行互斥  
+UI block 就是指 main thread 被 js 执行长时间占用, 未执行 render 操作 Render tree 不一定没有更新
+
+## Composite
+
+知道了 layout tree + paint records, 将 ui 绘制到 viewport 上面
+
+1. Update Layer Tree: main thread 遍历 layout tree 生成不同的 layer
+2. Composite Layer: 将页面上面的内容分成多个 layers, 单独 rasterizing, 然后组合
+
+Compositing 完成是不需要通知 Main Thread 的, 所以不会一直占用 Main Thread  
+Paint 以及之前的操作是会占用 Main Thread 直到完成, 所以只是单纯的 Compositor, 性能表现比较好
+
+### Raster Thread
+
+每个 layer 创建一个  
+rasterizing: 栅格化, 将图形变成一个个 tile(瓦片), 将 tile 存到 GPU Memory 中
+
+### Compositor Thread  
+
+生成 compositor frame
+
+1. 收集 tile information called draw quads
+2. 创建一个 compositor frame
+3. 通过 IPC 把 compositor frame 发送到 GPU process
+
+处理 input event(不是特质表单中的 input event, 指页面上因为用户交互生成的事件)
+
+1. browser process 将事件告知 renderer process(compositor thread)
+2. compositor thread 将 input event 告知 main thread
 
 ## load
 
@@ -100,3 +129,7 @@ force-reflow 产生的原因是改变了 DOM, 又去获取 DOM 属性, 导致必
 不要 read
 不要 read write
 减少 read & raf read
+
+## animation
+
+

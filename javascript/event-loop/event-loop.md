@@ -1,48 +1,21 @@
 # event loop
 
+达到 async & unblock 调用的效果
+
 event loops 协调:
 
-1. call stack
-2. callback queue
-3. others...
+- call stack(Main Thread)
+- task queue
+- micro task queue
+- render
+- ...
 
-一次 loop 的大致过程
+一次 loop 的大致过程, 称为 tick
 
-1. 检查 call stack 是否为空
-2. 在合适时机, 将 callback queue 添加到 call stack 中执行
+每次循环取出一个 event 
 
-## sync/async
-
-使用异步
-
-浏览器
-Js 执行和 GUI 渲染是互斥的, 同步执行代码时间过长会导致 GUI 不能及时渲染, 阻塞卡死
-
-Node
-单线程同步会导致多并发时候, 串行执行, 时间为 N1 + N2 + N3 + ...  
-采用并行执行的方法会大大提升响应速度
-
-1. 多线程
-2. 单线程异步(Node)
-
-## V8 Engine
-
-语言类型
-
-- 编译型语言: 完全编译, 直接执行
-- 解释型语言: 边编译(解析), 边执行
-
-解释型语言执行速度慢一些, 所以性能提升是很重要的, V8 Engine 应运而生
-
-V8 = call stack + heap
-
-callstack
-
-1. blocking
-2. blow-stack
-3. trace
-
-纯 JS Runtime, 不包含任何其他 I/O 功能
+- 没有回调, 完成
+- 有回调, 把回调添加到 call stack 中执行回调
 
 ## Macro/Micro task
 
@@ -54,14 +27,6 @@ callstack
    - process.nextTick
 
 ## Browser
-
-- V8
-- web APIs: timers + DOM + HTTP Request not in V8, called webAPIS
-- callback queue(task queue): web APIs 执行完成后将 callback push 到 task queue 中, 等待执行
-- render
-- ...
-
-### render
 
 event loop 根据浏览器设置的频率去检查 call stack 是否为空
 频率和浏览器 render 的频率相关

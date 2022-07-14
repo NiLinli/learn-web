@@ -23,6 +23,8 @@ chrome: 更多工具 -> 任务管理器 可查看所有进程
 硬件性能好: thread 分拆为多个独立的 process  eg: Desktop chrome
 资源限制: process 汇聚到 browser process 中变成 thread, 节约内存  eg: Android webview
 
+
+
 #### 输入网址浏览器工作流程
 
 Browser Process <-IPC-> Renderer Process 
@@ -53,7 +55,7 @@ Browser Process <-IPC-> Renderer Process
 #### 组成
 
 - Rendering Engine: 渲染引擎, html等解析并渲染网页
-- JS Engine: 执行 JS
+- JS Engine: Javascript VM, 执行 JS
 
 常见内核
 
@@ -69,43 +71,25 @@ Chromium/Blink 为 Webkit 子核：
 
 #### Rendering Engine
 
+ParseHtml -> ....-> Paint -> Compositor(不占用主线程)
+
 #### Js Engine
 
-Thread
+用户代码解析  
+代码在 Main Thread 上面执行, 所以说是单线程的
+代码也可以在 web worker 上面执行, 多线程
 
-- Javascript 不开启的执行是单线程的
-- 浏览器是多线程的
+在 js 执行的过程中如果与 DOM API 发生交互, 则有可能会执行 Rendering Engine 中的操作
 
-浏览器多线程 CPU 
+#### Main Thread
 
-单线程 + 事件循环 + 观察者 + I/O 线程池
+Renderer Engine & Js Engine 都是在 Main Thread(call stack) 上面执行  
+Renderer Engine & Js Engine 互斥
 
-1. 执行 callback 的时候, 浏览器停止响应用户输入(UI)
-  - callback 不能过于复杂 -> 浏览器不响应(甚至 crash)
-  - HTML5 web worker 解决上述问题
+### GPU Process
 
-
-Main Thread
-parse the text string (HTML) and turn it into a Document Object Model (DOM).
-The DOM is a browser's internal representation of the page as well as the data structure and API that web developer can interact with via JavaScript.
-
-Subresource loading
-sends requests to the network thread in the browser process.
-
-At this paint step, the main thread walks the layout tree to create paint records.
-
-Worker Thread
-
-Compositor Thread
-  - Raster Thread
-
-Turning this information into pixels on the screen is called rasterizing.
-
-
-
-
-
-
+Handles GPU tasks in isolation from other processes. 
+It is separated into different process because GPUs handles requests from multiple apps and draw them in the same surface.
 
 ### Plugin Process
 
@@ -116,30 +100,6 @@ eg: flash
 
 浏览器扩展
 eg: Axure RP Extension for Chrome
-
-### GPU Process
-
-Handles GPU tasks in isolation from other processes. It is separated into different process because GPUs handles requests from multiple apps and draw them in the same surface.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 其他部分
-
-内核 -> 中间层 -> 网卡/硬盘/显卡驱动
 
 ## 兼容性
 

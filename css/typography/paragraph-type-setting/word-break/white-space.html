@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>white space</title>
     <style>
-        .test p {
-            width: 500px;
-            border: 1px solid #000;
-        }
+      .test p {
+        width: 300px;
+        border: 1px solid #000;
+      }
 
-        .normal p {
-            word-wrap: normal;
-        }
+      .normal p {
+        word-wrap: normal;
+      }
 
-        .pre p {
-            white-space: pre;
-        }
+      .pre p {
+        white-space: pre;
+      }
 
-        .pre-wrap p {
-            white-space: pre-wrap;
-        }
+      .pre-wrap p {
+        white-space: pre-wrap;
+      }
 
-        .pre-line p {
-            white-space: pre-line;
-        }
+      .pre-line p {
+        white-space: pre-line;
+      }
 
-        .nowrap p {
-            white-space: nowrap;
-        }
+      .nowrap p {
+        white-space: nowrap;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <ul class="test">
-        <li class="normal">
-            <strong>normal：忽略换行符, 忽略多余的空格, 自动换行</strong>
-            <p>轻轻地我走了 正如我轻轻地来 开发的深刻理解阿福；肌肤；撒酒疯；阿肌肤；撒发反馈大家；饭 line2
-            </p>
-        </li>
-        <li class="normal">
-            <strong>normal (英文)</strong>
-            <p>abcdefabcdefabcdefabcdefabcdefabcdef abcdefabcdefabcdefabcdef abcdefabcdefabcdefabcdef abcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdefabcdef
-            </p>
-        </li>
-        <li class="nowrap">
-            <strong>nowrap：和 normal 其他一致, 不自动换行</strong>
-            <p>轻轻地我走了 正如我轻轻地来 开发的深刻理解阿福；肌肤；撒酒疯；阿肌肤；撒发反馈大家；饭 line2
-            </p>
-        </li>
-        <li class="pre">
-            <strong>pre：保持格式, 不自动换行</strong>
-            <p>轻轻地我走了 （这里接很多测试文字） 正如我轻轻地来 开发建设垃圾飞机撒垃圾焚烧垃圾分类将阿里放假啊老地方见啊 line2
-            </p>
-        </li>
-        <li class="pre-wrap">
-            <strong>pre-wrap：和 pre 其他一致, 自动换行 </strong>
-            <p>轻轻地 我走了（这里接很多测试文字） 正如我轻轻地来 开发建设垃圾飞机撒垃圾焚烧垃圾分类将阿里放假啊老地方见啊 line2
-            </p>
-        </li>
-        <li class="pre-line">
-            <strong>pre-line: 和 normal 其他一致, 保留 换行符</strong>
-            <p>轻轻地 我走了 （这里接很多测试文字） 正如我轻轻地来 line2
-            </p>
-        </li>
+      <li class="normal">
+        <strong>normal：去掉换行符, 去掉多余空格, 自动换行</strong>
+        <p>
+            轻轻地我走了 正如我轻轻地来 正如我轻轻地来 
+
+            轻轻地我走了 正如我轻轻地来 正如我轻轻地来  22  2222 2222
+        </p>
+      </li>
+      <li class="nowrap">
+        <strong>nowrap：normal, 不自动换行</strong>
+        <p>
+            轻轻地我走了 正如我轻轻地来 正如我轻轻地来 
+
+            轻轻地我走了 正如我轻轻地来 正如我轻轻地来  22  2222 2222
+        </p>
+      </li>
+      <li class="pre">
+        <strong>pre：保持换行符, 保持多余空格, 不自动换行</strong>
+        <p>
+            轻轻地我走了 正如我轻轻地来 正如我轻轻地来 
+
+            轻轻地我走了 正如我轻轻地来 正如我轻轻地来  22  2222 2222
+        </p>
+      </li>
+      <li class="pre-wrap">
+        <strong>pre-wrap：pre, 自动换行 </strong>
+        <p>
+            轻轻地我走了 正如我轻轻地来 正如我轻轻地来 
+
+            轻轻地我走了 正如我轻轻地来 正如我轻轻地来  22  2222 2222
+        </p>
+      </li>
+      <li class="pre-line">
+        <strong>pre-line: 保留换行符, 去掉多余空格, 自动换行</strong>
+        <p>
+            轻轻地我走了 正如我轻轻地来 正如我轻轻地来 
+
+            轻轻地我走了 正如我轻轻地来 正如我轻轻地来  22  2222 2222
+        </p>
+      </li>
     </ul>
 
-</body>
+    <h1>总结:</h1>
+    <ul>
+      <li>换行符</li>
+      <li>自动换行 wrap</li>
+      <li>空格(space or tab)</li>
 
+      应该有 8 中组合, danshi 
+    </ul>
+  </body>
 </html>
