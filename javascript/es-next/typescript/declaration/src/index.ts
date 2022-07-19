@@ -9,7 +9,7 @@ import { format } from 'date-fns';
 // 查找顺序
 // 1. .ts
 // 2. .d.ts
-import { Foo } from './foo.module';
+import { Foo } from './preprocessor/foo.module';
 
 _.padStart('Hello TypeScript!', 20, ' ');
 
