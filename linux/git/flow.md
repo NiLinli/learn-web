@@ -27,7 +27,8 @@
 
 ### github flow
 
-[github flow](https://gist.github.com/jbenet/ee6c9ac48068889b0912)
+[github flow](https://gist.github.com/jbenet/ee6c9ac48068889b0912)  
+[github flow](https://docs.github.com/cn/get-started/quickstart/github-flow)
 
 - master
 - feature
@@ -46,6 +47,8 @@ git flow & github flow 结合
 ## Fork
 
 ## PR
+
+work in progress
 
 
 

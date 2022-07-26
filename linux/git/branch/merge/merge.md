@@ -1,16 +1,22 @@
 # merge
+## merge
 
-diverged 分歧
-They enable us to have parallel evolution of a code base.
+合并来源
 
-## merge(主 合并 从) 步骤：
+- 当前分支 A
+- 需要合并的分支 B
+- 两者最近的祖先 C
 
-1. 当前分支为主 A
-2. 需要合并的分支为 从 B
-3. 两者最近的祖先 C
-4. A + B + C (三者合并) = 一个新的快照 (未提交)
+合并 A + B + C
 
 ## merge 策略
+
+diverged 分歧: C 不是 A 最新的一次提交
+
+有分歧
+
+- 
+
 
 1. 线性状态(无分歧)
     - 默认 fast-forward ,直接把 A 的指针指向 B                         -- 缺点：特性分支删除后, 不知道特性分支的的历史, 因为已经在 A 里面了

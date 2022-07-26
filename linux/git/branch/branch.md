@@ -53,6 +53,3 @@ Not only can we check out branches, we can also checkout any commit revision exp
 1. [merge](./merge/merge.md)
 2. [rebase](./rebase.md)
 
-## 通用分支管理
-
-- [successful-branch-model](./successful-branch-model.md)
