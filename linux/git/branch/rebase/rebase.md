@@ -36,7 +36,7 @@ git rebase 之后, 本地与远程分支会产生分歧
 
 interactive 交互式的 (pick 指定范围的 commit 记录, 然后交互式一条一条编辑)
 
-- startpoint 起始点
+- startpoint 起始点, 不包含
 - endpoint   终止点, 默认 HEAD
 
 操作命令
@@ -48,9 +48,7 @@ interactive 交互式的 (pick 指定范围的 commit 记录, 然后交互式一
 
 合并多次提交: 起始提交 pick, 其他提交 squash, 然后修改起始提交的 commit message
 
-`git rebase -i HEAD~2` 最近两次(HEAD== HEAD~1)
-
-
+`git rebase -i HEAD~2`  (HEAD~2 HEAD] => HEAD~1 & HEAD
 
 ## 多人开发一个分支使用 rebase
 
