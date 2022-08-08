@@ -70,13 +70,13 @@ Last Knowledge 最少知识
 类/对象按照某种布局形成更大的结构
 
 类结构型: 继承 (Adapter)
-对象结构性: 组合(灵活)  
+对象结构性: 组合(灵活) 将工作委派给其他对象
 
 加一层, 解除耦合
 
 - Decorator (装饰器) ✅
-- Composite (组合)
-- Bridge (桥接)
+- Composite (组合) ✅
+- Bridge (桥接) 
 - Facade (外观) ✅
 - Flyweight (享元)
 - Adapter (适配) ✅
