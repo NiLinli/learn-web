@@ -76,7 +76,7 @@ Last Knowledge 最少知识
 
 - Decorator (装饰器) ✅
 - Composite (组合) ✅
-- Bridge (桥接) 
+- Bridge (桥接) ✅
 - Facade (外观) ✅
 - Flyweight (享元)
 - Adapter (适配) ✅
