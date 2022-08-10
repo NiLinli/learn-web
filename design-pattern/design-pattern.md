@@ -78,9 +78,9 @@ Last Knowledge 最少知识
 - Composite (组合) ✅
 - Bridge (桥接) ✅
 - Facade (外观) ✅
-- Flyweight (享元)
+- Flyweight (享元) ✅
 - Adapter (适配) ✅
-- Proxy (代理)
+- Proxy (代理) ✅
 
 ### 行为型
 
