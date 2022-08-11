@@ -90,7 +90,7 @@ Last Knowledge 最少知识
 类结构型: 继承  
 对象结构性: 组合(灵活)  
 
-- Template Method (模板方法)
+- Template Method (模板方法) ✅
 - Strategy (策略) ✅
 - Command (命令)
 - Chain of Responsibility (职责链)
