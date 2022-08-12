@@ -93,7 +93,8 @@ Last Knowledge 最少知识
 - Template Method (模板方法) ✅
 - Strategy (策略) ✅
 - Command (命令)
-- Chain of Responsibility (职责链)
+- Chain of Responsibility (职责链) ✅
+    - Middleware (中间件) ✅
 - State (状态)
 - Memento (备忘录)
 - Interpreter (解释器)
@@ -106,5 +107,4 @@ Last Knowledge 最少知识
 
 - Mixin (混入)
 - Monkey Patch (猴子补丁)
-- Middleware (中间件)
 - Inversion Of Control (控制反转)
