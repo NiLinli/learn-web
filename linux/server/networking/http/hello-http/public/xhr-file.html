@@ -12,6 +12,8 @@
     <input type="file" id="file" />
 
     <button id="btn">Upload Img</button>
+    <button id="btnPUT">Upload Img2 by PUT</button>
+
 
 
     <div>
@@ -24,8 +26,10 @@
 
   <script>
     document.getElementById('btn').addEventListener('click', uploadImg)
+    document.getElementById('btnPUT').addEventListener('click', uploadImgPUT)
     document.getElementById('btn2').addEventListener('click', download)
 
+    // form-data 上传图片
     function uploadImg() {
       const file = document.getElementById('file').files[0]
 
@@ -38,6 +42,18 @@
         headers: {
           'Content-Type': 'multipart/form-data',
         },
+      })
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error))
+    }
+
+    function uploadImgPUT() {
+      const file = document.getElementById('file').files[0]
+
+      ajax({
+        url: 'http://localhost:3000/file/uploadImg',
+        method: 'put',
+        body: file,
       })
         .then((data) => console.log(data))
         .catch((error) => console.log(error))
