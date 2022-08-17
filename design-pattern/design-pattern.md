@@ -94,13 +94,13 @@ Last Knowledge 最少知识
 
 - Template Method (模板方法) ✅
 - Strategy (策略) ✅
-- Command (命令)
+- Command (命令) ✅
 - Chain of Responsibility (职责链) ✅
     - Middleware (中间件) ✅
 - State (状态)
 - Memento (备忘录)
 - Interpreter (解释器)
-- Iterator (迭代器)
+- Iterator (迭代器) ✅
 - Mediator (中介者)
 - Observer (观察者) ✅
 - Visitor (访问者)
