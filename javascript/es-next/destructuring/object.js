@@ -1,30 +1,36 @@
 // 对象解构
-let node = {
-    type: 'identify',
-    name: 'foo'
+const nodeNest = {
+  type: 'Identifier',
+  name: 'foo',
+  id: 292,
+  loc: {
+    start: {
+      line: 1,
+      column: 1,
+    },
+    end: {
+      line: 1,
+      column: 4,
+    },
+  },
 };
 
-// 1 声明加解构
-let {
-    type,
-    name,
-    aaa,
-    bbb = true    // 解构默认值
-} = node;
+// 声明加解构
+const { type, name, notFound = 'none' } = nodeNest;
 
-console.log(type);      // 'identify'
-console.log(name);      // 'foo'
-console.log(aaa);       // undefined
-console.log(bbb);       // true
+// 赋值解构
+let id;
+({ id } = nodeNest); // 必须要带括号
 
-// 2 赋值解构
-const person = {
-    fname: 'nixix',
-    fage: 18
-}
+// 别名
+const { id: ID } = nodeNest;
+console.log(type, name, notFound, id, ID);
 
-let fname, fage;
-({ fname, fage } = person); // 必须要带括号
-console.log(fname);         // 'nixixi'
-console.log(fage);          // 18
+// nest
+const {
+  loc: {
+    start: { line },
+  },
+} = nodeNest;
 
+console.log(line); // loc, start 未定义

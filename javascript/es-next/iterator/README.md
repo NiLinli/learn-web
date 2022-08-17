@@ -16,8 +16,7 @@ interface Iterable<T> {
 
 集合去实现 Iterable  
 Symbol.iterator 为 createIterator 方法  
-built-in 对象很多已经实现 Iterator 接口  
-
+Array/Map/Set/String/TypedArray 已经实现 Iterator 接口  
 
 ## 迭代器协议
 
