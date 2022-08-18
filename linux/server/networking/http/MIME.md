@@ -2,8 +2,6 @@
 
 Multipurpose Internet Mail Extensions 媒体类型
 
-**浏览器**通常使用MIME类型（而不是文件扩展名）来确定如何处理URL
-
 ## 结构
 
 type/subtype
@@ -30,25 +28,27 @@ AJAX 也可以自行决定按照 文本/非文本解析
 
 ## Content-Type
 
-Content-Type 描述请求体(body) 或者响应体是什么类型的数据
+Content-Type 使用 MIME 描述请求体(body) 或者响应体是什么类型的数据
 
-### 请求头
+### 请求-客户端
 
-#### 浏览器
+**POST,PUT get 没有 body, 所以没有 Content-Type**
 
-- get 没有 body => 没有 Content-Type
-- post
-  - application/x-www-form-urlencoded => query 拼接的形式放入 Form Data(body)
-  - multipart/form-data; boundary=----WebKitFormBoundary4dmHJZNAmF6dZZFU
+客户端有些默认行为会自动携带 MIME 类型, 有些客户端不会携带
 
-#### xhr
+表单提交, 会携带相应的头
 
-自定义
+- application/x-www-form-urlencoded
+- multipart/form-data
 
-- post
-  - application/json 扩展
-  - 也可以自行拼接 query
+文件上传, 根据文件的类型去添加媒体类型
 
-### 响应头
+XHR 自定义
 
+- application/json
+
+### 响应-服务端
+
+**浏览器**通常使用MIME类型（而不是文件扩展名）来确定如何处理URL  
+所以服务端必须设置正确的 MIME type
 
