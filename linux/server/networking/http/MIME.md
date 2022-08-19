@@ -1,6 +1,7 @@
 # MIME
 
-Multipurpose Internet Mail Extensions 媒体类型
+Multipurpose Internet Mail Extensions 媒体类型  
+默认 application/octet-stream
 
 ## 结构
 
@@ -32,23 +33,31 @@ Content-Type 使用 MIME 描述请求体(body) 或者响应体是什么类型的
 
 ### 请求-客户端
 
-**POST,PUT get 没有 body, 所以没有 Content-Type**
-
+适用: **存在 request body 的请求**  POST, PUT  
 客户端有些默认行为会自动携带 MIME 类型, 有些客户端不会携带
 
-表单提交, 会携带相应的头
+#### 表单提交
+
+客户端(一般只有浏览器)会携带相应的头
 
 - application/x-www-form-urlencoded
-- multipart/form-data
+- multipart/form-data 
 
-文件上传, 根据文件的类型去添加媒体类型
+#### XHR 自定义
 
-XHR 自定义
+文本
 
 - application/json
+- application/x-www-form-urlencoded
+- multipart/form-data 
+
+文件上传
+
+- multipart/form-data (POST) 
+- **大多数**客户端会自动计算 MIME (PUT) 
 
 ### 响应-服务端
 
 **浏览器**通常使用MIME类型（而不是文件扩展名）来确定如何处理URL  
-所以服务端必须设置正确的 MIME type
+所以服务端必须设置正确的 MIME type, 根据后缀名区去设置
 
