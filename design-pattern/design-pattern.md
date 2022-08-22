@@ -57,6 +57,37 @@ Last Knowledge 最少知识
 
 [design-patterns](https://refactoringguru.cn/design-patterns#intro-patterns)
 
+### UML 类图
+
+- Class
+    - `+` public
+    - `-` private
+    - `#` protect
+- Class Relationships
+    - Inheritance 
+        - 继承 extends
+        - SubClass **is a** SuperClass
+        - 实线 三角形
+    - Realization 
+        - 实现 implements 
+        - 虚线 三角形
+    - Association
+        - 关联
+        - 一对多/多对一/多对多
+    - Aggregation (Association subsets)
+        - 聚合 一部分
+        - SubClass **is a part of** SuperClass
+        - 生命周期不同 黑色空心方片
+    - Composition (Aggregation subsets)
+        - 组成/构成 一部分
+        - SubClass **is is a part of** SuperClass
+        - 生命周期相同 黑色实心方片
+    - Dependency (Association subsets)
+        - 依赖 use
+        - 在方法代码中使用另外一个类, 但是没有存那个类
+
+
+
 ### 创建型
 
 解耦对象的创建和使用, 使之分离 
@@ -101,7 +132,7 @@ Last Knowledge 最少知识
 - Memento (备忘录)
 - Interpreter (解释器)
 - Iterator (迭代器) ✅
-- Mediator (中介者)
+- Mediator (中介者) ✅
 - Observer (观察者) ✅
 - Visitor (访问者)
 
