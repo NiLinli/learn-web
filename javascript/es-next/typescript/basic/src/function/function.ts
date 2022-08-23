@@ -1,3 +1,9 @@
+// 可选参数 type
+function foo(name: string, age?: number): void {}
+
+foo('nixixi');
+
+
 // js 不支持常规意义上面的重载， 判断参数 arguments 执行不同的代码 成为js里面的重载
 
 let suits = ['hearts', 'spade', 'clubs', 'diamonds'];
@@ -29,3 +35,5 @@ console.log('card: ' + pickedCard1.card + ' of ' + pickedCard1.suit);
 
 let pickedCard2 = pickCard(15);
 console.log('card: ' + pickedCard2.card + ' of ' + pickedCard2.suit);
+
+export {};
