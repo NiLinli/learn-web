@@ -128,7 +128,7 @@ Last Knowledge 最少知识
 - Command (命令) ✅
 - Chain of Responsibility (职责链) ✅
     - Middleware (中间件) ✅
-- State (状态)
+- State (状态) ✅
 - Memento (备忘录) ✅
 - Interpreter (解释器)
 - Iterator (迭代器) ✅
