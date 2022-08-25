@@ -130,11 +130,11 @@ Last Knowledge 最少知识
     - Middleware (中间件) ✅
 - State (状态) ✅
 - Memento (备忘录) ✅
-- Interpreter (解释器)
 - Iterator (迭代器) ✅
 - Mediator (中介者) ✅
 - Observer (观察者) ✅
-- Visitor (访问者)
+- Visitor (访问者) ✅
+- Interpreter (解释器)
 
 ## 其他设计模式
 
