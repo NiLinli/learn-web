@@ -1,11 +1,11 @@
 export abstract class Component {
-  protected parent!: Component | null;
+  protected parent!: Component;
 
-  public setParent(parent: Component | null) {
+  public setParent(parent: Component) {
     this.parent = parent;
   }
 
-  public getParent(): Component | null {
+  public getParent(): Component {
     return this.parent;
   }
 

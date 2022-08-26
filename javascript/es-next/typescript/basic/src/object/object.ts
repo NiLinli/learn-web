@@ -12,6 +12,9 @@ foo(obj);
 foo(new Number(1));
 
 // not ok
+// primary type
 // foo(1);
+// foo(BigInt(123));
+// foo(Symbol(1));
 
 export {};

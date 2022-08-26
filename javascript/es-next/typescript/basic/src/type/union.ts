@@ -1,4 +1,22 @@
-// 联合类型
+// Union Type 联合类型
+
+// 定义
+let omg: string | number | boolean;
+omg = 1;
+omg = 'aa';
+omg = false;
+// omg = [];  // not ok
+
+
+function doSomething(x: string | null) {
+  if (x === null) {
+    // do nothing
+  } else {
+    console.log('Hello, ' + x.toUpperCase());
+  }
+}
+
+
 
 // 1. (把值赋给联合类型) 不确定参数到底是什么类型 但是可以确定范围
 function padLeft(value: string, padding: number | string) {
@@ -15,11 +33,7 @@ console.log(padLeft('Hello world', 4));
 // console.log(padLeft('Hello world', true));  // 指定为 any 编译通过 运行报错-> 所以应该缩小范围
 
 
-let heheda: string | number | boolean;
-heheda = 1;
-heheda = 'aa';
-heheda = false;
-// heheda = [];
+
 
 
 // 2. 确定一个 value 为联合类型， 进行调用
