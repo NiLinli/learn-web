@@ -1,44 +1,71 @@
 # cookies
 
-HTTP/Web Cookie
+HTTP/Web Cookie  
+使得 HTTP 无状态 添加 会话状态管理
 
-1. 服务器发送到**浏览器**
-2. 浏览器保存
-3. 浏览器下次发送请求会携带
+1. 服务器响应 Set-Cookie 发送到**浏览器**
+2. 浏览器保存到 Cookie
+3. 浏览器下次发送请求会携带 Cookie
 
-## Cookie 中的域
+## Cookie 作用域
 
-包括：域名 + 子域名(SameSite 属性的 Cookie 子域名不能访问)
-不包括： 协议 + 端口号
+Cookie 应该发送给哪些 URL 被称为 Cookie 作用域, Domain & Path 定义  
+没有规定与 协议(后面添加的 Secure 限制 https) & 端口号的关系  
 
-## 作用
+### Domain 域名 
 
-会话状态管理 HTTP 无状态
+域名 .omg.com  
+子域名 game.omg.com
 
-## 特点
+缺省是当前域名, 不包含子域名  
+设置就是设置的域名 + 子域名都可以发送 Cookie
 
-`; ` 分隔符
+第一方 Cookie: 当前域下面的 Cookie  
+第三方 Cookie: 网页第三方资源包含的 Cookie(第三方资源 SameSite 设置为 None)
 
-- Set-Cookie 可以返回多个, 也可以使用单个加分隔符区分
-- 定义 Cookie 属性需要添加到单个 Cookie 后面 `Set-Cookie: key=value; SameSite=Strict`
+第三方 Cookie 跟踪用户使用习惯
 
-## 属性
+- 同一浏览器
+- 访问多个站点发送 Cookie 
 
-- Domain Path 控制 Cookie 设置域, 默认为 origin 不包括子 path, 所以需要主动设置 Domain
-- Expires/Max-Age 过期时间(参照客户端)  类似于缓存 Cache-Control
-- SameSite 浏览器发送了跨域请求的情况下，设置该属性限制跨域请求不带该 Cookie => CRSF **不支持子域名**
-- HttpOnly 只有请求可以发送，前端不能获取 => XSS
-- 其他安全属性限制
+建立用户访问画像, 所以浏览器会阻止一些第三方跟踪 Cookie
 
-## 现状
+### Path 路径
 
-### 服务端
+能匹配上的都可以发送
 
-被淘汰，token 替代
+- / 所有都可以匹配
+- /doc doc 开头的路径可以匹配
 
-1. 多平台公用一套 API 接口，非浏览器客户端对 Cookie 操作各不相同
-2. 浏览器每次请求都会自动带 Cookie，带来额外的性能开销
 
-### 客户端
+## Expires/Max-Age
 
-Cookie 一般用于客户端自行存储数据
+参照客户端的过期时间, 类似于缓存 Cache-Control
+
+- session: 默认, 会话关闭就消失(有些浏览器有会话恢复功能, 可以恢复会话)
+- Expires: Wed, 21 Oct 2015 07:28:00 GMT;
+- Max-Age: 360000;
+
+## 限制访问 Cookie
+
+- Secure 只有是 https 请求才会被贴上去, 防止 http 遭受的中间人攻击
+- HttpOnly 只有请求可以发送，前端不能通过 `document.cookie` 获取, 防止 XSS 攻击
+- SameSite 被跨域请求时限制, 防止 CRSF 攻击
+  - None: 过去的默认值, 现在浏览器默认值迁移到 Lax, None 需要显示指定
+  - Strict: 相同站点(与浏览器URL相同)访问时发送 Cookie
+  - Lax: Strict 情况下, 放宽了几点
+    - a 标签点击时候, href 肯定与上面的当前 URL 显示不一致, 但是这种场景很普遍, 需要携带 cookie
+    - link 
+    - form(get)
+    - 其他 ajax/img/iframe/form(post) 和 Strict 保持一致
+
+## Set-Cookie
+
+- 每次只能返回一个
+- 返回多个需要设置多个头
+- 定义 Cookie 属性需要添加到 Cookie 后面 `Set-Cookie: key=value; SameSite=Strict`
+
+## Cookie
+
+所有 Cookie 通过 `; ` 拼接
+

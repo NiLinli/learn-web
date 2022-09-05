@@ -46,7 +46,6 @@ shutdown
 ## shell 热键
 
 - `[Tab]` 文件补全, 命令补全
-- `[Ctrl] + c` 中断目前程序
 - `[Ctrl] + d` 键盘输入 End Of File(EOF), 很多程序检测到输入 EOF 就会退出程序
 
 ## command 风格

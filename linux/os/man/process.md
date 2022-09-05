@@ -1,8 +1,11 @@
 # process manage
 
-### 背景工作
+## command
 
 ```bash
+# 运行
+command 
+
 # 放入后台运行
 command &
 
@@ -10,24 +13,20 @@ command &
 jobs
 
 # 背景当中的程序由 stopped 变成 Running
-bg %jobnumber
+bg %pid
 
 # 移到前台
-fg %jobnumber
-
-# 杀掉背景程序
-
+fg %pid
 ```
 
-ctrl + z 可以把程序放入背景工作中, 但是是 stopped 状态
+- ctrl + c 中断目前程序
+- ctrl + z 放入背景工作中(stopped 状态)
 
 ## ps
 
-process status
+process status 查看当前运行的程序
 
-查看当前运行的程序(背景执行)
-
-`ps aux`
+`ps -aux`
 
 - a 所有程序
 - u 所有用户
@@ -50,27 +49,26 @@ process status
 - TIME：该程序跑了多久的时间？
 - COMMAND：该程序的内容啦
 
-`top` 动态查询程序执行情况
-
-`free` 显示内存使用情况
-
-`kill -signal PID`
--9: 杀掉该程序  
--15: 停止该程序
-
+`top` 动态查询程序执行情况  
+`free` 显示内存使用情况  
 
 ## kill
 
-kill -signal %jobnumber
--1: reload
--2: ctrl + c
--9: 直接杀掉一个程序[强制]
--15: 停止一个程序
+`kill -signal pid`
 
-## 守护进程
+signal:
 
-daemons
+- 1 (HUP): 重新加载进程
+- 9（KILL）: 直接强制杀掉一个程序
+- 15（TERM）: 正常停止一个程序
+
+`kill -9 12345`  
+`kill -9 $(ps -ef | grep nginx)`
+
+## daemons
+
+守护进程
 
 `/etc/services` 记录网络服务和其端口映射表
-`<daemon name>   <port 与型态>   < 该服务的说明 >`
+`<daemon name> <port 与型态> <该服务的说明>`
 

@@ -37,27 +37,21 @@
 ./nginx -s reopen # reopening the log files
 ./nginx -s stop   # fast shutdown
 ./nginx -s quit   # graceful shutdown 等待 worker process 全部服务完成后结束, 必须是同一用户开启的才会被执行
-kill -s QUIT 1628 # graceful shutdown
+kill -15 1628 # graceful shutdown
 ```
 
-### 进程查看
-
-`netstat -tnlup | grep nginx`
-
-多进程
-
-- 1 个 master 进程
-- 多个 worker 进程
+## 进程查看
 
 ```bash
-ps -ax | grep nginx
-ps aux | grep nginx
 # 查看 nginx 进程
+ps -aux | grep nginx
+
 root     10400  0.0  0.1  24864  1408 ?        Ss   09:29   0:00 nginx: master process ./nginx
 nobody   10706  0.0  0.1  25288  1812 ?        S    11:02   0:00 nginx: worker process
 
-netstat -tnlup | grep nginx
 # 查看网络端口占用情况
+netstat -tnlup | grep nginx
+
 tcp  0  0 0.0.0.0:80  0.0.0.0:*  LISTEN  10400/nginx: master
 ```
 
@@ -70,16 +64,28 @@ tcp  0  0 0.0.0.0:80  0.0.0.0:*  LISTEN  10400/nginx: master
 
 `config/nginx.conf` 配置文件, 配置项称为**指令**
 
-simple directives 
-block directives. {}
+directive
 
- main context.
- block context
+- simple directives.  分割通过 space & 结束 semicolon
+- block directives. {}
 
- `#`为注释 
+context
 
-分割通过 space
-结束 semicolon
+- main context
+- block context
+
+measurement units
+
+- ms milliseconds
+- s	seconds
+- m	minutes
+- h	hours
+- d	days
+- w	weeks
+- M	months, 30 days
+- y	years, 365 days
+
+
 
 
 

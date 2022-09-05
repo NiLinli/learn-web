@@ -1,33 +1,49 @@
 # server
 
+virtual server 虚拟主机
+
 http block -> server block
 
-## 虚拟主机 virtual server
+## 请求匹配规则
 
-通过端口号和域名定位虚拟主机
+1. 通过 port 匹配, *:80
+2. 通过 server_name 匹配, www.omg.com:80
 
-- listen port
-- server_name
+如果2为匹配成功, 会选用一个第一个 server 去处理 request
+server_name 支持
+
+- wildcard form
+- regular expression
+- 多个 server_name
+
+## 建站方案
+
+变量: server_name + port
+
+有负载均衡服务器后 server_name 都指向负载均衡服务器  
+虚拟主机无法获取 server_name  
+一般通过不同 **port** 区分应用比较通用
 
 ### 单一虚拟主机
 
-**所有应用都在一个域下面**
-
-一个 vs, 占用一个端口号, 通过 location 区分静态网站
+**所有应用都在一个域下面**, 通过 location 区分静态网站
 
 ### 多虚拟主机
 
-1. 相同 port
-2. 通过 server_name 区分应用
-
-有负载均衡服务器后 server_name 都指向负载均衡服务器, 虚拟主机无法获取 server_name, 通过不同 port 区分应用
-
-
+不同 port 区分主机
 
 ## 缓存
 
+## request
 
-# location
+`$request` "GET /assets/useResponseDesign.d362ee46.js HTTP/1.1"  
+`$request_body`  
+`$http_name` name 是请求头的小写&_连接
+  - `$http_content_type` 表示 content-type
+
+## location
+
+server block -> location
 
 1. test location
 2. using configuration "/admin"
@@ -35,7 +51,7 @@ http block -> server block
 4. open index
 5. ...
 
-## 匹配
+### 匹配
 
 - 完全匹配 `=`
 - 正则匹配
@@ -51,7 +67,7 @@ http block -> server block
 
 一次匹配一个就结束了
 
-## root & alias
+### root & alias
 
 root http->serve->location
 alias location
@@ -72,9 +88,9 @@ location  /i/ {
 # /i/top.gif => /spool/w3/images/i/top.gif
 ```
 
-## redirect
+### redirect
 
-### internal redirect
+#### internal redirect
 
 `$request_uri` 改变后, 不通知浏览器, 内部重新使用新的 `$request_uri` 去响应
 
@@ -82,11 +98,11 @@ location  /i/ {
 - index
 - rewrite
 
-### http redirect
+#### http redirect
 
 301 302 浏览器重新发送请求
 
-## index
+### index
 
 ```text
 index index.html
@@ -94,7 +110,7 @@ index index.html
 
 默认索引文件, index 会导致内部重定向
 
-## try_files
+### try_files
 
 try_files file ... uri;  
 try_files file ... =code;
@@ -145,7 +161,7 @@ try_files $uri $uri/ /admin/index.html;
 2021/11/25 08:03:13 [debug] 31#31: *24 internal redirect: "/admin/index.html?"
 ```
 
-## rewrite
+### rewrite
 
 server & location & if
 
