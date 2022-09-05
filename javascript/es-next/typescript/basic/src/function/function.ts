@@ -3,37 +3,27 @@ function foo(name: string, age?: number): void {}
 
 foo('nixixi');
 
+// 定义 function
+// type 定义
+type Fn = (a: string) => void;
 
-// js 不支持常规意义上面的重载， 判断参数 arguments 执行不同的代码 成为js里面的重载
-
-let suits = ['hearts', 'spade', 'clubs', 'diamonds'];
-
-// 定义
-function pickCard(x: { suit: string; card: number; }[]): number;
-function pickCard(x: number): { suit: string; card: number; };
-
-function pickCard(x: any): any {
-    // Check to see if we're working with an object/array
-    // if so, they gave us the deck and we'll pick the card
-    if (typeof x == 'object') {
-        let pickedCard = Math.floor(Math.random() * x.length);
-        return pickedCard;
-    }
-    // Otherwise just let them pick the card
-    else if (typeof x == 'number') {
-        let pickedSuit = Math.floor(x / 13);
-        return {
-            suit: suits[pickedSuit],
-            card: x % 13
-        };
-    }
+// Object 定义, 函数也是一个 Object
+interface Fn2 {
+  (a: string): void; // 代表为该对象作为函数的定义
 }
 
-let myDeck = [{ suit: 'diamonds', card: 2 }, { suit: 'spades', card: 10 }, { suit: 'hearts', card: 4 }];
-let pickedCard1 = myDeck[pickCard(myDeck)];
-console.log('card: ' + pickedCard1.card + ' of ' + pickedCard1.suit);
+type Fn22 = {
+  (a: string): void;
+};
 
-let pickedCard2 = pickCard(15);
-console.log('card: ' + pickedCard2.card + ' of ' + pickedCard2.suit);
+type DescribableFn = {
+  (a: string): void;
+  description: string; //  函数属性
+};
+
+type CallOrConstruct = {
+  (n?: number): number;
+  new (s: string): Date;    // 定义作为 Constructor 函数
+};
 
 export {};
