@@ -90,6 +90,10 @@ location  /i/ {
 
 ### redirect
 
+#### http redirect
+
+301 302 浏览器重新发送请求
+
 #### internal redirect
 
 `$request_uri` 改变后, 不通知浏览器, 内部重新使用新的 `$request_uri` 去响应
@@ -98,9 +102,8 @@ location  /i/ {
 - index
 - rewrite
 
-#### http redirect
-
-301 302 浏览器重新发送请求
+内部重定向会匹配再次匹配 location    
+之前 location block 的指令有可能会失效
 
 ### index
 

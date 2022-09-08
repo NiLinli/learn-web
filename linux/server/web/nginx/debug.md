@@ -13,4 +13,11 @@ return
 
 ## 日志文件
 
+日志类型
+
+access_log
+error_log
+
+日志格式
+
 ## debug 级别日志
