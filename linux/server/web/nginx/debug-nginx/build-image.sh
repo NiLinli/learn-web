@@ -1,0 +1,1 @@
+docker build ./ -t debug-nginx-demo:1.0.0
