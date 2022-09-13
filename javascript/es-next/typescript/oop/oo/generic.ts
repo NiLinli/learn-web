@@ -1,4 +1,5 @@
 // 泛形类
+// 多个变量之间的联系
 class GenericNumber<T> {
   zeroValue: T;
   add: (x: T, y: T) => T;
@@ -9,6 +10,9 @@ class GenericNumber<T> {
   }
 }
 
-let myGenericNumber = new GenericNumber<string>('', (x, y) => {
+// 100 推导出 T 为 number
+new GenericNumber(100, (x, y) => {
   return x + y;
 });
+
+export {};
