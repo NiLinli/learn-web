@@ -1,4 +1,5 @@
-// Union Type 联合类型
+// Union Type 联合类型 或
+// a | b = true: a 或者 b 类型
 
 // 定义
 let omg: string | number | boolean;

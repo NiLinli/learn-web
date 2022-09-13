@@ -1,18 +1,35 @@
-// 函数
-interface searchFn1 {
-  (source: string, subString: string): boolean
+// 继承 extends
+interface BasicAddress {
+  name?: string;
+  street: string;
+  city: string;
+  country: string;
+  postalCode: string;
 }
 
-let mySearch: searchFn1 = function (source, subString) {
-  let result = source.search(subString);
-  return result > -1;
+interface AddressWithUnit extends BasicAddress {
+  unit: string;
 }
 
-// 可以合并声明
-interface User0 {
-  name: string
+// 相交 intersection
+interface Colorful {
+  color: string;
+}
+interface Circle {
+  radius: number;
 }
 
-interface User0 {
-  age: number
+type ColorfulCircle = Colorful & Circle;
+
+// 声明合并
+interface User {
+  name: string;
 }
+
+interface User {
+  age: number;
+}
+
+const user: User = { name: '', age: 0 };
+
+export {};

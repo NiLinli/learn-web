@@ -1,5 +1,6 @@
 // 可选参数 type
-function foo(name: string, age?: number): void {}
+function foo(name: string, age?: number): void {
+}
 
 foo('nixixi');
 

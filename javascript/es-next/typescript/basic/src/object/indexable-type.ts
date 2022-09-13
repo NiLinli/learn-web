@@ -1,6 +1,4 @@
-// 描述
-// 带有任意数量其它属性, 例如 字典数据结构 或者是 懒得描述所有结构
-// 数组索引
+// 知道值的类型, 但是属性名不确定
 
 // 数组
 interface StringArray {
@@ -24,31 +22,29 @@ interface Apple extends Fruit {
   breed: string;
 }
 
-interface Okay {
-  // 数字索引和其他索引的返回值 必须是字符串索引返回值类型的子类型
-  [x: number]: Apple; // 数字
-  [x: string]: Fruit; // 字符串
-  ok: Fruit;
-}
-
-let okay: Okay = {
-  ok: {
-    name: '',
-  },
-  // 匹配到 [x: string]: Fruit 上面去了 ???
-  // 123: {
-  //     name: '',
-  //     breed: ''
-  // }
-};
-
 interface NotOkay {
-  name: string;
-  age: number;
-  [propName: string]: string | number;
+  // 不要写两个 index signature
+  [x: string]: Fruit;
+  // ok: Apple;
+  ok: Fruit; // 必须能够兼容 index 属性
 }
 
 let notOkay: NotOkay = {
+  ok: {
+    name: '',
+  },
+  '123': {
+    name: '',
+  },
+};
+
+interface Okay {
+  [propName: string]: string | number;
+  name: string;
+  age: number;
+}
+
+let okay: Okay = {
   name: '',
   age: 18,
   otherProp1: 123,
