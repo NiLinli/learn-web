@@ -63,3 +63,40 @@ file include exclude 组合选中的文件集合
 
 typescript-eslint 推荐 import 代替三斜线
 import 会导致一些全局声明失效, 需要 declare global
+
+## 声明合并
+
+编译器会将多个名字相同的声明会合并成一个声明
+合并后的声明会拥有所有声明的特性
+
+TypeScript中的声明会创建以下三种实体之一
+
+- 命名空间 Namespace-creating declarations create a namespace, which contains names that are accessed using a dotted notation.
+- 类型 Type-creating declarations do just that: they create a type that is visible with the declared shape and bound to the given name.
+- 值 value-creating declarations create values that are visible in the output JavaScript.
+
+## 模块
+
+比如变量，函数，类，类型别名或接口
+
+别名
+
+- `export { A as B }`
+- `import { B as A }`
+
+全部
+
+- `export * from 'module'` 导入 + 导出(重新导出)/导出转发
+- `import * as All from 'module'` 导入
+
+默认导出
+
+- `export default`
+- `import A from 'module'`
+
+支持 commonjs 的 exports 对象
+
+- `export = A`  这里和 exports = A 有区别, cjs 代码不能改变 exports 指针的指向
+- `import A from 'A'`
+
+
