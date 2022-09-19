@@ -1,7 +1,7 @@
 # docker
 
 - [docker doc](https://docs.docker.com/)
-- [dockerhub](https://hub.docker.com/) image 制作分享
+- [dockerhub](https://hub.docker.com/)
 
 ## docker 安装
 
@@ -16,16 +16,13 @@ $ sudo yum remove docker \
                   docker-latest-logrotate \
                   docker-logrotate \
                   docker-engine
-
-
 ```
 
 添加 docker 安装源
 
 ```bash
 $ sudo yum-config-manager \
-    --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
+    --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 ```
 
 安装 docker
@@ -41,28 +38,8 @@ $  sudo yum list docker-ce --showduplicates | sort -r
 
 ## docker 启动
 
-将用户加入 Docker 用户组
-
-`sudo usermod -aG docker $USER`
-
-启动 docker
-
-```bash
-$ sudo systemctl start docker
-```
-
-启动 docker 镜像
-
-```bash
-# 列出镜像列表
-docker image ls
-
-# 删除镜像
-docker image rm [imageName]
-
-# 运行一个 image
-docker run hello-world
-```
+1. 将用户加入 Docker 用户组 `sudo usermod -aG docker $USER`
+2. 启动 docker `sudo systemctl start docker`
 
 ## docker 技术支撑
 
@@ -102,7 +79,23 @@ docker build \
   .                               # . 表示 Dockerfile 文件所在的路径
 ```
 
+
+启动 docker 镜像
+
+```bash
+# 列出镜像列表
+docker image ls
+
+# 删除镜像
+docker image rm [imageName]
+
+# 运行一个 image
+docker run hello-world
+```
+
 ### 容器 Container
+
+PID 1 不能被 kill
 
 容器是镜像的运行实体 = 镜像 + 运行时需要的可写文件层  
 容器运行着真正的应用进程。容器有初建、运行、停止、暂停和删除五种状态。
@@ -125,13 +118,6 @@ docker rm [containerID]
 docker stop [containerID]
 ```
 
-### 仓库
 
-Docker 的镜像仓库类似于代码仓库，用来存储和分发 Docker 镜像  
-相对于 npm 之于 js
 
-## Dockerfile 文件
 
-1. Dockerfile -> 制作成字节的 image(二进制文件, 应用程序 + 依赖)
-2. image -> container
-3. 运行 container

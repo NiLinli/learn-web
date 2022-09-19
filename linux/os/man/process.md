@@ -1,26 +1,14 @@
 # process manage
 
-## command
+## run
 
 ```bash
-# 运行
+# 运行 bin 命令
 command 
 
-# 放入后台运行, 生命周期与终端相同
-command &
-
-# 查看背景工作
-jobs
-
-# 背景当中的程序由 stopped 变成 Running
-bg %pid
-
-# 移到前台
-fg %pid
+# 运行二进制文件
+./binary-file
 ```
-
-- ctrl + c 中断目前程序
-- ctrl + z 放入背景工作中(stopped 状态)
 
 ## ps
 
@@ -65,10 +53,47 @@ signal:
 `kill -9 12345`  
 `kill -9 $(ps -ef | grep nginx)`
 
-## daemons
+## 后台任务
 
-守护进程
+- `command &` 放入后台运行
+- `jobs` 查看背景工作
+- `bg %jobnumber` 背景当中的程序由 stopped 变成 Running
+- `fg %jobnumber` 移到前台
+
+后台任务作用是可以继续与 tty 交互, 生命周期与终端相同, 所有后台任务并不能**守护进程**
+输出也会输出到终端里面  
+
+1. 用户准备退出 tty session
+2. 系统向该 session 发出 SIGHUP 信号
+3. session 将 SIGHUP 信号发给所有子进程
+4. 子进程收到 SIGHUP 信号后，自动退出
+
+### nohup
+
+`nohup command &`  
+子进程和 tty session 分离, 不接受 SIGHUP 信号  
+
+## daemon
+
+守护进程 ['di:mən] 源自恶魔 demon, 守护神
+
+### init.d
+
+```bash
+/etc/init.d/nginx start  
+service nginx start
+```
+
+### systemd
+
+
+### ineted
+
+Internet 守护程序
 
 `/etc/services` 记录网络服务和其端口映射表
 `<daemon name> <port 与型态> <该服务的说明>`
 
+### 其他
+
+- node - pm2

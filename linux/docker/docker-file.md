@@ -1,5 +1,11 @@
 # dockerfile
 
+## Dockerfile 文件
+
+1. Dockerfile -> 制作成字节的 image(二进制文件, 应用程序 + 依赖)
+2. image -> container
+3. 运行 container
+
 ## CMD & ENTRYPOINT
 
 CMD:  
