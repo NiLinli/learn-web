@@ -1,7 +1,7 @@
 # docker
 
 - [docker doc](https://docs.docker.com/)
-- [dockerhub](https://hub.docker.com/)
+- [docker hub](https://hub.docker.com/)
 
 ## docker 安装
 
@@ -41,6 +41,66 @@ $  sudo yum list docker-ce --showduplicates | sort -r
 1. 将用户加入 Docker 用户组 `sudo usermod -aG docker $USER`
 2. 启动 docker `sudo systemctl start docker`
 
+## 核心概念
+
+### 镜像 Image
+
+只读的文件和文件夹组合, 镜像是 Docker 容器启动的先决条件
+
+1. 自己制作的镜像
+2. docker hub 制作的镜像
+
+#### 镜像源
+
+修改 docker 镜像: `~/.docker/daemon.json` 文件中
+
+```json
+"registry-mirrors":["https://registry.docker-cn.com"]
+```
+
+#### build
+
+```bash
+# docker build [OPTIONS] PATH | URL | -
+docker build \
+  --no-cache=true \
+  --build-arg FTP_PROXY=http://40.50.60.5:4567  # Dockerfile 中 ARG ENV
+  -t node-demo[:tagName] \   # tag 指定 image 的名字, tagName 默认为 latest
+  .      # PATH | URL | -
+
+# 列出镜像列表
+docker image ls
+
+# 删除镜像
+docker image rm [imageName]
+```
+
+### 容器 Container
+
+容器是镜像的运行实体 = 镜像 + 运行时需要的可写文件层  
+
+OCI 容器标准  
+容器运行着真正的应用进程  
+容器有初建、运行、停止、暂停和删除五种状态  
+容器与主机隔离, 容器无法看到主机进程, 环境变量, 网络等信息  
+
+```bash
+# docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+docker run \     
+  -d  \               # detach Run container in background and print container ID           
+  -p 8000:3000 \      # 本机的 8000 端口映射到容器的 3000 端口
+  --name [containerName] \  # 自定义容器名字
+  IMAGE  \                  # image 文件的名字
+  /bin/bash                 # 容器启动以后，内部第一个执行的命令
+
+docker rm [containerID]
+docker stop [containerID]
+```
+
+#### 特点
+
+PID 1 不能被 kill
+
 ## docker 技术支撑
 
 - Namespace (Linux 内核功能)
@@ -55,69 +115,3 @@ $  sudo yum list docker-ce --showduplicates | sort -r
 - UnionFS 联合文件系统
   - 写时复制
   - 镜像的分层构建和存储
-
-## 核心概念
-
-### 镜像 Image
-
-只读的文件和文件夹组合, 镜像是 Docker 容器启动的先决条件
-
-1. 自己制作的镜像
-2. dockerhub 制作的镜像
-
-修改 docker 镜像: `~/.docker/daemon.json` 文件中
-
-```json
-"registry-mirrors":["https://registry.docker-cn.com"]
-```
-
-```bash
-docker build \
-  --rm  \
-  --no-cache=true \               # 
-  -t jianghu-server[:tagName] \   # 指定 image 的名字 tagName 默认为 latest
-  .                               # . 表示 Dockerfile 文件所在的路径
-```
-
-
-启动 docker 镜像
-
-```bash
-# 列出镜像列表
-docker image ls
-
-# 删除镜像
-docker image rm [imageName]
-
-# 运行一个 image
-docker run hello-world
-```
-
-### 容器 Container
-
-PID 1 不能被 kill
-
-容器是镜像的运行实体 = 镜像 + 运行时需要的可写文件层  
-容器运行着真正的应用进程。容器有初建、运行、停止、暂停和删除五种状态。
-
-容器与主机隔离, 容器无法看到主机进程, 环境变量, 网络等信息
-
-OCI 容器标准
-
-```bash
-docker run \              #
-  -p 8000:3000 \          # 容器的 3000 端口映射到本机的 8000 端口
-  -it  \                  # 容器的 Shell 映射到当前的 Shell，然后你在本机窗口输入的命令，就会传入容器
-  --rm  \                 # 容器停止运行后, 自动删除容器文件
-  --name  \               # 自定义容器名字
-  [containerID] \         # image 文件的名字
-  /bin/bash               # 容器启动以后，内部第一个执行的命令。这里是启动 Bash，保证用户可以使用 Shell
-
-
-docker rm [containerID]
-docker stop [containerID]
-```
-
-
-
-
