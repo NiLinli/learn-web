@@ -4,8 +4,6 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start-dec": "客户端模式/V8 模式",
-    "start": "node inspect app.js",
     "start-v8": "node --inspect=9223 app.js",
     "start-v8-brk": "node --inspect-brk=9223 app.js"
   },

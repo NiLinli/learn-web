@@ -1,5 +1,16 @@
 # debug
 
+debugger 客户端通过 DAP 与 debugger 服务端进行通信  
+debugger 服务端与 vm/machine 进行通信
+
+- debugger 客户端
+- [DAP](https://microsoft.github.io/debug-adapter-protocol/) 协议适配标准
+- debug protocol
+- debugger 服务端
+- vm/machine
+
+## debugger 客户端
+
 调试工具
 
 - VS Code's built-in debugger
@@ -7,9 +18,7 @@
   - 安装插件调试其他 Chrome/C/C++/Java etc...
 - chrome 等浏览器 source 面板
 
-## 调试器
-
-面板
+### 面板
 
 - variables/scope: 当前函数调用 scope 中变量显示
 - watch: 观察当前 scope 中的变量
@@ -17,39 +26,54 @@
 - breakpoints: 打断点情况
 - ...其他平台相关属性
 
-action
+### action
 
 - Resume/Paused script execution
 - step/step into next function call 一步一步执行, 看到函数就进入
 - step over function call 不进入函数的内部执行, 直接执行完成返回结果
 - step out of current function 跳出函数内部执行, 直接返回结果
 
-vscode/chrome 还有很多其他的玩法
+## 请求方式
 
-## Node
+
+### Attach
+
+attach 到调试器服务, 关注点在于**连接**到远端调试服务
+
+- address 
+- port
+### Launch
+
+启动程序并 attach 到调试器服务, 关注点在于**启动程序**, attach 是内部自动链接的
+
+命令
+
+- runtimeExecutable 执行命令
+- runtimeArgs 执行参数
+
+可执行文件
+
+- program
+
+## debugger 服务端
+
+通过 type 区分
+
+### Node
+
+
+文件映射
+
+- localRoot: VS Code project 
+- remoteRoot: 可执行的文件位置
+
+如果 Node 通过框架执行, 
+remoteRoot 
+- remoteRoot
 
 Node.js 进程通过监听 socket, 接受调试信息
 调试客户端通过协议连接 socket, 发送操作信息
 
-### 内置调试器
-
-bash 命令行输入命令进行调试 **古老的方式**
-
-```bash
-debug>
-```
-
-- cont, c: 继续执行。
-- next, n: 单步执行下一行。
-- step, s: 单步进入。
-- out, o: 单步退出。
-- pause: 暂停运行中的代码（类似于开发者工具中的暂停按钮）
-
-etc
-
-breakpoint 通过在代码中添加 `debugger;` 语句
-
-### V8 调试器
 
 将 chrome 开发工具 attach 到 Node 实例上面进行调试, 可以多个 debugger 同时 attach 到一个 Node 实例上面调试
 
@@ -58,7 +82,16 @@ node --inspect=9223 app.js # 运行和 attach 并行
 node --inspect-brk=9223 app.js # 第一行代码打断点
 ```
 
-## Browser
+### Browser
+
+launch + program
+Launch 程序启动的时候, debugger 就连接上去了
+调试主流程代码而不是回调函数中的代码
+
+### Java
+
+
+### C/C++
 
 ## Vscode
 
@@ -69,34 +102,13 @@ request
 
 都是将 debugger attach 到 Node/Browser 实例上面, 只是 launch 添加了一个启动
 
-## 相关资料
-
-- [Node 调试指南](https://nodejs.org/zh-cn/docs/guides/debugging-getting-started/)
 
 
-# debug
 
-默认支持 Node + Js(其他能编译成 js 的语言)
 
-其他语言需要安装额外的扩展
 
-## type
 
-调试的 语言/执行环境类型 node/cppdbg 等
 
-## request 
-
-调试的模式
-
-Launch 程序启动的时候, debugger 就连接上去了
-调试主流程代码而不是回调函数中的代码
-
-launch + program
-
-Attach 程序已经运行, debugger 再连接上去
-调试回调函数中监听的代码可以使用 attach 
-
-attach + port/program
 
 ## program & args
 
