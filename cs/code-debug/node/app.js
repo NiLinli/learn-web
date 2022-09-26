@@ -8,11 +8,8 @@ function sayHello() {
   return 789;
 }
 
-
-
 http
   .createServer((req, res) => {
-
     sayHello();
     console.log('call function 1');
     sayHello();

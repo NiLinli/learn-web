@@ -1,13 +1,14 @@
 # debug
 
 debugger 客户端通过 DAP 与 debugger 服务端进行通信  
-debugger 服务端与 vm/machine 进行通信
+debugger 服务端与 vm/machine code 进行通信  
+最终 debugger 客户端与  vm/machine code 通信
 
 - debugger 客户端
 - [DAP](https://microsoft.github.io/debug-adapter-protocol/) 协议适配标准
 - debug protocol
 - debugger 服务端
-- vm/machine
+- vm/machine code(source map 等与源码映射)
 
 ## debugger 客户端
 
@@ -35,18 +36,22 @@ debugger 服务端与 vm/machine 进行通信
 
 ## 请求方式
 
+本质都是 attach 到 debugger 服务端
 
 ### Attach
 
-attach 到调试器服务, 关注点在于**连接**到远端调试服务
+attach 到调试器服务, 关注点在于**连接**到远端调试服务  
+场景: 本地调试 + 远程调试
 
 - address 
 - port
+
 ### Launch
 
-启动程序并 attach 到调试器服务, 关注点在于**启动程序**, attach 是内部自动链接的
+启动程序并 attach 到调试器服务, 关注点在于**启动程序**, attach 是内部自动链接的  
+场景: 本地调试
 
-命令
+可执行命令
 
 - runtimeExecutable 执行命令
 - runtimeArgs 执行参数
@@ -55,32 +60,46 @@ attach 到调试器服务, 关注点在于**连接**到远端调试服务
 
 - program
 
+stopOnEntry: launch 时候时候给第一行代码打断点
+
 ## debugger 服务端
 
-通过 type 区分
+通过 type 字段区分
 
 ### Node
 
+#### Node inspect
 
-文件映射
+Node inspect 模块启动 ws 服务, 连接 ws 服务进行调试  
+Node.js 进程通过监听 socket, 接受调试信息  
+调试客户端通过协议连接 socket, 发送操作信息  
+
+```sh
+node --inspect=9223 app.js      # 运行和 attach 并行
+node --inspect-brk=9223 app.js  # 第一行代码打断点
+```
+
+#### 文件映射
 
 - localRoot: VS Code project 
-- remoteRoot: 可执行的文件位置
+- remoteRoot: 执行命令的位置 `process.cwd()` (Auto Attach)
 
-如果 Node 通过框架执行, 
-remoteRoot 
-- remoteRoot
+remoteRoot 存在代码编译情况, ~~需要知道编译后的位置根目录~~, 不需要  
+要知道 shell 执行的文件夹 `process.cwd()`,  一般也是 `${workspaceFolder}`  
+比如 `node dist/main.js` 而不是 `cd dist && node main.js`
 
-Node.js 进程通过监听 socket, 接受调试信息
-调试客户端通过协议连接 socket, 发送操作信息
+#### sourcemap
+
+sourceMaps: true  默认为 true, 默认寻找使用 source map  
+sourcemap 寻找  
+
+outFiles 在这个配置中的文件会被寻找  
+resolveSourceMapLocations 追加 outFiles 以外的路径
 
 
-将 chrome 开发工具 attach 到 Node 实例上面进行调试, 可以多个 debugger 同时 attach 到一个 Node 实例上面调试
 
-```bash
-node --inspect=9223 app.js # 运行和 attach 并行
-node --inspect-brk=9223 app.js # 第一行代码打断点
-```
+
+
 
 ### Browser
 
@@ -90,17 +109,8 @@ Launch 程序启动的时候, debugger 就连接上去了
 
 ### Java
 
-
 ### C/C++
 
-## Vscode
-
-request
-
-- launch: start your app + VS Code's debugger attaches to app
-- attach: VS Code's debugger attaches to already running app
-
-都是将 debugger attach 到 Node/Browser 实例上面, 只是 launch 添加了一个启动
 
 
 
@@ -122,6 +132,3 @@ launching the debugger 时候去执行的程序以及参数
 
 attaching to a running process时候坚挺的port
 
-## stopOnEntry
-
-launch 时候时候给第一行代码打断点
