@@ -7,14 +7,12 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Launch Chrome With File",
-      "file": "${workspaceFolder}/index.html"
-    },
-    {
-      "type": "chrome",
-      "request": "launch",
-      "name": "Launch Chrome With Url",
-      "url": "http://localhost:8083"
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:8080",
+      "webRoot": "${workspaceFolder}",
+      "sourceMapPathOverrides": {
+        "webpack:///src/*": "${webRoot}/src/*"
+      }
     }
   ]
 }

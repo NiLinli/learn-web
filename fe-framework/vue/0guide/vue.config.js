@@ -47,6 +47,7 @@ module.exports = {
         'process.env.INDEX_ROUTES': JSON.stringify(resolveIndexRoutes()),
       }),
     ],
+    devtool: process.env.NODE_ENV === 'production' ? 'none' : 'source-map',
   },
   pages: resolvePages(),
 };
