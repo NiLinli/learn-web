@@ -1,3 +1,5 @@
+package data_type.int_;
+
 public class IntRange {
   public static void main(String[] args) {
 

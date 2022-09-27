@@ -1,4 +1,4 @@
-package thread01;
+package thread.thread01;
 
 public class MyRunnable implements Runnable {
 
