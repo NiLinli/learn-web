@@ -5,10 +5,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "java",
-      "name": "Launch Current File",
+      "name": "(lldb) 启动",
+      "type": "cppdbg",
       "request": "launch",
-      "mainClass": "${file}"
-    },
+      "program": "${fileWorkspaceFolder}/a.out",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb"
+    }
+
   ]
 }

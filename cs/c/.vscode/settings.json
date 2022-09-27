@@ -1,9 +1,0 @@
-{
-  "files.associations": {
-    "limits": "c",
-    "type_traits": "c",
-    "stdint.h": "c",
-    "prt-string.h": "c",
-    "stdio.h": "c"
-  }
-}
