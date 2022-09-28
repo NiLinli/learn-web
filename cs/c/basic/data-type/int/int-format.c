@@ -22,6 +22,9 @@ int main(int argc, char const *argv[]) {
   int b1 = 012;
   int b2 = 0x12;
 
+// Ox55 - 十六进制 %x
+// 055 - 八进制 %o
+
   printf("b1 = 0%o\n", b1);
   printf("b2 = Ox%x\n", b2);
 

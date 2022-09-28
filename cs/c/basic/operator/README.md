@@ -1,9 +1,6 @@
 ## 操作符 operator & 表达式 expression
 
-- operator: manipulate data values (处理数据值)
-- expression: expression produces a value (产生一个值)
-  - operator 产生的表达式
-  - 函数表达式
+
 
 N 元运算符 运算符一共有 N 个操作数
 
