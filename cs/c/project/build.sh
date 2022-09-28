@@ -1,1 +1,1 @@
-gcc *.c -o a.out 
+gcc src/*.c -o bin/a.out 

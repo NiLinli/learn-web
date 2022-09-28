@@ -136,5 +136,11 @@ sourcemap 寻找
 
 ### Java
 
+jdb
+
 ### C/C++
 
+c 语言只能有一个 main 函数, 所以单个 c 文件和多个 c 文件构建方式和调试不同
+
+1. build: task gcc build
+2. lldb 调试: launch preLaunchTask build

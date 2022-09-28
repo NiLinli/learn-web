@@ -2,10 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug c",
+      "name": "Debug Multi c",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${fileDirname}/${fileBasenameNoExtension}",
+      "program": "${workspaceRoot}/bin/a.out",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
