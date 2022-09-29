@@ -1,6 +1,8 @@
 # shell script
 
 `.sh` 文件约定俗成称为 shell script 执行文件
+shell 执行时候中的文件路径都是以 cwd 作为基准, 和 sh 文件所在的文件夹没有关系  
+命令都应该在工作区中执行  
 
 执行方式
 

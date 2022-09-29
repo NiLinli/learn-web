@@ -40,31 +40,26 @@ debugger 服务端与 vm/machine code 进行通信
 
 ### Attach
 
-attach 到调试器服务, 关注点在于**连接**到远端调试服务  
+attach 到调试器服务, 关注点在于**连接**到 debugger 服务端  
 场景: 本地调试 + 远程调试
 
 - address
-- port
+- port/processId
 
 ### Launch
 
-启动程序并 attach 到调试器服务, 关注点在于**启动程序**, attach 是内部自动链接的  
-场景: 本地调试
+编译 & 启动程序 & attach 到调试器服务, 关注点在于**启动程序**, attach 是内部自动链接的  
+场景: 本地调试  
 
-可执行命令
+需要指定启动的程序入口, 不同语言方式不同
 
-- runtimeExecutable 执行命令
-- runtimeArgs 执行参数
-
-可执行文件
-
-- program
-
-stopOnEntry: launch 时候时候给第一行代码打断点
+- node: index.js or npm script
+- java: mainClass
+- c: main function 
 
 ## debugger 服务端
 
-通过 type 字段区分
+监听**进程**或者**端口**进行信息沟通
 
 ### Node
 
@@ -97,6 +92,8 @@ sourcemap 寻找
 - resolveSourceMapLocations 追加 outFiles 以外的路径
 
 ### Browser
+
+launch
 
 #### v8-inspector protocol
 
@@ -136,10 +133,13 @@ sourcemap 寻找
 
 ### Java
 
-jdb
+#### JDWP
+
+Java Debug Wire Protocol Transport Interface
 
 ### C/C++
 
+launch  
 c 语言只能有一个 main 函数, 所以单个 c 文件和多个 c 文件构建方式和调试不同
 
 1. build: task gcc build
