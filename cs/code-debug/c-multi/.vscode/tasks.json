@@ -19,7 +19,23 @@
       ],
       "group": "build",
       "detail": "调试器生成的任务。"
-    }
+    },
+    {
+      "label": "run",
+      "type": "shell",
+      "dependsOn": "build",
+      "command": "${workspaceRoot}/bin/a.out",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+      }
+    },
   ],
   "version": "2.0.0"
 }
