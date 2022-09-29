@@ -4,6 +4,10 @@
 2. .vscode/setting.json 项目级别
 3. 插件其他配置
 
+## tasks
+
+执行一些脚本, extensions 也是一些 tasks 的包装
+
 ## extensions
 
 可以既 通过 npm 运行，又在 extension 运行的, 是在浏览器间隔执行该 npm 包并将输出反馈到编辑器上面
