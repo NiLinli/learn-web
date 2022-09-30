@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=lib/JDBCTutorial.jar -DgroupId=com.jt -DartifactId=JDBCTutorial -Dversion=1.0.0 -Dpackaging=jar

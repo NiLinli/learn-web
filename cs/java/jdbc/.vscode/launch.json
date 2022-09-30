@@ -6,9 +6,10 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Launch Current File Main Function",
+      "name": "Launch App",
       "request": "launch",
-      "mainClass": "${file}"
-    },
+      "mainClass": "com.example.App",
+      "projectName": "demo"
+    }
   ]
 }

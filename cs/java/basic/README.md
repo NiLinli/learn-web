@@ -37,7 +37,8 @@ javac \
 ### 执行
 
 执行 java: 寻找主类执行, 不是加载文件, 不要带 class 后缀  
-run(JIT)
+run(JIT)  
+CLASSPATH: 寻找 user classes.
 
 ```sh
 java \
