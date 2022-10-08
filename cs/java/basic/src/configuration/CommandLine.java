@@ -8,3 +8,6 @@ public class CommandLine {
     }
   }
 }
+
+// arg 传递方式
+// java configuration.CommandLine arg1 arg2 arg3 ...

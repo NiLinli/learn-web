@@ -1,4 +1,3 @@
-import graphics.*;
 import java.io.Console;
 
 // 一个.java 文件称为一个编译单元
@@ -19,10 +18,7 @@ public class App {
         // 阻塞测试 attach 调试
         String login = c.readLine("Debugger pause: ");
 
-
         System.out.println(login);        
-        System.out.println("Hello, World!");        
-        new Circle(); // import
-        new graphics.Circle(); // 直接使用 namespace 调用
+        System.out.println("Hello, World!");
     }
 }
