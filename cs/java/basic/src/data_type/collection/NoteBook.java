@@ -1,4 +1,4 @@
-package collection;
+package data_type.collection;
 // package notebook;
 
 import java.util.ArrayList;

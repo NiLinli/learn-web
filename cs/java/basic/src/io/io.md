@@ -1,4 +1,15 @@
-# I/O
+# IO
+
+
+## I/O streams
+
+- An I/O Stream represents an input source or an output destination.
+- A program uses an input stream to read data from a source
+- A program uses an output stream to write data to a destination,
+- generates, or consumes data.
+- A stream is a sequence of data.
+- but a source or destination can also be another program, a peripheral device, a network socket, or an array.
+
 
 ## serialization
 

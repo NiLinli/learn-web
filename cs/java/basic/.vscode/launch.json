@@ -6,9 +6,30 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch LambdaExpressionsTester",
+      "request": "launch",
+      "mainClass": "oop.anonymous.LambdaExpressionsTester",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch HelloWorldAnonymousClasses",
+      "request": "launch",
+      "mainClass": "oop.anonymous.HelloWorldAnonymousClasses",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch CopyByte",
+      "request": "launch",
+      "mainClass": "io.CopyByte",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
       "name": "Launch Current File Main Function",
       "request": "launch",
       "mainClass": "${file}"
-    },
+    }
   ]
 }

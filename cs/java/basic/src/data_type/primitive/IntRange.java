@@ -1,4 +1,4 @@
-package data_type.int_;
+package data_type.primitive;
 
 public class IntRange {
   public static void main(String[] args) {

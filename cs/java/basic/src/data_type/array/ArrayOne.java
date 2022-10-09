@@ -1,8 +1,6 @@
 package data_type.array;
-
 import java.util.Scanner;
 public class ArrayOne {
-
   public static void main(String[] args) {
 
     Scanner in = new Scanner(System.in);

@@ -1,4 +1,4 @@
-package collection;
+package data_type.collection;
 import java.util.HashMap;
 import java.util.Scanner;
 
