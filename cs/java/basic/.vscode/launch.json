@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch Point",
+      "request": "launch",
+      "mainClass": "oop.class_.Point",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch SimpleTimeClient",
+      "request": "launch",
+      "mainClass": "oop.interface_.SimpleTimeClient",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
       "name": "Launch LambdaExpressionsTester",
       "request": "launch",
       "mainClass": "oop.anonymous.LambdaExpressionsTester",
