@@ -14,6 +14,14 @@ public class Bicycle {
     speed = startSpeed;
   }
 
+  public static void testClassMethod() {
+    System.out.println("The static method in Bicycle");
+  }
+
+  public void testInstanceMethod() {
+    System.out.println("The instance method in Bicycle");
+  }
+
   // the Bicycle class has four methods
   public void setCadence(int newValue) {
     cadence = newValue;
@@ -30,5 +38,13 @@ public class Bicycle {
   public void speedUp(int increment) {
     speed += increment;
   }
+
+  public void printDescription() {
+    System.out.println("\nBike is " + "in gear " + this.gear
+        + " with a cadence of " + this.cadence +
+        " and travelling at a speed of " + this.speed + ". ");
+  }
+
+  public final void testFinalMethod() {}
 
 }

@@ -79,12 +79,11 @@ java -jar App.jar
 
 Java Virtual Machine
 
-## OOP
+- 栈 stack: 方法调用及变量生存空间
+- 栈 heap: 对象的生存空间堆
 
-- object: An object is a software bundle of related state and behavior.
-- class: A class is the blueprint from which individual objects are created.
-- inheritance: Object-oriented programming allows classes to inherit commonly used state and behavior from other classes.
-- interface: Interfaces form a contract between the class and the outside world, and this contract is enforced at build time by the compiler. 
+## Package
+
 - package: A package is a **namespace** that organizes a set of related classes and interfaces. 
 
 ## Distribute

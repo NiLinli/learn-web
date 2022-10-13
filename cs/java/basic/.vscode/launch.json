@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch BicycleTest",
+      "request": "launch",
+      "mainClass": "oop.inheritance_.BicycleTest",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch MountainBike",
+      "request": "launch",
+      "mainClass": "oop.inheritance_.MountainBike",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
       "name": "Launch Point",
       "request": "launch",
       "mainClass": "oop.class_.Point",

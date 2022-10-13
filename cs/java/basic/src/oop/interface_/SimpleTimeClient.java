@@ -37,8 +37,6 @@ public class SimpleTimeClient implements TimeClient {
     return dateAndTime.toString();
   }
 
-  
-
   public static void main(String... args) {
     TimeClient myTimeClient = new SimpleTimeClient();
     System.out.println(myTimeClient.toString());

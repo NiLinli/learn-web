@@ -2,10 +2,11 @@ package oop.interface_;
 import java.time.*;
 
 public interface TimeClient {
-  // static constant declarations
+  
+  // public static final
   double E = 2.718282;
 
-  // abstract method
+  // public abstract
   void setTime(int hour, int minute, int second);
   void setDate(int day, int month, int year);
   void setDateAndTime(int day, int month, int year, int hour, int minute, int second);
@@ -28,7 +29,8 @@ public interface TimeClient {
     return obj;
   }
 
-  // default method 具体实现
+  // default method 具体实现, 可以访问 this
+  // class 中的方法不能与这个相同
   default ZonedDateTime getZonedDateTime(String zoneString) {
     return ZonedDateTime.of(getLocalDateTime(), getZoneId(zoneString));
   }
