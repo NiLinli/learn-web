@@ -1,9 +1,7 @@
 package data_type.collection;
-// package notebook;
-
 import java.util.ArrayList;
 
-public class NoteBook  {
+public class ListTest  {
 
   private ArrayList<String> notes = new ArrayList<String>();
 
@@ -39,7 +37,7 @@ public class NoteBook  {
 
   // 新建的每一个 class 中都可以放置一个 main 方法, 便于调试
   public static void main(String[] args) {
-    NoteBook note = new NoteBook();
+    ListTest note = new ListTest();
 
     note.add("123");
     note.add("456");

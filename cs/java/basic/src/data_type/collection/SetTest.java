@@ -1,7 +1,7 @@
 package data_type.collection;
 import java.util.HashSet;
 
-public class SetDemo {
+public class SetTest {
 
 
   public static void main (String[] args) {

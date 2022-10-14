@@ -1,8 +1,6 @@
 // 默认 public
 
-// private 不能在声明它的类的外部访问
-// 1. 实例不能访问
-// 2. 子类的方法中也不能访问
+
 class Animal {
   constructor(
     // 子类访问 & 实例不可访问

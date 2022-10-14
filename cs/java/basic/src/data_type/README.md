@@ -19,16 +19,17 @@ variables must have a **type** and a **name**.
 	- float32/double16
 	- boolean: true/false
 	- char: utf-16
-- object
-	- array
+- Object
+	- Array
 		- 数组是个对象
 		- 大小是确定的
 		- 元素类型相同
 		- **元素个数可以为变量** 运行时动态创建大小
-	- 包装类型
-		- Boolean/Character/Integer/Double
-	- string
+	- Boolean/Character/Integer/Double 包装类型
+	- String
 		- immutable
-	- collection
+	- Collection
+		- Collection
+		- Map (not true Collection)
 - enum
 	

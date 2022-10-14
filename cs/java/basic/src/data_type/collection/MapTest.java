@@ -2,12 +2,12 @@ package data_type.collection;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Coin { 
+public class MapTest { 
 
   // Integer 为 int 的包裹类型 
   private HashMap<Integer, String> coinnames = new HashMap<Integer, String>();
 
-  public Coin() {
+  public MapTest() {
     coinnames.put(1, "penny");
     coinnames.put(10, "dime");
     coinnames.put(25, "quarter");
@@ -35,11 +35,9 @@ public class Coin {
 
   public static void main(String[] args) {
 
-    Coin coin = new Coin();
-
+    MapTest coin = new MapTest();
     Scanner in = new Scanner(System.in);
     int amount = in.nextInt();
-
     System.out.println(coin.getName(amount));
   }
 }
