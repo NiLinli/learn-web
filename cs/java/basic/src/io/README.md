@@ -1,6 +1,5 @@
 # IO
 
-
 ## I/O streams
 
 - An I/O Stream represents an input source or an output destination.
@@ -9,6 +8,27 @@
 - generates, or consumes data.
 - A stream is a sequence of data.
 - but a source or destination can also be another program, a peripheral device, a network socket, or an array.
+
+## Buffered Streams
+
+This means each read or write request is handled directly by the underlying OS. 
+
+资源浪费
+
+- often triggers disk access
+- network activity
+- some other operation 
+
+memory area known as a buffer
+
+Buffered input streams read data from buffer 
+the native input API is called only when the buffer is empty.  
+
+buffered output streams write data to a buffer  
+and the native output API is called only when the buffer is full.
+
+- EOF
+- LF/CRLF
 
 
 ## serialization

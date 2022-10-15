@@ -11,9 +11,11 @@ public class CopyByte {
 
     try {
       // 相对路径是相对于 cwd
+      // Byte 8
       in = new FileInputStream("./bin/io/xanadu.txt");
       out = new FileOutputStream("./bin/io/outagain.txt");
       int c;
+
       while ((c = in.read()) != -1) {
         out.write(c);
       }

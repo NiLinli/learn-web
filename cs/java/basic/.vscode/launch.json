@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch CopyChar",
+      "request": "launch",
+      "mainClass": "io.CopyChar",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch FilePathTest",
+      "request": "launch",
+      "mainClass": "io.FilePathTest",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
       "name": "Launch StringTest",
       "request": "launch",
       "mainClass": "data_type.string.StringTest",
