@@ -6,6 +6,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch ConsoleTest",
+      "request": "launch",
+      "mainClass": "io.ConsoleTest",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch StandIOTest",
+      "request": "launch",
+      "mainClass": "io.StandIOTest",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch ScannerTest",
+      "request": "launch",
+      "mainClass": "io.ScannerTest",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
       "name": "Launch CopyChar",
       "request": "launch",
       "mainClass": "io.CopyChar",

@@ -26,5 +26,8 @@ public class StringTest {
     String s3 = "123";
     int a = Integer.valueOf(s3);
 
+    String s4 = "😊";
+    System.out.println(s4.length()); // 2 和 js 处理逻辑相同
+
   }
 }
