@@ -24,10 +24,13 @@
       "label": "run",
       "type": "shell",
       "dependsOn": "build",
-      "command": "${fileDirname}/${fileBasenameNoExtension}.out",
+      "command": "./${fileBasenameNoExtension}.out",
       "group": {
         "kind": "test",
         "isDefault": true
+      },
+      "options": {
+        "cwd": "${fileDirname}"
       },
       "presentation": {
         "echo": true,

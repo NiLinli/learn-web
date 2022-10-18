@@ -4,9 +4,6 @@
 
 int main(int argc, char const *argv[])
 {
-
-  
-
   // character too large for enclosing character literal type
   // char a = '😊';
 
