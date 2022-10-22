@@ -124,9 +124,7 @@ int testSaveStu() {
   int number = 0;
   printf("请输入学生数量: ");
   scanf("%d", &number);
-
   Student aStu[number];
-
   getStuList(aStu, number);
 
   if (saveStu(aStu, number))

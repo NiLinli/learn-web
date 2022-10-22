@@ -1,6 +1,10 @@
 {
   "files.associations": {
     "*.tsx": "typescriptreact",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "istream": "c",
+    "locale": "c",
+    "types.h": "c",
+    "fcntl.h": "c"
   }
 }
