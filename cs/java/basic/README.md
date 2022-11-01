@@ -46,6 +46,12 @@ java \
   HelloWorld
 ```
 
+```sh
+java \
+  -cp ./bin:lib.**.jar \ # 引入 jar 包, 就是把 jar 包添加到 classpath 中
+  HelloWorld
+```
+
 ### 打包
 
 jar: java archive [ˈɑ:rkaɪv] 打包 存档
@@ -74,6 +80,10 @@ jar -cfev jar-file Main-Class input-file(s)
 ```java
 java -jar App.jar
 ```
+
+#### maven
+
+mvn package 只打包了源代码, 没有打包引用的 jar 包
 
 ## JVM
 

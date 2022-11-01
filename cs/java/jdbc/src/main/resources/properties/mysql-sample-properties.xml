@@ -2,8 +2,6 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-  <entry key="dbms">mysql</entry>
-  <entry key="driver">com.mysql.cj.jdbc.Driver</entry>
   <entry key="database_name">jdbc-demo</entry>
   <entry key="user_name">jdbc</entry>
   <entry key="password">jdbc</entry>
