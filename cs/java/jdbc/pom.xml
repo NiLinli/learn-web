@@ -89,6 +89,39 @@
             </descriptorRefs>
           </configuration>
         </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>sql-maven-plugin</artifactId>
+          <version>1.5</version>
+          <dependencies>
+            <dependency>
+              <groupId>mysql</groupId>
+              <artifactId>mysql-connector-java</artifactId>
+              <version>8.0.30</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <driver>com.mysql.cj.jdbc.Driver</driver>
+            <url>jdbc:mysql://localhost:3306/jdbc-demo</url>
+            <username>jdbc</username>
+            <password>jdbc</password>
+          </configuration>
+          <executions>
+            <execution>
+              <id>create-tables</id>
+              <goals>
+                <goal>execute</goal>
+              </goals>
+              <configuration>
+                <srcFiles>
+                  <srcFile>${project.basedir}/sql/mysql/create-tables.sql</srcFile>
+                </srcFiles>
+              </configuration>
+            </execution>
+          </executions>
+
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>
