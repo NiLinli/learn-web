@@ -43,6 +43,8 @@ INSERT INTO pet VALUES ('Puffball','Diane','hamster','f','1999-03-30',NULL);
 
 SELECT what_to_select FROM which_table WHERE conditions_to_satisfy;
 
+查询默认是当前选择的数据库, 其他数据库需要带数据库名前缀
+
 
 column 可以被计算
 
@@ -156,3 +158,17 @@ M 为字符数
 - VARCHAR(M)
 
 
+## join
+
+- INNER JOIN 返回符合条件的记录
+  - JOIN
+- OUT JOIN 不符合条件时候也会返回
+  - LEFT JOIN 左表全部返回
+  - RIGHT JOIN 避免使用
+
+- NATURAL JOIN 不需要写 ON, mysql engine 自动关联, 不推荐使用
+- CROSS JOIN 两个表交叉关联 m * n 列
+
+## union
+
+将多个结果集合并
