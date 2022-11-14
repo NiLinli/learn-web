@@ -209,7 +209,260 @@ FROM (
 		((SELECT total_sales) - (SELECT averge)) AS difference
 	FROM clients c 
 ) AS sales_summary
-WHERE total_sales IS NULL
+WHERE total_sales IS NULL;
+
+-- 添加 replace 可以更新 view
+CREATE OR REPLACE VIEW sales_by_client AS
+SELECT
+	c.client_id ,
+	c.name ,
+	SUM(i.invoice_total) AS total_sales
+FROM clients c 
+JOIN invoices i 
+	USING (client_id)
+GROUP BY c.client_id, c.name;
+
+SELECT * 
+-- view 是一张虚拟表, 但是并不存储数据
+FROM sales_by_client
+ORDER BY total_sales DESC;
+
+DROP VIEW sales_by_client;
+
+-- 不包含这些 clause 的 view 可以更新 view 数据, 同时也更新了 table 数据
+-- DISTICT
+-- AGGREGATE FUNCTION
+-- GROUP BY / HAVING
+-- UNION
+CREATE OR REPLACE VIEW invoices_with_balance AS
+SELECT 
+	invoice_id ,
+	`number` ,
+	client_id ,
+	invoice_total ,
+	payment_total ,
+	invoice_total  - payment_total  AS balance,
+	invoice_date ,
+	due_date ,
+	payment_date 
+FROM invoices i 
+WHERE invoice_total - payment_total > 0
+-- 修改一行数据, 导致在view 中消失了, 这次修改就会失败
+WITH CHECK OPTION;
+
+DELETE FROM invoices_with_balance 
+WHERE invoice_id = 1;
+
+UPDATE invoices_with_balance 
+SET due_date = DATE_ADD(due_date, INTERVAL 2 DAY) 
+WHERE invoice_id = 2; 
+
+UPDATE invoices_with_balance 
+SET payment_total = 175.32
+WHERE invoice_id = 2;
+
+UPDATE invoices_with_balance 
+SET payment_total = 147.99
+WHERE invoice_id = 3;
+
+-- view 
+-- 简化查询
+-- 可以为数据库提供一层抽象, 也就是包装, 如果修改数据库, 可以修改视图达到其他耦合语句不发生改变
+-- 限制基础表的访问
+
+
+DROP PROCEDURE IF EXISTS sql_invoicing.get_clients;
+
+DELIMITER $$
+$$
+CREATE PROCEDURE sql_invoicing.get_clients()
+BEGIN
+	SELECT * FROM clients;
+END
+$$
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS sql_invoicing.get_clients_by_state;
+
+DELIMITER $$
+$$
+CREATE PROCEDURE sql_invoicing.get_clients_by_state(state CHAR(2))
+BEGIN
+-- 	IF state IS NULL 
+-- 	THEN 
+-- 		SELECT * FROM sql_invoicing.clients;
+-- 	ELSE
+-- 		SELECT * 
+-- 		FROM sql_invoicing.clients c
+-- 		WHERE c.state = state;
+-- 	END IF;
+	
+	SELECT * FROM sql_invoicing.clients c
+	WHERE c.state = IFNULL(state, c.state); 
+END
+$$
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS sql_invoicing.make_payment;
+
+DELIMITER $$
+$$
+CREATE PROCEDURE sql_invoicing.make_payment	(
+	invoice_id INT,
+	payment_amount DECIMAL(9, 2),
+	payment_date DATE
+)
+BEGIN
+	-- APP 中校验数据比较高效, 方便
+	IF payment_amount <= 0 THEN
+		SIGNAL SQLSTATE '22003'
+			SET MESSAGE_TEXT = 'Invalid payment amount';
+	END IF;
+	
+	UPDATE invoices i 
+	SET 
+		i.payment_total = payment_total ,
+		i.payment_date = payment_date 
+	WHERE i.invoice_id = invoice_id;
+END
+$$
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS sql_invoicing.get_unpaid_invoices_for_client;
+
+DELIMITER $$
+$$
+CREATE PROCEDURE sql_invoicing.get_unpaid_invoices_for_client(
+	client_id INT,
+	OUT invoices_count INT,
+	OUT invoices_total DECIMAL(9, 2)
+)
+BEGIN
+	SELECT COUNT(*), SUM(invoice_total)
+	INTO invoices_count, invoices_total
+	FROM invoices i
+	WHERE i.client_id = client_id 
+		AND payment_total = 0;
+END
+$$
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS sql_invoicing.get_risk_factor;
+
+DELIMITER $$
+$$
+CREATE PROCEDURE sql_invoicing.get_risk_factor()
+BEGIN
+	-- procedure local variable
+	DECLARE risk_factor DECIMAL(9, 2) DEFAULT 0;
+	DECLARE invoices_total DECIMAL(9, 2);
+	DECLARE invoices_count INT;
+
+	SELECT COUNT(*), SUM(invoice_total)
+	INTO invoices_count, invoices_total
+	FROM invoices;
+
+	SET risk_factor = invoices_total / invoices_count * 5;
+
+	SELECT risk_factor;
+
+END
+$$
+DELIMITER ;
+
+
+
+
+
+CALL get_clients();
+
+
+CALL get_clients_by_state('CA');
+CALL get_clients_by_state(NULL);
+
+
+CALL make_payment(2, 100, '2022-11-11');
+CALL make_payment(2, -100, '2022-11-11');
+
+CALL get_unpaid_invoices_for_client(3);
+
+-- user or session variable
+SET @invoices_count = 0;
+SET @invoices_total = 0;
+CALL get_unpaid_invoices_for_client(3, @invoices_count, @invoices_total);
+SELECT @invoices_count, @invoices_total;
+
+CALL get_risk_factor();
+
+
+-- stored procedure 包含 sql 代码的数据库对象
+-- Function 返回唯一 value
+-- procedure 返回结果集
+
+
+-- 增强数据的一致性
+-- 表操作审计
+DROP TRIGGER IF EXISTS sql_invoicing.payments_after_insert;
+USE sql_invoicing;
+
+DELIMITER $$
+$$
+CREATE DEFINER=`root`@`%` TRIGGER `payments_after_insert` AFTER INSERT ON `payments` FOR EACH ROW BEGIN
+	UPDATE invoices 
+	SET payment_total = payment_total + NEW.amount
+	WHERE invoice_id = NEW.invoice_id; 
+END$$
+DELIMITER ;
+
+INSERT INTO payments 
+VALUES (DEFAULT, 5, 3, '2022-11-11', 10, 1);
+
+DELETE 
+FROM payments 
+WHERE payment_id = 10;
+
+SHOW TRIGGERS;
+
+DROP TRIGGER IF EXISTS payments_after_insert;
+
+
+
+-- event
+-- task 一次或者定时任务
+-- shceduer 寻找执行的任务
+
+SHOW VARIABLES LIKE 'event%';
+SET GLOBAL event_scheduler ON;
+SHOW EVENTS;
+
+
+USE sql_invoicing;
+ALTER EVENT yearly_delete_stale_audit_rows
+ON SCHEDULE 
+	EVERY 1 YEAR STARTS '2022-01-01' ENDS '2032-01-01'
+DO BEGIN 
+	DELETE FROM payments_audit 
+	WHERE action_date < NOW() - INTERVAL 1 YEAR ;
+END 
+;
+
+
+DROP EVENT IF EXISTS yearly_delete_stale_audit_rows;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
