@@ -414,5 +414,200 @@ COMMIT;
 
 
 
+UPDATE products 
+SET properties = '
+{ 
+	"dimenssions": [1, 2, 3, 4, 5],
+	"weight": 10,
+	"manufacturer": {
+		"name": "sony"
+	}	
+}
+'
+WHERE product_id = 1;
+
+
+UPDATE products 
+SET properties = JSON_OBJECT(
+	'dimenssions', JSON_ARRAY(1, 2, 3, 4, 5),
+	'weight', 10,
+	'manufacturer', JSON_OBJECT(
+		'name','sony'
+	)
+)
+WHERE product_id = 2;
+
+SELECT 
+	product_id,
+	JSON_EXTRACT(properties, '$.weight'),
+	-- -> 列路径运算符 
+	properties -> '$.weight',
+	properties -> '$.dimenssions',
+	properties -> '$.dimenssions[1]',
+	properties -> '$.manufacturer.name',
+	properties ->> '$.manufacturer.name'
+FROM products p 
+WHERE properties ->> '$.manufacturer.name' = 'sony';
+
+
+UPDATE products 
+SET properties = JSON_SET(
+	properties,
+	'$.weight', 20,
+	'$.age', 18,
+	'$.manufacturer.year', 2018 
+)
+WHERE product_id = 1;
+
+UPDATE products 
+SET properties = JSON_REMOVE(
+	properties,
+	'$.age',
+	'$.manufacturer.year' 
+)
+WHERE product_id = 1;
+
+
+
+SELECT customer_id 
+FROM customers c 
+WHERE state = 'CA';
+
+EXPLAIN SELECT customer_id 
+FROM customers c 
+WHERE state = 'CA';
+
+CREATE INDEX idx_state ON customers (state);
+
+SELECT customer_id 
+FROM customers c 
+WHERE points  > 1000;
+
+EXPLAIN SELECT customer_id 
+FROM customers c 
+WHERE points  > 1000;
+
+CREATE INDEX idx_point ON customers (points);
+
+ANALYZE TABLE customers ;
+SHOW INDEXES IN customers;
+SHOW INDEXES IN orders;
+-- PRIMARY index
+-- 二级 index 自己创建 + 外键  同时存储了主键
+
+
+-- 找到最接近总数的 索引长度最短的
+SELECT COUNT(*) FROM customers c; 
+SELECT 
+	COUNT(DISTINCT LEFT(last_name, 1)),
+	COUNT(DISTINCT LEFT(last_name, 5)),
+	COUNT(DISTINCT LEFT(last_name, 10))
+FROM customers c;
+
+-- 前缀 index
+CREATE INDEX idx_last_name ON customers (last_name(5));
+
+-- 全文 index 
+-- 分词 匹配搜索 
+CREATE FULLTEXT INDEX idx_title_body ON posts(title, body);
+
+SELECT *, MATCH(title, body) AGAINST('react redux')
+FROM posts p 
+WHERE MATCH(title, body) AGAINST('react redux');
+
+SELECT *, MATCH(title, body) AGAINST('react redux')
+FROM posts p 
+WHERE MATCH(title, body) AGAINST('react -redux +form' IN BOOLEAN MODE); 
+
+SELECT *, MATCH(title, body) AGAINST('react redux')
+FROM posts p 
+WHERE MATCH(title, body) AGAINST('"Handling a Form"' IN BOOLEAN MODE); 
+
+
+-- 只会通过 idx_state 定位
+-- 然后在定位的结果中遍历所有的 points
+EXPLAIN SELECT  customer_id
+FROM customers c 
+WHERE state = 'CA' AND points > 1000;
+
+-- 复合索引
+-- 索引越多, 写入越慢
+-- 复合索引比创建单个索引更适合一些
+CREATE INDEX idx_state_point ON customers(state, points);
+DROP INDEX idx_state ON customers;
+DROP INDEX idx_point ON customers;
+
+-- 1. 搜索频繁的列放在前面 
+-- 2. WHERE 约束力强的放在前面, = 放在 LIKE 前面 
+-- 3. Cardinality 高的放在前面  缩小范围  
+
+
+
+EXPLAIN SELECT customer_id 
+FROM customers c 
+USE INDEX (idx_last_name_state)
+WHERE state = 'CA' AND last_name LIKE 'A%';
+
+SELECT 
+	COUNT(DISTINCT state) AS state_cardinality,
+	COUNT(DISTINCT last_name) AS last_name_cardinality
+FROM customers c;
+
+-- 40 row
+CREATE INDEX idx_last_name_state ON customers(last_name, state);
+
+-- 7 row
+CREATE INDEX idx_state_last_name ON customers(state, last_name);
+
+
+-- 复合索引对 OR 无效
+-- OR 需要两个索引分开, 一条语句只能使用一个 index
+EXPLAIN SELECT  customer_id
+FROM customers c 
+WHERE state = 'CA' OR points > 1000;
+
+-- 使用 union 可以使用两个 index
+EXPLAIN SELECT customer_id
+FROM customers c 
+WHERE state = 'CA'
+UNION 
+SELECT customer_id
+FROM customers c 
+WHERE points > 1000;
+
+-- 需要把列单独放
+EXPLAIN SELECT customer_id 
+FROM customers c 
+WHERE points + 10 > 2000;
+
+EXPLAIN SELECT customer_id 
+FROM customers c 
+WHERE points > 2000 - 10;
+
+
+-- 排序
+EXPLAIN SELECT customer_id FROM customers c 
+ORDER BY first_name;
+
+EXPLAIN SELECT customer_id FROM customers c 
+ORDER BY state ;
+
+SHOW STATUS LIKE 'last_query_cost';
+
+-- 索引没有记录其他列
+-- 主键会包含二级索引
+-- Index 覆盖的列, 就不会去读表
+EXPLAIN SELECT * FROM customers c 
+ORDER BY first_name;
+
+
+EXPLAIN SELECT customer_id , phone  FROM customers c 
+ORDER BY first_name;
+
+-- (A,B) (A) 多余 (B, A) 不多余
+
+
+SELECT * FROM mysql.user;
+
 
 
