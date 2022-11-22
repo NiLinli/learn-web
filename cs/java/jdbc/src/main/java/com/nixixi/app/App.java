@@ -16,14 +16,10 @@ public class App {
             System.exit(1);
         }
 
-        // 阻塞测试 attach 调试
-        String login = c.readLine("Debugger pause: ");
-        
-        System.out.println("Hello World!");
-
         try {
             DbUtil dUtil = new DbUtil("properties/mysql-sample-properties.xml");
             Connection con = dUtil.getConnection();
+            dUtil.viewPostTable(con);
         } catch (Exception e) {
             e.printStackTrace();
             return;

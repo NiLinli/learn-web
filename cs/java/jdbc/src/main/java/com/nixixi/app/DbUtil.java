@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import com.mysql.cj.jdbc.Driver;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 public class DbUtil {
 
@@ -65,5 +67,25 @@ public class DbUtil {
         connectionProps);
     System.out.println("Connected to database");
     return conn;
+  }
+
+  public void viewPostTable(Connection con) throws SQLException {
+    String query = "SELECT * FROM posts";
+    try (Statement stmt = con.createStatement()) {
+      ResultSet rs = stmt.executeQuery(query);
+
+      JSONArray jsonArray = new JSONArray();
+      
+      while (rs.next()) {
+        JSONObject record = new JSONObject();
+        record.put("post_id", rs.getInt("post_id"));
+        record.put("title", rs.getString("title"));
+
+        jsonArray.add(record);
+      }
+      System.out.println(jsonArray.toJSONString());
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
 }
