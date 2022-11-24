@@ -79,3 +79,12 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 ## netstat
 
 查看 Linux 应用的网络状态信息
+
+## web server
+
+web 服务器软件, 静态文件或者业务代码放在里面运行
+需要安装在服务器上面, 然后
+
+- nginx
+- tomcat/netty
+- node

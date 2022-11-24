@@ -6,6 +6,83 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch TreadDemo",
+      "request": "launch",
+      "mainClass": "thread.race_collection.TreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.adder.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.atomic_object.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.notify_wait.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.volatile_.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.sync.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.locks.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.confinement.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.concurrency01.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.concurrency.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch ThreadTest",
+      "request": "launch",
+      "mainClass": "thread.thread00.ThreadTest",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
       "name": "Launch ConsoleTest",
       "request": "launch",
       "mainClass": "io.ConsoleTest",
