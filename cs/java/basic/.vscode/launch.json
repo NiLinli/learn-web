@@ -6,6 +6,34 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch FlightDemo",
+      "request": "launch",
+      "mainClass": "thread.executors_.FlightDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch CompletableFutureDemo",
+      "request": "launch",
+      "mainClass": "thread.executors_.CompletableFutureDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch CompletableFutureDemo",
+      "request": "launch",
+      "mainClass": "thread.completable_future.CompletableFutureDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Launch ExecutorsDemo",
+      "request": "launch",
+      "mainClass": "thread.executors_.ExecutorsDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
       "name": "Launch TreadDemo",
       "request": "launch",
       "mainClass": "thread.race_collection.TreadDemo",
