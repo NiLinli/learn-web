@@ -4,25 +4,6 @@
 
 ## 数据流动管理
 
-- MV\*
-- Flux
-
-### MV\*
-
-- Service
-- Model
-- Controller/ViewModel/...
-
-规避
-
-- 合理拆分控制 Service + Model 作用范围
-- 通过编码规范使得 数据流动清晰
-
-### Flux
-
-强调的是单一 store 对应多个 view  
-并且变更 store 方式单一可记录
-
 ## 视图更新管理
 
 数据变化 => 视图变化
