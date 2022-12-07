@@ -1,12 +1,9 @@
 # mvc
 
-- MV\*
-- Flux
+MV\*
 
 前端调度改变视图  
 后端调用返回数据给试图  
-
-## MV\*
 
 - View 视图
 - Model 数据模型
@@ -26,9 +23,3 @@ MVVM: View <-> Viewport <-> Model
 - 强调 view 与 viewport 的关系
 - viewport 更新 view
 - 本质也是单向数据流 正向然后反向
-
-
-## Flux
-
-强调的是单一 store 对应多个 view  
-并且变更 store 方式单一可记录

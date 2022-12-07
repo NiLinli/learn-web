@@ -33,3 +33,15 @@ atomic operation 不可分割的操作
 
 - sql 事务: 整体成功, 整体失败, 满足条件的最小操作
 - 编程语言操作符: 不会被分解成多个操作, 是单一最小的操作
+
+
+## 编程方法
+
+- procedural programming
+- object-oriented programming
+- functional programming
+- reactive programming 
+  - 响应式编程 强调改变状态 会有其他衍生状态(视图)更新 称为响应式
+    - 视图 redux mobx vuex
+    - 数据流 rxjs stream 
+  - 一般需要结合 functional programming 使用

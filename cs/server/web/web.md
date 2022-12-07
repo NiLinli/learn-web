@@ -1,9 +1,4 @@
-# web
-
-## 服务器
-
-- 网关/静态服务器 nginx
-- 应用服务器 Node
+# web application
 
 ## API Gateway
 
