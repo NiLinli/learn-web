@@ -15,6 +15,8 @@
 
       a:link {
         color: green;
+        /* 会导致 其他状态默认也会变成 none */
+        text-decoration: none;
       }
 
       a:visited {
@@ -53,6 +55,8 @@
     <a href="#id4">id4</a>
     <a>没有href属性</a>
     <a href="#comment-3">:target</a>
+
+    <a href="">haha</a>
 
     <div id="id1">id1</div>
     <div id="id2">id2</div>

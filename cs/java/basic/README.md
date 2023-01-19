@@ -2,6 +2,12 @@
 
 1995/5/23 Java 语言诞生
 
+- java se 标准版
+- java ee 企业版
+  - servlet
+  - jdbc
+  - ...
+
 [java8 教程](https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html#newtojava)
 
 Write once, run anywhere
@@ -97,4 +103,5 @@ Java Virtual Machine
 - package: A package is a **namespace** that organizes a set of related classes and interfaces. 
 
 ## Distribute
+
 

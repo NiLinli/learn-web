@@ -120,16 +120,21 @@ launch
 
 #### sourcemap
 
-1. Node 打包前端代码生成 sourcemap
+1. webpack vite 等打包前端代码生成 sourcemap
 2. 开启浏览器, 监听浏览器 ws
-3. 浏览器根据 url 加载文件并加载 sourcemap(浏览器面板中不显示sourcemap)
+3. 浏览器根据 url 加载文件并加载 sourcemap(浏览器面板中不显示sourcemap), 需要确保文件对应的 sourcemap 文件是代码源文件
+  - webpack sourcemap 是 webpack:///src/*, 所以需要 rewrite 到 ${webRoot}/src/*
+  - vite sourcemap 就是代码工程源文件,不需要 rewrite
+
+```
+"sourceMapPathOverrides": {
+  "webpack:///src/*": "${webRoot}/src/*"
+}
 
 - outFiles
 - webRoot 源代码地址
 - sourceMapPathOverrides(chrome only) 打包工具生成的 sourcemap 达不到预期
-  - 实际指向在 webpack 构建的文件系统中 "webpack:///src/component/event-exp/dom-event.vue"
-  - 预期指向应该是源代码位置 "${webRoot}/src/component/event-exp/dom-event.vue"
-  - 覆盖 实际指向 为预期指向
+```
 
 ### Java
 

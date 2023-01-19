@@ -1,7 +1,11 @@
 # backend
 
-- Framework
+- web server
 - SQL
-- ORM
-- MQ
-- Elasticsearch
+  - mysql
+  - nosql
+  - redis
+  - elasticsearch
+- Messaging
+  - MQ Kafka websocket
+- Micro service
