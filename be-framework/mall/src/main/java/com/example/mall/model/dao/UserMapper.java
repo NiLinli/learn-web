@@ -1,5 +1,7 @@
 package com.example.mall.model.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.example.mall.model.pojo.User;
 
 public interface UserMapper {
@@ -16,4 +18,6 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     User[] selectByUserName(String userName);
+
+    User selectByLogin(@Param("userName") String userName, @Param("password") String password);
 }
