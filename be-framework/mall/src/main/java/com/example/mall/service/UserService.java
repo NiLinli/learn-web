@@ -70,6 +70,5 @@ public class UserService implements UserInterface {
   public boolean checkAdminRole(User user) {
     // 1 普通用户 2 管理员
     return user.getRole().equals(2);
-
   }
 }
