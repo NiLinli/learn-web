@@ -1,4 +1,4 @@
-package com.example.mall.model.dao;
+package com.example.mall.dao;
 
 import org.apache.ibatis.annotations.Param;
 

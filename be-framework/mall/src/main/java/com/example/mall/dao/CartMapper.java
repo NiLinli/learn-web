@@ -1,4 +1,4 @@
-package com.example.mall.model.dao;
+package com.example.mall.dao;
 
 import com.example.mall.model.pojo.Cart;
 

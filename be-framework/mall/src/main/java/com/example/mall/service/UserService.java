@@ -5,9 +5,9 @@ import java.security.NoSuchAlgorithmException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.mall.dao.UserMapper;
 import com.example.mall.exception.MallException;
 import com.example.mall.exception.MallExceptionEnum;
-import com.example.mall.model.dao.UserMapper;
 import com.example.mall.model.pojo.User;
 import com.example.mall.util.EncryptUtil;
 

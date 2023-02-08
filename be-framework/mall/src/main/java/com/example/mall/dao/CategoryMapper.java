@@ -1,4 +1,4 @@
-package com.example.mall.model.dao;
+package com.example.mall.dao;
 
 import com.example.mall.model.pojo.Category;
 
@@ -14,4 +14,6 @@ public interface CategoryMapper {
     int updateByPrimaryKeySelective(Category record);
 
     int updateByPrimaryKey(Category record);
+
+    Category[] selectByName(String name);
 }
