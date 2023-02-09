@@ -1,6 +1,8 @@
 package com.example.mall.common;
 
 import com.example.mall.exception.MallExceptionEnum;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ApiRestResponse<T> {
 
@@ -54,6 +56,13 @@ public class ApiRestResponse<T> {
         ", msg='" + msg + '\'' +
         ", data=" + data +
         '}';
+  }
+
+  public String toJSONString() throws JsonProcessingException {
+
+    ObjectMapper mapper = new ObjectMapper();
+
+    return mapper.writeValueAsString(this);
   }
 
   public Integer getCode() {
