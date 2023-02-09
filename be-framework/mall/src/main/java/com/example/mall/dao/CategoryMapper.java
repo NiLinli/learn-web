@@ -1,5 +1,7 @@
 package com.example.mall.dao;
 
+import java.util.List;
+
 import com.example.mall.model.pojo.Category;
 
 public interface CategoryMapper {
@@ -16,4 +18,8 @@ public interface CategoryMapper {
     int updateByPrimaryKey(Category record);
 
     Category[] selectByName(String name);
+
+    List<Category> selectList();
+
+    List<Category> selectCategoriesByParentId(Integer parentId);
 }
