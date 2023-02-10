@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponseWrapper;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.mall.common.ApiRestResponse;
 import com.example.mall.common.Constant;
@@ -31,28 +34,35 @@ public class AdminFilter implements Filter {
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
       throws IOException, ServletException {
 
-    HttpServletRequest request2 = (HttpServletRequest) request;
-    HttpSession session = request2.getSession();
+    HttpServletRequest httpRequest = (HttpServletRequest) request;
+    HttpSession session = httpRequest.getSession();
     User cUser = (User) session.getAttribute(Constant.MALL_USER);
 
-    
-
     if (cUser == null) {
-      PrintWriter out = new HttpServletResponseWrapper((HttpServletResponse) response).getWriter();
-      out.write(ApiRestResponse.error(MallExceptionEnum.NEED_LOGIN).toString());
-      out.flush();
 
+      HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) response);
+
+      wrapper.setHeader(HttpHeaders.CONTENT_TYPE, "application/json; charset=utf-8");
+      wrapper.setCharacterEncoding("utf-8");
+
+      PrintWriter out = wrapper.getWriter();
+      out.write(ApiRestResponse.error(MallExceptionEnum.NEED_LOGIN).toJSONString());
+      out.flush();
       out.close();
       return;
     }
 
     if (!userService.checkAdminRole(cUser)) {
-      PrintWriter out = new HttpServletResponseWrapper((HttpServletResponse) response).getWriter();
-      out.write(ApiRestResponse.error(MallExceptionEnum.NEED_ADMIN).toString());
+      HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) response);
+
+      wrapper.setHeader(HttpHeaders.CONTENT_TYPE, "application/json; charset=utf-8");
+      wrapper.setCharacterEncoding("utf-8");
+
+      PrintWriter out = wrapper.getWriter();
+      out.write(ApiRestResponse.error(MallExceptionEnum.NEED_ADMIN).toJSONString());
       out.flush();
       out.close();
       return;
-
     }
 
     chain.doFilter(request, response);
