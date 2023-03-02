@@ -1,6 +1,8 @@
 # compose
 
-**each container should do one thing and do it well.**
+每个 container 应该只做一件事强  
+多个容器通信  
+容器编排技术  
 
 ## network
 
@@ -32,7 +34,7 @@ docker run -dp 3000:3000 \
    sh -c "yarn install && yarn run dev"
 ```
 
-## compose
+## docker compose
 
 docker-compose 不一定安装了, 需要安装  `docker-compose version`
 
@@ -87,4 +89,6 @@ volumes:
 ## kubernetes
 
 单台机器可以使用 docker compose  
-分布式部署需要使用 kubernetes 对容器进行编排  
+分布式部署需要使用 kubernetes 对容器进行编排  Master-Slave(Node)
+
+[kubernetes](https://kubernetes.io/zh-cn/)
