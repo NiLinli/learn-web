@@ -2,23 +2,6 @@
 
 『 Shell 』将我们输入的指令与 Kernel 沟通，好让 Kernel 可以控制硬件来正确无误的工作
 
-## vi
-
-Linux 参数配置文件是 ASCII 纯文本文件
-Unix 和 Linux 预设的文字处理软件
-
-### 模式
-
-- 一般模式: 移动光标, 复制, 删除, 粘贴等操作
-  - "test1.txt" [New File] 文件名-新建文件
-  - "test.txt" 2L, 30C  文件名-行数-字符数
-- 编辑模式: 编辑文本, Esc 退出的一般模式
-  - i 左下角显示 -- INSERT --
-- 指令列命令模式: 一般模式下, : 进入
-  - w 写入
-  - q 退出
-  - ! 强制
-
 ## bash
 
 Bourne Again SHell
@@ -39,6 +22,15 @@ Bourne Again SHell
 
 1. options - 简写 -- 全写
 2. 一行代码写不下 \ 跳过 Enter 执行
+
+### 快捷键
+
+- ctrl+A 行首
+- ctrl+E 行尾
+- alt + f/b(-> <-) 按单词移动
+
+- ctrl+u 行首到光标(最后) 
+- ctrl+k 行尾到光标 
 
 ### 开机流程
 

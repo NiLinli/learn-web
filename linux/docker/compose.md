@@ -86,6 +86,11 @@ volumes:
 - Network app_default 自动创建 & service name 是 network-alias
 - app stack 服务启动的如果有顺序控制的话, 需要自行在代码中控制
 
+
+## docker swarm
+
+内建容器编排
+
 ## kubernetes
 
 单台机器可以使用 docker compose  
