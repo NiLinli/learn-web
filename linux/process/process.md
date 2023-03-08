@@ -79,13 +79,24 @@ signal:
 
 ### init.d
 
+管理服务, 早期发行版
+
 ```bash
-/etc/init.d/nginx start  
-service nginx start
+service myService command
+# 等同于
+/etc/init.d/myService command  
+
 ```
 
 ### systemd
 
+管理服务, 最近发行版
+ 
+```bash
+systemctl myService command
+# 等同于
+/etc/systemd/system/myService.service command
+```
 
 ### ineted
 
