@@ -1,1 +1,0 @@
-mvn sql:execute@create-tables
