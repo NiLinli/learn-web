@@ -33,10 +33,10 @@ Composite/Aggregate Reuse Principle
 
 注: 实现一个接口 **泛指** 某种超类型(class or interface) 的某个方法
 
-- 依赖倒置(dependency inversion): 要依赖抽象, 不要依赖具体 class
+- 依赖倒置 DIP(dependency inversion): 要依赖抽象, 不要依赖具体 class
     -  不能让高层组件依赖低层组件
     -  不论高层还是底层, 都应该依赖于抽象
-    -  不违反依赖倒置原
+    -  不违反依赖倒置
         + 变量不可持有具体 class 的引用 例如 `const p = new Person()`(工厂可以用来避开这个问题)
         + 不要让类 extends 具体类 (这样会依赖具体类, 应该 extends 抽象类和接口)
         + 不要覆盖基类中已经实现的方法 (如果必须要覆盖, 应该思考基类是否合适被 extends)
@@ -140,4 +140,5 @@ Last Knowledge 最少知识
 
 - Mixin (混入)
 - Monkey Patch (猴子补丁)
-- Inversion Of Control (控制反转)
+- Inversion Of Control (控制反转) 
+    - Dependency injection
