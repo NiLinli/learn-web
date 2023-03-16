@@ -83,6 +83,7 @@ atomic operation 不可分割的操作
 
 - procedural programming
 - object-oriented programming
+  - aspect-oriented Programming
 - functional programming
 - reactive programming 
   - 响应式编程 强调改变状态 会有其他衍生状态(视图)更新 称为响应式

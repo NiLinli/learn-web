@@ -1,5 +1,8 @@
 # annotation
 
-- Information for the compiler — Annotations can be used by the compiler to detect errors or suppress warnings.
-- Compile-time and deployment-time processing — Software tools can process annotation information to generate code, XML files, and so forth.
-- Runtime processing — Some annotations are available to be examined at runtime.
+meta data  
+不会影响原有代码
+
+- 编译器获取信息 检查错误和告警
+- 编译时 & 发布时 通过注解生成代码 或者 文件
+- 运行时
