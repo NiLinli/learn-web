@@ -1,0 +1,416 @@
+{
+	"info": {
+		"_postman_id": "1a5942a3-d698-40da-9c49-7dbd71f5f71f",
+		"name": "mvc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "request/get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/request/get1?name=nixixi",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"request",
+						"get1"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "nixixi"
+						},
+						{
+							"key": "age",
+							"value": "10",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request/get2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/request/get2?name&age=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"request",
+						"get2"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": null
+						},
+						{
+							"key": "age",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request/rest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/request/rest/nixixi/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"request",
+						"rest",
+						"nixixi",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request/cookie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/request/cookie",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"request",
+						"cookie"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request/bean-param",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/request/bean-param?name=nixixi&age=10&address.city=Wuhan",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"request",
+						"bean-param"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "nixixi"
+						},
+						{
+							"key": "age",
+							"value": "10"
+						},
+						{
+							"key": "address.city",
+							"value": "Wuhan"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "data/baseType",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/data/baseType",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"data",
+						"baseType"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "data/packageType",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/data/packageType",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"data",
+						"packageType"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "data/arrType",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/data/arrType?id=1&id=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"data",
+						"arrType"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "data/listType",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/data/listType?users[0].name=nixixi&users[1].name=nilinli",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"data",
+						"listType"
+					],
+					"query": [
+						{
+							"key": "users[0].name",
+							"value": "nixixi"
+						},
+						{
+							"key": "users[1].name",
+							"value": "nilinli"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "data/json",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"你嘻嘻\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/data/json",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"data",
+						"json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "convert/string-date",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"你嘻嘻\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/convert/string-date?date=2022-10-12",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"convert",
+						"string-date"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2022-10-12"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validator/account",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"你嘻嘻\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/validator/account?name=nixixi",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"validator",
+						"account"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "nixixi"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "validator/person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    // \"name\": \"nixix\",\n    \"age\": 200,\n    \"email\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/validator/person",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"validator",
+						"person"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "interceptor",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    // \"name\": \"nixix\",\n    \"age\": 200\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/interceptor",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"interceptor"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

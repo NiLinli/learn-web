@@ -1,20 +1,18 @@
 # web server
 
-web container(web 服务器软件)  = web server + interface
+web server 编程 
 
-- web server
+- web container/web server
   - 监听端口响应请求 
   - 实现一种 IO 模型
-  - 运行应用代码文件或者编译好的字节码文件
-- interface 
-  - 实现接口处理并发请求 
-  - 提供应用程序监听 io 的接口, 代码实现了相关 http 接口/模块
-
-## web container 位置
-
-- 单独安装: 独立安装, 运行应用代码文件 nginx, tomcat...
-- 嵌入到开发环境中: 在开发环境中集成了容器, 不需要额外单独安装 node, embedded tomcat...
-
+  - 实现一个 interface
+  - 运行方式
+    - 单独安装: 独立安装, 运行应用代码文件 nginx, tomcat...
+    - 嵌入到开发环境中: 在开发环境中集成了容器, 不需要额外单独安装 node, embedded tomcat...
+- interface/模块
+  - 提供一个切入点给 web server 处理请求的业务逻辑 / web server 配置
+  - 比如 http 模块, servlet 接口
+  
 ## 常见 web container
 
 - nginx
