@@ -6,6 +6,48 @@
   "configurations": [
     {
       "type": "java",
+      "name": "TestConstructor",
+      "request": "launch",
+      "mainClass": "reflection.TestConstructor",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "TestClass",
+      "request": "launch",
+      "mainClass": "reflection.TestClass",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "TestModifier",
+      "request": "launch",
+      "mainClass": "reflection.TestModifier",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "TestClassName",
+      "request": "launch",
+      "mainClass": "reflection.TestClassName",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "TestFields",
+      "request": "launch",
+      "mainClass": "reflection.TestFields",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "Test",
+      "request": "launch",
+      "mainClass": "annotation_.Test",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
       "name": "Launch FlightDemo",
       "request": "launch",
       "mainClass": "thread.executors_.FlightDemo",
