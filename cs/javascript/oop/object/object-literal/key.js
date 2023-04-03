@@ -20,19 +20,3 @@ console.log(person1['firstname']);
 console.log('----------');
 
 
-// key 为非 symbol 和 string 类型以外的类型 都会调用 toString
-let o = {
-  toString: function() {
-    return 'diy toString';
-  }
-}
-
-let obj = {
-  [null]: '1',
-  [undefined]: '2',
-  [123]: '3',
-  [true]: '4',
-  [o]: '5'
-};
-
-console.log(Object.keys(obj));

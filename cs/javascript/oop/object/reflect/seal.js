@@ -1,6 +1,6 @@
 // 密封
-// 1. 将所有属性设置为 configurable: false
-// 2. Object.preventExtensions()
+// Object.preventExtensions() 无法扩展新的属性
+// 现有属性设置为 configurable: false(无法修改先有 Descriptor, value 修改和 writable 有关)
 
 Object.seal2 = function (obj) {
   for (const key in obj) {

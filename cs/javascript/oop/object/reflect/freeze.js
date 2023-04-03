@@ -1,4 +1,6 @@
-// writable: false  + seal
+// seal
+// writable: false
+
 const obj = {
   name: 'nixixi',
 };

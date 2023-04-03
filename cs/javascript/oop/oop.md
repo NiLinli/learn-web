@@ -1,11 +1,5 @@
 # OOP
 
-- Procedural Programming 过程
-- Object Oriented Programming 对象
-- Delegation-Oriented Design(objects-linked-to-other-objects)
-
-使用 OOP 能够更好的组织和封装代码
-
 ## OOP in JS
 
 - object literas
@@ -120,5 +114,20 @@ mixin
    - 新建一个对象, 该对象指向父类的 prototype (Object.create)
    - 将子类 prototype 指向新建的对象
 
+## Reflect
 
+1. Reflect.* 只能操作 object, 不能操作基本类型
+2. Object.* 对于非 object 会转换成 object, 再进行操作
+3. throw error/return 设计不一样
 
+## Proxy
+
+**Proxy 不能 polyfilled**
+
+1. Proxy 对象代理处理对象 target
+2. 对 Proxy 的操作都会转发到 target 对应的 handler 上面
+3. handler 接受转发操作和内容后, 可以使用 Reflection 操作反射到 target 上面
+
+捕捉器 handler 有 10 多种  
+使用 getter/setter 遍历对象只能处理 2 种  
+除了可以捕捉 Object, 还可以捕捉 Array 操作  
