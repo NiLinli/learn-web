@@ -16,6 +16,7 @@ public class TestFields {
     System.out.println(actualFieldNames.toString());
 
     // public
+    // field object
     Field nameField = clazz.getField("name");
     Class<?> nameFieldClass = nameField.getType();
     System.out.println(nameFieldClass.getName());
@@ -23,6 +24,13 @@ public class TestFields {
     // private
     Field ageField = clazz.getDeclaredField("age");
     System.out.println(ageField.getName());
+
+    // static field 没有对象传入, 传入 null
+
+    Field maxAgeField = clazz.getField("MAX_AGE");
+    maxAgeField.setAccessible(true);
+    System.out.println(maxAgeField.get(null));
+    
 
     // get set value field
     ageField.setAccessible(true);

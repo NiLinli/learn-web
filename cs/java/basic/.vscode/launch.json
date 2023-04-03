@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "TestMethod",
+      "request": "launch",
+      "mainClass": "reflection.TestMethod",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
       "name": "TestConstructor",
       "request": "launch",
       "mainClass": "reflection.TestConstructor",

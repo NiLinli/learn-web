@@ -1,6 +1,8 @@
 package reflection;
 
 public class TestClass {
+
+  //  inspect classes, interfaces, fields and methods at runtime without prior knowledge of their internals by compile time.
   public static void main(String[] args) throws Exception {
     Class<?> goatClass = Class.forName("reflection.Goat");
     Class<?> stringClass = Class.forName("java.lang.String");

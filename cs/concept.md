@@ -90,3 +90,36 @@ atomic operation 不可分割的操作
     - 视图 redux mobx vuex
     - 数据流 rxjs stream 
   - 一般需要结合 functional programming 使用
+
+## Meta programming
+
+Meta programming is programming where the operation targets the behavior of the program itself.
+
+在编译时 **compile** 修改生成的代码  
+在运行时 **runtime** 生成和改变自身的代码  
+
+### Code Generation 
+
+- C: Macro
+- Js: eval
+
+### Reflection/Reflective programming 
+
+正向: 程序 -> 运行
+反射: 运行时执行代码 -> 效果改变/内省程序运行 
+
+通过允许在运行时存取程序数据(自身信息), 以改变程序行为的程序设计技术。
+is the ability of a process to examine, introspect, and modify its own structure and behavior.
+
+- Introspection 内省/自我检查 检查对象
+  - JS Reflect
+    - typeof/instanceof/in
+    - Object
+  - Java Reflect
+- Self-Modification 自我修改, 改变对象的特性
+  - Symbol.iterator...
+  - Monkey patch
+- Intercession 调解, 在两者中间走过
+  - JS Proxy
+
+

@@ -4,6 +4,8 @@ public class Person {
   public String name;
   private int age;
 
+  public static int MAX_AGE = 150;
+
   public Person() {
     this("nixixi", 18);
   }

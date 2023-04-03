@@ -1,12 +1,5 @@
 # meta programming
 
-Meta programming is programming where the operation targets the behavior of the program itself.
-
-在运行时生成和改变代码
-
-- C: Macro
-- Js: eval
-
 ## Proxy
 
 **Proxy 不能 polyfilled**
@@ -18,3 +11,6 @@ Meta programming is programming where the operation targets the behavior of the 
 捕捉器 handler 有 10 多种  
 使用 getter/setter 遍历对象只能处理 2 种  
 除了可以捕捉 Object, 还可以捕捉 Array 操作  
+
+
+
