@@ -121,6 +121,6 @@ is the ability of a process to examine, introspect, and modify its own structure
   - Symbol.iterator...
   - Monkey patch
 - Intercession 调解, 在两者中间走过
-  - JS Proxy
+  - JS Proxy: intercept basic JavaScript operations on objects.
 
 
