@@ -8,14 +8,14 @@ import com.example.mall.model.request.UpdateCategoryReq;
 import com.example.mall.model.vo.CategoryVO;
 import com.github.pagehelper.PageInfo;
 
-public interface CategoryInterface {
+public interface ProductService {
   void add(AddCategoryReq req);
 
   void update(UpdateCategoryReq req);
 
   void remove(Integer id);
 
-  PageInfo list(PaginationReq req);
+  // PageInfo list(PaginationReq req);
 
   List<CategoryVO> tree();
 }

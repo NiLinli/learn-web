@@ -21,8 +21,8 @@ import com.example.mall.model.request.DeleteCategoryReq;
 import com.example.mall.model.request.PaginationReq;
 import com.example.mall.model.request.UpdateCategoryReq;
 import com.example.mall.model.vo.CategoryVO;
-import com.example.mall.service.CategoryService;
 import com.example.mall.service.UserService;
+import com.example.mall.service.CategoryService;
 import com.github.pagehelper.PageInfo;
 
 @Controller
