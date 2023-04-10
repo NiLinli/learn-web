@@ -1,8 +1,13 @@
 # css & js
 
-## webpack
+## css preprocessor
 
-### webpack css
+预处理器阶段
+
+- scss-loader
+- less-loader
+
+## webpack loader css
 
 webpack loader 处理 css  
 只是文件的处理, 写在 js 当中, 但是和 js 没有什么关系
@@ -11,99 +16,52 @@ webpack loader 处理 css
 - style-loader + file-loader => link 标签
 - mini-css-extract-plugin/extract-text-webpack-plugin + css-loader => link 标签
 
-### css preprocessor
-
-预处理器阶段
-
-- scss-loader
-- less-loader
-
-### postcss
+## postcss
 
 插件系统
 
-可以让 css 支持一些新的特性
-类似于 js 之余 babel
+可以让 css 支持一些新的特性 类似于 js 之余 babel
 
-### css module
+## css scoped
 
-- 模块化
-- css 与 js 进行文本交互能力
+让 css 拥有作用域
 
-```js
-import $style from './index.css';
+vue 
 
-var h1 = document.createElement('h1');
-h1.className = $style.title;
-```
+- postcss 处理 css 添加 attribute selector
+- vue template 添加 attribute
 
-#### 建立一个映射
+## css module
 
-```json
-{
-  "title": "SWiD94XDvuJcjZD1tcWy"
-}
-```
+借助于各种 module pack 工具, 对其支持 css module 特性  
 
-#### 改变 css 样式类名
+- 模块化(作用域)
+- js module 可以引入 css module
+- :export {} 导出变量
 
-```js
-.title {
-  font-weight: 800;
-  font-size: 25px;
-  color: darksalmon;
-}
+思路
 
-// 改变后
-.SWiD94XDvuJcjZD1tcWy {
-  font-weight: 800;
-  font-size: 25px;
-  color: darksalmon;
-}
-```
+1. 建立 css & js 映射 hash
+2. 改变 css 样式类名 
+3. 替换 js 中类名
 
-#### 替换 js 中类名
+相比 css scoped 人为添加 attribute selector, 性能更好  
 
-```js
-var h1 = document.createElement('h1');
-h1.className = 'SWiD94XDvuJcjZD1tcWy';
-```
+注
 
-#### 达到模块化的作用
+RN 等没有 css 概念的平台, 也是使用类型的写法, 只是实现原理不同
 
-#### 扩展
+## css in js
 
-除了 className, 还可以通过 `:export` 导出其他的字符串在 `$style` 对象
+css 在 js 中以编写组件的方式存在  
+组件 + 样式 => 新的组件(Styled Component)
 
-```css
-:export {
-  pColor: darksalmon;
-}
-```
+思路
 
-```scss
-$pColor: darksalmon;
-:export {
-  pColor: $pColor;
-}
-```
+- 生成新的组件将样式通过 style 挂载上去
+- 因为是组件, 所以支持 props 传递实现动态样式
+- ...
 
-### css in js
+一般 scoped/module 的样式都是特定的样式, 用 styled component 方式替代, 不存在多处使用的问题  
+全局的样式还是写在普通的 css 当中  
 
-css in js 阶段  
-
-不是通过 webpack + loader 处理 js 中的 css, 通过写组件
-
-#### 组件化 css
-
-1. 写组件
-2. 计算组件中的样式
-3. 将样式插入到 head 中 style 标签里面
-
-所以是吧 css 写在 js 里面通过计算得出和拆分样式
-
-#### 优点
-
-- 组件化思考 css
-- js => css 传值
-- 适合没有 css 概念的平台, 比如 RN
