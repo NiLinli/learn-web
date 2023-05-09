@@ -28,6 +28,9 @@ public class ProductServiceImpl implements ProductService {
   @Autowired
   ProductMapper productMapper;
 
+  @Autowired
+  CategoryMapper categoryMapper;
+
   @Override
   public void add(AddCategoryReq req) {
     Product product = new Product();

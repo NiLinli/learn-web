@@ -62,7 +62,8 @@ file include exclude 组合选中的文件集合
 - path
 
 typescript-eslint 推荐 import 代替三斜线
-import 会导致一些全局声明失效, 需要 declare global
+
+import 会导致文件编程一个模块 => 全局声明失效 => 需要 declare global
 
 ## 声明合并
 

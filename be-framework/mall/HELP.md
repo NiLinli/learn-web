@@ -1,5 +1,7 @@
 # Getting Started
 
+sudo mysql.server start
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 

@@ -12,10 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.mall.common.ApiRestResponse;
-import com.example.mall.common.Constant;
-import com.example.mall.exception.MallExceptionEnum;
-import com.example.mall.model.pojo.Category;
-import com.example.mall.model.pojo.User;
 import com.example.mall.model.request.AddCategoryReq;
 import com.example.mall.model.request.DeleteCategoryReq;
 import com.example.mall.model.request.PaginationReq;
