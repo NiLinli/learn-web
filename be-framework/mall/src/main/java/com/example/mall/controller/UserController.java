@@ -5,38 +5,35 @@ import java.security.NoSuchAlgorithmException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mall.common.ApiRestResponse;
 import com.example.mall.common.Constant;
 import com.example.mall.exception.MallException;
 import com.example.mall.exception.MallExceptionEnum;
 import com.example.mall.model.pojo.User;
-import com.example.mall.model.request.RegisterReq;
-import com.example.mall.model.request.UpdateUserInfoReq;
+import com.example.mall.model.request.UserRegisterReq;
+import com.example.mall.model.request.UserUpdateReq;
 import com.example.mall.service.UserService;
 
-@Controller
+@RestController
 public class UserController {
 
   @Autowired
   UserService userService;
 
   @GetMapping("/test")
-  @ResponseBody
-  public User personalPage() {
-    return userService.getUser();
+  public ApiRestResponse personalPage() {
+    return ApiRestResponse.success(userService.getUser()) ;
   }
 
   @PostMapping("/user/register")
-  @ResponseBody
-  public ApiRestResponse register(@RequestBody RegisterReq req) throws MallException, NoSuchAlgorithmException {
+  public ApiRestResponse register(@RequestBody UserRegisterReq req) throws MallException, NoSuchAlgorithmException {
 
     String userName = req.getUserName();
     String password = req.getPassword();
@@ -55,8 +52,7 @@ public class UserController {
   }
 
   @PostMapping("/user/login")
-  @ResponseBody
-  public ApiRestResponse<User> login(@RequestBody RegisterReq req, HttpSession session)
+  public ApiRestResponse<User> login(@RequestBody UserRegisterReq req, HttpSession session)
       throws NoSuchAlgorithmException, MallException {
 
     String userName = req.getUserName();
@@ -77,8 +73,7 @@ public class UserController {
   }
 
   @PostMapping("/user/updateUserInfo")
-  @ResponseBody
-  public ApiRestResponse updateUserInfo(HttpSession session, @RequestBody() UpdateUserInfoReq req)
+  public ApiRestResponse updateUserInfo(HttpSession session, @RequestBody() UserUpdateReq req)
       throws MallException {
 
     String signature = req.getSignature();
@@ -97,8 +92,6 @@ public class UserController {
     updateUser.setId(currentUser.getId());
     updateUser.setPersonalizedSignature(signature);
     userService.updateUserInfo(updateUser);
-
     return ApiRestResponse.success();
-
   }
 }

@@ -113,7 +113,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"鸭货\",\n    \"type\": 5,\n    \"parentId\": 6,\n    \"orderNum\": 10\n}",
+							"raw": "{\n    \"name\": \"鸭货123456\",\n    \"type\": 5,\n    \"parentId\": 6,\n    \"orderNum\": 10\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -142,7 +142,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 34,\n    \"name\": \"鸭货\"\n}",
+							"raw": "{\n    \"id\": 34,\n    \"name\": \"鸭货1234567\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -188,6 +188,277 @@
 							"path": [
 								"category",
 								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageSize\": 10,\n    \"pageNum\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/category/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"category",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tree",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/category/tree",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"category",
+								"tree"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "admin/add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"猫山王榴莲\",\n    \"image\": \"https://cos.wahaha.png\",\n    \"detail\": \"20斤榴莲，干包\",\n    \"categoryId\": 1,\n    \"price\": 100000,\n    \"stock\": 9999,\n    \"status\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/product/admin/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"product",
+								"admin",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin/update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"43\", \n    \"name\": \"榴莲update\",\n    \"image\": \"https://cos.wahaha.png\",\n    \"detail\": \"3斤榴莲，干包\",\n    \"categoryId\": 1,\n    \"price\": 200000,\n    \"stock\": 9999,\n    \"status\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/product/admin/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"product",
+								"admin",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin/delete",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"43\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/product/admin/delete",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"product",
+								"admin",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin/batchUpdateSellStatus",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ids\": [37, 39, 44],\n    \"sellStatus\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/product/admin/batchUpdateSellStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"product",
+								"admin",
+								"batchUpdateSellStatus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin/list",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageNum\": 2,\n    \"pageSize\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/product/admin/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"product",
+								"admin",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pageNum\": 1,\n    \"pageSize\": 100,\n    \"categoryId\": 3,\n    \"keyword\": \"奇异果\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/product/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"product",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 37\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/product/detail",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"product",
+								"detail"
 							]
 						}
 					},

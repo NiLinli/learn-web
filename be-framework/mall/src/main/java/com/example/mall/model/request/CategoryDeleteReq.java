@@ -2,7 +2,7 @@ package com.example.mall.model.request;
 
 import javax.validation.constraints.NotNull;
 
-public class DeleteCategoryReq {
+public class CategoryDeleteReq {
 
   @NotNull
   private Integer id;

@@ -2,20 +2,22 @@ package com.example.mall.service;
 
 import java.util.List;
 
-import com.example.mall.model.request.AddCategoryReq;
-import com.example.mall.model.request.PaginationReq;
-import com.example.mall.model.request.UpdateCategoryReq;
-import com.example.mall.model.vo.CategoryVO;
+import com.example.mall.model.pojo.Product;
+import com.example.mall.model.request.ProductCListReq;
 import com.github.pagehelper.PageInfo;
 
 public interface ProductService {
-  void add(AddCategoryReq req);
+  void add(Product product);
 
-  void update(UpdateCategoryReq req);
+  void update(Product product);
 
   void remove(Integer id);
 
-  // PageInfo list(PaginationReq req);
+  void batchUpdateSellStatus(Integer[] ids, Integer sellStatus);
 
-  List<CategoryVO> tree();
+  PageInfo listForAdmin(Integer pageNum, Integer pageSize);
+
+  Product detail(Integer id);
+
+  PageInfo listForC(ProductCListReq req);
 }

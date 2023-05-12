@@ -7,20 +7,19 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import com.example.mall.service.ProductService;
 
+import com.example.mall.service.CategoryService;
+import com.example.mall.service.ProductService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.example.mall.dao.CategoryMapper;
 import com.example.mall.dao.ProductMapper;
 import com.example.mall.exception.MallException;
 import com.example.mall.exception.MallExceptionEnum;
-import com.example.mall.model.pojo.Category;
 import com.example.mall.model.pojo.Product;
-import com.example.mall.model.request.AddCategoryReq;
-import com.example.mall.model.request.PaginationReq;
-import com.example.mall.model.request.UpdateCategoryReq;
+import com.example.mall.model.query.ProductCListQuery;
+import com.example.mall.model.request.ProductCListReq;
 import com.example.mall.model.vo.CategoryVO;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -29,47 +28,112 @@ public class ProductServiceImpl implements ProductService {
   ProductMapper productMapper;
 
   @Autowired
-  CategoryMapper categoryMapper;
+  CategoryService categoryService;
 
   @Override
-  public void add(AddCategoryReq req) {
-    Product product = new Product();
-    BeanUtils.copyProperties(req, product);
+  public void add(Product addProduct) {
+    Product productOld = productMapper.selectByName(addProduct.getName());
+
+    if (productOld != null) {
+      throw new MallException(MallExceptionEnum.PRODUCT_NAME_EXISTED);
+    }
+
+    int count = productMapper.insertSelective(addProduct);
+    if (count == 0) {
+      throw new MallException(MallExceptionEnum.PRODUCT_ADD_FAILED);
+    }
   }
 
   @Override
-  public void update(UpdateCategoryReq req) {
-    Category category = new Category();
-    BeanUtils.copyProperties(req, category);
-
-    // 检查重名
-    Category[] categories = categoryMapper.selectByName(category.getName());
-    if (categories.length > 0) {
-      throw new MallException(MallExceptionEnum.CATEGORY_DUPLICATE);
+  public void update(Product updateProduct) {
+    Product productOld = productMapper.selectByPrimaryKey(updateProduct.getId());
+    if (productOld == null) {
+      throw new MallException(MallExceptionEnum.PRODUCT_UPDATE_FAILED);
     }
 
-    int count = categoryMapper.updateByPrimaryKeySelective(category);
+    int count = productMapper.updateByPrimaryKeySelective(updateProduct);
     if (count == 0) {
-      throw new MallException(MallExceptionEnum.CATEGORY_UPDATE_FAILED);
+      throw new MallException(MallExceptionEnum.PRODUCT_UPDATE_FAILED);
     }
+
   }
 
   @Override
   public void remove(Integer id) {
-  }
+    Product productOld = productMapper.selectByPrimaryKey(id);
+    if (productOld == null) {
+      throw new MallException(MallExceptionEnum.PRODUCT_DELETE_FAILED);
+    }
 
-  // @Override
-  // public PageInfo list(PaginationReq req) {
-  // }
+    int count = productMapper.deleteByPrimaryKey(id);
+    if (count == 0) {
+      throw new MallException(MallExceptionEnum.PRODUCT_DELETE_FAILED);
+    }
+  }
 
   @Override
-  @Cacheable(value = "/category/tree")
-  public List<CategoryVO> tree() {
-    List<CategoryVO> listCategoryVos = new ArrayList<>();
-    recursivelyCategoryVOs(listCategoryVos, 0);
-    return listCategoryVos;
+  public void batchUpdateSellStatus(Integer[] ids, Integer sellStatus) {
+    productMapper.batchUpdateSellStatus(ids, sellStatus);
   }
 
-  private void recursivelyCategoryVOs(List<CategoryVO> listCategoryVos, Integer parentId) {
+  @Override
+  public PageInfo listForAdmin(Integer pageNum, Integer pageSize) {
+    PageHelper.startPage(pageNum, pageSize);
+    List<Product> products = productMapper.selectListForAdmin();
+    PageInfo pageInfo = new PageInfo<>(products);
+    return pageInfo;
   }
+
+  @Override
+  public Product detail(Integer id) {
+    Product product = productMapper.selectByPrimaryKey(id);
+    return product;
+  }
+
+  @Override
+  public PageInfo listForC(ProductCListReq req) {
+
+    ProductCListQuery productCListQuery = new ProductCListQuery();
+
+    productCListQuery.setKeyword(req.getKeyword());
+
+    if (req.getCategoryId() != null) {
+      List<CategoryVO> categoryVOs = categoryService.treeCategory(req.getCategoryId());
+      ArrayList<Integer> categoryIds = new ArrayList<>();
+      getCategoryIds(categoryVOs, categoryIds);
+      productCListQuery.setCategoryIds(categoryIds);
+    }
+
+    Integer orderBy = req.getOrderBy();
+
+    if (orderBy != null) {
+      if (orderBy == 1) {
+        PageHelper.startPage(req.getPageNum(), req.getPageSize(), "price desc");
+      } else if (orderBy == 2) {
+        PageHelper.startPage(req.getPageNum(), req.getPageSize(), "price asc");
+      }
+    } else {
+      PageHelper.startPage(req.getPageNum(), req.getPageSize());
+    }
+
+    List<Product> products = productMapper.selectListForC(productCListQuery);
+    PageInfo pageInfo = new PageInfo<>(products);
+    return pageInfo;
+  }
+
+  private void getCategoryIds(List<CategoryVO> categoryVOs, ArrayList<Integer> categoryIds) {
+
+    for (int i = 0; i < categoryVOs.size(); i++) {
+      CategoryVO categoryVO = categoryVOs.get(i);
+
+      if (categoryVO != null) {
+        categoryIds.add(categoryVO.getId());
+
+        getCategoryIds(categoryVO.getChildCategories(), categoryIds);
+      }
+
+    }
+
+  }
+
 }

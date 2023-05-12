@@ -1,6 +1,6 @@
 package com.example.mall.model.request;
 
-public class UpdateUserInfoReq {
+public class UserUpdateReq {
   private String signature;
 
   public void setSignature(String signature) {

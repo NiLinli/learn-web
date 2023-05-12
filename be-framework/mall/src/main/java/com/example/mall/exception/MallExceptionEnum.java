@@ -14,8 +14,13 @@ public enum MallExceptionEnum {
   CATEGORY_ADD_FAILED(11002, "分类新增失败"),
   CATEGORY_UPDATE_FAILED(11003, "分类更新失败"),
   CATEGORY_REMOVE_FAILED(11004, "分类删除失败"),
+  PRODUCT_NAME_EXISTED(12001, "产品名字相同"),
+  PRODUCT_ADD_FAILED(12002, "创建产品失败"),
+  PRODUCT_UPDATE_FAILED(12003, "更新产品失败"),
+  PRODUCT_DELETE_FAILED(12004, "删除产品失败"),
   SYSTEM_ERROR(20000, "系统异常"),
-  PARAMS_ERROR(20001, "请求参数错误");
+  PARAMS_ERROR(20001, "请求参数错误")
+  ;
 
   Integer code;
   String msg;

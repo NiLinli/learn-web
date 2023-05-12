@@ -1,6 +1,6 @@
 package com.example.mall.model.request;
 
-public class RegisterReq  {
+public class UserRegisterReq  {
 
   private String userName;
   private String password;

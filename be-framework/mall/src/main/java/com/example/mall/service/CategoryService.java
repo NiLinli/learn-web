@@ -2,20 +2,20 @@ package com.example.mall.service;
 
 import java.util.List;
 
-import com.example.mall.model.request.AddCategoryReq;
+import com.example.mall.model.request.CategoryAddReq;
 import com.example.mall.model.request.PaginationReq;
-import com.example.mall.model.request.UpdateCategoryReq;
+import com.example.mall.model.request.CategoryUpdateReq;
 import com.example.mall.model.vo.CategoryVO;
 import com.github.pagehelper.PageInfo;
 
 public interface CategoryService {
-  void add(AddCategoryReq req);
+  void add(CategoryAddReq req);
 
-  void update(UpdateCategoryReq req);
+  void update(CategoryUpdateReq req);
 
   void remove(Integer id);
 
   PageInfo list(PaginationReq req);
 
-  List<CategoryVO> tree();
+  List<CategoryVO> treeCategory(Integer parentId);
 }

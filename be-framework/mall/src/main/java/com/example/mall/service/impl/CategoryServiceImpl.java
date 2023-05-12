@@ -12,9 +12,9 @@ import com.example.mall.dao.CategoryMapper;
 import com.example.mall.exception.MallException;
 import com.example.mall.exception.MallExceptionEnum;
 import com.example.mall.model.pojo.Category;
-import com.example.mall.model.request.AddCategoryReq;
+import com.example.mall.model.request.CategoryAddReq;
 import com.example.mall.model.request.PaginationReq;
-import com.example.mall.model.request.UpdateCategoryReq;
+import com.example.mall.model.request.CategoryUpdateReq;
 import com.example.mall.model.vo.CategoryVO;
 import com.example.mall.service.CategoryService;
 import com.github.pagehelper.PageHelper;
@@ -27,7 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
   CategoryMapper categoryMapper;
 
   @Override
-  public void add(AddCategoryReq req) {
+  public void add(CategoryAddReq req) {
     Category category = new Category();
 
     BeanUtils.copyProperties(req, category);
@@ -46,7 +46,7 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public void update(UpdateCategoryReq req) {
+  public void update(CategoryUpdateReq req) {
     Category category = new Category();
     BeanUtils.copyProperties(req, category);
 
@@ -80,9 +80,9 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Override
   @Cacheable(value = "/category/tree")
-  public List<CategoryVO> tree() {
+  public List<CategoryVO> treeCategory(Integer parentId) {
     List<CategoryVO> listCategoryVos = new ArrayList<>();
-    recursivelyCategoryVOs(listCategoryVos, 0);
+    recursivelyCategoryVOs(listCategoryVos, parentId);
     return listCategoryVos;
   }
 

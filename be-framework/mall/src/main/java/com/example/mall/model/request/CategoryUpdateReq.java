@@ -1,24 +1,29 @@
 package com.example.mall.model.request;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class AddCategoryReq {
+public class CategoryUpdateReq {
+
+  @NotNull
+  private Integer id;
 
   @Size(min = 2, max = 10)
-  @NotNull
   private String name;
 
-  @NotNull
-  @Max(5)
   private Integer type;
 
-  @NotNull
   private Integer parentId;
 
-  @NotNull
   private Integer orderNum;
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
   public void setName(String name) {
     this.name = name;
@@ -39,4 +44,6 @@ public class AddCategoryReq {
   public Integer getOrderNum() {
     return orderNum;
   }
+
+
 }
