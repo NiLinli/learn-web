@@ -18,6 +18,11 @@ public enum MallExceptionEnum {
   PRODUCT_ADD_FAILED(12002, "创建产品失败"),
   PRODUCT_UPDATE_FAILED(12003, "更新产品失败"),
   PRODUCT_DELETE_FAILED(12004, "删除产品失败"),
+  PRODUCT_NOT_SALE(13001, "商品无法购买"),
+  PRODUCT_NOT_ENOUGH(13002, "商品库存不足"),
+  CART_ADD_FAILED(13003, "商品添加失败"),
+  CART_UPDATE_FAILED(13004, "商品更新失败"),
+  CART_DELETE_FAILED(13005, "商品删除失败"),
   SYSTEM_ERROR(20000, "系统异常"),
   PARAMS_ERROR(20001, "请求参数错误")
   ;
