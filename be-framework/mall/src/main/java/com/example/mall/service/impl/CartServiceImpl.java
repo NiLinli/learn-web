@@ -10,6 +10,7 @@ import com.example.mall.dao.CartMapper;
 import com.example.mall.dao.ProductMapper;
 import com.example.mall.exception.MallException;
 import com.example.mall.exception.MallExceptionEnum;
+import com.example.mall.filter.UserFilter;
 import com.example.mall.model.pojo.Cart;
 import com.example.mall.model.pojo.Product;
 import com.example.mall.model.vo.CartVO;
@@ -83,6 +84,12 @@ public class CartServiceImpl implements CartService {
     }
 
     return list(userId);
+  }
+
+  @Override
+  public List<CartVO> listByProducts(Integer userId ,Integer[] productIds) {
+    List<CartVO> cartVOs = cartMapper.selectCartByUserIdAndProductIds(userId, productIds);
+    return cartVOs;
   }
 
 

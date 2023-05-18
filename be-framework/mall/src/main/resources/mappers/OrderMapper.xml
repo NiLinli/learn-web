@@ -40,11 +40,7 @@
       payment_type, delivery_time, pay_time, 
       end_time, create_time, update_time
       )
-    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
-      #{totalPrice,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, #{receiverMobile,jdbcType=VARCHAR}, 
-      #{receiverAddress,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}, #{postage,jdbcType=INTEGER}, 
-      #{paymentType,jdbcType=INTEGER}, #{deliveryTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP}, 
-      #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{totalPrice,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, #{receiverMobile,jdbcType=VARCHAR}, #{receiverAddress,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}, #{postage,jdbcType=INTEGER}, #{paymentType,jdbcType=INTEGER}, #{deliveryTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.mall.model.pojo.Order">
@@ -97,50 +93,35 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
+      <if test="id != null"> #{id,jdbcType=INTEGER},
       </if>
-      <if test="orderNo != null">
-        #{orderNo,jdbcType=VARCHAR},
+      <if test="orderNo != null"> #{orderNo,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+      <if test="userId != null"> #{userId,jdbcType=INTEGER},
       </if>
-      <if test="totalPrice != null">
-        #{totalPrice,jdbcType=INTEGER},
+      <if test="totalPrice != null"> #{totalPrice,jdbcType=INTEGER},
       </if>
-      <if test="receiverName != null">
-        #{receiverName,jdbcType=VARCHAR},
+      <if test="receiverName != null"> #{receiverName,jdbcType=VARCHAR},
       </if>
-      <if test="receiverMobile != null">
-        #{receiverMobile,jdbcType=VARCHAR},
+      <if test="receiverMobile != null"> #{receiverMobile,jdbcType=VARCHAR},
       </if>
-      <if test="receiverAddress != null">
-        #{receiverAddress,jdbcType=VARCHAR},
+      <if test="receiverAddress != null"> #{receiverAddress,jdbcType=VARCHAR},
       </if>
-      <if test="orderStatus != null">
-        #{orderStatus,jdbcType=INTEGER},
+      <if test="orderStatus != null"> #{orderStatus,jdbcType=INTEGER},
       </if>
-      <if test="postage != null">
-        #{postage,jdbcType=INTEGER},
+      <if test="postage != null"> #{postage,jdbcType=INTEGER},
       </if>
-      <if test="paymentType != null">
-        #{paymentType,jdbcType=INTEGER},
+      <if test="paymentType != null"> #{paymentType,jdbcType=INTEGER},
       </if>
-      <if test="deliveryTime != null">
-        #{deliveryTime,jdbcType=TIMESTAMP},
+      <if test="deliveryTime != null"> #{deliveryTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="payTime != null">
-        #{payTime,jdbcType=TIMESTAMP},
+      <if test="payTime != null"> #{payTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endTime != null">
-        #{endTime,jdbcType=TIMESTAMP},
+      <if test="endTime != null"> #{endTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="createTime != null"> #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null"> #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -210,4 +191,62 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <resultMap id="CollectionResultMap" type="com.example.mall.model.vo.OrderVO">
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="total_price" jdbcType="INTEGER" property="totalPrice" />
+    <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
+    <result column="receiver_mobile" jdbcType="VARCHAR" property="receiverMobile" />
+    <result column="receiver_address" jdbcType="VARCHAR" property="receiverAddress" />
+    <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+    <result column="postage" jdbcType="INTEGER" property="postage" />
+    <result column="payment_type" jdbcType="INTEGER" property="paymentType" />
+    <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <collection property="orderItems" ofType="com.example.mall.model.vo.OrderItemVO">
+      <result column="product_id" jdbcType="INTEGER" property="productId" />
+      <result column="product_name" jdbcType="VARCHAR" property="productName" />
+      <result column="product_img" jdbcType="VARCHAR" property="productImg" />
+      <result column="unit_price" jdbcType="INTEGER" property="unitPrice" />
+      <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    </collection>
+  </resultMap>
+  <sql id="Collect_Column_List">
+    mo.order_no as order_no, 
+    user_id,
+    mo.total_price as total_price,
+    receiver_name,
+    receiver_mobile,
+    receiver_address, 
+    order_status, 
+    postage,
+    payment_type,
+    delivery_time,
+    pay_time,
+    end_time,
+    mo.create_time as create_time, 
+    mo.update_time as update_time,
+    product_id, product_name, product_img, unit_price, quantity
+  </sql>
+  <select id="selectList" resultMap="CollectionResultMap">
+    select 
+    <include refid="Collect_Column_List" />
+    from mall_order mo
+    left join mall_order_item moi
+      on  mo.order_no = moi.order_no
+  </select>
+
+  <select id="selectByOrderNo" parameterType="java.lang.String" resultMap="CollectionResultMap">
+    select 
+    <include refid="Collect_Column_List" />
+    from mall_order mo
+    left join mall_order_item moi
+      on  mo.order_no = moi.order_no
+    where mo.order_no = #{orderNo,jdbcType=VARCHAR}
+  </select>
 </mapper>

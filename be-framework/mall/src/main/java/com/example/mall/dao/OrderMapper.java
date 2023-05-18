@@ -1,6 +1,9 @@
 package com.example.mall.dao;
 
+import java.util.List;
+
 import com.example.mall.model.pojo.Order;
+import com.example.mall.model.vo.OrderVO;
 
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,8 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+
+    List<OrderVO> selectList();
+
+    OrderVO selectByOrderNo(String orderNo);
 }

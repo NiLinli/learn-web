@@ -12,8 +12,6 @@ import com.example.mall.common.ApiRestResponse;
 import com.example.mall.filter.UserFilter;
 import com.example.mall.model.request.CartAddOrUpdateReq;
 import com.example.mall.model.request.CartDeleteReq;
-import com.example.mall.model.request.CartSelectAllReq;
-import com.example.mall.model.request.CartSelectReq;
 import com.example.mall.model.vo.CartVO;
 import com.example.mall.service.CartService;
 

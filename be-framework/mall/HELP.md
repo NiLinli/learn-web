@@ -1,5 +1,7 @@
 # Getting Started
 
+疑问 多次 sql 和单次sql 差别多大
+
 sudo mysql.server start
 
 ### Reference Documentation

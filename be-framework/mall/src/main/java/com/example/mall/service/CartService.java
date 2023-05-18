@@ -14,4 +14,6 @@ public interface CartService {
 
   List<CartVO> delete(Integer userId, Integer productId);
 
+  List<CartVO> listByProducts(Integer userId, Integer[] productIds);
+
 }
