@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mall.common.ApiRestResponse;
 import com.example.mall.model.request.CategoryAddReq;
@@ -21,8 +23,10 @@ import com.example.mall.service.UserService;
 import com.example.mall.service.CategoryService;
 import com.github.pagehelper.PageInfo;
 
-@Controller
-public class CategoryController {
+@RestController
+@RequestMapping("admin/category")
+
+public class CategoryBController {
 
   @Autowired
   UserService userService;
@@ -30,39 +34,29 @@ public class CategoryController {
   @Autowired
   CategoryService categoryService;
 
-  @PostMapping("/category/add")
-  @ResponseBody
+  @PostMapping("/add")
   public ApiRestResponse addCategory(@Valid @RequestBody CategoryAddReq req) {
     categoryService.add(req);
     return ApiRestResponse.success();
   }
 
-  @PostMapping("/category/update")
-  @ResponseBody
+  @PostMapping("/update")
   public ApiRestResponse updateCategory(@Valid @RequestBody CategoryUpdateReq req) {
     categoryService.update(req);
     return ApiRestResponse.success();
   }
 
-  @PostMapping("/category/delete")
-  @ResponseBody
+  @PostMapping("/delete")
   public ApiRestResponse deleteCategory(@Valid @RequestBody CategoryDeleteReq req) {
     categoryService.remove(req.getId());
     return ApiRestResponse.success();
   }
 
-  @PostMapping("/category/list")
-  @ResponseBody
+  @PostMapping("/list")
   public ApiRestResponse listCategoryForBackend(@Valid @RequestBody PaginationReq req) {
 
     PageInfo pageInfo = categoryService.list(req);
     return ApiRestResponse.success(pageInfo);
   }
 
-  @PostMapping("/category/tree")
-  @ResponseBody
-  public ApiRestResponse treeCategoryForFe() {
-    List<CategoryVO> categorieVos = categoryService.treeCategory(0);
-    return ApiRestResponse.success(categorieVos);
-  }
 }

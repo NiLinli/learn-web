@@ -19,9 +19,9 @@ public class AdminFilterConfig {
     FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean<>();
 
     filterRegistrationBean.setFilter(adminFilter());
-    filterRegistrationBean.addUrlPatterns("/category/*");
-    filterRegistrationBean.addUrlPatterns("/product/*");
-    filterRegistrationBean.addUrlPatterns("/order/*");
+    filterRegistrationBean.addUrlPatterns("/admin/category/*");
+    filterRegistrationBean.addUrlPatterns("/admin/product/*");
+    filterRegistrationBean.addUrlPatterns("/admin/order/*");
     filterRegistrationBean.setName("adminFilterConf");
 
     return filterRegistrationBean;

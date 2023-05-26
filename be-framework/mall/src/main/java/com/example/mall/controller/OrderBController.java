@@ -10,7 +10,7 @@ import com.example.mall.model.request.OrderOperateReq;
 import com.example.mall.model.request.PaginationReq;
 
 @RestController
-@RequestMapping("/order/admin")
+@RequestMapping("admin/order")
 public class OrderBController {
 
   @PostMapping("list")

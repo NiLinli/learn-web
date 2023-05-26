@@ -67,13 +67,13 @@
 					"response": []
 				},
 				{
-					"name": "updateUserInfo",
+					"name": "loginWithToken",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"signature\": \"哇哈哈\"\n}",
+							"raw": "{\n    \"userName\": \"joeni123\",\n    \"password\": 123456\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -81,7 +81,45 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/user/updateUserInfo?signature=不跟随",
+							"raw": "http://localhost:8083/user/loginWithToken",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"user",
+								"loginWithToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUserInfo",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNzcxNDg2NDMwfQ.BHCnhfZpsvzS7ag8coy3vlU80rAXv80AMHYypEV-EXM",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"signature\": \"不跟随\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/user/updateUserInfo",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -90,12 +128,6 @@
 							"path": [
 								"user",
 								"updateUserInfo"
-							],
-							"query": [
-								{
-									"key": "signature",
-									"value": "不跟随"
-								}
 							]
 						}
 					},
@@ -107,13 +139,13 @@
 			"name": "category",
 			"item": [
 				{
-					"name": "add",
+					"name": "admin-add",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"鸭货123456\",\n    \"type\": 5,\n    \"parentId\": 6,\n    \"orderNum\": 10\n}",
+							"raw": "{\n    \"name\": \"鸭6678\",\n    \"type\": 5,\n    \"parentId\": 6,\n    \"orderNum\": 3\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -121,13 +153,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/category/add",
+							"raw": "http://localhost:8083/admin/category/add",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8083",
 							"path": [
+								"admin",
 								"category",
 								"add"
 							]
@@ -136,13 +169,13 @@
 					"response": []
 				},
 				{
-					"name": "update",
+					"name": "admin-update",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 34,\n    \"name\": \"鸭货1234567\"\n}",
+							"raw": "{\n    \"id\": 38,\n    \"name\": \"鸭货2023\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -150,13 +183,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/category/update",
+							"raw": "http://localhost:8083/admin/category/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8083",
 							"path": [
+								"admin",
 								"category",
 								"update"
 							]
@@ -165,13 +199,13 @@
 					"response": []
 				},
 				{
-					"name": "delete",
+					"name": "admin-delete",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 38\n}",
+							"raw": "{\n    \"id\": 40\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -179,13 +213,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/category/delete",
+							"raw": "http://localhost:8083/admin/category/delete",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8083",
 							"path": [
+								"admin",
 								"category",
 								"delete"
 							]
@@ -194,13 +229,13 @@
 					"response": []
 				},
 				{
-					"name": "list",
+					"name": "admin-list",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"pageSize\": 10,\n    \"pageNum\": 3\n}",
+							"raw": "{\n    \"pageSize\": 10,\n    \"pageNum\": 2\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -208,13 +243,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/category/list",
+							"raw": "http://localhost:8083/admin/category/list",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8083",
 							"path": [
+								"admin",
 								"category",
 								"list"
 							]
@@ -226,7 +262,13 @@
 					"name": "tree",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNzcxNDg2NDMwfQ.BHCnhfZpsvzS7ag8coy3vlU80rAXv80AMHYypEV-EXM",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -260,10 +302,16 @@
 					"name": "add",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNzcxNDg2NDMwfQ.BHCnhfZpsvzS7ag8coy3vlU80rAXv80AMHYypEV-EXM",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"productId\": \"44\",\n    \"count\": 10\n}",
+							"raw": "{\n    \"productId\": \"42\",\n    \"count\": 7\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -289,10 +337,16 @@
 					"name": "update",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNzcxNDg2NDMwfQ.BHCnhfZpsvzS7ag8coy3vlU80rAXv80AMHYypEV-EXM",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"productId\": \"鸭货123456\",\n    \"count\": 5\n}",
+							"raw": "{\n    \"productId\": \"44\",\n    \"count\": 2\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -318,10 +372,16 @@
 					"name": "delete",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNzcxNDg2NDMwfQ.BHCnhfZpsvzS7ag8coy3vlU80rAXv80AMHYypEV-EXM",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"productId\": 2\n}",
+							"raw": "{\n    \"productId\": 42\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -347,7 +407,13 @@
 					"name": "list",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNzcxNDg2NDMwfQ.BHCnhfZpsvzS7ag8coy3vlU80rAXv80AMHYypEV-EXM",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n}",
@@ -381,7 +447,13 @@
 					"name": "add",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNzcxNDg2NDMwfQ.BHCnhfZpsvzS7ag8coy3vlU80rAXv80AMHYypEV-EXM",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"productIds\": [42,44],\n    \"receiverName\": \"倪西西\",\n    \"receiverMobile\": \"18674095620\",\n    \"receiverAddress\": \"武汉市中建光谷之星G3\"\n}",
@@ -410,7 +482,13 @@
 					"name": "detail",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNzcxNDg2NDMwfQ.BHCnhfZpsvzS7ag8coy3vlU80rAXv80AMHYypEV-EXM",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"orderNo\": \"61201.08972060502\"\n}",
@@ -439,7 +517,13 @@
 					"name": "list",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNzcxNDg2NDMwfQ.BHCnhfZpsvzS7ag8coy3vlU80rAXv80AMHYypEV-EXM",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n}",
@@ -470,7 +554,7 @@
 			"name": "product",
 			"item": [
 				{
-					"name": "admin/add",
+					"name": "admin-add",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -484,15 +568,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/product/admin/add",
+							"raw": "http://localhost:8083/admin/product/add",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8083",
 							"path": [
-								"product",
 								"admin",
+								"product",
 								"add"
 							]
 						}
@@ -500,7 +584,7 @@
 					"response": []
 				},
 				{
-					"name": "admin/update",
+					"name": "admin-update",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -514,15 +598,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/product/admin/update",
+							"raw": "http://localhost:8083/admin/product/update",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8083",
 							"path": [
-								"product",
 								"admin",
+								"product",
 								"update"
 							]
 						}
@@ -530,7 +614,7 @@
 					"response": []
 				},
 				{
-					"name": "admin/delete",
+					"name": "admin-delete",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -544,15 +628,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/product/admin/delete",
+							"raw": "http://localhost:8083/admin/product/delete",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8083",
 							"path": [
-								"product",
 								"admin",
+								"product",
 								"delete"
 							]
 						}
@@ -560,7 +644,7 @@
 					"response": []
 				},
 				{
-					"name": "admin/batchUpdateSellStatus",
+					"name": "admin-batchUpdateSellStatus",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -574,15 +658,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/product/admin/batchUpdateSellStatus",
+							"raw": "http://localhost:8083/admin/product/batchUpdateSellStatus",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8083",
 							"path": [
-								"product",
 								"admin",
+								"product",
 								"batchUpdateSellStatus"
 							]
 						}
@@ -590,7 +674,7 @@
 					"response": []
 				},
 				{
-					"name": "admin/list",
+					"name": "admin-list",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -623,7 +707,13 @@
 					"name": "list",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNzcxNDg2NDMwfQ.BHCnhfZpsvzS7ag8coy3vlU80rAXv80AMHYypEV-EXM",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"pageNum\": 1,\n    \"pageSize\": 100,\n    \"categoryId\": 3,\n    \"keyword\": \"奇异果\"\n}",
@@ -652,7 +742,13 @@
 					"name": "detail",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNzcxNDg2NDMwfQ.BHCnhfZpsvzS7ag8coy3vlU80rAXv80AMHYypEV-EXM",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"id\": 37\n}",
