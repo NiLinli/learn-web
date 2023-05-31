@@ -1,5 +1,7 @@
 package com.example.mall.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import com.example.mall.model.pojo.Product;
@@ -20,4 +22,6 @@ public interface ProductService {
   Product detail(Integer id);
 
   PageInfo listForC(ProductCListReq req);
+
+  void addProductByExcel(File destFile) throws IOException;
 }

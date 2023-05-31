@@ -1,8 +1,16 @@
 package com.example.mall.service.impl;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -134,6 +142,88 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
+  }
+
+  @Override
+  public void addProductByExcel(File destFile) throws IOException {
+    List<Product> products = readProductsFromExcel(destFile);
+
+    for (Product product : products) {
+      Product productOld = productMapper.selectByName(product.getName());
+
+      if (productOld != null) {
+        throw new MallException(MallExceptionEnum.PRODUCT_NAME_EXISTED);
+      }
+
+      int count = productMapper.insertSelective(product);
+
+      if (count == 0) {
+        throw new MallException(MallExceptionEnum.PRODUCT_ADD_FAILED);
+      }
+    }
+  }
+
+  private List<Product> readProductsFromExcel(File excelFile) throws IOException {
+    ArrayList<Product> products = new ArrayList<>();
+
+    FileInputStream inputStream = new FileInputStream(excelFile);
+    XSSFWorkbook workbook = new XSSFWorkbook(inputStream);  // excel
+    XSSFSheet firstSheet = workbook.getSheetAt(0);  // excel 第一个 sheet
+
+    Iterator<Row> rowIterator = firstSheet.iterator();
+
+    while (rowIterator.hasNext()) {
+      Row nextRow = rowIterator.next();
+      Iterator<Cell> cellIterator = nextRow.cellIterator();
+
+      int rowNumber = nextRow.getRowNum();
+
+      if (rowNumber == 0) {
+        continue;
+      }
+
+      Product product = new Product();
+
+      while (cellIterator.hasNext()) {
+
+        
+        Cell nextCell = cellIterator.next();
+ 
+        int columnIndex = nextCell.getColumnIndex();
+
+        switch (columnIndex) {
+          case 0:
+            product.setName(nextCell.getStringCellValue());
+            break;
+          case 1:
+            product.setImage(nextCell.getStringCellValue());
+            break;
+          case 2:
+            product.setDetail(nextCell.getStringCellValue());
+            break;
+          case 3:
+            product.setCategoryId(((Double) nextCell.getNumericCellValue()).intValue());
+            break;
+          case 4:
+            product.setPrice(((Double) nextCell.getNumericCellValue()).intValue());
+            break;
+          case 5:
+            product.setStock(((Double) nextCell.getNumericCellValue()).intValue());
+            break;
+          case 6:
+            product.setStatus(((Double) nextCell.getNumericCellValue()).intValue());
+            break;
+          default:
+            break;
+        }
+
+      }
+
+      products.add(product);
+
+    }
+
+    return products;
   }
 
 }

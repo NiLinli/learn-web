@@ -1,5 +1,8 @@
 package com.example.mall.controller;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
@@ -7,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.mall.common.ApiRestResponse;
 import com.example.mall.model.pojo.Product;
@@ -59,6 +64,19 @@ public class ProductBController {
   public ApiRestResponse listProduct(@Valid @RequestBody() PaginationReq req) {
     PageInfo pageInfo = productService.listForAdmin(req.getPageNum(), req.getPageSize());
     return ApiRestResponse.success(pageInfo);
+  }
+
+  @PostMapping("/uploadExcel")
+  public ApiRestResponse uploadExcel(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+
+    String fileName = multipartFile.getOriginalFilename();
+    String suffix = fileName.substring(fileName.lastIndexOf("."));
+    File tempFile = File.createTempFile("product-upload-excel", suffix);
+    multipartFile.transferTo(tempFile);
+
+    System.out.println(tempFile.getAbsolutePath());
+    productService.addProductByExcel(tempFile);
+    return ApiRestResponse.success();
   }
 
 }
