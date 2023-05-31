@@ -1,12 +1,16 @@
 package com.example.mall.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.validation.Valid;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +26,9 @@ import com.example.mall.model.request.CategoryUpdateReq;
 import com.example.mall.model.request.DetailOrDeleteReq;
 import com.example.mall.service.ProductService;
 import com.github.pagehelper.PageInfo;
+
+import net.coobird.thumbnailator.Thumbnails;
+
 import com.example.mall.model.request.PaginationReq;
 
 @RestController
@@ -69,6 +76,7 @@ public class ProductBController {
   @PostMapping("/uploadExcel")
   public ApiRestResponse uploadExcel(@RequestParam("file") MultipartFile multipartFile) throws IOException {
 
+    // MultipartFile to TempFile
     String fileName = multipartFile.getOriginalFilename();
     String suffix = fileName.substring(fileName.lastIndexOf("."));
     File tempFile = File.createTempFile("product-upload-excel", suffix);
@@ -77,6 +85,23 @@ public class ProductBController {
     System.out.println(tempFile.getAbsolutePath());
     productService.addProductByExcel(tempFile);
     return ApiRestResponse.success();
+  }
+
+  @PostMapping(value = "/handleImg", produces = MediaType.IMAGE_PNG_VALUE)
+  public byte[] handleImg(@RequestParam("file") MultipartFile multipartFile) throws IOException {
+
+    // MultipartFile to TempFile
+    String fileName = multipartFile.getOriginalFilename();
+    String suffix = fileName.substring(fileName.lastIndexOf("."));
+    File tempFile = File.createTempFile("product-handle-img-receiver", suffix);
+    multipartFile.transferTo(tempFile);
+
+    File outTempFile = File.createTempFile("product-handle-img-return", suffix);
+
+    Thumbnails.of(tempFile).scale(1).rotate(90).toFile(outTempFile);
+    InputStream inputStream = new FileInputStream(outTempFile);
+
+    return IOUtils.toByteArray(inputStream);
   }
 
 }
