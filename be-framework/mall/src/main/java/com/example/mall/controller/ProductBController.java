@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -11,6 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +35,8 @@ import com.example.mall.model.request.PaginationReq;
 
 @RestController
 @RequestMapping("admin/product")
+// 新增很多参数校验方式
+@Validated
 public class ProductBController {
 
   @Autowired
@@ -43,6 +47,12 @@ public class ProductBController {
     Product product = new Product();
     BeanUtils.copyProperties(req, product);
     productService.add(product);
+    return ApiRestResponse.success();
+  }
+
+  @PostMapping("/addBatch")
+  public ApiRestResponse addProductBatch(@Valid @RequestBody() List<ProductAddReq> req) {
+    // 测试 List 参数校验
     return ApiRestResponse.success();
   }
 

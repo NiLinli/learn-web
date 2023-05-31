@@ -56,4 +56,6 @@ public class GlobalExceptionHandler {
       return ApiRestResponse.error(MallExceptionEnum.PARAMS_ERROR.getCode(), list.get(0)); 
     }
   }
+
+  // 增加对 @Validated 参数校验的异常
 }
