@@ -547,6 +547,42 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "statistics",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNywiZXhwIjoxNzcxNDg2NDMwfQ.BHCnhfZpsvzS7ag8coy3vlU80rAXv80AMHYypEV-EXM",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startDate\": \"10-05-2023\",\n    \"endDate\": \"28-05-2023\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/admin/order/statistics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"admin",
+								"order",
+								"statistics"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -578,6 +614,36 @@
 								"admin",
 								"product",
 								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin-add-batch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\n    \"image\": \"https://cos.wahaha.png\",\n    \"detail\": \"20斤榴莲，干包\",\n    \"categoryId\": 1,\n    \"price\": 100000,\n    \"stock\": 9999,\n    \"status\": 1\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/admin/product/addBatch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"admin",
+								"product",
+								"addBatch"
 							]
 						}
 					},
@@ -688,16 +754,88 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8083/product/admin/list",
+							"raw": "http://localhost:8083/admin/product/list",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8083",
 							"path": [
-								"product",
 								"admin",
+								"product",
 								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin-upload-excel",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/nilinli/Note/learn-web/be-framework/mall/上传商品.xlsx"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/admin/product/uploadExcel",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"admin",
+								"product",
+								"uploadExcel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin-handle-img",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/nilinli/Documents/6/企业微信20230325-113147@2x.png"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/admin/product/handleImg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"admin",
+								"product",
+								"handleImg"
 							]
 						}
 					},

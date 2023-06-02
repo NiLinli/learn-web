@@ -216,6 +216,7 @@
       <result column="quantity" jdbcType="INTEGER" property="quantity" />
     </collection>
   </resultMap>
+
   <sql id="Collect_Column_List">
     mo.order_no as order_no, 
     user_id,
@@ -248,5 +249,27 @@
     left join mall_order_item moi
       on  mo.order_no = moi.order_no
     where mo.order_no = #{orderNo,jdbcType=VARCHAR}
+  </select>
+
+  <resultMap id="OrderStatisticsVOMap" type="com.example.mall.model.vo.OrderStatisticsVO">
+    <result column="days" jdbcType="TIMESTAMP" property="days" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+  </resultMap>
+
+  <select id="selectOrderStatistics"  resultMap="OrderStatisticsVOMap">
+    select 
+      date_format(from_unixtime(UNIX_TIMESTAMP(create_time)), "%Y-%m-%d") as days,
+      count(*) as amount
+    from mall_order
+    <where>
+      <if test="startDate != null">
+        <![CDATA[ and create_time >= #{startDate} ]]>
+      </if>
+      <if test="endDate != null">
+        <![CDATA[ and create_time <= #{endDate} ]]>
+      </if>
+    </where>
+    group by days
+    order by days
   </select>
 </mapper>

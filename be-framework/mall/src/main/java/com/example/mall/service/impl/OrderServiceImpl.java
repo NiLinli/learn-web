@@ -23,6 +23,7 @@ import com.example.mall.model.pojo.OrderItem;
 import com.example.mall.model.pojo.Product;
 import com.example.mall.model.request.OrderCreateReq;
 import com.example.mall.model.vo.CartVO;
+import com.example.mall.model.vo.OrderStatisticsVO;
 import com.example.mall.model.vo.OrderVO;
 import com.example.mall.service.CartService;
 import com.example.mall.service.OrderService;
@@ -180,6 +181,12 @@ public class OrderServiceImpl implements OrderService {
       totalPrice += orderItem.getTotalPrice();
     }
     return totalPrice;
+  }
+
+  @Override
+  public List<OrderStatisticsVO> statistics(Date startDate, Date endDate) {
+    List<OrderStatisticsVO> orderStatisticsVOs = orderMapper.selectOrderStatistics(startDate, endDate);
+    return orderStatisticsVOs;
   }
 
 }

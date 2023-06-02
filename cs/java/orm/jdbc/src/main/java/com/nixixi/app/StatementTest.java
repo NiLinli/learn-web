@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.InvalidPropertiesFormatException;
 import java.io.Console;
 import java.io.FileNotFoundException;
@@ -27,7 +28,7 @@ public class StatementTest {
             // while (rs.next()) {
             //     System.out.println(rs.getInt("id") + ' ' + rs.getString("name") + ' ' + rs.getString("pname"));
             // }
-
+            
             // update
             String query = "update mall_category set order_num = 10 where id = 3";
             Statement stmt = con.createStatement();
