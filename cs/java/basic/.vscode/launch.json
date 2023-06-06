@@ -6,6 +6,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "ThreadLocal03",
+      "request": "launch",
+      "mainClass": "thread.threadlocal_.ThreadLocal03",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "ThreadLocal02",
+      "request": "launch",
+      "mainClass": "thread.threadlocal_.ThreadLocal02",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "ThreadLocal01",
+      "request": "launch",
+      "mainClass": "thread.threadlocal_.ThreadLocal01",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
       "name": "TestMethod",
       "request": "launch",
       "mainClass": "reflection.TestMethod",
