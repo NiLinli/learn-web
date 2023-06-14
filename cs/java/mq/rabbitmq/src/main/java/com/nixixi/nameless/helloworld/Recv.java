@@ -1,4 +1,4 @@
-package com.nixixi.helloworld;
+package com.nixixi.nameless.helloworld;
 
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DefaultConsumer;
@@ -12,7 +12,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
 public class Recv {
-  private final static String QUEUE_NAME = "work_queue";
+  private final static String QUEUE_NAME = "hello";
 
   public static void main(String[] args) throws Exception {
     ConnectionFactory factory = new ConnectionFactory();

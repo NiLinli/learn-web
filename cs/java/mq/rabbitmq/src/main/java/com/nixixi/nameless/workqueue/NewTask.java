@@ -1,4 +1,4 @@
-package com.nixixi.workqueue;
+package com.nixixi.nameless.workqueue;
 
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.MessageProperties;
@@ -29,6 +29,7 @@ public class NewTask {
       } else {
         message = i + " hello worker...";
       }
+      
       
       channel.basicPublish("", QUEUE_NAME, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes(StandardCharsets.UTF_8));  
       System.out.println(" [x] Sent '" + message + "'");

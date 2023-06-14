@@ -1,4 +1,4 @@
-package com.nixixi.workqueue;
+package com.nixixi.nameless.workqueue;
 
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DefaultConsumer;
