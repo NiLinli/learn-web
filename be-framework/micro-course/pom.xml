@@ -17,15 +17,22 @@
 		<version>2.1.12.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.demo</groupId>
+
+	<!-- 公司名 + 项目名 -->
+	<groupId>com.demo.course</groupId>
+	<!-- 模块名 -->
 	<artifactId>course</artifactId>
+	<!-- 版本号 -->
 	<version>0.0.1-SNAPSHOT</version>
 	<name>course</name>
 	<description>Demo project for Spring Boot</description>
 	
+	<!-- 整个项目公共版本号维护 -->
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+
+	<!-- 子模块会继承 -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -39,6 +46,7 @@
 		</dependency>
 	</dependencies>
 
+	<!-- 提前声明版本, 子模块引用时候就不需要指定版本 -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
