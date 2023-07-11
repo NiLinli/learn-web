@@ -27,7 +27,7 @@ settings.gradle 引入子项目打包
 http://services.gradle.org/distributions/ 下载对应的版本
 然后 url 指向本地
 
-不实用 gredle wrapper
+不实用 gradle wrapper
 
 - local gradle 采用本地的 gradle
 - offline work 从缓存中获取 gradle
