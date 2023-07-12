@@ -14,5 +14,5 @@ public interface UserService {
 
   void updateUserInfo(User user) throws MallException;
 
-  boolean checkAdminRole(User user);
+  boolean checkAdminRole(int userId);
 }

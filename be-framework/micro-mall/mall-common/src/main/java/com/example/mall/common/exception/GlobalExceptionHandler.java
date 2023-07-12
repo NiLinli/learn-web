@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.mall.common.ApiRestResponse;
+import com.example.mall.common.common.ApiRestResponse;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {

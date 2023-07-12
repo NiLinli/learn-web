@@ -3,6 +3,7 @@ package com.example.mall.user.controller;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,21 +99,24 @@ public class UserController {
   }
 
   @PostMapping("/user/updateUserInfo")
-  public ApiRestResponse updateUserInfo(@RequestBody() UserUpdateReq req)
+  public ApiRestResponse updateUserInfo(@RequestBody() UserUpdateReq req, HttpServletRequest request)
       throws MallException {
+
+    int userId = Integer.parseInt(request.getHeader("user-id"));
 
     String signature = req.getSignature();
 
-    User currentUser = null;
-
-    if (currentUser == null) {
-      return ApiRestResponse.error(MallExceptionEnum.NEED_LOGIN);
-    }
-
     User updateUser = new User();
-    updateUser.setId(currentUser.getId());
+    updateUser.setId(userId);
     updateUser.setPersonalizedSignature(signature);
     userService.updateUserInfo(updateUser);
     return ApiRestResponse.success();
   }
+
+  // 内部接口
+  @PostMapping("/user/checkAdminRole")
+  public Boolean checkAdminRole(@RequestBody int userId) {
+    return userService.checkAdminRole(userId);
+  }
+
 }

@@ -68,8 +68,9 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public boolean checkAdminRole(User user) {
+  public boolean checkAdminRole(int userId) {
     // 1 普通用户 2 管理员
+    User user = userMapper.selectByPrimaryKey(userId);
     return user.getRole().equals(2);
   }
 }

@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "GatewayApplication",
+      "request": "launch",
+      "mainClass": "com.example.mall.gateway.GatewayApplication",
+      "projectName": "mall-gateway"
+    },
+    {
+      "type": "java",
       "name": "UserApplication",
       "request": "launch",
       "mainClass": "com.example.mall.user.UserApplication",
