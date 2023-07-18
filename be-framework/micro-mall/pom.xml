@@ -20,11 +20,10 @@
 		<module>mall-user</module>
 		<module>mall-product</module>
 		<module>mall-order</module>
-		<module>mall-nacos-discovery</module>
 		<module>mall-gateway</module>
 	</modules>
 
-	<name>mall</name>
+	<name>micro-mall</name>
 	<description>Spring Cloud Mall</description>
 	<properties>
 		<java.version>8</java.version>
@@ -80,13 +79,13 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<build>
+	<!-- <build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-	</build>
+	</build> -->
 
 </project>

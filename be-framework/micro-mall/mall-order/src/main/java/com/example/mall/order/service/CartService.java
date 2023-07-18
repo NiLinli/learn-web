@@ -1,8 +1,8 @@
-package com.example.mall.service;
+package com.example.mall.order.service;
 
 import java.util.List;
 
-import com.example.mall.model.vo.CartVO;
+import com.example.mall.order.model.vo.CartVO;
 
 public interface CartService {
 

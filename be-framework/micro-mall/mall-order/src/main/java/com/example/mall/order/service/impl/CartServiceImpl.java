@@ -1,20 +1,19 @@
-package com.example.mall.service.impl;
+package com.example.mall.order.service.impl;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.mall.common.Constant.SaleStatus;
-import com.example.mall.dao.CartMapper;
-import com.example.mall.dao.ProductMapper;
-import com.example.mall.exception.MallException;
-import com.example.mall.exception.MallExceptionEnum;
-import com.example.mall.filter.UserFilter;
-import com.example.mall.model.pojo.Cart;
-import com.example.mall.model.pojo.Product;
-import com.example.mall.model.vo.CartVO;
-import com.example.mall.service.CartService;
+import com.example.mall.common.common.Constant.SaleStatus;
+import com.example.mall.order.dao.CartMapper;
+import com.example.mall.order.feign.ProductFeignClient;
+import com.example.mall.common.exception.MallException;
+import com.example.mall.common.exception.MallExceptionEnum;
+import com.example.mall.order.model.pojo.Cart;
+import com.example.mall.product.model.pojo.Product;
+import com.example.mall.order.model.vo.CartVO;
+import com.example.mall.order.service.CartService;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -23,7 +22,7 @@ public class CartServiceImpl implements CartService {
   CartMapper cartMapper;
 
   @Autowired
-  ProductMapper productMapper;
+  ProductFeignClient productFeignClient;
 
   @Override
   public List<CartVO> list(Integer userId) {
@@ -94,7 +93,8 @@ public class CartServiceImpl implements CartService {
 
 
   private void validProduct(Integer productId, Integer count) {
-    Product product = productMapper.selectByPrimaryKey(productId);
+
+    Product product = productFeignClient.detailForFeign(productId);
 
     if (product == null || product.getStatus() == SaleStatus.NOT_SALE) {
       throw new MallException(MallExceptionEnum.PRODUCT_NOT_SALE);

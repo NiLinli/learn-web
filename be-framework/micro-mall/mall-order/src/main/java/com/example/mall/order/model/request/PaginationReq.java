@@ -1,4 +1,4 @@
-package com.example.mall.model.request;
+package com.example.mall.order.model.request;
 
 import javax.validation.constraints.NotNull;
 

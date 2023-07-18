@@ -1,8 +1,8 @@
-package com.example.mall.dao;
+package com.example.mall.product.dao;
 
 import java.util.List;
 
-import com.example.mall.model.pojo.Category;
+import com.example.mall.product.model.pojo.Category;
 
 public interface CategoryMapper {
     int deleteByPrimaryKey(Integer id);

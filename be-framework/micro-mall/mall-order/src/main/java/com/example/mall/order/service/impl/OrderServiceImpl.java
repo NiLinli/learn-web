@@ -1,4 +1,4 @@
-package com.example.mall.service.impl;
+package com.example.mall.order.service.impl;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -10,24 +10,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import com.example.mall.common.Constant.SaleStatus;
-import com.example.mall.dao.CartMapper;
-import com.example.mall.dao.OrderItemMapper;
-import com.example.mall.dao.OrderMapper;
-import com.example.mall.dao.ProductMapper;
-import com.example.mall.exception.MallException;
-import com.example.mall.exception.MallExceptionEnum;
-import com.example.mall.filter.UserFilter;
-import com.example.mall.model.pojo.Order;
-import com.example.mall.model.pojo.OrderItem;
-import com.example.mall.model.pojo.Product;
-import com.example.mall.model.request.OrderCreateReq;
-import com.example.mall.model.vo.CartVO;
-import com.example.mall.model.vo.OrderStatisticsVO;
-import com.example.mall.model.vo.OrderVO;
-import com.example.mall.service.CartService;
-import com.example.mall.service.OrderService;
-import com.example.mall.service.ProductService;
+import com.example.mall.common.common.Constant.SaleStatus;
+import com.example.mall.order.dao.CartMapper;
+import com.example.mall.order.dao.OrderItemMapper;
+import com.example.mall.order.dao.OrderMapper;
+import com.example.mall.order.feign.ProductFeignClient;
+import com.example.mall.common.exception.MallException;
+import com.example.mall.common.exception.MallExceptionEnum;
+import com.example.mall.order.model.pojo.Order;
+import com.example.mall.order.model.pojo.OrderItem;
+import com.example.mall.product.model.pojo.Product;
+import com.example.mall.product.model.request.ProductUpdateStockReq;
+import com.example.mall.order.model.request.OrderCreateReq;
+import com.example.mall.order.model.vo.CartVO;
+import com.example.mall.order.model.vo.OrderStatisticsVO;
+import com.example.mall.order.model.vo.OrderVO;
+import com.example.mall.order.service.CartService;
+import com.example.mall.order.service.OrderService;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -39,22 +38,18 @@ public class OrderServiceImpl implements OrderService {
   CartMapper cartMapper;
 
   @Autowired
-  ProductService productService;
-
-  @Autowired
-  ProductMapper productMapper;
-
-  @Autowired
   OrderMapper orderMapper;
 
   @Autowired
   OrderItemMapper orderItemMapper;
 
+  @Autowired
+  ProductFeignClient productFeignClient;
+
   @Transactional(rollbackFor = Exception.class)
   @Override
-  public String create(OrderCreateReq req) {
+  public String create(OrderCreateReq req, Integer userId) {
 
-    Integer userId = UserFilter.currentUser.getId();
     Integer[] productIds = req.getProductIds();
 
     // 订单提交的商品为空
@@ -100,7 +95,7 @@ public class OrderServiceImpl implements OrderService {
 
   private void validSaleStatusAndStock(List<CartVO> cartVOs) {
     for (CartVO cartVO : cartVOs) {
-      Product product = productMapper.selectByPrimaryKey(cartVO.getProductId());
+      Product product = productFeignClient.detailForFeign(cartVO.getProductId());
 
       if (product == null || product.getStatus().equals(SaleStatus.NOT_SALE)) {
         throw new MallException(MallExceptionEnum.PRODUCT_NOT_SALE);
@@ -132,15 +127,19 @@ public class OrderServiceImpl implements OrderService {
 
   private void decreaseStock(List<OrderItem> orderItems) {
     for (OrderItem orderItem : orderItems) {
-      Product product = productMapper.selectByPrimaryKey(orderItem.getProductId());
+      Product product = productFeignClient.detailForFeign(orderItem.getProductId());
       int restStock = product.getStock() - orderItem.getQuantity();
 
       if (restStock < 0) {
         throw new MallException(MallExceptionEnum.PRODUCT_NOT_ENOUGH);
       }
 
-      product.setStock(restStock);
-      productMapper.updateByPrimaryKeySelective(product);
+      ProductUpdateStockReq req = new ProductUpdateStockReq();
+
+      req.setProductId(product.getId());
+      req.setStock(restStock);
+      productFeignClient.updateStock(req);
+
     }
   }
 

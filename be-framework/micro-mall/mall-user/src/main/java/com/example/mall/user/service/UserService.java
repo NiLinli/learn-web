@@ -6,7 +6,7 @@ import com.example.mall.common.exception.MallException;
 import com.example.mall.user.model.pojo.User;
 
 public interface UserService {
-  User getUser();
+  User getUser(int userId);
 
   void register(String userName, String password) throws MallException, NoSuchAlgorithmException;
 

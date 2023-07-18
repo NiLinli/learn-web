@@ -1,17 +1,20 @@
-package com.example.mall.product.model.query;
+package com.example.mall.product.model.request;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductCListQuery {
-  private String keyword;
-  private List<Integer> categoryIds;
+public class ProductUpdateStockReq {
+
+    @NotNull
+    private Integer productId;
+
+    @NotNull
+    private Integer stock;
+
 }

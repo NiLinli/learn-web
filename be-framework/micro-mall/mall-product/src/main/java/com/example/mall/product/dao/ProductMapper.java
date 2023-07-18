@@ -1,11 +1,11 @@
-package com.example.mall.dao;
+package com.example.mall.product.dao;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.example.mall.model.pojo.Product;
-import com.example.mall.model.query.ProductCListQuery;
+import com.example.mall.product.model.pojo.Product;
+import com.example.mall.product.model.query.ProductCListQuery;
 
 public interface ProductMapper {
     int deleteByPrimaryKey(Integer id);

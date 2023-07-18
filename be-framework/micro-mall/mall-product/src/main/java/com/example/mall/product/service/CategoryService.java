@@ -1,11 +1,11 @@
-package com.example.mall.service;
+package com.example.mall.product.service;
 
 import java.util.List;
 
-import com.example.mall.model.request.CategoryAddReq;
-import com.example.mall.model.request.PaginationReq;
-import com.example.mall.model.request.CategoryUpdateReq;
-import com.example.mall.model.vo.CategoryVO;
+import com.example.mall.product.model.request.CategoryAddReq;
+import com.example.mall.product.model.request.PaginationReq;
+import com.example.mall.product.model.request.CategoryUpdateReq;
+import com.example.mall.product.model.vo.CategoryVO;
 import com.github.pagehelper.PageInfo;
 
 public interface CategoryService {

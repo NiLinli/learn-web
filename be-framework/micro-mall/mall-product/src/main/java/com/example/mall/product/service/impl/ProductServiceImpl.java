@@ -1,33 +1,22 @@
-package com.example.mall.service.impl;
+package com.example.mall.product.service.impl;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.example.mall.service.CategoryService;
-import com.example.mall.service.ProductService;
+import com.example.mall.product.service.CategoryService;
+import com.example.mall.product.service.ProductService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.example.mall.dao.CategoryMapper;
-import com.example.mall.dao.ProductMapper;
-import com.example.mall.exception.MallException;
-import com.example.mall.exception.MallExceptionEnum;
-import com.example.mall.model.pojo.Product;
-import com.example.mall.model.query.ProductCListQuery;
-import com.example.mall.model.request.ProductCListReq;
-import com.example.mall.model.vo.CategoryVO;
+import com.example.mall.product.dao.ProductMapper;
+import com.example.mall.common.exception.MallException;
+import com.example.mall.common.exception.MallExceptionEnum;
+import com.example.mall.product.model.pojo.Product;
+import com.example.mall.product.model.query.ProductCListQuery;
+import com.example.mall.product.model.request.ProductCListReq;
+import com.example.mall.product.model.vo.CategoryVO;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -129,6 +118,13 @@ public class ProductServiceImpl implements ProductService {
     return pageInfo;
   }
 
+  public void updateStock(Integer productId, Integer stock) {
+    Product product = new Product();
+    product.setId(productId);
+    product.setStock(stock);
+    productMapper.updateByPrimaryKeySelective(product);
+  }
+
   private void getCategoryIds(List<CategoryVO> categoryVOs, ArrayList<Integer> categoryIds) {
 
     for (int i = 0; i < categoryVOs.size(); i++) {
@@ -142,88 +138,6 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
-  }
-
-  @Override
-  public void addProductByExcel(File destFile) throws IOException {
-    List<Product> products = readProductsFromExcel(destFile);
-
-    for (Product product : products) {
-      Product productOld = productMapper.selectByName(product.getName());
-
-      if (productOld != null) {
-        throw new MallException(MallExceptionEnum.PRODUCT_NAME_EXISTED);
-      }
-
-      int count = productMapper.insertSelective(product);
-
-      if (count == 0) {
-        throw new MallException(MallExceptionEnum.PRODUCT_ADD_FAILED);
-      }
-    }
-  }
-
-  private List<Product> readProductsFromExcel(File excelFile) throws IOException {
-    ArrayList<Product> products = new ArrayList<>();
-
-    FileInputStream inputStream = new FileInputStream(excelFile);
-    XSSFWorkbook workbook = new XSSFWorkbook(inputStream);  // excel
-    XSSFSheet firstSheet = workbook.getSheetAt(0);  // excel 第一个 sheet
-
-    Iterator<Row> rowIterator = firstSheet.iterator();
-
-    while (rowIterator.hasNext()) {
-      Row nextRow = rowIterator.next();
-      Iterator<Cell> cellIterator = nextRow.cellIterator();
-
-      int rowNumber = nextRow.getRowNum();
-
-      if (rowNumber == 0) {
-        continue;
-      }
-
-      Product product = new Product();
-
-      while (cellIterator.hasNext()) {
-
-        
-        Cell nextCell = cellIterator.next();
- 
-        int columnIndex = nextCell.getColumnIndex();
-
-        switch (columnIndex) {
-          case 0:
-            product.setName(nextCell.getStringCellValue());
-            break;
-          case 1:
-            product.setImage(nextCell.getStringCellValue());
-            break;
-          case 2:
-            product.setDetail(nextCell.getStringCellValue());
-            break;
-          case 3:
-            product.setCategoryId(((Double) nextCell.getNumericCellValue()).intValue());
-            break;
-          case 4:
-            product.setPrice(((Double) nextCell.getNumericCellValue()).intValue());
-            break;
-          case 5:
-            product.setStock(((Double) nextCell.getNumericCellValue()).intValue());
-            break;
-          case 6:
-            product.setStatus(((Double) nextCell.getNumericCellValue()).intValue());
-            break;
-          default:
-            break;
-        }
-
-      }
-
-      products.add(product);
-
-    }
-
-    return products;
   }
 
 }

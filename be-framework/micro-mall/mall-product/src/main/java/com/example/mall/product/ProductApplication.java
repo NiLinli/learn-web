@@ -1,20 +1,19 @@
-package com.example.mall;
+package com.example.mall.product;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-
-@SpringBootApplication
-@MapperScan(basePackages = "com.example.mall.dao")
+@SpringBootApplication(scanBasePackages = { "com.example.mall" })
+@EnableDiscoveryClient
+@MapperScan(basePackages = "com.example.mall.product.dao")
 @EnableCaching
-@EnableRedisHttpSession
 public class ProductApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MallApplication.class, args);
+		SpringApplication.run(ProductApplication.class, args);
 	}
 
 }

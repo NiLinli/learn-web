@@ -1,13 +1,13 @@
-package com.example.mall.dao;
+package com.example.mall.order.dao;
 
 import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.example.mall.model.pojo.Order;
-import com.example.mall.model.vo.OrderStatisticsVO;
-import com.example.mall.model.vo.OrderVO;
+import com.example.mall.order.model.pojo.Order;
+import com.example.mall.order.model.vo.OrderStatisticsVO;
+import com.example.mall.order.model.vo.OrderVO;
 
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer id);

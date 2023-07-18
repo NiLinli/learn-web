@@ -1,4 +1,4 @@
-package com.example.mall.model.pojo;
+package com.example.mall.order.model.pojo;
 
 import java.util.Date;
 

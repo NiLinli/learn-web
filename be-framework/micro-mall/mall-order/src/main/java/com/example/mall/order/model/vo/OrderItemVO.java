@@ -1,4 +1,4 @@
-package com.example.mall.model.vo;
+package com.example.mall.order.model.vo;
 
 import java.util.Date;
 import lombok.Data;

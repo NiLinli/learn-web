@@ -1,4 +1,4 @@
-package com.example.mall.controller;
+package com.example.mall.product.controller;
 
 import java.util.List;
 
@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.mall.common.ApiRestResponse;
-import com.example.mall.model.request.CategoryAddReq;
-import com.example.mall.model.request.CategoryDeleteReq;
-import com.example.mall.model.request.PaginationReq;
-import com.example.mall.model.request.CategoryUpdateReq;
-import com.example.mall.model.vo.CategoryVO;
-import com.example.mall.service.UserService;
-import com.example.mall.service.CategoryService;
+import com.example.mall.common.common.ApiRestResponse;
+import com.example.mall.product.model.request.CategoryAddReq;
+import com.example.mall.product.model.request.CategoryDeleteReq;
+import com.example.mall.product.model.request.PaginationReq;
+import com.example.mall.product.model.request.CategoryUpdateReq;
+import com.example.mall.product.model.vo.CategoryVO;
+import com.example.mall.product.service.CategoryService;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -28,8 +27,7 @@ import com.github.pagehelper.PageInfo;
 
 public class CategoryBController {
 
-  @Autowired
-  UserService userService;
+
 
   @Autowired
   CategoryService categoryService;

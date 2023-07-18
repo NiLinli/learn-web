@@ -1,4 +1,4 @@
-package com.example.mall.model.request;
+package com.example.mall.product.model.request;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;
@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class ProductUpdateReq extends ProductAddReq {
 
+    
     @NotNull
     private Integer id;
 

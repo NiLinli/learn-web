@@ -1,4 +1,4 @@
-package com.example.mall.model.vo;
+package com.example.mall.product.model.vo;
 
 import java.io.Serializable;
 import java.util.ArrayList;

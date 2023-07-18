@@ -119,4 +119,9 @@ public class UserController {
     return userService.checkAdminRole(userId);
   }
 
+  @PostMapping("/inner/user/getUserByUserId")
+  public User getUserByUserId(@RequestBody int userId) {
+    return userService.getUser(userId);
+  }
+
 }

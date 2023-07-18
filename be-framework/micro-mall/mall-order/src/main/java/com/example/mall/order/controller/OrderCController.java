@@ -1,4 +1,6 @@
-package com.example.mall.controller;
+package com.example.mall.order.controller;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -6,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.mall.common.ApiRestResponse;
-import com.example.mall.model.request.OrderCreateReq;
-import com.example.mall.model.request.OrderOperateReq;
-import com.example.mall.model.request.PaginationReq;
-import com.example.mall.service.OrderService;
+import com.example.mall.common.common.ApiRestResponse;
+import com.example.mall.order.model.request.OrderCreateReq;
+import com.example.mall.order.model.request.OrderOperateReq;
+import com.example.mall.order.model.request.PaginationReq;
+import com.example.mall.order.service.OrderService;
 
 @RestController
 @RequestMapping("/order")
@@ -19,8 +21,9 @@ public class OrderCController {
   OrderService orderService;
 
   @PostMapping("/add")
-  public ApiRestResponse add(@RequestBody OrderCreateReq req) {
-    return ApiRestResponse.success(orderService.create(req));
+  public ApiRestResponse add(@RequestBody OrderCreateReq req, HttpServletRequest request) {
+    int userId = Integer.parseInt(request.getHeader("user-id"));
+    return ApiRestResponse.success(orderService.create(req, userId));
   }
 
   @PostMapping("/detail")

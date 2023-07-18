@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mall.dao.OrderMapper">
-  <resultMap id="BaseResultMap" type="com.example.mall.model.pojo.Order">
+<mapper namespace="com.example.mall.order.dao.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.example.mall.order.model.pojo.Order">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
@@ -33,7 +33,7 @@
     delete from mall_order
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.mall.model.pojo.Order">
+  <insert id="insert" parameterType="com.example.mall.order.model.pojo.Order">
     insert into mall_order (id, order_no, user_id, 
       total_price, receiver_name, receiver_mobile, 
       receiver_address, order_status, postage, 
@@ -43,7 +43,7 @@
     values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{totalPrice,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, #{receiverMobile,jdbcType=VARCHAR}, #{receiverAddress,jdbcType=VARCHAR}, #{orderStatus,jdbcType=INTEGER}, #{postage,jdbcType=INTEGER}, #{paymentType,jdbcType=INTEGER}, #{deliveryTime,jdbcType=TIMESTAMP}, #{payTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.mall.model.pojo.Order">
+  <insert id="insertSelective" parameterType="com.example.mall.order.model.pojo.Order">
     insert into mall_order
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -125,7 +125,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.mall.model.pojo.Order">
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mall.order.model.pojo.Order">
     update mall_order
     <set>
       <if test="orderNo != null">
@@ -173,7 +173,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.mall.model.pojo.Order">
+  <update id="updateByPrimaryKey" parameterType="com.example.mall.order.model.pojo.Order">
     update mall_order
     set order_no = #{orderNo,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
@@ -193,7 +193,7 @@
   </update>
 
 
-  <resultMap id="CollectionResultMap" type="com.example.mall.model.vo.OrderVO">
+  <resultMap id="CollectionResultMap" type="com.example.mall.order.model.vo.OrderVO">
     <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="total_price" jdbcType="INTEGER" property="totalPrice" />
@@ -208,7 +208,7 @@
     <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <collection property="orderItems" ofType="com.example.mall.model.vo.OrderItemVO">
+    <collection property="orderItems" ofType="com.example.mall.order.model.vo.OrderItemVO">
       <result column="product_id" jdbcType="INTEGER" property="productId" />
       <result column="product_name" jdbcType="VARCHAR" property="productName" />
       <result column="product_img" jdbcType="VARCHAR" property="productImg" />
@@ -251,7 +251,7 @@
     where mo.order_no = #{orderNo,jdbcType=VARCHAR}
   </select>
 
-  <resultMap id="OrderStatisticsVOMap" type="com.example.mall.model.vo.OrderStatisticsVO">
+  <resultMap id="OrderStatisticsVOMap" type="com.example.mall.order.model.vo.OrderStatisticsVO">
     <result column="days" jdbcType="TIMESTAMP" property="days" />
     <result column="amount" jdbcType="INTEGER" property="amount" />
   </resultMap>

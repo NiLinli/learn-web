@@ -1,11 +1,11 @@
-package com.example.mall.dao;
+package com.example.mall.order.dao;
 
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.example.mall.model.pojo.Cart;
-import com.example.mall.model.vo.CartVO;
+import com.example.mall.order.model.pojo.Cart;
+import com.example.mall.order.model.vo.CartVO;
 
 public interface CartMapper {
     int deleteByPrimaryKey(Integer id);

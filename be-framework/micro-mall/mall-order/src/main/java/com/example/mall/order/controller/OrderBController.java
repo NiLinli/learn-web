@@ -1,4 +1,4 @@
-package com.example.mall.controller;
+package com.example.mall.order.controller;
 
 import java.util.List;
 
@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.mall.common.ApiRestResponse;
-import com.example.mall.model.request.OrderOperateReq;
-import com.example.mall.model.request.OrderStatisticsReq;
-import com.example.mall.model.request.PaginationReq;
-import com.example.mall.model.vo.OrderStatisticsVO;
-import com.example.mall.service.OrderService;
+import com.example.mall.common.common.ApiRestResponse;
+import com.example.mall.order.model.request.OrderOperateReq;
+import com.example.mall.order.model.request.OrderStatisticsReq;
+import com.example.mall.order.model.request.PaginationReq;
+import com.example.mall.order.model.vo.OrderStatisticsVO;
+import com.example.mall.order.service.OrderService;
 
 @RestController
 @RequestMapping("admin/order")
