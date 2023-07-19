@@ -126,7 +126,7 @@
       mp.name as productName,
       mp.image as productImage
     from mall_cart mc
-    left join mall_product mp
+    left join mall_product.mall_product mp
       on mp.id = mc.product_id
     where 
       user_id = #{userId,jdbcType=INTEGER}
@@ -152,7 +152,7 @@
       mp.name as productName,
       mp.image as productImage
     from mall_cart mc
-    left join mall_product mp
+    left join mall_product.mall_product mp
       on mp.id = mc.product_id
     <where>
       <if test="productIds != null">
