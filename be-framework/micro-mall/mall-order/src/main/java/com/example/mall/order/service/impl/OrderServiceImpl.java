@@ -21,6 +21,9 @@ import com.example.mall.order.model.pojo.Order;
 import com.example.mall.order.model.pojo.OrderItem;
 import com.example.mall.product.model.pojo.Product;
 import com.example.mall.product.model.request.ProductUpdateStockReq;
+
+import io.seata.spring.annotation.GlobalTransactional;
+
 import com.example.mall.order.model.request.OrderCreateReq;
 import com.example.mall.order.model.vo.CartVO;
 import com.example.mall.order.model.vo.OrderStatisticsVO;
@@ -46,7 +49,8 @@ public class OrderServiceImpl implements OrderService {
   @Autowired
   ProductFeignClient productFeignClient;
 
-  @Transactional(rollbackFor = Exception.class)
+  // @Transactional(rollbackFor = Exception.class)
+  @GlobalTransactional
   @Override
   public String create(OrderCreateReq req, Integer userId) {
 
