@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "f62330d1-21c0-49dc-8d19-6ed52da1138a",
+		"name": "course",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "course/list",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/course/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"course",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "course/price",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"courseId\" : \"aksjdflas\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/course/price",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"course",
+						"price"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "course/courseInPirce",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/course/courseInPrice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"course",
+						"courseInPrice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/list/course/list",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/api/list/course/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"list",
+						"course",
+						"list"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
