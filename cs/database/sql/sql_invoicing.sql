@@ -68,6 +68,7 @@ WHERE client_id = (
 	WHERE name = 'Myworks' 
 );
 
+
 -- aggregate function
 SELECT 
 	MAX(invoice_total) AS highest,
