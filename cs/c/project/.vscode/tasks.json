@@ -1,23 +1,14 @@
 {
   "tasks": [
-    // build 可以介入 cMake 进行优化
     {
-      "type": "cppbuild",
       "label": "build",
+      "type": "cppbuild",
       "command": "/usr/bin/gcc",
-      "args": [
-        "-fdiagnostics-color=always",
-        "-g",
-        "${workspaceRoot}/src/*.c",
-        "-o",
-        "${workspaceRoot}/bin/a.out"
-      ],
+      "args": ["-fdiagnostics-color=always", "-g", "${workspaceRoot}/*.c", "-o", "${workspaceRoot}/a.out"],
       "options": {
         "cwd": "${fileDirname}"
       },
-      "problemMatcher": [
-        "$gcc"
-      ],
+      "problemMatcher": ["$gcc"],
       "group": "build",
       "detail": "调试器生成的任务。"
     },
@@ -25,7 +16,7 @@
       "label": "run",
       "type": "shell",
       "dependsOn": "build",
-      "command": "${workspaceRoot}/bin/a.out",
+      "command": "${workspaceRoot}/a.out",
       "group": {
         "kind": "test",
         "isDefault": true
@@ -37,6 +28,12 @@
         "panel": "new"
       }
     },
+    {
+      "label": "make-debug",
+      "type": "shell",
+      "command": "make",
+      "args": ["debug"]
+    }
   ],
   "version": "2.0.0"
 }

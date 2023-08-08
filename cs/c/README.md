@@ -1,9 +1,8 @@
 # C
 
-- 面向过程 procedural: 强调编程算法方面问题, 但是代码没有组织性  
-- 结构化编程 structured: 
-    1. for/while/if-else
-    2. 自顶向下的设计: 大型任务逐渐分解为小的任务(函数)
+过程 + 结构化  
+C 语言程序由 函数 + 全局变量 组成, 其他语言会有相应的扩展   
+函数不是 first-class
 
 ## 标准
 
@@ -14,24 +13,13 @@
 
 32/64 位程序取决于程序是如何编译的, 而不是程序运行的机器是多少位  
 
-### 编译器
+编译器
 
-unix: cc
-linux: gcc (GUN C)
-window: dev c++
+- unix: cc
+- linux: gcc (GUN C)
+- window: dev c++
 
-`cc hello-world.c`
-
-### 编译选项
-
-- -E：仅执行编译预处理 (不输出任何文件) c -> i
-- -S：将 C 代码转换为汇编代码 c -> s
-- -c：仅执行编译操作，不进行连接操作 c -> o
-- -o：链接 (构建) o -> out
-- --save-temps 保留过程中的所有文件
-- -wall：显示警告信息
-
-### 编译过程
+编译过程
 
 1. .c 源代码 (.c 文件称为一个编译单元)
 2. .i 预编译文件
@@ -39,83 +27,41 @@ window: dev c++
 4. .o 目标文件 单个
 5. .out 链接成可执行文件
 
-### 编译方式
+```sh
+# Preprocessing
+gcc -E test.c -o test.i
 
-#### 全量编译
+# Assembly
+gcc -S test.i/test.c -o test.s
 
-`gcc testfun.c test.c -o a.out`    
-`gcc *.c a.out`
+# Compile
+gcc -c test.s/test.i/test.c -o test.o
 
-改变其中一个文件所有的都需要重新编译
+# Linking
+gcc test.o -o test.out
 
-#### 增量编译
+# Debug
+gcc -g 
 
-1. 每个文件单独编译
+gcc test.o \
+  # 保留过程中的所有文件
+  --save-temps \ 
+  # 显示警告信息
+  -wall \ 
+  -o test.out
 
-- `gcc -c testfun.c` 将 testfun.c 编译成 testfun.o
-- `gcc -c test.c`    将 test.c 编译成 test.o
+# 全量编译 => 改变其中一个文件所有的都需要重新编译
+gcc testfun.c test.c -o a.out
+gcc *.c -o a.out
 
-2. 然后再进行链接
-
-- `gcc -o testfun.o test.o -o test` #将 testfun.o 和 test.o 链接成 test
-
-改变其中一个文件只需要编译那一个文件并且链接
+# 增量编译 => Makefile
+## 改变什么编译什么
+gcc -c testfun.c
+gcc -c test.c
+## 然后 Linking
+gcc -o testfun.o test.o -o test
+```
 
 ## 执行
 
-执行 out 中的 main 函数
-
-## 组成
-
-- data type: 数据类型
-- statements: 表示一个行为
-- operator: 操作处理数据值
-- expression: 产生一个值
-  - operator 产生的表达式
-  - 函数表达式
-- IO
-  - 网络 IO
-  - 磁盘 IO
-
-### 数据类型
-
-#### 数据类型
-
-- 支持: 面向底层, 编译之前检查错误 (c, java, c++) 
-- 不支持(隐式支持): 面向应用, 不面对底层, 重心放在事务逻辑上, 会根据数据自动分配数据类型 (js, py, php) 
-
-#### 数据存储
-
-计算机只能通过 bit 存储数据, 格式化(取出来) 的方式决定其最终的展现形式
-
-- 非编码: 直接存取 int 等类整数
-- 编码: 编码存, 解码取 char float 等非整数
-
-#### 数据大小
-
-数据大小取决于其分配的内存空间
-
-### 函数
-
-C 语言程序由 函数 + 全局变量 组成, 其他语言会有相应的扩展   
-函数不是 first-class
-
-#### 演变过程
-
-主函数 -> 子函数 -> 依赖于文件隔离的程序结构
-
-1. main 函数解决所有问题
-2. main 函数过大 -> 分解成多个子函数 -> 子函数出现
-3. 子函数过多 -> 把函数放在各个文件当中 -> 程序结构出现  
-
-#### 函数组成
-
-- 参数
-  - 定义阶段: parameters
-  - 执行阶段: arguments (实际传递的参数)
-- 函数体
-- 返回值
-
-参数传递和接收返回值都是值的**拷贝**
-
-### 程序结构
+寻找 out 中的唯一的 main 函数执行

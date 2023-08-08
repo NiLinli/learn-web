@@ -1,8 +1,11 @@
 SELECT * from customers
 WHERE points BETWEEN 2000 AND  3000
-where last_name = ''
-order BY customer_id DESC
-limit 6, 3;
+WHERE last_name = ''
+ORDER BY customer_id DESC
+LIMIT 6, 3;
+-- LIMIT 3 OFFSET 6;
+
+
 
 SELECT order_id, o.customer_id , first_name 
 FROM orders o
@@ -211,15 +214,7 @@ FROM orders;
 
 
 -- transaction
--- 一组 sql 语句代表一个工作单元
-
--- Atomicity 原子性
--- 多个语句执行都成功才算执行成功
--- 有一个执行失败, 则事务执行失败, 其他执行成功的语句需要回退到执行成功之前的状态
-
--- Consistency 一致性
--- Isolation 隔离性  如果多个事务更新同一行数据, 数据会被锁定, 等待正在更新的事务更新完成后再更新
--- Durability 持久性 
+-- ACID
 
 START TRANSACTION;
 
@@ -229,8 +224,6 @@ VALUES (1, '2022-11-12', 1);
 INSERT INTO order_items
 VALUES(LAST_INSERT_ID(), 1, 1, 1);
 
--- 事务会装好每条语句, 如果都执行成功就提交修改数据库
--- SELECT/UPDATE/INSERT/DELETE Mysql 会将这些装入到事务中, 然后自动提交
 COMMIT;
 
 -- 不提交事务, 回退事务
@@ -256,11 +249,6 @@ COMMIT;
 -- READ COMITTED
 -- REPEATABLE READ(默认)
 -- SERIALIZABLE
-
--- 级别越高, 锁越多, 对性能压榨越多
--- 级别越低, 越会碰上并发问题, 性能好
-
-
 
 -- Dirty reads 一个事务读取了尚未被提交的数据
 -- 确保读取的是提交了的数据
@@ -530,16 +518,12 @@ EXPLAIN SELECT  customer_id
 FROM customers c 
 WHERE state = 'CA' AND points > 1000;
 
--- 复合索引
--- 索引越多, 写入越慢
--- 复合索引比创建单个索引更适合一些
+
 CREATE INDEX idx_state_point ON customers(state, points);
 DROP INDEX idx_state ON customers;
 DROP INDEX idx_point ON customers;
 
--- 1. 搜索频繁的列放在前面 
--- 2. WHERE 约束力强的放在前面, = 放在 LIKE 前面 
--- 3. Cardinality 高的放在前面  缩小范围  
+
 
 
 

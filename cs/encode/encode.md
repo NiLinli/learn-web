@@ -4,6 +4,8 @@ Binary-to-text encoding
 
 编码都是显式可逆的
 
+**只有有 io 的地方就会有不同的编码之间的转换**
+
 ## base58
 
 base58 base58check

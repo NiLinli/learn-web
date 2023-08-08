@@ -2,17 +2,17 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Multi c",
+      "name": "Debug C",
       "type": "cppdbg",
       "request": "launch",
-      "program": "./bin/a.out",
+      "program": "${workspaceRoot}/a.out",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceRoot}",
       "environment": [],
       "externalConsole": false,
       "MIMode": "lldb",
-      "preLaunchTask": "build"
+      "preLaunchTask": "make-debug"
     }
   ]
 }
