@@ -1,1 +1,0 @@
-void prt_string(char s[]);

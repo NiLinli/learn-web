@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-void prt_string(char s[])
+int main()
 {
+    char s[] = "hello world";
     printf("%s\n", s);
 }

@@ -24,6 +24,7 @@ int main(int argc, char const *argv[]) {
   printf("sizeof(long double) is %ld \n", sizeof(long double));  // 16
 
   // 静态运算符: 结果在编译的时刻就决定了
+  // 取得是是类型定义的长度, 而不是在内存中的实际长度
   // 不要在 sizeof 里面做运算, 不会运行, 编译的过程就判断运算结果的类型
   int c = 4;
   printf("sizeof(c++) = %lu\n",
