@@ -10,6 +10,12 @@ command
 ./binary-file
 ```
 
+## lsof
+
+list open files 列出系统打开的文件
+
+`lsof -i:80` 根据 port 查询进程
+
 ## ps
 
 process status 查看当前运行的程序

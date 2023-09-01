@@ -1,6 +1,6 @@
 # curl
 
-client url
+client url, Http 协议  
 
 https://curl.se/
 
