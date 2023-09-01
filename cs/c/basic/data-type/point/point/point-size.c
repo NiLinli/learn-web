@@ -2,12 +2,12 @@
 
 int main(int argc, char const *argv[])
 {
-  int a  = 123;
+  int a = 123;
 
   int p;
 
   p = (int)&a;
-  
+
   printf("0x%x\n", p);
   printf("%p\n", p); // 0x 7ffe e2bf 3b6c
 

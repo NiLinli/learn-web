@@ -2,8 +2,7 @@
 
 int max_global = 123;
 
-// 变量是全局定义的
-// static 隐藏全局变量, 两个文件相同的全局变量不冲突
+// 全局定义 => 静态区定义 => 达到隐藏全局变量 => 全局变量不冲突
 static int max_global_limit = 456;
 
 double max(double a, double b)
@@ -12,7 +11,7 @@ double max(double a, double b)
 }
 
 // 函数是全局定义的
-// static 限制函数在当前文件中使用
+// static 限制同上
 static int min(int a, int b)
 {
     return a < b ? a : b;

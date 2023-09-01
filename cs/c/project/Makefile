@@ -32,7 +32,7 @@ object = main.o max.o getline.o strindex.o
 debug : $(object)
 	gcc -g $(object) -o a.out 
 
-main.o : main.h getline.h max.h strindex.h 
+main.o : main.h getline.h max.h strindex.h main.c
 	gcc -g -c main.c
 
 max.o : max.h

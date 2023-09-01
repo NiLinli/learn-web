@@ -2,13 +2,16 @@
 
 int f(void);
 
-int main(int argc, char const *argv[]) {
-    printf("result is %d\n", f()) ;
+int main(int argc, char const *argv[])
+{
+    printf("result is %d\n", f());
     return 0;
 }
 
-int f(void) {
+int f(void)
+{
     // 必须要定义列数
+    // 列是单个数组的大小, 可以寻址
     int a[][5] = {
         {1, 2, 3, 4, 5},
         {6, 7, 8, 9, 0}};
@@ -38,22 +41,29 @@ int f(void) {
 
         for (j = 0; i < size; j++)
         {
-            if (board[i][j] == 1) {
+            if (board[i][j] == 1)
+            {
                 numOfX++;
-            } else {
+            }
+            else
+            {
                 numOfO++;
             }
         }
 
-        if (numOfO == size) {
+        if (numOfO == size)
+        {
             result = 0;
-        } else if (numOfX == size) {
+        }
+        else if (numOfX == size)
+        {
             result = 1;
         }
     }
 
     // 检查列
-    if(result != -1) {
+    if (result != -1)
+    {
         return result;
     }
 
@@ -63,48 +73,61 @@ int f(void) {
 
         for (i = 0; i < size; i++)
         {
-            if (board[i][j] == 1) {
+            if (board[i][j] == 1)
+            {
                 numOfX++;
-            } else {
+            }
+            else
+            {
                 numOfO++;
             }
         }
 
-        if (numOfO == size) {
+        if (numOfO == size)
+        {
             result = 0;
-        } else if (numOfX == size) {
+        }
+        else if (numOfX == size)
+        {
             result = 1;
         }
     }
 
     // 检查对角线
-    if(result != -1) {
+    if (result != -1)
+    {
         return result;
     }
     numOfO = numOfX = 0;
 
-    for(i=0; i < size; i++)
+    for (i = 0; i < size; i++)
     {
-        if(board[i][i] == 1) {
-            numOfX ++;
-        } else {
-            numOfO ++;
+        if (board[i][i] == 1)
+        {
+            numOfX++;
+        }
+        else
+        {
+            numOfO++;
         }
     }
 
-
-   if(result != -1) {
+    if (result != -1)
+    {
         return result;
     }
 
     numOfO = numOfX = 0;
 
-    for(i=0; i < size; i++)
+    for (i = 0; i < size; i++)
     {
-        if(board[i][size - i - 1] == 1) {
-            numOfX ++;
-        } else {
-            numOfO ++;
+        if (board[i][size - i - 1] == 1)
+        {
+            numOfX++;
+        }
+        else
+        {
+            numOfO++;
         }
     }
 

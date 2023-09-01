@@ -9,8 +9,10 @@ struct Point {
 };
 
 struct Point return_same_struct(struct Point p);
+struct Point *get_struct_point(struct Point *p);
 
-int main(int argc, char const *argv[]) {
+    int main(int argc, char const *argv[])
+{
   struct Point p1;
   p1.x = 2;
   p1.y = 4;
@@ -28,9 +30,23 @@ int main(int argc, char const *argv[]) {
   // 参数 & 返回值
   struct Point p4 = return_same_struct(p1);
   printf("return value p: &p4 = %p\n", &p4);
+
+  struct Point *p = get_struct_point(&p1);
+  printf("p1 = (%i, %i)\n", p1.x, p1.y);
 }
 
 struct Point return_same_struct(struct Point p) {
   printf("argument p: &p = %p\n", &p);
+  return p;
+}
+
+// 传递指针比拷贝变量更加有效, 而且符合编程习惯引用变量
+// .的优先级高于 & *
+// &p.x  &(p.x) ok
+// *p.x *(p.x)  不符合预期 (*p).x 简写 p->x
+struct Point *get_struct_point(struct Point *p)
+{
+  (*p).x = 1;
+  p -> y = 2;
   return p;
 }

@@ -12,6 +12,7 @@ int main(int argc, char const *argv[]) {
     printf("*(a + 2) = %d\n", *(a + 2));    // 指针的访问方式
 
     // 数组与指针
+    // a == &a == &a[0] 
     printf("&a = %p\n", &a);          // &a = 0x7ffee8cd3b50
     printf("a = %p\n", a);            // a = 0x7ffee8cd3b50
     printf("&a[0] = %p\n", &a[0]);    // &a[0] = 0x7ffee8cd3b50

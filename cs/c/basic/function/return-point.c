@@ -6,6 +6,7 @@ void g(void);
 int *f_malloc(void);
 int *f_array();
 
+// int *p(); p是一个函数, 返回值为 int*
 int main(int argc, char const *argv[]) {
   int *p = f();
   printf("*p = %d\n", *p);  // *p = 123 这个时候还能访问的到

@@ -2,6 +2,9 @@
 
 void prtBinary(unsigned int number);
 
+// 可以直接用位段来访问 某一位, 比使用位运算符方便
+// 编译器会安排其中位的排列,不具备可移植性(有的是从右边排, 有的是从左边排)
+// 当所需 int 超过一个 int 时候, 会采用多个 int
 struct UO {
   unsigned int leading : 3;
   unsigned int FLAG1 : 1;
