@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.tsx": "typescriptreact",
+    "*.tpl": "html",
+    "_types.h": "c",
+    "sstream": "c"
+  }
+}
