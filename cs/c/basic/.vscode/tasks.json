@@ -5,7 +5,7 @@
       "label": "build",
       "command": "/usr/bin/gcc",
       "args": [
-        "-fdiagnostics-color=always",
+        // "-fdiagnostics-color=always",
         // "-Werror",
         "-g",
         "${file}",

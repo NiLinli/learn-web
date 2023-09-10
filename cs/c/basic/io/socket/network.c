@@ -97,16 +97,36 @@ int open_listenfd(char *port)
   return listenfd;
 }
 
-void echo(int connfd)
+int echo(int connfd)
 {
   int n;
   char buf[MAXLINE];
 
+  // read 会等待 connfd 可读
+  // 所以除了 EOF 以外, 其他时候都为 > 0
   while ((n = read(connfd, buf, MAXLINE)) > 0)
   {
-    printf("server received %d bytes, content is %s\n", (int)n, buf);
+    printf("(%d)server received %d bytes, content is %s\n", connfd, (int)n, buf);
     sleep(5);
     write(connfd, buf, n);
   }
+
+  return n;
 }
 
+int echo_slice(int connfd)
+{
+  int n;
+  char buf[MAXLINE];
+
+  // 可读时候调用一次 read
+  if ((n = read(connfd, buf, 2)) > 0)
+  {
+    printf("(%d)server received %d bytes, content is %s\n", connfd, (int)n, buf);
+    // block io 都需要放入 select 中管理
+    sleep(5);
+    write(connfd, buf, n);
+  }
+
+  return n;
+}

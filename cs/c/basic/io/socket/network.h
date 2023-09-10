@@ -16,7 +16,8 @@
 
 int open_clientfd(char *hostname, char *port);
 int open_listenfd(char *port);
-void echo(int connfd);
+int echo(int connfd);
+int echo_slice(int connfd);
 typedef void handler_t(int);
 handler_t *Signal(int signum, handler_t *handler);
 
