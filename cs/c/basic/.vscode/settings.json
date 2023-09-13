@@ -12,7 +12,8 @@
     "cstdio": "c",
     "cstring": "c",
     "network.h": "c",
-    "semaphore.h": "c"
+    "semaphore.h": "c",
+    "ostream": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

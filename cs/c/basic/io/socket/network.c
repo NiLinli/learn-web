@@ -108,7 +108,11 @@ int echo(int connfd)
   {
     printf("(%d)server received %d bytes, content is %s\n", connfd, (int)n, buf);
     sleep(5);
-    write(connfd, buf, n);
+
+    if (write(connfd, buf, n) < -1)
+    {
+      printf("write error");
+    }
   }
 
   return n;

@@ -2,23 +2,30 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-#define NITERS 100000000
+#define NITERS 1000000
+#define TIDS 9
 
 void *thread(void *vargp);
+
+// volatile
+// 内存映射IO 使用副作用
+// 信号处理函数
 
 volatile long cnt = 0;
 
 int main(int argc, char **argv)
 {
 
-  pthread_t tid1, tid2;
+  pthread_t tids[TIDS];
 
-  pthread_create(&tid1, NULL, thread, NULL);
-  pthread_create(&tid2, NULL, thread, NULL);
-  pthread_join(tid1, NULL);
-  pthread_join(tid2, NULL);
+  int i;
+  for (i = 0; i < TIDS; i++)
+    pthread_create(&(tids[i]), NULL, thread, NULL);
 
-  if (cnt != (2 * NITERS))
+  for (i = 0; i < TIDS; i++)
+    pthread_join(tids[i], NULL);
+
+  if (cnt != (TIDS * NITERS))
     printf("BOOM! cnt=%ld\n", cnt);
   else
     printf("OK cnt=%ld\n", cnt);

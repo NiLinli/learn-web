@@ -4,31 +4,31 @@
 #include <semaphore.h>
 
 #define NITERS 1000000
+#define TIDS 9
 
 void *thread(void *vargp);
 
-volatile long cnt = 0;
+long cnt = 0;
 sem_t *mutex;
 
 int main(int argc, char **argv)
 {
+  pthread_t tids[TIDS];
 
-  pthread_t tid1, tid2;
+  if ((mutex = sem_open("sem0", O_CREAT, 0644, 1)) < 0)
+  {
+    fprintf(stderr, "sem_open error");
+    exit(0);
+  }
 
-  mutex = sem_open("sem0", O_CREAT, 0644, 1);
+  int i;
+  for (i = 0; i < TIDS; i++)
+    pthread_create(&(tids[i]), NULL, thread, NULL);
 
-  // if (sem_init(&mutex, 0, 1) < 0)
-  // {
-  //   fprintf(stderr, "Sem_init error");
-  //   exit(0);
-  // }
+  for (i = 0; i < TIDS; i++)
+    pthread_join(tids[i], NULL);
 
-  pthread_create(&tid1, NULL, thread, NULL);
-  pthread_create(&tid2, NULL, thread, NULL);
-  pthread_join(tid1, NULL);
-  pthread_join(tid2, NULL);
-
-  if (cnt != (2 * NITERS))
+  if (cnt != (TIDS * NITERS))
     printf("BOOM! cnt=%ld\n", cnt);
   else
     printf("OK cnt=%ld\n", cnt);
