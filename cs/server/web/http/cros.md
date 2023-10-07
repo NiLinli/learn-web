@@ -66,12 +66,9 @@ Cross Origin Resource Sharing
 
 通过服务器端配置头文件, 开启跨域白名单: 服务器端告诉浏览器 http请求 在白名单中不存在安全性问题, 则允许跨域访问
 
-**fetch 有自己的一套规范**
 
-#### 浏览器支持
 
-- ie10(完整)+
-- 移动端
+
 
 #### 简单请求
 
@@ -132,3 +129,6 @@ Cross Origin Resource Sharing
 
 - 代理一层服务器, 通过 nginx 拿数据
 - 导致接口域名发生改变, 就访问不到跨域的 cookies
+
+
+
