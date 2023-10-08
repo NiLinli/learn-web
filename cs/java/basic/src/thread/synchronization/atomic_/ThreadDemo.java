@@ -1,4 +1,4 @@
-package thread.concurrency_issue;
+package thread.synchronization.atomic_;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,6 @@ public class ThreadDemo {
     DownloadStatus status = new DownloadStatus();
 
     List<Thread> threads = new ArrayList<>();
-
     for (int i = 0; i < 10; i++) {
       Thread thread = new Thread(new DownloadFileTask(status));
       thread.start();

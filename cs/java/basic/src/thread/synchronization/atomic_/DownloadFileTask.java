@@ -1,4 +1,4 @@
-package thread.concurrency_issue;
+package thread.synchronization.atomic_;
 
 public class DownloadFileTask implements Runnable {
 

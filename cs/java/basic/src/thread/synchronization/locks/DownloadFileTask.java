@@ -1,4 +1,4 @@
-package thread.concurrency_issue;
+package thread.synchronization.locks;
 
 public class DownloadFileTask implements Runnable {
 
@@ -19,5 +19,9 @@ public class DownloadFileTask implements Runnable {
     }
 
     System.out.println("Downloading a complete: " + Thread.currentThread().getName());
+  }
+
+  public DownloadStatus getStatus() {
+    return status;
   }
 }

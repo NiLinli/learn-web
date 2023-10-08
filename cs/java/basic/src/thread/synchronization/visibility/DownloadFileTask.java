@@ -1,4 +1,4 @@
-package thread.concurrency_issue;
+package thread.synchronization.visibility;
 
 public class DownloadFileTask implements Runnable {
 
@@ -12,12 +12,17 @@ public class DownloadFileTask implements Runnable {
   public void run() {
     System.out.println("Downloading a file: " + Thread.currentThread().getName());
 
-    for (int i = 0; i < 10_000; i++) {
-      if (Thread.currentThread().isInterrupted())
-        return;
+    for(int i = 0; i< 1_000_000; i++) {
+      if (Thread.currentThread().isInterrupted()) return;
       status.incrementTotalBytes();
     }
 
+    status.done();
+    
     System.out.println("Downloading a complete: " + Thread.currentThread().getName());
+  }
+
+  public DownloadStatus getStatus() {
+    return status;
   }
 }

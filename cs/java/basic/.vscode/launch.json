@@ -6,6 +6,41 @@
   "configurations": [
     {
       "type": "java",
+      "name": "ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.atomic_.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.synchronization.synchronized_.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.synchronization.locks.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.synchronization.signal.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
+      "name": "ThreadDemo",
+      "request": "launch",
+      "mainClass": "thread.synchronization.visibility.ThreadDemo",
+      "projectName": "basic_57289611"
+    },
+    {
+      "type": "java",
       "name": "ThreadLocal03",
       "request": "launch",
       "mainClass": "thread.threadlocal_.ThreadLocal03",
