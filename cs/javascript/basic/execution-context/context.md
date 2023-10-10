@@ -36,8 +36,6 @@ callback 需要注意 this 指向
 2. arrow function
 3. 内部实现使用 apply/call
 
-## garbage collection
-
 ## eval
 
 - modifying or creating new lexical scope at runtime.

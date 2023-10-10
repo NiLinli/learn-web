@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
-int main() {
+int main()
+{
 
   // c99
   // int number;
@@ -16,13 +15,15 @@ int main() {
 
   // malloc 返回值 void * 不知道 类型的指针 (内存不知道类型, 内存只是一段连续的空间)
   // malloc 完全可以作为数组使用
-  int *a = (int *)malloc(number * sizeof(int)); 
+  int *a = (int *)malloc(number * sizeof(int));
 
-  for(int i =0; i< number; i++) {
+  for (int i = 0; i < number; i++)
+  {
     scanf("%d", &a[i]);
   }
 
-  for(int i = number - 1; i >= 0; i--) {
+  for (int i = number - 1; i >= 0; i--)
+  {
     printf("%d ", a[i]);
   }
   printf("\n");
