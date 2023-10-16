@@ -5,9 +5,9 @@
 event loops 协调:
 
 - call stack(Main Thread)
-- task queue
 - micro task queue
 - render
+- macro task queue
 - ...
 
 一次 loop 的大致过程, 称为 tick
@@ -19,12 +19,32 @@ event loops 协调:
 
 ## Macro/Micro task
 
-宏任务/微任务都按各自顺序执行
+宏任务/微任务都按各自顺序执行, 都维持在各自队列里面
 
-宏任务: 在每次迭代开始之后加入到队列中的任务需要在下一次迭代开始之后才会被执行.
-微任务: 宏任务执行完成, 本次事件循环完成之前执行完微任务
-   - Promise
-   - process.nextTick
+Task Queue -> MicroTask -> Render -> MacroTask
+
+### Micro task(Job)
+
+可以在当前 Job 中添加 Job, 也会被执行  
+微任务执行完成后 才会执行 Task  
+
+- Promise.then/catch/finally
+  - Promise resolve 阶段可能是一个宏任务
+  - Promise.then callback 是添加微任务
+- process.nextTick
+
+**Promise 在 PromiseA+ 没规定宏任务还是微任务实现, 所以不一定是微任务**
+
+### Macro task(Task)
+
+一般会在下一个 tick 中才会 loop
+
+- setTimeout
+- setInterval
+- setImmediate
+- I/O tasks
+- ...
+
 
 ## Browser
 
