@@ -1,0 +1,16 @@
+
+sum.o:	file format mach-o 64-bit x86-64
+
+Disassembly of section __TEXT,__text:
+
+0000000000000000 <_sum>:
+       0: 55                           	pushq	%rbp
+       1: 48 89 e5                     	movq	%rsp, %rbp
+       4: 01 f7                        	addl	%esi, %edi
+       6: 48 63 05 00 00 00 00         	movslq	(%rip), %rax            ## 0xd <_sum+0xd>
+       d: 48 63 cf                     	movslq	%edi, %rcx
+      10: 48 01 c1                     	addq	%rax, %rcx
+      13: 89 0d 00 00 00 00            	movl	%ecx, (%rip)            ## 0x19 <_sum+0x19>
+      19: 48 89 0a                     	movq	%rcx, (%rdx)
+      1c: 5d                           	popq	%rbp
+      1d: c3                           	retq

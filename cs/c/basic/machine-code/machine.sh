@@ -1,0 +1,1 @@
+gcc -O2 -c sum.c

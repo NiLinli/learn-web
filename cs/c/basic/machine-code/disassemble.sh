@@ -1,0 +1,1 @@
+objdump -d sum.o > sum-compare.txt
