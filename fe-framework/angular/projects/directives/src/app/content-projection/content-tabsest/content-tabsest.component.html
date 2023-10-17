@@ -1,6 +1,0 @@
-<ul class="nav nav-pills">
-  <li role="presentation" *ngFor="let tab of tabs" class="item" [class.active]="tab.active" (click)="setActive(tab)">
-    <a> {{ tab.title }}</a>
-  </li>
-</ul>
-<ng-content></ng-content>

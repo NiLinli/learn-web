@@ -1,7 +1,6 @@
 import React from 'react';
 import withSubscription from './withSubscription';
 
-// 改变之后
 class CommentList extends React.Component {
   constructor(props) {
     super(props);

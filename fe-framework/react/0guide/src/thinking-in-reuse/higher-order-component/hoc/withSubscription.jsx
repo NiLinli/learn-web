@@ -1,9 +1,9 @@
 import React from 'react';
 
-// withSubscription HOC 是一个函数, 可以添加任意参数去配置
+// HOC 是一个函数, 可以添加任意参数去配置(自定义逻辑)
 // 约束
 // 1. 不要修改 WrappedComponent, 使用 compose
-// 2. 传递不相关的 props 给 WrappedComponent
+// 2. 组合 state + 原有 props = props 传入 WrappedComponent
 
 export default function withSubscription(WrappedComponent, selectData) {
   function getDisplayName(WrappedComponent) {
@@ -15,7 +15,7 @@ export default function withSubscription(WrappedComponent, selectData) {
     constructor(props) {
       super(props);
       this.state = {
-        data: selectData(DataSource, props) || [], // callback 返回值
+        data: selectData(DataSource, props) || [],
       };
     }
 
@@ -37,9 +37,14 @@ export default function withSubscription(WrappedComponent, selectData) {
       // 添加 data 属性
       // 过滤掉不相关的 extraProp
       // 未使用 passThroughProps 传递到原组件中去
-
       const { extraProp, forwardedRef, ...passThroughProps } = this.props;
-      return <WrappedComponent ref={forwardedRef} data={this.state.data} {...passThroughProps} />;
+      return <WrappedComponent 
+        ref={forwardedRef}
+        // 复用逻辑
+        data={this.state.data}
+        // 原有逻辑
+        {...passThroughProps} 
+      />;
     }
   }
 
@@ -49,7 +54,6 @@ export default function withSubscription(WrappedComponent, selectData) {
   // 拷贝静态方法(非react 自带的)
   // hoistNonReactStatic(withSubscription, WrappedComponent);
 
-  // return WithSubscription;
   // 考虑 ref 转发
   return React.forwardRef((props, ref) => {
     return <WithSubscription {...props} forwardedRef={ref} />;
