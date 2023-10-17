@@ -26,12 +26,12 @@ MVC 的具体实现也有很多不同, 主要在 View 更新的地方
 
 ## MVVM
 
-MVVM: View <- Viewport <=> Model  
+MVVM: View <- ViewModel <=> Model  
 
 本质也是单向数据流 正向然后反向  
-User Action/API -> Viewport1(Controller) -> Model -> Viewport2 -> View
+User Action/API -> ViewModel1(Controller) -> Model -> ViewModel2 -> View
 
-- Viewport1 是 Controller
-- Model 更新 通过 Viewport2 代理更新 View
-- Viewport 在 View 和 Model 之间
+- ViewModel1 是 Controller
+- Model 更新 通过 ViewModel2 代理更新 View
+- 强调 ViewModel 在 View 和 Model 之间
 
