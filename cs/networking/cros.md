@@ -1,24 +1,4 @@
-# Cross Origin
 
-## 跨域中的域
-
-`http://www.nilinli.com:80`
-
-1. `http://` 协议
-2. `www.nilinli.com` 域名
-3. `80`  端口
-
-三者必须完全相同, 同一 ip 的两个域名也不行
-
-## 同源策略
-
-Same-Origin Policy
-
-- 浏览器需要保证每一个 origin 下面的数据都是独立的, 类似与 app 的沙箱
-- 浏览器发送请求时候会自动带上 cookies
-- 如果能跨域发送请求, 就相当于动了别人的数据
-
-所以浏览器做了**一定的**限制, 限制之外的可以通过服务器判断请求是不是相同 origin
 
 ### 浏览器限制
 
@@ -28,24 +8,17 @@ Same-Origin Policy
 - web 字体 @font-face
 - WebGL 贴图
 
-### 浏览器不限制
 
-- link src
-- script src
-- img/video src
-- iframe src
-- form 提交
 
-目的：访问外部资源
+
 缺点： crsf & xss 攻击
 
 - 发送请求，提交信息，形成 action
 - xss 注入脚本获取 token 并且发送跨域请求收集信息
-- 但是不能获取数据
-  - link css 不能通过 js 去操作
-  - script 执行任何信息都不能获取，包括 error
-  - img/video 不能使用 getImageData 读取信息
-  - ...
+
+
+
+
 
 #### CORS settings attributes
 
