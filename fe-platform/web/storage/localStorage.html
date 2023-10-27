@@ -1,82 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>localStorage</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>localStorage</title>
-</head>
+  <body>
+    <button onclick="removeItem('one')">removeItem</button> <br />
+    <button onclick="clearAll()">clear</button> <br />
+    <button onclick="create('one', 'one+')">create</button> <br />
+    <button onclick="set('one', 'one++' + Math.random())">set</button>
+    <button onclick="get('one')">get</button>
+  </body>
 
-<body>
+  <script>
+    // 同一 page 改变不会触发 storage 事件
+    document.addEventListener('storage', (event) => {
+      console.log('domain', event.domain);
+      console.log('key', event.key);
+      console.log('newValue', event.newValue);
+      console.log('oldValue', event.oldValue);
+    });
 
-  <a href="./sessionStorage.html">go to sessionStorage</a> <br>
-
-  <button onclick="removeItem()">removeItem</button> <br>
-  <button onclick="clearAll()">clear</button> <br>
-  <button onclick="create('one', 'one+')">create</button> <br>
-  <button onclick="set('one', 'one++')">set</button>
-
-
-  <h3>localStorage 特点:</h3>
-  <ul>
-    <li>给定的源（given origin）维持一个独立的存储区域</li>
-    <li>一直存在</li>
-    <li>5M 或者 2.5M</li>
-  </ul>
-
-</body>
-
-<script>
-  // 同一 page 改变不会触发 storage 事件
-  document.addEventListener('storage', (event) => {
-    console.log('domain', event.domain);
-    console.log('key', event.key);
-    console.log('newValue', event.newValue);
-    console.log('oldValue', event.oldValue);
-  })
-
-  function getLocalStorage() {
-    if (typeof localStorage == 'object') {
-      return localStorage;
-    } else if (typeof globalStorage == 'object') {
-      return globalStorage[location.host];
-    } else {
-      throw new Error('Local storage not available.');
+    function getLocalStorage() {
+      if (typeof localStorage == 'object') {
+        return localStorage;
+      } else if (typeof globalStorage == 'object') {
+        return globalStorage[location.host];
+      } else {
+        throw new Error('Local storage not available.');
+      }
     }
-  }
 
-  const ls = getLocalStorage();
-  const ss = window.sessionStorage;
+    const ls = getLocalStorage();
 
-  ls.setItem(Math.floor(Math.random() * 1000) + 'ls', Math.floor(Math.random() * 1000));
-  ss.setItem(Math.floor(Math.random() * 1000) + 'ss', Math.floor(Math.random() * 1000));
+    console.log('ls', ls);
 
-  console.log('ls', ls);
-  console.log('ss', ss);
-
-  function clearAll() {
-    console.log(123)
-    ls.clear();
-  }
-
-
-  function create(key, value) {
-    if (ls.getItem(key)) {
-      throw Error('have been already exist!!!');
-    } else {
-      set(key, value);
+    function clearAll() {
+      ls.clear();
     }
-  }
 
-  function removeItem() {
-    let key = ls.key(1);
-    ls.removeItem(key);
-  }
+    function create(key, value) {
+      if (ls.getItem(key)) {
+        throw Error('have been already exist!!!');
+      } else {
+        set(key, value);
+      }
+    }
 
-  function set(key, value) {
-    ls.setItem(key, value);
-  }
-</script>
+    function removeItem(key) {
+      ls.removeItem(key);
+    }
 
+    function set(key, value) {
+      ls.setItem(key, value);
+    }
+
+    function get(key) {
+      alert(ls.getItem(key));
+    }
+  </script>
 </html>

@@ -1,42 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>sessionStorage</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>sessionStorage</title>
-</head>
+  <body>
+    <button onclick="ss.setItem('session_two', 'session_two')">set</button>
+    <button onclick="alert(ss.getItem('session_two'))">get</button>
+  </body>
 
-<body>
-  <a href="./localStorage.html">go to localStorage</a> <br>
-  <a href="https://www.baidu.com">百度</a>
-  <h3>sessionStorage 特点:</h3>
-  <ul>
-    <li>给定的源（given origin）维持一个独立的存储区域</li>
-    <li>浏览器 tab 不关闭, 存在 , 关闭就清除了</li>
-    <li> 2.5M 或者 5M</li>
-  </ul>
-</body>
+  <script>
+    document.addEventListener('storage', (event) => {
+      console.log('domain', event.domain);
+      console.log('key', event.key);
+      console.log('newValue', event.newValue);
+      console.log('oldValue', event.oldValue);
+    });
 
-<script>
-  document.addEventListener('storage', (event) => {
-    console.log('domain', event.domain);
-    console.log('key', event.key);
-    console.log('newValue', event.newValue);
-    console.log('oldValue', event.oldValue);
-  });
+    const ss = window.sessionStorage;
 
-
-  const ss = window.sessionStorage;
-  const ls = window.localStorage;
-  ls.setItem(Math.floor(Math.random() * 1000) + 'ls', Math.floor(Math.random() * 1000));
-  ss.setItem(Math.floor(Math.random() * 1000) + 'ss', Math.floor(Math.random() * 1000));
-
-
-
-  console.log('ls', ls);
-  console.log('ss', ss);
-</script>
-
+    ss.setItem('session_one', 'session_one');
+  </script>
 </html>
